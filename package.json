@@ -1,0 +1,26 @@
+{
+  "name": "kalong",
+  "version": "1.0.0-alpha.1",
+  "description": "An opinionated frontend styleguide development toolkit",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webgefrickel/kalong.git"
+  },
+  "keywords": [
+    "frontend",
+    "styleguide",
+    "sass",
+    "rollup",
+    "fractal",
+    "esnext"
+  ],
+  "author": "Steffen Rademacker <kontakt@webgefrickel.de>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/webgefrickel/kalong/issues"
+  },
+  "homepage": "https://github.com/webgefrickel/kalong#readme"
+}
