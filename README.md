@@ -1,4 +1,4 @@
-# kalong—an opinionated frontend styleguide development toolkit
+# kalong—a frontend styleguide development toolkit
 
 
 ## Collaboration

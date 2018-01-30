@@ -1,7 +1,7 @@
 {
   "name": "kalong",
   "version": "1.0.0-alpha.1",
-  "description": "An opinionated frontend styleguide development toolkit",
+  "description": "A frontend styleguide development toolkit",
   "scripts": {
     "test": "gulp test"
   },
