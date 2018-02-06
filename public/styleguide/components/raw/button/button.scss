@@ -1,0 +1,8 @@
+// buttons
+// ======================================================================
+
+.button {
+  @include padding(a 1/2);
+  display: inline-block;
+  cursor: pointer;
+}

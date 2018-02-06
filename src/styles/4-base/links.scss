@@ -1,0 +1,10 @@
+// default link styling
+// ======================================================================
+
+a {
+  text-decoration: none;
+
+  @include attention {
+    text-decoration: underline;
+  }
+}

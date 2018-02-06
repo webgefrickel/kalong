@@ -1,0 +1,33 @@
+// default headings h1 - h6
+// ======================================================================
+
+h1 {
+  @include z-index(feet);
+  @include font-size(h1);
+  @include margin(a 0, b 1);
+}
+
+h2 {
+  @include font-size(h2);
+  @include margin(a 0, b 1);
+}
+
+h3 {
+  @include font-size(h3);
+  @include margin(a 0, b 1);
+}
+
+h4 {
+  @include font-size(h4);
+  @include margin(a 0, b 1);
+}
+
+h5 {
+  @include font-size(h5);
+  @include margin(a 0, b 1);
+}
+
+h6 {
+  @include font-size(h6);
+  @include margin(a 0, b 1);
+}

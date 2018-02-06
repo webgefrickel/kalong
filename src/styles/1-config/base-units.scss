@@ -1,0 +1,12 @@
+// base unit definition and width/heights for other stuff
+// ======================================================================
+
+// base unit - default font-size * line-height in rem and half/double
+$base-font-size: 16px;
+$base-line-height: 1.5;
+
+$base-unit: 1rem * $base-line-height;
+$base-half: $base-unit / 2;
+$base-quart: $base-unit / 4;
+$base-double: $base-unit * 2;
+$base-quad: $base-unit * 4;

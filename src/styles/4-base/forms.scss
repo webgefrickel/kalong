@@ -1,0 +1,58 @@
+// base styles for form elements, fieldsets, labels, inputs etc.
+// ======================================================================
+
+// default transparent background for all form elements
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  background-color: transparent;
+}
+
+// default styles for text-input forms fields
+[type='text'],
+[type='tel'],
+[type='email'],
+[type='search'],
+[type='number'],
+[type='password'],
+select,
+textarea {
+  @include padding(a 1/4, b 1/4);
+  @include border-color(border);
+  width: 100%;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 0;
+  appearance: none; // no rounded inputs etc.
+
+  @include attention {
+    @include border-color(main);
+  }
+}
+
+// allow resizing of textareas vertically
+textarea {
+  resize: vertical;
+}
+
+// no border for the fieldset
+fieldset {
+  @include margin(a 0, b 1);
+  padding: 0;
+  border: 0;
+}
+
+// position labels on top of their related inputs by default,
+// and give them a hint to make them clickable by setting cursor
+label {
+  display: block;
+  cursor: pointer;
+}
+
+// dont allow unselectable elements to be selected
+[unselectable] {
+  user-select: none;
+}
+

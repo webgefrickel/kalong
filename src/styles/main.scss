@@ -1,0 +1,30 @@
+// main.scss - in here we just include all the other partials
+// ======================================================================
+
+// first things first — include the postcss-hook for normalize
+@import-normalize;
+
+// first we include global variable-maps from the config and
+// all mixins and config variables and global settings
+@import '1-config/shared.json'; // extra include, because of json-extension
+@import '1-config/**/*';
+@import '2-tools/**/*';
+
+// throw in all other 3rdparty styles here this way we can override
+// vendor-styles in our components/layouts, if we really need to later on
+@import '3-vendor/**/*';
+
+// base styles - for raw html-elements, no classes
+// this is where basic css reset styles happen
+@import '4-base/**/*';
+
+// The core of every projectp: all your patterns
+@import '../patterns/**/*';
+
+// theme styles can override component styles, so they go after
+@import '6-themes/**/*';
+
+// global helpers, that do not fit into their own component
+// helpers classes like clearfix, visuallyhidden etc. — opinionated!
+// and any overrides, shame and whatnot
+@import '7-overrides/**/*';

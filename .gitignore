@@ -1,0 +1,6 @@
+.DS_Store
+npm-debug.log
+npm-debug.log*
+.sass-cache
+node_modules
+public/tmp*.html

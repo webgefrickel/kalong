@@ -1,0 +1,17 @@
+// Text and other inline elements
+// ======================================================================
+
+// default hr is just a single line 1px high, feel free to override
+hr {
+  @include margin(h auto, b 1, t 0);
+  display: block;
+  height: 1px;
+  border: 0;
+  background: currentColor;
+}
+
+blockquote,
+pre,
+p {
+  @include margin(a 0, b 1);
+}

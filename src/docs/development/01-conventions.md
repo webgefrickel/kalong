@@ -1,0 +1,19 @@
+---
+title: Coding Conventions
+---
+
+Disclaimer: This is a highly opinionated project and set of files and conventions. If you don't like any of those: feel free to change them for your project or fork the hell out of this repository.
+
+## Coding Style & Linting
+
+If your editor of choice supports [editorconfig](http://editorconfig.org), you should already be fine, this project provides an .editorconfig-file that sets all conventions.
+
+If not: 2 Spaces for *everything*, UTF-8 everything, Unix-Style linebreaks, no trailing spaces except for Markdown and text-files.
+
+The JavaScript-, HTML- and Sass-linters will be enabled by default with the settings from above, so if you try to move away from those conventions: you will be warned :) The linters will try to enforce a specific coding style regarding whitespace, naming stuff, usage of variables etc. to make your code consistent, so please try to stick to it.
+
+[More on configuring and using the linters](linting.md)
+
+## Filenames
+
+Files should always be in lowercase, use dashes where applicable. No underscores, unless you want to exclude files from the styleguide, see [Naming and referencing](https://fractal.build/guide/core-concepts/naming).

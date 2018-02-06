@@ -1,0 +1,7 @@
+icon--close:
+  title: Close
+  description: A cross to close something
+
+icon--menu:
+  title: Menu
+  description: A burger-menu icon for opening/closing the navigation

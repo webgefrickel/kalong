@@ -1,0 +1,9 @@
+// modern clearfix mixin
+// ======================================================================
+
+@mixin clearfix {
+  &::after {
+    @include block(pseudo);
+    clear: both;
+  }
+}

@@ -1,0 +1,22 @@
+// Tables
+// ======================================================================
+
+// use the full avaiable width by defaultj
+table {
+  @include margin(a 0, b 1);
+  width: 100%;
+  border-collapse: collapse;
+}
+
+// align content in table cells to the top by default
+td,
+th {
+  padding: 0;
+  vertical-align: top;
+}
+
+// align content to the left for table headings
+th {
+  text-align: left;
+}
+
