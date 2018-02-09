@@ -1,12 +1,8 @@
-// easy margins and paddings with custom mixins
-// ======================================================================
-
 // creates margins, by default (without any parameters) only margin-bottom
 // with $base-unit -- default rhythm, or for every side/value-pair with
 // their short variants:
 //
 // usage examples:
-//
 // @include margin; ==> margin-bottom: $base-unit;
 // @include margin(2) ==> warning!, this is not gonna work
 // @include margin(b 2) ==> margin-bottom: $base-unit * 2;
@@ -17,7 +13,6 @@
 // @include margin(v 1) ==> margin-right: $base-unit; margin-left: $base-unit;
 // @include margin(h 1) ==> margin-top: $base-unit; margin-bottom: $base-unit;
 @mixin margin($spacing-args...) {
-
   // default case for spacing -- margin bottom
   @if length($spacing-args) == 0 {
     @if variable-exists(base-unit) == false {
@@ -26,40 +21,31 @@
     } @else {
       margin-bottom: $base-unit;
     }
-
   } @else {
     @each $position-key, $position-value in $spacing-args {
-
       @if not $position-value {
         @warn 'You should provide a list of side/value pairs e.g. "b 2" for this mixin to work';
-
       } @else if $position-key == 'a' {
         margin: parse-unit($position-value);
-
       } @else if $position-key == 'v' {
         margin-top: parse-unit($position-value);
         margin-bottom: parse-unit($position-value);
-
       } @else if $position-key == 'h' {
         margin-right: parse-unit($position-value);
         margin-left: parse-unit($position-value);
-
       } @else {
         $side: position-map($position-key);
         $value: parse-unit($position-value);
-
         margin-#{$side}: $value;
       }
     }
   }
 }
 
-
 // this padding mixin for padding behaves slightly different
 // when provided with no parameter, padding is applied to all four
 // sides of the element, using padding-shorthand
 @mixin padding($spacing-args...) {
-
   // default case for spacing -- margin bottom
   @if length($spacing-args) == 0 {
     @if variable-exists(base-unit) == false {
@@ -68,28 +54,21 @@
     } @else {
       padding: $base-unit;
     }
-
   } @else {
     @each $position-key, $position-value in $spacing-args {
-
       @if not $position-value {
         @warn 'You should provide a list of side/value pairs e.g. "b 2" for this mixin to work';
-
       } @else if $position-key == 'a' {
         padding: parse-unit($position-value);
-
       } @else if $position-key == 'v' {
         padding-top: parse-unit($position-value);
         padding-bottom: parse-unit($position-value);
-
       } @else if $position-key == 'h' {
         padding-right: parse-unit($position-value);
         padding-left: parse-unit($position-value);
-
       } @else {
         $side: position-map($position-key);
         $value: parse-unit($position-value);
-
         padding-#{$side}: $value;
       }
     }

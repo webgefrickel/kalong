@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import got from 'got';
 import gulp from 'gulp';
-import config from '../kalong';
+import config from '../kalong.config';
 
 // allow insecure https request for local retrieval of html-files
 /* eslint no-process-env: 0 */

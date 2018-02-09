@@ -5,7 +5,6 @@
   @if variable-exists(font-sizes) == false {
     @warn '$font-sizes Sass-map does not exist, please provide one in your config. Defaulting to 16px-rem-equivalent';
     @return ($pxvalue / 16px) * 1rem;
-
   } @else if map-has-key($font-sizes, default) == false {
     @warn 'Index "default" not found in $font-sizes Sass-map using function px-to-rem. Defaulting to 16px-rem-equivalent';
     @return ($pxvalue / 16px) * 1rem;
@@ -38,7 +37,6 @@
 
   @return $value;
 }
-
 
 // returns the full value for any of the position/side short-forms
 @function position-map($short) {

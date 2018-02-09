@@ -5,7 +5,7 @@ import run from 'run-sequence';
 import eslint from 'gulp-eslint';
 import sasslint from 'gulp-sass-lint';
 import htmlhint from 'gulp-htmlhint';
-import config from '../kalong';
+import config from '../kalong.config';
 
 const srcPathTasks = path.join(config.tasks, '/**/*.js');
 const srcPathJs = path.join(config.src, config.scripts, '**/*.js');

@@ -1,8 +1,7 @@
-import { version } from '../package.json';
-import config from '../kalong.js';
+import config from '../kalong.config.js';
 
 // Update 'version' if you need to refresh the cache
-const cacheVersion = version; // gets replaced with package.version
+const cacheVersion = config.version;
 const assetsPath = config.dest.replace(config.root, '/');
 const alwaysCache = [
   '/',

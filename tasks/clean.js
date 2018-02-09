@@ -1,7 +1,7 @@
 import path from 'path';
 import gulp from 'gulp';
 import del from 'del';
-import config from '../kalong';
+import config from '../kalong.config';
 
 // do not return anything fixes watch-task
 gulp.task('clean', () => del([

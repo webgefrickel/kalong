@@ -1,8 +1,13 @@
-// buttons
-// ======================================================================
-
 .button {
   @include padding(a 1/2);
+  @include color(default);
   display: inline-block;
+  border: 1px solid currentColor;
+  text-decoration: none;
   cursor: pointer;
+
+  @include attention {
+    @include color(main);
+    text-decoration: none;
+  }
 }

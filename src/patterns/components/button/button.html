@@ -5,7 +5,7 @@
     </span>
   </a>
 {% else %}
-  <button type="button" class="button{% if modifiers %}  {{ modifiers }}{% endif %}">
+  <button type="{{ type }}" class="button{% if modifiers %}  {{ modifiers }}{% endif %}">
     <span class="button__text">
       {{ label }}
     </span>

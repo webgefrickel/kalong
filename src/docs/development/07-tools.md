@@ -9,5 +9,8 @@ Those tools are not part of this package, but I really would recommend that you 
 - [css-colorguard](https://github.com/SlexAxton/css-colorguard) — checks your CSS for too similar colors
 - [notes](https://github.com/stephenb/node-notes) — a small tool for checking all your code for TODO, FIXME, OPTIMIZE and NOTE comments
 
+https://github.com/marak/Faker.js
+
 You can install them all via npm, give them a spin!
+
 

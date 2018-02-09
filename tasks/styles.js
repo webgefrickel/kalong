@@ -11,7 +11,7 @@ import json from 'node-sass-json-importer';
 import autoprefixer from 'autoprefixer';
 import normalize from 'postcss-normalize';
 import cssnano from 'cssnano';
-import config from '../kalong';
+import config from '../kalong.config';
 
 const srcPath = path.join(config.src, config.styles, 'main.scss');
 const destPath = path.join(config.dest, config.styles);

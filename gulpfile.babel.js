@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import gulp from 'gulp';
 import run from 'run-sequence';
-import config from './kalong';
+import config from './kalong.config';
 
 // Rather than manage one giant gulpfile responsible for creating all tasks,
 // each 'simple' task has been broken out into its own file in ./tasks.

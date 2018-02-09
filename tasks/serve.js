@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import browsersync from 'browser-sync';
-import config from '../kalong';
+import config from '../kalong.config';
 
 gulp.task('serve', () =>
   browsersync({

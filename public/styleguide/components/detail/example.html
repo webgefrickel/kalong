@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.2.0" type="text/css">
 
 
-<title>Example | Kalong—Styleguide, v1.0.0-alpha.1</title>
+<title>Example Component | Kalong—Styleguide, v0.0.1-alpha.1</title>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 </svg>
 
     </button>
-    <a href="../../index.html" class="Header-title" data-pjax>Kalong—Styleguide, v1.0.0-alpha.1</a>
+    <a href="../../index.html" class="Header-title" data-pjax>Kalong—Styleguide, v0.0.1-alpha.1</a>
 </div>
 
     </div>
@@ -59,7 +59,7 @@
     <div class="Pen-panel Pen-header">
     <h1 class="Pen-title">
         <a class="Pen-previewLink" href="../preview/example.html" title="Component preview">
-            Example
+            Example Component
             <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
@@ -157,7 +157,22 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-6cf0535ee9e97302f37dedcb4fb37a9e-panel-html">
     <code class="Code Code--lang-html">
         
-        <pre></pre>
+        
+            <pre><span class="hljs-comment">&lt;!-- Default --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"example  js-example  example--default"</span>&gt;</span>
+    Eos asperiores quia maxime maiores totam veniam reprehenderit. Quas est sunt quasi amet. Fugiat perspiciatis voluptate. Porro iste minima voluptatem non laborum ut est reiciendis quia. Eos ut maxime ea quis.
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+</pre>
+        
+            <pre><span class="hljs-comment">&lt;!-- Large --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"example  js-example  example--large"</span>&gt;</span>
+    Maiores non omnis sequi velit. Provident quibusdam ut vero explicabo vel blanditiis aut. Culpa facilis rerum in voluptatem deleniti enim. Autem ad qui laborum quam deserunt aut omnis. Dolorum sint dicta voluptas sed cum. Minus eligendi voluptatem ipsam
+    ipsam.
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+</pre>
+        
         
     </code>
 </div>
@@ -165,7 +180,9 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-6cf0535ee9e97302f37dedcb4fb37a9e-panel-view">
     <code class="Code Code--lang-html">
-        <pre></pre>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"example  js-example{% if modifiers %}  {{ modifiers }}{% endif %}"</span>&gt;</span>
+  {{ text }}
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
     </code>
 </div>
 
@@ -173,9 +190,30 @@
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-6cf0535ee9e97302f37dedcb4fb37a9e-panel-context">
     <code class="Code Code--lang-yaml">
         
-            
-            <pre><span class="hljs-comment">/* No context defined for this component. */</span></pre>
-            
+        
+            <pre>
+<span class="hljs-comment">/* Default */</span>
+<span class="hljs-attr">text:</span> <span class="hljs-string">&gt;-</span>
+  <span class="hljs-string">Eos</span> <span class="hljs-string">asperiores</span> <span class="hljs-string">quia</span> <span class="hljs-string">maxime</span> <span class="hljs-string">maiores</span> <span class="hljs-string">totam</span> <span class="hljs-string">veniam</span> <span class="hljs-string">reprehenderit.</span> <span class="hljs-string">Quas</span> <span class="hljs-string">est</span> <span class="hljs-string">sunt</span>
+  <span class="hljs-string">quasi</span> <span class="hljs-string">amet.</span> <span class="hljs-string">Fugiat</span> <span class="hljs-string">perspiciatis</span> <span class="hljs-string">voluptate.</span> <span class="hljs-string">Porro</span> <span class="hljs-string">iste</span> <span class="hljs-string">minima</span> <span class="hljs-string">voluptatem</span> <span class="hljs-string">non</span>
+  <span class="hljs-string">laborum</span> <span class="hljs-string">ut</span> <span class="hljs-string">est</span> <span class="hljs-string">reiciendis</span> <span class="hljs-string">quia.</span> <span class="hljs-string">Eos</span> <span class="hljs-string">ut</span> <span class="hljs-string">maxime</span> <span class="hljs-string">ea</span> <span class="hljs-string">quis.</span>
+<span class="hljs-attr">modifiers:</span> <span class="hljs-string">example--default</span>
+
+
+</pre>
+        
+            <pre>
+<span class="hljs-comment">/* Large */</span>
+<span class="hljs-attr">text:</span> <span class="hljs-string">&gt;-</span>
+  <span class="hljs-string">Maiores</span> <span class="hljs-string">non</span> <span class="hljs-string">omnis</span> <span class="hljs-string">sequi</span> <span class="hljs-string">velit.</span> <span class="hljs-string">Provident</span> <span class="hljs-string">quibusdam</span> <span class="hljs-string">ut</span> <span class="hljs-string">vero</span> <span class="hljs-string">explicabo</span> <span class="hljs-string">vel</span>
+  <span class="hljs-string">blanditiis</span> <span class="hljs-string">aut.</span> <span class="hljs-string">Culpa</span> <span class="hljs-string">facilis</span> <span class="hljs-string">rerum</span> <span class="hljs-string">in</span> <span class="hljs-string">voluptatem</span> <span class="hljs-string">deleniti</span> <span class="hljs-string">enim.</span> <span class="hljs-string">Autem</span> <span class="hljs-string">ad</span> <span class="hljs-string">qui</span>
+  <span class="hljs-string">laborum</span> <span class="hljs-string">quam</span> <span class="hljs-string">deserunt</span> <span class="hljs-string">aut</span> <span class="hljs-string">omnis.</span> <span class="hljs-string">Dolorum</span> <span class="hljs-string">sint</span> <span class="hljs-string">dicta</span> <span class="hljs-string">voluptas</span> <span class="hljs-string">sed</span> <span class="hljs-string">cum.</span> <span class="hljs-string">Minus</span>
+  <span class="hljs-string">eligendi</span> <span class="hljs-string">voluptatem</span> <span class="hljs-string">ipsam</span> <span class="hljs-string">ipsam.</span>
+<span class="hljs-attr">modifiers:</span> <span class="hljs-string">example--large</span>
+
+
+</pre>
+        
         
     </code>
 </div>
@@ -195,6 +233,8 @@
                 
                 <option value="file-da15bafba300ee79cd8eb4dc9e2e137c">example.scss</option>
                 
+                <option value="file-93fb2ab7ee2d1663262ddef24a0d7a78">example.test.js</option>
+                
             </select>
         </div>
 
@@ -207,7 +247,13 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-JavaScript FileBrowser-code">
-                                <pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
+                                <pre><span class="hljs-keyword">import</span> mediaquery <span class="hljs-keyword">from</span> <span class="hljs-string">'#helper/mediaquery'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> (scope = <span class="hljs-built_in">document</span>) =&gt; {
+  <span class="hljs-keyword">const</span> example = scope.querySelectorAll(<span class="hljs-string">'.js-example'</span>);
+
+  <span class="hljs-built_in">console</span>.log(mediaquery(<span class="hljs-string">'s'</span>), <span class="hljs-string">'mediaquery above breakpoint S'</span>);
+  <span class="hljs-built_in">console</span>.log(example);
 };
 </pre>
                             </code>
@@ -225,7 +271,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">26 Bytes</span>
+                    <span class="Meta-value">235 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -238,7 +284,21 @@
                         <div class="FileBrowser-itemPreview">
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code">
-                                <pre></pre>
+                                <pre><span class="hljs-selector-class">.example</span> {
+  @<span class="hljs-keyword">include</span> padding(a 1);
+  <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid currentColor;
+  <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-variable">$base-unit</span> <span class="hljs-number">0</span> currentColor;
+}
+
+<span class="hljs-selector-class">.example--default</span> {
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.example--large</span> {
+  @<span class="hljs-keyword">include</span> padding(a 2);
+  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">200%</span>;
+}
+</pre>
                             </code>
                             
                         </div>
@@ -254,7 +314,52 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">0 Byte</span>
+                    <span class="Meta-value">224 Bytes</span>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="FileBrowser-item" id="file-93fb2ab7ee2d1663262ddef24a0d7a78" data-role="resource-preview">
+            <ul class="Meta">
+                <li class="Meta-item">
+                    <strong class="Meta-key">Content:</strong>
+                    <span class="Meta-value">
+                        <div class="FileBrowser-itemPreview">
+                            
+                            <code class="Code Code--lang-JavaScript FileBrowser-code">
+                                <pre><span class="hljs-comment">// import test from 'ava';</span>
+<span class="hljs-keyword">const</span> test = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'meh'</span>);
+};
+
+test(<span class="hljs-string">'foo'</span>, t =&gt; {
+  t.pass();
+});
+
+test(<span class="hljs-string">'bar'</span>, <span class="hljs-keyword">async</span> t =&gt; {
+  <span class="hljs-keyword">const</span> bar = <span class="hljs-built_in">Promise</span>.resolve(<span class="hljs-string">'bar'</span>);
+
+  t.is(<span class="hljs-keyword">await</span> bar, <span class="hljs-string">'bar'</span>);
+});
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {};
+</pre>
+                            </code>
+                            
+                        </div>
+                    </span>
+                </li>
+                <li class="Meta-item">
+                    <strong class="Meta-key">URL:</strong>
+                    <span class="Meta-value"><a data-no-pjax href="../raw/example/example.test.js"><span>/components/raw/example/example.test.js</span></a></span>
+                </li>
+                <li class="Meta-item">
+                    <strong class="Meta-key">Filesystem Path:</strong>
+                    <span class="Meta-value">src/patterns/components/example/example.test.js</span>
+                </li>
+                <li class="Meta-item">
+                    <strong class="Meta-key">Size:</strong>
+                    <span class="Meta-value">230 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -272,9 +377,37 @@
             <span class="Meta-value">@example</span>
         </li>
         
+        <li class="Meta-item">
+            <strong class="Meta-key">Tags:</strong>
+            <span class="Meta-value">
+                
+                    <span>
+                
+                    <span>tag-one</span>, 
+                
+                    <span>tag-two</span>
+                
+            </span>
+        </li>
         
         
         
+        
+        
+        <li class="Meta-item">
+            <strong class="Meta-key">Variants <em class="Meta-count">(2)</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            
+                <a href="example--default.html">
+                    <span>Default</span>
+                </a>, 
+            
+                <a href="example--large.html">
+                    <span>Large</span>
+                </a>
+            
+            </span>
+        </li>
         
         <li class="Meta-item">
             <strong class="Meta-key">Preview:</strong>
@@ -306,7 +439,10 @@
     <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-6cf0535ee9e97302f37dedcb4fb37a9e-panel-notes">
     <div class="Prose Prose--condensed">
         
-        <p class="Browser-isEmptyNote">There are no notes for this item.</p>
+        <h1 id="more-info-on-the-example-component">More info on the example-component</h1>
+<p>You can use <strong>markdown</strong> here, if you want. </p>
+<p>Yay! This is an awesome example.</p>
+
         
     </div>
 </div>
@@ -627,6 +763,46 @@
         <li class="Tree-item Tree-entity is-current" data-state="current" data-role="item">
             <a class="Tree-entityLink" href="" data-pjax>
                 <span>Example</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF3333;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-globals">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Globals</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="footer.html" data-pjax>
+                <span>Footer</span>
                 
 
 <div class="Status Status--unlabelled">

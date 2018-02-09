@@ -41,6 +41,7 @@
     "cssnano": "^3.10.0",
     "del": "^3.0.0",
     "eslint-config-xo-space": "^0.17.0",
+    "faker": "^4.1.0",
     "got": "^8.0.3",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.2",
@@ -56,14 +57,15 @@
     "node-sass-globbing": "^0.0.23",
     "node-sass-json-importer": "^3.1.2",
     "postcss-normalize": "^4.0.0",
-    "rollup": "^0.55.3",
+    "rollup": "^0.55.4",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-json": "^2.3.0",
     "rollup-plugin-node-resolve": "^3.0.2",
+    "rollup-plugin-strip": "^1.1.1",
     "rollup-plugin-uglify": "^3.0.0",
     "run-sequence": "^2.2.1",
-    "uglify-es": "^3.3.9"
+    "uglify-es": "^3.3.10"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",

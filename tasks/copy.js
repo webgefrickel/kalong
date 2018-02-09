@@ -1,6 +1,6 @@
 import path from 'path';
 import gulp from 'gulp';
-import config from '../kalong';
+import config from '../kalong.config';
 
 gulp.task('copy:fonts', () =>
   gulp

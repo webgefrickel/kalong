@@ -2,40 +2,43 @@
 title: General workflow
 ---
 
-## Watching and building
+The core of this styleguide-system is powered by [fractal](https://fractal.build/), so please read through the documentation there, especially the [core concepts](https://fractal.build/guide/core-concepts/views). Kalong uses nunjucks-templates instead of the default handlebars-templates, to make patterns and snippets easier for consumption in PHP, using custom Twig-adapters. 
 
-After having everything up and running (and configured to your liking) the main two gulp-tasks you will be using are:
+## How to get started
 
-- `npm start` — the default watch task for development
-- `npm run build` — the 'make everything production-ready' task
+About 90% of your work should take place in the folder ./src/patterns/. Create new patterns and components, group them in collections, add Sass and JavaScript, and later combine everything in your templates.
 
-For more information on the gulp tasks avaiable by default, have a look at [Gulp & Tasks Overview](tasks.md).
+By default you should start with the following four folders, roughly implementing the idea of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/):
 
-## Where should I put my stuff?
+- patterns/basics  
+  This is where you should give all HTML-Elements in your project some basic, sane styles—in addition to the included reset styles and normalize.css. Think: default table-styling, deafult input[type="text"]-styling etc. pp. Your CSS should not contain any class-declarations, except for simple re-usable ones.
+- patterns/components  
+  This is where all reusable components should go, like buttons, cards, boxes—everything that can occur anywhere in your templates, in any number.
+- patterns/globals  
+  This is where all 'global' components should go, such as a global navigation, footer, header or logo—stuff that is on almost any page, thus 'globally' present everywhere.
+- patterns/templates
+And finally, all your templates: those usually glue everything from above together, and add the basic `<head>` and HTML-Structure.
 
-All your Sass, JavaScript, Images and SVGs that you want to use in your stylesheets and all fonts should go into their respective folders in *./src/*.
+(Note: there is a folder _preview included as well: this provides the wrapping template used for each pattern-preview in this styleguide. Usually you can just leave this alone.)
 
-All those files are gonna be parsed/compiled/minified/concatenated/copied to the __dest__-Folder in public by the gulp tasks. The idea here is: keep all your sources in the src-folder, let gulp do the heavy lifting.
+Feel free to add more collections, if it makes sense. You could for example add a collection named 'shop', and group any ecommerce-related components in there, like checkout-buttons, shopping-cart, order-forms etc. 
 
-Everything else, that is HTML, CMS, PHP or whatever should be public (favicons, editorial images, documents etc.), should reside in the folder *./public*.
+## Examples
 
+Have a look at the example-pattern from /src/patterns/components/example — this should give you a rough idea, on how to use this system. Also have a look at the default button-component in patterns/components/button for a simpler use-case.
 
-## Button component
+## Further Conventions
 
-The button component can be included within other components like this:
+When creating a new pattern, stick to the following naming/file-convention. Create a folder patternname, in one of the pattern-collections. Inside of that folder there can be the following:
 
-```
-{% render '@button' %}
-```
+- patternname.scss—your styles should go here
+- patternname.js—your JavaScript should go here. This will be autoloaded by default.
+- patternname.config.yml OR patternname.config.js—Configuration for your pattern, see [component configuration](https://fractal.build/guide/components/configuration) for more details. Use YAML if you don't need the power of JavaScript to keep things simple
+- patternname.test.js—JavaScript Unit/Integration/Whatever-Tests ([ava](https://github.com/avajs/ava) is included by default)
+- patternname.html—HTML for your pattern, using nunjucks syntax
+- README.md—if you have any additional notes for how to use the pattern
 
-This template for this component looks like this:
+(Note: Components and patterns are collated by default)
 
-```
-{{view @button}}
-```
+For more information, have a look at the [Fractal Guide for components](https://fractal.build/guide/components/creating).
 
-and it therefore expects a set of data to render it that is in the following format:
-
-```
-{{context @button}}
-```

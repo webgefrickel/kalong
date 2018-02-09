@@ -1,6 +1,4 @@
 // Text and other inline elements
-// ======================================================================
-
 // default hr is just a single line 1px high, feel free to override
 hr {
   @include margin(h auto, b 1, t 0);

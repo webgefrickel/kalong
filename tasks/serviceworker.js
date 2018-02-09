@@ -6,7 +6,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import json from 'rollup-plugin-json';
 import uglify from 'rollup-plugin-uglify';
 import { minify } from 'uglify-es';
-import config from '../kalong';
+import config from '../kalong.config';
 
 // the serviceworker task will build a production ready version
 // that can and will be used only in es6-ready browsers, so we

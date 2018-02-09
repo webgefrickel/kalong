@@ -1,6 +1,5 @@
-import * as globals from './4-global/*.js';
-import * as subglobals from './4-global/**/*.js';
-import * as patterns from '../patterns/**/*.js';
+import * as globals from './3-global/!(*.test|*.config).js';
+import * as patterns from '../patterns/**/!(*.test|*.config).js';
 
 // additional sanity check for modern browsers—and then, enhance!
 if ('visibilityState' in document) {
@@ -8,7 +7,8 @@ if ('visibilityState' in document) {
   document.documentElement.classList.remove('no-js');
 
   // load and execute all scripts from global and all patterns automatically
-  [ globals, subglobals, patterns ].forEach(items => {
+  // but exclude test and config files — those should not be executed
+  [ globals, patterns ].forEach(items => {
     Object.keys(items).forEach(i => {
       items[i]();
     });

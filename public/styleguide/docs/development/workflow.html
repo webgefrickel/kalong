@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.2.0" type="text/css">
 
 
-<title>General workflow | Kalong—Styleguide, v1.0.0-alpha.1</title>
+<title>General workflow | Kalong—Styleguide, v0.0.1-alpha.1</title>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 </svg>
 
     </button>
-    <a href="../../index.html" class="Header-title" data-pjax>Kalong—Styleguide, v1.0.0-alpha.1</a>
+    <a href="../../index.html" class="Header-title" data-pjax>Kalong—Styleguide, v0.0.1-alpha.1</a>
 </div>
 
     </div>
@@ -75,16 +75,33 @@
 
     
     
-    
-<div class="Error Error--render">
-    <h4 class="Error-title">Error rendering page</h4>
-    <div class="Error-message Prose">
-        <p>(unknown path) [Line 31, Column 6]
-  expected variable end</p>
-
-    </div>
-    
-</div>
+    <p>The core of this styleguide-system is powered by <a href="https://fractal.build/">fractal</a>, so please read through the documentation there, especially the <a href="https://fractal.build/guide/core-concepts/views">core concepts</a>. Kalong uses nunjucks-templates instead of the default handlebars-templates, to make patterns and snippets easier for consumption in PHP, using custom Twig-adapters. </p>
+<h2 id="how-to-get-started">How to get started</h2>
+<p>About 90% of your work should take place in the folder ./src/patterns/. Create new patterns and components, group them in collections, add Sass and JavaScript, and later combine everything in your templates.</p>
+<p>By default you should start with the following four folders, roughly implementing the idea of <a href="http://bradfrost.com/blog/post/atomic-web-design/">Atomic Design</a>:</p>
+<ul>
+<li>patterns/basics<br>This is where you should give all HTML-Elements in your project some basic, sane styles—in addition to the included reset styles and normalize.css. Think: default table-styling, deafult input[type=”text”]-styling etc. pp. Your CSS should not contain any class-declarations, except for simple re-usable ones.</li>
+<li>patterns/components<br>This is where all reusable components should go, like buttons, cards, boxes—everything that can occur anywhere in your templates, in any number.</li>
+<li>patterns/globals<br>This is where all ‘global’ components should go, such as a global navigation, footer, header or logo—stuff that is on almost any page, thus ‘globally’ present everywhere.</li>
+<li>patterns/templates
+And finally, all your templates: those usually glue everything from above together, and add the basic <code>&lt;head&gt;</code> and HTML-Structure.</li>
+</ul>
+<p>(Note: there is a folder _preview included as well: this provides the wrapping template used for each pattern-preview in this styleguide. Usually you can just leave this alone.)</p>
+<p>Feel free to add more collections, if it makes sense. You could for example add a collection named ‘shop’, and group any ecommerce-related components in there, like checkout-buttons, shopping-cart, order-forms etc. </p>
+<h2 id="examples">Examples</h2>
+<p>Have a look at the example-pattern from /src/patterns/components/example — this should give you a rough idea, on how to use this system. Also have a look at the default button-component in patterns/components/button for a simpler use-case.</p>
+<h2 id="further-conventions">Further Conventions</h2>
+<p>When creating a new pattern, stick to the following naming/file-convention. Create a folder patternname, in one of the pattern-collections. Inside of that folder there can be the following:</p>
+<ul>
+<li>patternname.scss—your styles should go here</li>
+<li>patternname.js—your JavaScript should go here. This will be autoloaded by default.</li>
+<li>patternname.config.yml OR patternname.config.js—Configuration for your pattern, see <a href="https://fractal.build/guide/components/configuration">component configuration</a> for more details. Use YAML if you don’t need the power of JavaScript to keep things simple</li>
+<li>patternname.test.js—JavaScript Unit/Integration/Whatever-Tests (<a href="https://github.com/avajs/ava">ava</a> is included by default)</li>
+<li>patternname.html—HTML for your pattern, using nunjucks syntax</li>
+<li>README.md—if you have any additional notes for how to use the pattern</li>
+</ul>
+<p>(Note: Components and patterns are collated by default)</p>
+<p>For more information, have a look at the <a href="https://fractal.build/guide/components/creating">Fractal Guide for components</a>.</p>
 
     
 
@@ -402,6 +419,46 @@
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="../../components/detail/example.html" data-pjax>
                 <span>Example</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #FF3333;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-globals">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Globals</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../components/detail/footer.html" data-pjax>
+                <span>Footer</span>
                 
 
 <div class="Status Status--unlabelled">

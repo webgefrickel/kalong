@@ -6,11 +6,11 @@ notes: |
 variants:
 - name: default
   context:
-    type: default
+    type: button
     label: Button
 - name: link
   context:
     type: link
     label: Button as link
-    href: #
+    href: '#'
     title: Click here!

@@ -3,8 +3,7 @@ import gulp from 'gulp';
 import fractal from '@frctl/fractal';
 import nunjucks from '@frctl/nunjucks';
 import mandelbrot from '@frctl/mandelbrot';
-import { version } from '../package';
-import config from '../kalong';
+import config from '../kalong.config';
 
 const f = fractal.create();
 const logger = f.cli.console;
@@ -21,7 +20,7 @@ const theme = mandelbrot({
 });
 const collator = markup => `<div class="styleguide-pattern-wrapper">\n${markup}\n</div>\n`;
 
-f.set('project.title', `${config.title}—Styleguide, v${version}`);
+f.set('project.title', `${config.title}—Styleguide, v${config.version}`);
 f.docs.set('path', path.join(config.src, config.docs));
 f.docs.set('ext', '.md');
 f.docs.set('default.status', 'draft');

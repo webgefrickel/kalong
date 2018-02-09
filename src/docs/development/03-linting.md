@@ -2,7 +2,7 @@
 title: Linting
 ---
 
-Repeat after me: "linting your code keeps you sane". This project provides three different linters: one for HTML, one for Sass (.scss-files to be specific) and one for JavaScript.
+This project provides three different linters: one for HTML, one for Sass (.scss-files to be specific) and one for JavaScript.
 
 All those linters can be configured in their set of rules, and they can be globally deactivated in *config.js*, section *lint*.
 

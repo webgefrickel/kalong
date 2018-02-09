@@ -1,6 +1,7 @@
 export default {
   // title of the website/project
   title: 'Kalong',
+  version: '0.0.1-alpha.1',
 
   // configure your localhost environment here, the host/proxy
   // should point to the root-folder configured below (default: ./public/)

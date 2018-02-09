@@ -2,7 +2,7 @@ import path from 'path';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
 import svgsprite from 'gulp-svg-sprite';
-import config from '../kalong';
+import config from '../kalong.config';
 
 const spriteConfig = {
   mode: {
