@@ -1,6 +1,8 @@
 import * as globals from './3-global/!(*.test|*.config).js';
 import * as patterns from '../patterns/**/!(*.test|*.config).js';
 
+console.log('fuck yeah');
+
 // additional sanity check for modern browsers—and then, enhance!
 if ('visibilityState' in document) {
   // remove the no-js class

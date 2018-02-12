@@ -20,9 +20,8 @@ gulp.task('copy:icons', () =>
     .pipe(gulp.dest(path.join(config.dest, config.images, config.icons)))
 );
 
-// TODO copy styleguide templates/partials for re-use in CMS
-gulp.task('copy:styleguide', () =>
+gulp.task('copy:patterns', () =>
   gulp
-    .src(path.join(config.src, 'icons/*.svg'))
-    .pipe(gulp.dest(path.join(config.dest, 'img/icons')))
+    .src(path.join(config.src, 'patterns/**/*.html'))
+    .pipe(gulp.dest(path.join(config.dest, config.patterns)))
 );

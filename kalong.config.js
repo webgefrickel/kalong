@@ -1,5 +1,5 @@
-export default {
-  // title of the website/project
+// using module.exports here, so that this file can be consumed by fractal as well
+module.exports = {
   title: 'Kalong',
   version: '0.0.1-alpha.1',
 

@@ -25,14 +25,13 @@
   },
   "scripts": {
     "build": "gulp build",
-    "test": "gulp lint",
     "start": "gulp"
   },
   "devDependencies": {
     "@frctl/fractal": "^1.1.7",
     "@frctl/mandelbrot": "^1.2.0",
     "@frctl/nunjucks": "^1.0.3",
-    "autoprefixer": "^7.2.5",
+    "autoprefixer": "^8.0.0",
     "babel-core": "^6.26.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-import-glob": "^2.0.0",
@@ -42,10 +41,10 @@
     "del": "^3.0.0",
     "eslint-config-xo-space": "^0.17.0",
     "faker": "^4.1.0",
-    "got": "^8.0.3",
+    "got": "^8.1.0",
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.2",
-    "gulp-htmlhint": "^2.0.0",
+    "gulp-htmlhint": "^2.1.0",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^7.0.1",
     "gulp-rename": "^1.2.2",
@@ -56,8 +55,7 @@
     "gulp-uglify": "^3.0.0",
     "node-sass-globbing": "^0.0.23",
     "node-sass-json-importer": "^3.1.2",
-    "postcss-normalize": "^4.0.0",
-    "rollup": "^0.55.4",
+    "rollup": "^0.55.5",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-commonjs": "^8.3.0",
     "rollup-plugin-json": "^2.3.0",
@@ -70,6 +68,8 @@
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "fontfaceobserver": "^2.0.13",
+    "normalize.css": "^8.0.0",
+    "select-dom": "^4.1.1",
     "svgxuse": "^1.2.6"
   }
 }

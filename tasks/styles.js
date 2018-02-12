@@ -9,7 +9,6 @@ import browsersync from 'browser-sync';
 import globbing from 'node-sass-globbing';
 import json from 'node-sass-json-importer';
 import autoprefixer from 'autoprefixer';
-import normalize from 'postcss-normalize';
 import cssnano from 'cssnano';
 import config from '../kalong.config';
 
@@ -26,7 +25,6 @@ gulp.task('styles:development', () => {
       importer: [ json, globbing ]
     }))
     .pipe(postcss([
-      normalize({ browsers: config.browserslist.default }),
       autoprefixer({ browsers: config.browserslist.default })
     ]))
     .pipe(sourcemaps.write({
@@ -44,7 +42,6 @@ gulp.task('styles:production', () => {
       sourceMap: false
     }))
     .pipe(postcss([
-      normalize({ browsers: config.browserslist.default }),
       autoprefixer({ browsers: config.browserslist.default }),
       cssnano({
         safe: true

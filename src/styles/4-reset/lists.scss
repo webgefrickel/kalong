@@ -1,0 +1,17 @@
+ul,
+dl,
+ol {
+  @include margin(a 0, b 1);
+  @include padding(a 0, l 1);
+}
+
+// never ever show lists in navigation or fieldsets blocks as lists
+nav,
+fieldset {
+  ul,
+  ol {
+    @include padding(a 0);
+    list-style: none;
+  }
+}
+

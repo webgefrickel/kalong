@@ -10,7 +10,9 @@ import config from './kalong.config';
 // To add a new task, simply add a new task file to ./tasks
 fs.readdirSync(config.tasks)
   .filter(name => (/(\.js$)/i).test(path.extname(name)))
-  .forEach(task => require(config.tasks + task));
+  .forEach(task => {
+    require(config.tasks + task);
+  });
 
 // The main tasks (default + build) are defined here
 // ======================================================================
@@ -60,12 +62,13 @@ gulp.task('default', [ 'styleguide:development', 'serve' ], () => {
 // and checks/lints - and fails if linting fails and is activated
 // meaning you can't build if your code smells bad :-)
 gulp.task('build', () => run(
-  [ 'lint' ],
+  [ 'lint:styles:production', 'lint:scripts:production' ],
   [ 'clean' ],
   [ 'sprite', 'serviceworker',
     'styles:development', 'scripts:development',
     'styles:production', 'scripts:production', 'scripts:legacy' ],
-  [ 'styleguide:production', 'copy:images', 'copy:fonts', 'copy:icons' ],
+  [ 'styleguide:production', 'copy:images', 'copy:fonts', 'copy:icons', 'copy:patterns' ],
+  [ 'lint:html' ],
   [ 'clean:done' ]
 ));
 

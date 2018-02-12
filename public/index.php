@@ -10,17 +10,17 @@
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" href="/assets/img/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="/assets/img/favicon-16x16.png" sizes="16x16" />
-    <link rel="mask-icon" href="/assets/img/safari-pinned-tab.svg" color="#f78474" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon-16x16.png" sizes="16x16" />
+    <link rel="mask-icon" href="/assets/images/safari-pinned-tab.svg" color="#f78474" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="manifest" href="/manifest.json" />
 
     <?php if (DEBUGMODE): ?>
-      <link rel="stylesheet" href="/assets/css/main.css" />
+      <link rel="stylesheet" href="/assets/styles/main.css" />
     <?php else: ?>
-      <link rel="stylesheet" href="/assets/css/main.min.css" />
+      <link rel="stylesheet" href="/assets/styles/main.min.css" />
       <link rel="preload" href="/assets/fonts/roboto-regular.woff2" as="font" type="font/woff2" crossorigin />
     <?php endif ?>
   </head>
@@ -205,7 +205,7 @@
       <h2>SVG icons testcase</h2>
       <button class="button">
         <svg class="icon  icon--close">
-          <use xlink:href="assets/img/sprite.svg#icon--close"/>
+          <use xlink:href="assets/images/sprite.svg#icon--close"/>
         </svg>
         Close
       </button>
@@ -213,18 +213,18 @@
       <button class="button">
         Menu
         <svg class="icon  icon--menu">
-          <use xlink:href="assets/img/sprite.svg#icon--menu"/>
+          <use xlink:href="assets/images/sprite.svg#icon--menu"/>
         </svg>
       </button>
 
     </div>
 
     <?php if (DEBUGMODE): ?>
-      <script type="module" src="/assets/js/main.js"></script>
+      <script src="/assets/scripts/main.js" defer></script>
     <?php else: ?>
       <?php /* load legacy js code for browser, that do not support es2017+ */ ?>
-      <script type="module" src="/assets/js/main.min.js"></script>
-      <script nomodule src="/assets/js/main.legacy.min.js"></script>
+      <script type="module" src="/assets/scripts/main.min.js" defer></script>
+      <script nomodule src="/assets/scripts/main.legacy.min.js"></script>
       <?php /* if you want to use the serviceworker, uncomment this
       <script>
         if ('serviceWorker' in navigator) {

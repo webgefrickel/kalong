@@ -1,6 +1,3 @@
-// first things first — include the postcss-hook for normalize
-@import-normalize;
-
 // first we include global variable-maps from the config and
 // all mixins and config variables and global settings
 @import '1-config/shared.json'; // extra include, because of json-extension
@@ -13,7 +10,7 @@
 
 // base styles - for raw html-elements, no classes
 // this is where basic css reset styles happen
-@import '4-base/**/*';
+@import '4-reset/**/*';
 
 // The core of every projectp: all your patterns
 @import '../patterns/**/*';

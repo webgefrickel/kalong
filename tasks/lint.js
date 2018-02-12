@@ -1,7 +1,6 @@
 import path from 'path';
 import gulp from 'gulp';
 import plumber from 'gulp-plumber';
-import run from 'run-sequence';
 import eslint from 'gulp-eslint';
 import sasslint from 'gulp-sass-lint';
 import htmlhint from 'gulp-htmlhint';
@@ -49,14 +48,11 @@ gulp.task('lint:styles:production', () =>
 );
 
 gulp.task('lint:html', [ 'savehtml' ], () =>
-  // TODO lint pattern html!
   gulp
-    .src(path.join(config.root, 'tmp--*.html'))
+    .src([
+      path.join(config.root, 'tmp--*.html'),
+      path.join(config.styleguide, 'components/preview/*.html')
+    ])
     .pipe(htmlhint({ htmlhintrc: '.htmlhintrc' }))
     .pipe(htmlhint.failReporter())
 );
-
-gulp.task('lint', [ 'savehtml' ], () => run(
-  [ 'lint:styles:production', 'lint:scripts:production', 'lint:html' ],
-  [ 'clean:done' ]
-));

@@ -11,6 +11,10 @@ Those tools are not part of this package, but I really would recommend that you 
 
 https://github.com/marak/Faker.js
 
+TODO: install backstopjs
+
+TODO: evaluate/replace shared.json https://github.com/plentycode/sass-export
+
 You can install them all via npm, give them a spin!
 
 

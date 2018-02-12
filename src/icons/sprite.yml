@@ -1,7 +1,3 @@
-icon--close:
-  title: Close
-  description: A cross to close something
-
-icon--menu:
-  title: Menu
-  description: A burger-menu icon for opening/closing the navigation
+icon--logo:
+  title: Logo
+  description: The logo of the page, a shape of a heart
