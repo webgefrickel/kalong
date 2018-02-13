@@ -51,7 +51,9 @@ gulp.task('lint:html', [ 'savehtml' ], () =>
   gulp
     .src([
       path.join(config.root, 'tmp--*.html'),
-      path.join(config.styleguide, 'components/preview/*.html')
+      path.join(config.styleguide, 'components/preview/*.html'),
+      `!${path.join(config.styleguide, 'components/preview/html-start.html')}`,
+      `!${path.join(config.styleguide, 'components/preview/html-end.html')}`
     ])
     .pipe(htmlhint({ htmlhintrc: '.htmlhintrc' }))
     .pipe(htmlhint.failReporter())

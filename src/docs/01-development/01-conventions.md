@@ -6,7 +6,7 @@ Disclaimer: This is a highly opinionated project and set of files and convention
 
 ## Language
 
-Documentation should be written in English, since it is the most accessible language for developers worldwide. Try to use simple language and provide examples wherever applicable.
+Documentation should be written in English, since it is the most accessible language for developers worldwide, even if the page/content itself is in other languages. Try to use simple language and provide examples wherever applicable.
 
 ## Spaces FTW!
 

@@ -7,8 +7,7 @@ const icons = [];
 fs.readdirSync(path.join(config.src, config.icons))
   .filter(name => (/(\.svg)/i).test(path.extname(name)))
   .forEach(iconFile => {
-    const icon = iconFile.replace('.svg', '');
-    icons.push({ name: icon, context: { icon } });
+    icons.push({ name: iconFile.replace('.svg', '') });
   });
 
 module.exports = {

@@ -12,8 +12,8 @@
 }
 
 // set other icon styles here, for example
-// .icon--special {
-//   @include fill(main);
-//   width: $width-special;
-//   height: $height-special;
-// }
+.icon--logo {
+  @include fill(main);
+  width: $base-double;
+  height: $base-double;
+}

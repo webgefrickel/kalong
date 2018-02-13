@@ -1,0 +1,16 @@
+  {% if debug %}
+    <script src="{{ '/scripts/main.js' | path }}" defer></script>
+  {% else %}
+    <!-- load legacy js code for browsers that do not support es2017+ -->
+    <script type="module" src="{{ '/scripts/main.min.js' | path }}"></script>
+    <script nomodule src="{{ '/scripts/main.legacy.min.js' | path }}"></script>
+    <!-- if you want to use the serviceworker, uncomment this
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/serviceworker.js');
+      }
+    </script>
+    -->
+  {% endif %}
+  </body>
+</html>
