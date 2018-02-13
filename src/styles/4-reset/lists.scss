@@ -3,6 +3,10 @@ dl,
 ol {
   @include margin(a 0, b 1);
   @include padding(a 0, l 1);
+
+  & & { // no margin for sublists
+    @include margin(b 0);
+  }
 }
 
 // never ever show lists in navigation or fieldsets blocks as lists

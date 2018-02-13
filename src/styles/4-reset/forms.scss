@@ -4,26 +4,39 @@
 [type='email'],
 [type='search'],
 [type='number'],
+[type='url'],
 [type='password'],
-select,
+[type='date'],
 textarea {
-  @include padding(a 1/4, b 1/4);
-  width: 100%;
+  width: 100%; // wrap grid/div/p around inputs
   border: 1px solid currentColor;
   border-radius: 0;
   appearance: none; // no rounded inputs etc.
+}
 
-  @include attention {
-    @include border-color(main);
-  }
+button,
+[type='submit'] {
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  border: 1px solid currentColor;
+  border-radius: 0;
+  appearance: none;
 }
 
 // allow resizing of textareas vertically
 textarea {
   resize: vertical;
+  vertical-align: top;
 }
 
-// no border for the fieldset
+select {
+  position: relative;
+  display: block;
+}
+
+// no border/padding/margin for the fieldset
 fieldset {
   @include margin(a 0, b 1);
   padding: 0;
@@ -33,8 +46,11 @@ fieldset {
 // position labels on top of their related inputs by default,
 // and give them a hint to make them clickable by setting cursor
 label {
-  display: block;
-  cursor: pointer;
+  display: inline-block;
+
+  &[for] { // add pointer-cursor if associated to input
+    cursor: pointer;
+  }
 }
 
 // dont allow unselectable elements to be selected
@@ -42,3 +58,6 @@ label {
   user-select: none;
 }
 
+[disabled] {
+  cursor: not-allowed;
+}

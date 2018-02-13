@@ -1,0 +1,154 @@
+
+
+<!doctype html>
+<html class="no-js  fonts-loaded" lang="de" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Kalong—Styleguide, v0.0.1-alpha.1 Home</title>
+    <meta name="description" content="Some useful description of the page" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="../../images/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" href="../../images/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="../../images/favicon-16x16.png" sizes="16x16" />
+    <link rel="mask-icon" href="../../images/safari-pinned-tab.svg" color="#f78474" />
+    <meta name="theme-color" content="#ffffff" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- add any og/twitter-card stuff here -->
+
+    
+      <!-- you can/should remove the styleguide-styles for production -->
+      <style>
+        .styleguide-pattern-wrapper {
+          margin: 0 0 20px;
+        }
+      </style>
+      <link rel="stylesheet" href="../../styles/main.css" />
+    
+  </head>
+  <body>
+
+
+  <h1>Formularelemente</h1>
+
+<form action="./" method="post" accept-charset="utf-8">
+
+  <fieldset>
+    <legend>Textfelder</legend>
+    <p>
+      <label for="text">Text</label>
+      <input type="text" name="text" value="" id="text" />
+    </p>
+    <p>
+      <label for="textplaceholder">Text mit Platzhalter</label>
+      <input type="text" name="textplaceholder" value="" id="textplaceholder" placeholder="Platzhaltertext" />
+    </p>
+    <p>
+      <label for="textdisabled">Text, deaktiviert</label>
+      <input type="text" name="textdisabled" value="" id="textdisabled" disabled />
+    </p>
+    <p>
+      <label for="textreadonly">Text, nur lesbar</label>
+      <input type="text" name="textreadonly" id="textreadonly" readonly value="Wert" />
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Weitere Textfelder</legend>
+    <p>
+      <label for="tel">Telefon</label>
+      <input type="tel" name="tel" value="" id="tel" />
+    </p>
+    <p>
+      <label for="email">E-Mail</label>
+      <input type="email" name="email" value="" id="email" />
+    </p>
+    <p>
+      <label for="search">Suche</label>
+      <input type="search" name="search" value="" id="search" />
+    </p>
+    <p>
+      <label for="number">Zahl</label>
+      <input type="number" name="number" value="" id="number" />
+    </p>
+    <p>
+      <label for="password">Passwort</label>
+      <input type="password" name="password" value="" id="password" />
+    </p>
+    <p>
+      <label for="date">Datum</label>
+      <input type="date" name="date" value="" id="date" />
+    </p>
+    <p>
+      <label for="textarea">Text, mehrzeilig</label>
+      <textarea name="textarea" id="textarea" rows="8" cols="40"></textarea>
+    </p>
+  </fieldset>
+
+  <fieldset>
+    <legend>Weitere Eingabefelder</legend>
+    <p>
+      <label for="file">Datei</label>
+      <input type="file" name="file" value="" id="file" />
+    </p>
+    <p>
+      <label for="select">Dropdown</label>
+      <select name="select" id="select">
+        <option value=""></option>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+        <option value="3">Option 3</option>
+        <option value="4">Option 4</option>
+      </select>
+    </p>
+    <p>
+      Radio-Buttons<br />
+      <label>
+        <input type="radio" name="radio" value="1" />
+        Radio 1
+      </label>
+      <label>
+        <input type="radio" name="radio" value="2" />
+        Radio 2
+      </label>
+      <label>
+        <input type="radio" name="radio" value="3" />
+        Radio 3
+      </label>
+    </p>
+
+    <p>
+      Checkboxen<br />
+      <label>
+        <input type="checkbox" name="radio" value="1" />
+        Radio 1
+      </label>
+      <label>
+        <input type="checkbox" name="radio" value="2" />
+        Radio 2
+      </label>
+      <label>
+        <input type="checkbox" name="radio" value="3" />
+        Radio 3
+      </label>
+    </p>
+
+    <button type="button" name="button">Button</button>
+
+    <p>
+      <input type="submit" value="Abschicken" />
+    </p>
+
+  </fieldset>
+</form>
+
+
+  
+    <script src="../../scripts/main.js" defer></script>
+  
+  </body>
+</html>
+
+
+
