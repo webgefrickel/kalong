@@ -15,6 +15,7 @@ module.exports = {
   src: './src/',
   dest: './public/assets/',
   styleguide: './public/styleguide/',
+  library: './public/patterns/',
 
   // paths to all asset-directories, for src + dest
   docs: 'docs/',
@@ -35,11 +36,5 @@ module.exports = {
       'last 2 Firefox versions', 'not Firefox < 54',
       'last 2 Edge versions', 'not Edge < 15'
     ]
-  },
-
-  // those pages will be tested for valid html, additional to everything
-  // in the styleguide patterns
-  pages: [
-    '/'
-  ]
+  }
 };

@@ -47,13 +47,14 @@ gulp.task('lint:styles:production', () =>
     .pipe(sasslint.failOnError())
 );
 
-gulp.task('lint:html', [ 'savehtml' ], () =>
+gulp.task('lint:html', () =>
   gulp
     .src([
-      path.join(config.root, 'tmp--*.html'),
       path.join(config.styleguide, 'components/preview/*.html'),
-      `!${path.join(config.styleguide, 'components/preview/html-start.html')}`,
-      `!${path.join(config.styleguide, 'components/preview/html-end.html')}`
+      `!${path.join(config.styleguide, 'components/preview/*-start.html')}`,
+      `!${path.join(config.styleguide, 'components/preview/*-end.html')}`,
+      `!${path.join(config.styleguide, 'components/preview/*-start--*.html')}`,
+      `!${path.join(config.styleguide, 'components/preview/*-end--*.html')}`
     ])
     .pipe(htmlhint({ htmlhintrc: '.htmlhintrc' }))
     .pipe(htmlhint.failReporter())

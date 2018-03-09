@@ -29,7 +29,7 @@ gulp.task('default', [ 'styleguide:development', 'serve' ], () => {
 
   // any changes to the images-folder? copy them
   gulp.watch(
-    path.join(config.src, config.images, '**/*.{png,gif,jpg,svg,webp}'),
+    path.join(config.src, config.images, '**/*.{png,gif,jpg,svg,webp,ico}'),
     [ 'copy:images' ]
   );
 
@@ -67,8 +67,8 @@ gulp.task('build', () => run(
   [ 'sprite', 'serviceworker',
     'styles:development', 'scripts:development',
     'styles:production', 'scripts:production', 'scripts:legacy' ],
-  [ 'styleguide:production', 'copy:images', 'copy:fonts', 'copy:icons', 'copy:patterns' ],
-  [ 'lint:html' ],
-  [ 'clean:done' ]
+  [ 'styleguide:production', 'copy:images', 'copy:fonts', 'copy:icons' ],
+  [ 'copy:styleguide:patterns', 'copy:styleguide:data' ],
+  [ 'lint:html' ]
 ));
 
