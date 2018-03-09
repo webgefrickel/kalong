@@ -4,20 +4,25 @@ const shared = require('../styles/1-config/shared.json');
 module.exports = {
   context: {
     debug: true,
+    styleguide: true,
     shared,
     site: {
-      lang: 'de',
+      lang: 'en',
       dir: 'ltr',
       title: config.title + '—Styleguide, v' + config.version,
-      description: 'Some useful description of the page',
-      themecolor: '#ffffff',
+      description: '',
+      themecolor: '#000000',
       modifiers: '' // global css-classes, applied to <html>
     },
-    global: {
+    globals: {
       nav: {
+        main: [
+          {
+            href: '#somepage',
+            label: 'Somepage'
+          }
+        ]
       }
-    },
-    page: {
     }
   }
 };

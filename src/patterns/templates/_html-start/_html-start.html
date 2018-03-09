@@ -9,19 +9,22 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon.png' | path }}" />
     <link rel="icon" type="image/png" href="{{ '/images/favicon-32x32.png' | path }}" sizes="32x32" />
     <link rel="icon" type="image/png" href="{{ '/images/favicon-16x16.png' | path }}" sizes="16x16" />
-    <link rel="mask-icon" href="{{ '/images/safari-pinned-tab.svg' | path }}" color="#f78474" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="{{ '/images/safari-pinned-tab.svg' | path }}" color="{{ site.themecolor }}" />
+    <meta name="msapplication-TileColor" content="{{ site.themecolor }}">
     <meta name="theme-color" content="{{ site.themecolor }}" />
-    <link rel="manifest" href="/manifest.json" />
 
     <!-- add any og/twitter-card stuff here -->
 
-    {% if debug %}
+    {% if styleguide %}
       <!-- you can/should remove the styleguide-styles for production -->
       <style>
         .styleguide-pattern-wrapper {
           margin: 0 0 20px;
         }
       </style>
+    {% endif %}
+    {% if debug %}
       <link rel="stylesheet" href="{{ '/styles/main.css' | path }}" />
     {% else %}
       <link rel="stylesheet" href="{{ '/styles/main.min.css' | path }}" />
