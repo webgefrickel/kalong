@@ -1,16 +1,2 @@
-// import test from 'ava';
-const test = function () {
-  console.log('meh');
-};
-
-test('foo', t => {
-  t.pass();
-});
-
-test('bar', async t => {
-  const bar = Promise.resolve('bar');
-
-  t.is(await bar, 'bar');
-});
-
-export default {};
+// testing is not included in kalong, yet
+// but this would be the file where to put your tests and specs ;)

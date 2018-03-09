@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.0.0-alpha.1" type="text/css">
 
 
-<title>Default page template | Kalong—Styleguide, v0.0.1-alpha.1</title>
+<title>Page | Kalong—Styleguide, v0.0.1-alpha.1</title>
 
 </head>
 <body>
@@ -59,7 +59,7 @@
     <div class="Pen-panel Pen-header">
     <h1 class="Pen-title">
         <a class="Pen-previewLink" href="../preview/page.html" title="Component preview">
-            Default page template
+            Page
             <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
     <path d="M0 0h24v24H0z" fill="none"/>
     <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
@@ -71,7 +71,7 @@
 
 <div class="Status Status--tag">
 
-<label class="Status-label" style="background-color: #999999; border-color: #999999;">Prototype</label>
+<label class="Status-label" style="background-color: #ed8015; border-color: #ed8015;">Work in Progress</label>
 
 </div>
 
@@ -154,7 +154,7 @@
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Back to the homepage"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Zurück zur Homepage"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon  icon--logo"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"../../images/sprite.svg#icon--logo"</span>/&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
@@ -181,14 +181,22 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-4f0ddd6b590cf57457e4c4a08704f48c-panel-view">
     <code class="Code Code--lang-html">
-        <pre>{% render '<a href="header.html">@header</a>' %}
+        <pre>{% if not styleguide %}
+  {% render '<a href="html-start.html">@html-start</a>' %}
+{% endif %}
+
+{% render '<a href="header.html">@header</a>' %}
 
 <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span>
   {% block main %}
   {% endblock %}
 <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
 
-{% render '<a href="footer.html">@footer</a>' %}</pre>
+{% render '<a href="footer.html">@footer</a>' %}
+
+{% if not styleguide %}
+  {% render '<a href="html-end.html">@html-end</a>' %}
+{% endif %}</pre>
     </code>
 </div>
 
@@ -275,12 +283,16 @@
         </li>
         
         <li class="Meta-item">
-            <strong class="Meta-key">References <em class="Meta-count">(2)</em>:</strong>
+            <strong class="Meta-key">References <em class="Meta-count">(4)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
+            
+                <a href="html-start.html">@<span>html-start</span></a>, 
             
                 <a href="header.html">@<span>header</span></a>, 
             
-                <a href="footer.html">@<span>footer</span></a>
+                <a href="footer.html">@<span>footer</span></a>, 
+            
+                <a href="html-end.html">@<span>html-end</span></a>
             
             </span>
         </li class="Meta-item">
@@ -733,7 +745,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
 
 
 </div>
@@ -773,7 +785,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
 
 
 </div>
@@ -797,7 +809,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
 
 
 </div>
@@ -821,7 +833,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
 
 
 </div>
@@ -885,7 +897,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
 
 
 </div>

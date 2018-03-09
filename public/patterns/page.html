@@ -1,3 +1,7 @@
+{% if not styleguide %}
+  {% render '@html-start' %}
+{% endif %}
+
 {% render '@header' %}
 
 <main class="main">
@@ -7,3 +11,6 @@
 
 {% render '@footer' %}
 
+{% if not styleguide %}
+  {% render '@html-end' %}
+{% endif %}
