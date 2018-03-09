@@ -1,6 +1,6 @@
 {
   "name": "kalong",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "A frontend styleguide development toolkit",
   "author": "Steffen Rademacker <kontakt@webgefrickel.de>",
   "license": "MIT",
@@ -68,6 +68,7 @@
     "babel-polyfill": "^6.26.0",
     "fontfaceobserver": "^2.0.13",
     "normalize.css": "^8.0.0",
+    "picturefill": "^3.0.2",
     "select-dom": "^4.1.1",
     "svgxuse": "^1.2.6"
   }
