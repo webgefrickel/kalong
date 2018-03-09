@@ -9,18 +9,17 @@ export default () => {
     return;
   }
 
-  Object.keys(fonts).forEach(fontObject => {
-    Object.keys(fonts[fontObject]).forEach(font => {
-      const f = fonts[fontObject][font];
-      if (f.fontface) {
-        fontObservers.push(
-          new Observer(f.family.replace(/'/g, ''), {
-            weight: f.weight,
-            style: f.style
-          })
-        );
-      }
-    });
+  Object.keys(fonts).forEach(font => {
+    const f = fonts[font];
+
+    if (f.fontface) {
+      fontObservers.push(
+        new Observer(f.family.replace(/'/g, ''), {
+          weight: f.weight,
+          style: f.style
+        })
+      );
+    }
   });
 
   if (fontObservers.length >= 1) {
