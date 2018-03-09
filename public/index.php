@@ -128,6 +128,4 @@ $twig->addTokenParser(new RenderPattern_TokenParser());
   'logolabel' => 'Test'
 ] ?>
 
-<?= $twig->render('templates/_html-start/_html-start.html', $context) ?>
-<?= $twig->render('templates/page/page.html', $context) ?>
-<?= $twig->render('templates/_html-end/_html-end.html', $context) ?>
+<?= $twig->render('page.html', $context) ?>
