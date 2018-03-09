@@ -1,5 +1,4 @@
+/* eslint-disable no-unused-vars */
 import 'svgxuse';
 
-export default () => {
-  console.log('Loading svgxuse polyfill...');
-};
+export default () => {};
