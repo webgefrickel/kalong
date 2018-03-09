@@ -11,9 +11,3 @@
   fill: currentColor;
 }
 
-// set other icon styles here, for example
-.icon--logo {
-  @include fill(main);
-  width: $base-double;
-  height: $base-double;
-}

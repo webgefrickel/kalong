@@ -6,8 +6,7 @@
 
 require_once(dirname(__FILE__) . '/vendor/autoload.php');
 $assets = '/assets/';
-$assetsPath = dirname(__FILE__) . $assets;
-$patternPath = $assetsPath . 'patterns/';
+$patternPath = dirname(__FILE__) . '/patterns/';
 
 $pathFilter = new Twig_Filter('path', function($path) use ($assets) {
   return $assets . trim($path, '/');
@@ -32,7 +31,7 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
   }
 
   protected function addGetTemplate(Twig_Compiler $compiler) {
-    $patternPath = dirname(__FILE__) . '/assets/patterns/';
+    $patternPath = dirname(__FILE__) . '/patterns/';
     $patternString = $this->getNode('expr')->attributes['value'];
     $parts = explode('--', $patternString);
     $this->pattern = trim($patternString, '@');
