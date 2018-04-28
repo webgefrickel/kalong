@@ -67,8 +67,8 @@ gulp.task('build', () => run(
   [ 'sprite', 'serviceworker',
     'styles:development', 'scripts:development',
     'styles:production', 'scripts:production', 'scripts:legacy' ],
-  [ 'styleguide:production', 'copy:images', 'copy:fonts', 'copy:icons' ],
-  [ 'copy:styleguide:patterns', 'copy:styleguide:data' ],
-  [ 'lint:html' ]
+  [ 'copy:images', 'copy:fonts', 'copy:icons' ],
+  [ 'styleguide:production' ],
+  [ 'copy:styleguide:patterns', 'copy:styleguide:data', 'lint:html' ]
 ));
 
