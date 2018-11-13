@@ -1,3 +1,6 @@
+icon--default:
+  title: Icon
+  description: Default icon, a circle
 icon--logo:
   title: Logo
   description: The logo of the page, a shape of a heart

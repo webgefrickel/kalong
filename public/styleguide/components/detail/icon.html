@@ -157,9 +157,21 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-52eaf96d3ed9617a0a36f405d3bca413-panel-html">
     <code class="Code Code--lang-html">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon  icon--logo"</span>&gt;</span>
+        
+            <pre><span class="hljs-comment">&lt;!-- Default --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon  icon--default"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"../../images/sprite.svg#icon--default"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+</pre>
+        
+            <pre><span class="hljs-comment">&lt;!-- Logo --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon  icon--logo"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"../../images/sprite.svg#icon--logo"</span>/&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></pre>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+</pre>
+        
         
     </code>
 </div>
@@ -177,8 +189,10 @@
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-52eaf96d3ed9617a0a36f405d3bca413-panel-context">
     <code class="Code Code--lang-yaml">
         
-            
-            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
+        
+            <pre>
+<span class="hljs-comment">/* Default */</span>
+<span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">shared:</span>
 <span class="hljs-attr">  breakpoints:</span>
@@ -211,8 +225,51 @@
 <span class="hljs-attr">        label:</span> <span class="hljs-string">Somepage</span>
 <span class="hljs-attr">modifiers:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">sprite:</span> <span class="hljs-string">/images/sprite.svg</span>
+<span class="hljs-attr">icon:</span> <span class="hljs-string">default</span>
+
+
 </pre>
-            
+        
+            <pre>
+<span class="hljs-comment">/* Logo */</span>
+<span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">shared:</span>
+<span class="hljs-attr">  breakpoints:</span>
+<span class="hljs-attr">    s:</span> <span class="hljs-number">480</span>
+<span class="hljs-attr">    m:</span> <span class="hljs-number">640</span>
+<span class="hljs-attr">    l:</span> <span class="hljs-number">720</span>
+<span class="hljs-attr">    xl:</span> <span class="hljs-number">960</span>
+<span class="hljs-attr">    xxl:</span> <span class="hljs-number">1100</span>
+<span class="hljs-attr">    xxxl:</span> <span class="hljs-number">1400</span>
+<span class="hljs-attr">    custom:</span> <span class="hljs-string">'(max-width: 30em)'</span>
+<span class="hljs-attr">  fonts:</span>
+<span class="hljs-attr">    default:</span>
+<span class="hljs-attr">      family:</span> <span class="hljs-string">Roboto</span>
+<span class="hljs-attr">      fallback:</span> <span class="hljs-string">sans-serif</span>
+<span class="hljs-attr">      weight:</span> <span class="hljs-number">400</span>
+<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      file:</span> <span class="hljs-string">roboto-regular</span>
+<span class="hljs-attr">site:</span>
+<span class="hljs-attr">  lang:</span> <span class="hljs-string">en</span>
+<span class="hljs-attr">  dir:</span> <span class="hljs-string">ltr</span>
+<span class="hljs-attr">  title:</span> <span class="hljs-string">'Kalong—Styleguide, v0.0.1-alpha.1'</span>
+<span class="hljs-attr">  description:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  themecolor:</span> <span class="hljs-string">'#000000'</span>
+<span class="hljs-attr">  modifiers:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">globals:</span>
+<span class="hljs-attr">  nav:</span>
+<span class="hljs-attr">    main:</span>
+<span class="hljs-attr">      - href:</span> <span class="hljs-string">'#somepage'</span>
+<span class="hljs-attr">        label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">modifiers:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">sprite:</span> <span class="hljs-string">/images/sprite.svg</span>
+<span class="hljs-attr">icon:</span> <span class="hljs-string">logo</span>
+
+
+</pre>
+        
         
     </code>
 </div>
@@ -327,6 +384,21 @@
         
         
         
+        
+        <li class="Meta-item">
+            <strong class="Meta-key">Variants <em class="Meta-count">(2)</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            
+                <a href="icon--default.html">
+                    <span>Default</span>
+                </a>, 
+            
+                <a href="icon--logo.html">
+                    <span>Logo</span>
+                </a>
+            
+            </span>
+        </li>
         
         <li class="Meta-item">
             <strong class="Meta-key">Preview:</strong>
