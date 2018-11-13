@@ -1,5 +1,4 @@
 h1 {
-  @include z-index(feet);
   @include font-size(h1);
   @include margin(a 0, b 1);
 }

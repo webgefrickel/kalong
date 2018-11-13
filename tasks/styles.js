@@ -10,6 +10,7 @@ import globbing from 'node-sass-globbing';
 import json from 'node-sass-json-importer';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
+import cssImport from 'postcss-import';
 import config from '../kalong.config';
 
 const srcPath = path.join(config.src, config.styles, 'main.scss');
@@ -25,6 +26,7 @@ gulp.task('styles:development', () => {
       importer: [ json, globbing ]
     }))
     .pipe(postcss([
+      cssImport(),
       autoprefixer({ browsers: config.browserslist.default })
     ]))
     .pipe(sourcemaps.write({
@@ -42,6 +44,7 @@ gulp.task('styles:production', () => {
       sourceMap: false
     }))
     .pipe(postcss([
+      cssImport(),
       autoprefixer({ browsers: config.browserslist.default }),
       cssnano({
         safe: true

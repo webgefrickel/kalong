@@ -21,8 +21,14 @@
     
       <!-- you can/should remove the styleguide-styles for production -->
       <style>
-        .styleguide-pattern-wrapper {
-          margin: 0 0 20px;
+        .styleguide-pattern-wrapper::after {
+          display: block;
+          width: 100%;
+          height: 60px;
+          line-height: 60px;
+          clear: both;
+          content: '——— Styleguide Pattern End ———';
+          text-align: center;
         }
       </style>
     

@@ -174,8 +174,14 @@
 
     <span class="hljs-comment">&lt;!-- you can/should remove the styleguide-styles for production --&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
-        <span class="hljs-selector-class">.styleguide-pattern-wrapper</span> {
-            <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span>;
+        <span class="hljs-selector-class">.styleguide-pattern-wrapper</span><span class="hljs-selector-pseudo">::after</span> {
+            <span class="hljs-attribute">display</span>: block;
+            <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+            <span class="hljs-attribute">height</span>: <span class="hljs-number">60px</span>;
+            <span class="hljs-attribute">line-height</span>: <span class="hljs-number">60px</span>;
+            <span class="hljs-attribute">clear</span>: both;
+            <span class="hljs-attribute">content</span>: <span class="hljs-string">'——— Styleguide Pattern End ———'</span>;
+            <span class="hljs-attribute">text-align</span>: center;
         }
     </span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
 

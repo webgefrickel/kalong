@@ -5,9 +5,9 @@ const cacheVersion = config.version;
 const assetsPath = config.dest.replace(config.root, '/');
 const alwaysCache = [
   '/',
-  `/${assetsPath}/${config.scripts}main.min.js`,
-  `/${assetsPath}/${config.styles}main.min.css`,
-  `/${assetsPath}/${config.images}sprite.svg`
+  `./${assetsPath}${config.scripts}main.min.js`,
+  `./${assetsPath}${config.styles}main.min.css`,
+  `./${assetsPath}${config.images}sprite.svg`
 ];
 
 // Store core files in a cache (including a page to display when offline)

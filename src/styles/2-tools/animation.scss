@@ -7,16 +7,20 @@ $animation-time-slow: 0.6s;
 
 @mixin transition($props: $animation-transition-properties, $time: $animation-time-default, $ease: $animation-ease-default) {
   $transition: '';
+  $will-change: '';
 
   @each $p in $props {
     // we do not need the comma, if we are just starting to combine the string
     @if $transition == '' {
       $transition: '#{$p} #{$time} #{$ease}';
+      $will-change: '#{$p}';
     } @else {
       $transition: '#{$transition}, #{$p} #{$time} #{$ease}';
+      $will-change: '#{$will-change}, #{$p}';
     }
   }
 
+  will-change: #{$will-change};
   transition: #{$transition};
 }
 
