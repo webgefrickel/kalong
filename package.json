@@ -25,7 +25,8 @@
   },
   "scripts": {
     "build": "gulp build",
-    "start": "gulp"
+    "start": "gulp",
+    "sass": "node ./tasks/sass.js"
   },
   "devDependencies": {
     "@frctl/fractal": "1.1.7",
@@ -52,8 +53,11 @@
     "gulp-sourcemaps": "2.6.4",
     "gulp-svg-sprite": "1.5.0",
     "kalong-frctl": "1.0.0-alpha.1",
+    "mkdirp": "^0.5.1",
+    "node-sass": "^4.10.0",
     "node-sass-globbing": "0.0.23",
     "node-sass-json-importer": "4.1.0",
+    "node-sass-magic-importer": "^5.2.0",
     "postcss-import": "12.0.1",
     "rollup": "0.61.2",
     "rollup-plugin-babel": "3.0.5",
