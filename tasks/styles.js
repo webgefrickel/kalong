@@ -6,7 +6,7 @@ import sass from 'gulp-sass';
 import postcss from 'gulp-postcss';
 import rename from 'gulp-rename';
 import browsersync from 'browser-sync';
-import globbing from 'node-sass-globbing';
+import magic from 'node-sass-magic-importer';
 import json from 'node-sass-json-importer';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
@@ -23,7 +23,7 @@ gulp.task('styles:development', () => {
     .pipe(plumber())
     .pipe(sourcemaps.init())
     .pipe(sass({
-      importer: [ json, globbing ]
+      importer: [ json(), magic() ]
     }))
     .pipe(postcss([
       cssImport(),
@@ -40,7 +40,7 @@ gulp.task('styles:production', () => {
   gulp
     .src(srcPath)
     .pipe(sass({
-      importer: [ json, globbing ],
+      importer: [ json(), magic() ],
       sourceMap: false
     }))
     .pipe(postcss([

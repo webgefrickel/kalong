@@ -26,6 +26,9 @@ rules:
   # do not sort properties by name
   property-sort-order: 0
 
+  # allow globbing of **/*.scss
+  clean-import-paths: 0
+
   # allow nested attribute and pseudo-selectors, this makes stuff
   # more readable for humans and allows some edge-case-nesting issues,
   force-pseudo-nesting: 0
