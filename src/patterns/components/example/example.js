@@ -18,7 +18,10 @@
 // the full path, because pattern-names should be unique anyway:
 // import button from '#pattern/button';
 
+// TODO refactor to ~helper
 import mediaquery from '#helper/mediaquery';
+
+// TODO remove this, introduce nodelist.forEach polyfill
 import select from 'select-dom';
 
 export default (scope = document) => {

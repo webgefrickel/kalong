@@ -11,12 +11,13 @@ const mkdirp = require('mkdirp');
 const sass = require('node-sass');
 const magic = require('node-sass-magic-importer');
 const json = require('node-sass-json-importer');
+const config = require('../kalong.config');
 
-const compileSass = (opts = {}) => {
+const runSass = (opts = {}) => {
   // set some sane defaults for development
   const options = Object.assign({
-    file: 'src/styles/main.scss',
-    outFile: 'public/assets/styles/main.css',
+    file: `${config.src}${config.styles}${config.main}.scss`,
+    outFile: `${config.dest}${config.styles}${config.main}.css`,
     outputStyle: 'expanded',
     sourceMap: true,
     importer: [
@@ -31,13 +32,16 @@ const compileSass = (opts = {}) => {
   // write the result to file
   mkdirp(path.dirname(options.outFile), error => {
     if (error) {
-      console.error(error);
+      console.log(error.status);
+      console.log(error.column);
+      console.log(error.message);
+      console.log(error.line);
     }
   });
 
   fs.writeFile(options.outFile, result.css, error => {
     if (error) {
-      console.error(error);
+      console.log(error);
     }
   });
 
@@ -45,9 +49,8 @@ const compileSass = (opts = {}) => {
   console.log(`${options.outFile} has been built successfully.`);
 };
 
-compileSass(); // Development
-compileSass({ // Production
-  outFile: 'public/assets/styles/main.min.css',
-  outputStyle: 'compressed',
+runSass(); // Development
+runSass({ // Production, let postcss handle minifying
+  outFile: `${config.dest}${config.styles}${config.main}.min.css`,
   sourceMap: false
 });
