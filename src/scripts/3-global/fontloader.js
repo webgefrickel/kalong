@@ -16,18 +16,17 @@ export default () => {
       fontObservers.push(
         new Observer(f.family.replace(/'/g, ''), {
           weight: f.weight,
-          style: f.style
+          style: f.style,
         })
       );
     }
   });
 
   if (fontObservers.length >= 1) {
-    Promise.all(fontObservers)
-      .then(() => {
-        document.documentElement.classList.add('fonts-loaded');
-        // Optimization for Repeat Views
-        sessionStorage.fontsLoaded = true;
-      });
+    Promise.all(fontObservers).then(() => {
+      document.documentElement.classList.add('fonts-loaded');
+      // Optimization for Repeat Views
+      sessionStorage.fontsLoaded = true;
+    });
   }
 };

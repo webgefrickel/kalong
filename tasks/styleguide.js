@@ -7,7 +7,7 @@ import config from '../kalong.config';
 
 const frctl = fractal.create();
 const logger = frctl.cli.console;
-const engine = nunjucks({ paths: [ '../src/patterns/' ] });
+const engine = nunjucks({ paths: ['../src/patterns/'] });
 const collator = markup => `<div class="styleguide-pattern-wrapper">\n${markup}\n</div>\n`;
 
 frctl.set('project.title', `${config.title}—Styleguide, v${config.version}`);
@@ -18,7 +18,7 @@ frctl.docs.set('ext', '.md');
 frctl.docs.set('default.status', 'wip');
 frctl.docs.set('statuses', {
   wip: { label: 'Work in Progress', description: 'Almost done, subject to change', color: '#ed8015' },
-  done: { label: 'Done', description: 'Ready to implement', color: '#2b9e0f' }
+  done: { label: 'Done', description: 'Ready to implement', color: '#2b9e0f' },
 });
 
 frctl.web.theme(theme());
@@ -37,7 +37,7 @@ frctl.components.set('statuses', {
   prototype: { label: 'Prototype', description: 'Very rough, do not implement', color: '#999999' },
   wip: { label: 'Work in Progress', description: 'Almost done, subject to change', color: '#ed8015' },
   done: { label: 'Done', description: 'Ready to implement', color: '#2b9e0f' },
-  deprecated: { label: 'Deprecated', description: 'Old pattern, do not implement', color: '#f60045' }
+  deprecated: { label: 'Deprecated', description: 'Old pattern, do not implement', color: '#f60045' },
 });
 
 gulp.task('styleguide:development', () => {

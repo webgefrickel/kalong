@@ -8,16 +8,16 @@ const spriteConfig = {
   mode: {
     symbol: {
       dest: './',
-      sprite: path.join('../', config.images, 'sprite.svg')
-    }
+      sprite: path.join('../', config.images, 'sprite.svg'),
+    },
   },
 
   shape: {
     meta: path.join(config.src, config.icons, 'sprite.yml'),
     id: {
-      generator: 'icon--%s'
-    }
-  }
+      generator: 'icon--%s',
+    },
+  },
 };
 
 gulp.task('sprite', () =>

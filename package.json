@@ -21,13 +21,16 @@
     "esnext"
   ],
   "engines": {
-    "node": "^8.10.0"
+    "node": "^10.14.1"
   },
   "scripts": {
-    "build": "gulp build",
-    "start": "gulp",
+    "build": "node ./tasks/build.js",
+    "watch": "node ./tasks/watcher.js",
+    "start": "node ./tasks/develop.js",
+    "develop": "node ./tasks/develop.js",
     "sass": "node ./tasks/sass.js",
-    "postcss": "node ./tasks/postcss.js"
+    "postcss": "node ./tasks/postcss.js",
+    "sassLint": "node ./tasks/sassLint.js"
   },
   "devDependencies": {
     "@frctl/fractal": "1.1.7",
@@ -38,6 +41,7 @@
     "babel-plugin-import-glob": "2.0.0",
     "babel-preset-env": "1.7.0",
     "browser-sync": "2.26.3",
+    "chokidar": "^2.0.4",
     "cssnano": "4.1.7",
     "del": "3.0.0",
     "eslint-config-xo-space": "0.20.0",
@@ -67,6 +71,7 @@
     "rollup-plugin-strip": "1.2.0",
     "rollup-plugin-uglify": "4.0.0",
     "run-sequence": "2.2.1",
+    "sass-lint": "^1.12.1",
     "uglify-es": "3.3.10"
   },
   "dependencies": {

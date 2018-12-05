@@ -11,7 +11,7 @@ document.documentElement.classList.remove('no-js');
 
 picturefill();
 
-[ globals, patterns ].forEach(items => {
+[globals, patterns].forEach(items => {
   Object.keys(items).forEach(i => {
     items[i]();
   });

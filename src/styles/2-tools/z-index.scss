@@ -14,7 +14,7 @@ $z-indexes: (
   knees: 10,
   feet: 1,
   default: 0,
-  ground: -1
+  ground: -1,
 ) !default;
 
 // and an easy to use mixin to use a value from the map above use like this:

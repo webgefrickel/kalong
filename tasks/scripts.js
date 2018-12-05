@@ -15,23 +15,29 @@ import config from '../kalong.config';
 const babelConfig = {
   babelrc: false,
   presets: [
-    [ 'env', {
-      targets: { browsers: config.browserslist.default },
-      modules: false
-    } ]
+    [
+      'env',
+      {
+        targets: { browsers: config.browserslist.default },
+        modules: false,
+      },
+    ],
   ],
-  plugins: [ 'external-helpers', 'import-glob' ]
+  plugins: ['external-helpers', 'import-glob'],
 };
 
 const babelConfigEs = {
   babelrc: false,
   presets: [
-    [ 'env', {
-      targets: { browsers: config.browserslist.legacy },
-      modules: false
-    } ]
+    [
+      'env',
+      {
+        targets: { browsers: config.browserslist.legacy },
+        modules: false,
+      },
+    ],
   ],
-  plugins: [ 'external-helpers', 'import-glob' ]
+  plugins: ['external-helpers', 'import-glob'],
 };
 
 const walk = (dir, filter) => {
@@ -79,27 +85,25 @@ const customResolve = () => {
           return path.resolve(searchResults[0]);
         }
       }
-    }
+    },
   };
 };
 
 gulp.task('scripts:development', () =>
   rollup({
     input: path.join(config.src, config.scripts, 'main.js'),
-    plugins: [
-      customResolve(),
-      json(),
-      resolve(),
-      commonjs(),
-      babel(babelConfigEs)
-    ]
-  }).then(bundle => bundle.write({
-    sourcemap: 'inline',
-    format: 'iife',
-    file: path.join(config.dest, config.scripts, 'main.js')
-  }).then(() => {
-    browsersync.reload();
-  }))
+    plugins: [customResolve(), json(), resolve(), commonjs(), babel(babelConfigEs)],
+  }).then(bundle =>
+    bundle
+      .write({
+        sourcemap: 'inline',
+        format: 'iife',
+        file: path.join(config.dest, config.scripts, 'main.js'),
+      })
+      .then(() => {
+        browsersync.reload();
+      })
+  )
 );
 
 gulp.task('scripts:production', () =>
@@ -112,13 +116,15 @@ gulp.task('scripts:production', () =>
       commonjs(),
       strip({ sourceMap: false }),
       babel(babelConfigEs),
-      uglify({}, minify)
-    ]
-  }).then(bundle => bundle.write({
-    sourcemap: false,
-    format: 'iife',
-    file: path.join(config.dest, config.scripts, 'main.min.js')
-  }))
+      uglify({}, minify),
+    ],
+  }).then(bundle =>
+    bundle.write({
+      sourcemap: false,
+      format: 'iife',
+      file: path.join(config.dest, config.scripts, 'main.min.js'),
+    })
+  )
 );
 
 gulp.task('scripts:legacy', () =>
@@ -131,12 +137,13 @@ gulp.task('scripts:legacy', () =>
       commonjs(),
       strip({ sourceMap: false }),
       babel(babelConfig),
-      uglify()
-    ]
-  }).then(bundle => bundle.write({
-    sourcemap: false,
-    format: 'iife',
-    file: path.join(config.dest, config.scripts, 'main.legacy.min.js')
-  }))
+      uglify(),
+    ],
+  }).then(bundle =>
+    bundle.write({
+      sourcemap: false,
+      format: 'iife',
+      file: path.join(config.dest, config.scripts, 'main.legacy.min.js'),
+    })
+  )
 );
-

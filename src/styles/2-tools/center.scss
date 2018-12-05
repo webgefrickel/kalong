@@ -11,7 +11,8 @@
     transform: translate(-50%, -50%);
   } @else if $context == cover {
     @include absolute(a 0);
-  } @else { // assuming default case - oldschool horizontal centering
+  } @else {
+    // assuming default case - oldschool horizontal centering
     margin-left: auto;
     margin-right: auto;
   }

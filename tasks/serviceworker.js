@@ -15,16 +15,12 @@ import config from '../kalong.config';
 gulp.task('serviceworker', () =>
   rollup({
     input: path.join(config.src, 'serviceworker.js'),
-    plugins: [
-      resolve(),
-      commonjs(),
-      json(),
-      uglify({}, minify)
-    ]
-  }).then(bundle => bundle.write({
-    sourcemap: false,
-    format: 'iife',
-    file: path.join(config.root, 'serviceworker.js')
-  }))
+    plugins: [resolve(), commonjs(), json(), uglify({}, minify)],
+  }).then(bundle =>
+    bundle.write({
+      sourcemap: false,
+      format: 'iife',
+      file: path.join(config.root, 'serviceworker.js'),
+    })
+  )
 );
-

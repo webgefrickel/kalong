@@ -36,8 +36,8 @@ module.exports = {
       'last 2 Safari versions',
       'last 2 Edge versions',
       'last 2 iOS versions',
-      'last 2 ChromeAndroid versions'
+      'last 2 ChromeAndroid versions',
     ],
-    legacy: '> 1% in DE'
-  }
+    legacy: '> 1% in DE',
+  },
 };

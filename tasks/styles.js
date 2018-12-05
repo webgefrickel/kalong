@@ -23,16 +23,17 @@ gulp.task('styles:development', () => {
     .src(srcPath)
     .pipe(plumber())
     .pipe(sourcemaps.init())
-    .pipe(sass({
-      importer: [ json(), magic() ]
-    }))
-    .pipe(postcss([
-      cssImport(),
-      autoprefixer({ browsers: config.browserslist.default })
-    ]))
-    .pipe(sourcemaps.write({
-      sourceRoot: './'
-    }))
+    .pipe(
+      sass({
+        importer: [json(), magic()],
+      })
+    )
+    .pipe(postcss([cssImport(), autoprefixer({ browsers: config.browserslist.default })]))
+    .pipe(
+      sourcemaps.write({
+        sourceRoot: './',
+      })
+    )
     .pipe(gulp.dest(destPath))
     .pipe(browsersync.reload({ stream: true }));
 });
@@ -40,17 +41,21 @@ gulp.task('styles:development', () => {
 gulp.task('styles:production', () => {
   gulp
     .src(srcPath)
-    .pipe(sass({
-      importer: [ json(), magic() ],
-      sourceMap: false
-    }))
-    .pipe(postcss([
-      cssImport(),
-      autoprefixer({ browsers: config.browserslist.default }),
-      cssnano({
-        safe: true
+    .pipe(
+      sass({
+        importer: [json(), magic()],
+        sourceMap: false,
       })
-    ]))
+    )
+    .pipe(
+      postcss([
+        cssImport(),
+        autoprefixer({ browsers: config.browserslist.default }),
+        cssnano({
+          safe: true,
+        }),
+      ])
+    )
     .pipe(rename('main.min.css'))
     .pipe(gulp.dest(destPath));
 });

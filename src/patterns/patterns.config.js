@@ -12,18 +12,17 @@ module.exports = {
       title: config.title + '—Styleguide, v' + config.version,
       description: '',
       themecolor: '#000000',
-      modifiers: '' // global css-classes, applied to <html>
+      modifiers: '', // global css-classes, applied to <html>
     },
     globals: {
       nav: {
         main: [
           {
             href: '#somepage',
-            label: 'Somepage'
-          }
-        ]
-      }
-    }
-  }
+            label: 'Somepage',
+          },
+        ],
+      },
+    },
+  },
 };
-

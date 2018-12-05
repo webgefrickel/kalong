@@ -44,7 +44,7 @@
     t: top,
     r: right,
     b: bottom,
-    l: left
+    l: left,
   );
 
   @if map-has-key($short-map, $short) {

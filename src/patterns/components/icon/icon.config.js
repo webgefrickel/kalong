@@ -5,13 +5,13 @@ const fs = require('fs');
 const icons = [];
 
 fs.readdirSync(path.join(config.src, config.icons))
-  .filter(name => (/(\.svg)/i).test(path.extname(name)))
+  .filter(name => /(\.svg)/i.test(path.extname(name)))
   .forEach(iconFile => {
     icons.push({
       name: iconFile.replace('.svg', ''),
       context: {
-        icon: iconFile.replace('.svg', '')
-      }
+        icon: iconFile.replace('.svg', ''),
+      },
     });
   });
 
@@ -21,7 +21,7 @@ module.exports = {
   default: 'logo',
   context: {
     modifiers: '',
-    sprite: '/images/sprite.svg'
+    sprite: '/images/sprite.svg',
   },
-  variants: icons
+  variants: icons,
 };

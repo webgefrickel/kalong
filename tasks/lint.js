@@ -15,7 +15,7 @@ const patternPathSass = path.join(config.src, config.patterns, '**/*.scss');
 // JavaScript linting with eslint
 gulp.task('lint:scripts:development', () =>
   gulp
-    .src([ srcPathJs, patternPathJs, srcPathTasks ])
+    .src([srcPathJs, patternPathJs, srcPathTasks])
     .pipe(plumber())
     .pipe(eslint())
     .pipe(eslint.format())
@@ -23,7 +23,7 @@ gulp.task('lint:scripts:development', () =>
 
 gulp.task('lint:scripts:production', () =>
   gulp
-    .src([ srcPathJs, patternPathJs, srcPathTasks ])
+    .src([srcPathJs, patternPathJs, srcPathTasks])
     .pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError())
@@ -32,16 +32,15 @@ gulp.task('lint:scripts:production', () =>
 // Sass linting with sass-lint (js-version)
 gulp.task('lint:styles:development', () =>
   gulp
-    .src([ srcPathSass, patternPathSass ])
+    .src([srcPathSass, patternPathSass])
     .pipe(plumber())
     .pipe(sasslint())
     .pipe(sasslint.format())
-
 );
 
 gulp.task('lint:styles:production', () =>
   gulp
-    .src([ srcPathSass, patternPathSass ])
+    .src([srcPathSass, patternPathSass])
     .pipe(sasslint())
     .pipe(sasslint.format())
     .pipe(sasslint.failOnError())
@@ -54,7 +53,7 @@ gulp.task('lint:html', () =>
       `!${path.join(config.styleguide, 'components/preview/*-start.html')}`,
       `!${path.join(config.styleguide, 'components/preview/*-end.html')}`,
       `!${path.join(config.styleguide, 'components/preview/*-start--*.html')}`,
-      `!${path.join(config.styleguide, 'components/preview/*-end--*.html')}`
+      `!${path.join(config.styleguide, 'components/preview/*-end--*.html')}`,
     ])
     .pipe(htmlhint({ htmlhintrc: '.htmlhintrc' }))
     .pipe(htmlhint.failReporter())

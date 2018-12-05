@@ -8,7 +8,7 @@ if ('visibilityState' in document) {
 
   // load and execute all scripts from global and all patterns automatically
   // but exclude test and config files — those should not be executed
-  [ globals, patterns ].forEach(items => {
+  [globals, patterns].forEach(items => {
     Object.keys(items).forEach(i => {
       items[i]();
     });

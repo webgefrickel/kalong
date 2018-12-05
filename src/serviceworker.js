@@ -30,7 +30,7 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
-  let request = e.request;
+  let { request } = e;
 
   // Always fetch non-GET requests from the network
   if (request.method !== 'GET') {

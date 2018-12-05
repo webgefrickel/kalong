@@ -5,9 +5,7 @@ import flatten from 'gulp-flatten';
 import config from '../kalong.config';
 
 gulp.task('copy:fonts', () =>
-  gulp
-    .src(path.join(config.src, config.fonts, '*.{woff,woff2}'))
-    .pipe(gulp.dest(path.join(config.dest, config.fonts)))
+  gulp.src(path.join(config.src, config.fonts, '*.{woff,woff2}')).pipe(gulp.dest(path.join(config.dest, config.fonts)))
 );
 
 gulp.task('copy:images', () =>
@@ -26,18 +24,22 @@ gulp.task('copy:styleguide:patterns', () =>
   gulp
     .src(path.join(config.src, config.patterns, '**/*.html'))
     .pipe(flatten())
-    .pipe(rename(f => {
-      f.basename = f.basename.replace('_', '');
-    }))
+    .pipe(
+      rename(f => {
+        f.basename = f.basename.replace('_', '');
+      })
+    )
     .pipe(gulp.dest(path.join(config.library)))
 );
 
 gulp.task('copy:styleguide:data', () =>
   gulp
     .src(path.join(config.styleguide, 'components/data/**/*.html'))
-    .pipe(rename(f => {
-      f.basename = f.basename.replace('_', '');
-      f.extname = '.yml';
-    }))
+    .pipe(
+      rename(f => {
+        f.basename = f.basename.replace('_', '');
+        f.extname = '.yml';
+      })
+    )
     .pipe(gulp.dest(path.join(config.library)))
 );

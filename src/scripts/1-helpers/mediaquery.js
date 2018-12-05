@@ -5,8 +5,9 @@ import { breakpoints } from '#sharedconfig';
 // is a custom query. this module return true if the
 // given breakpoint matches or false if it doesnt
 export default (shortcode, custom = false) => {
-  const query = (custom) ? breakpoints[shortcode] : `(min-width: ${breakpoints[shortcode]}px)`;
+  const query = custom
+    ? breakpoints[shortcode]
+    : `(min-width: ${breakpoints[shortcode]}px)`;
 
   return window.matchMedia(query).matches;
 };
-

@@ -18,7 +18,7 @@ rules:
   # those mixins do not have to be used before any other declarations
   mixins-before-declarations:
     - 1
-    - exclude: [ 'breakpoint', 'mediaquery', 'attention' ]
+    - exclude: ['breakpoint', 'mediaquery', 'attention']
 
   # allow leading zero values like 0.2rem or 0.01em
   leading-zero: 0
