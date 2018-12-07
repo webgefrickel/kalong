@@ -8,16 +8,13 @@ const config = require('../kalong.config');
 
 const runSass = (opts = {}) => {
   // set some sane defaults for development
-  const options = Object.assign(
-    {
-      file: `${config.src}${config.styles}${config.main}.scss`,
-      outFile: `${config.dest}${config.styles}${config.main}.css`,
-      outputStyle: 'expanded',
-      sourceMap: true,
-      importer: [json(), magic()],
-    },
-    opts
-  );
+  const options = {
+    file: path.join(config.src, config.styles, opts.input || `${config.main}.scss`),
+    outFile: path.join(config.dest, config.styles, opts.output || `${config.main}.css`),
+    outputStyle: 'expanded',
+    sourceMap: (opts.sourceMap === undefined),
+    importer: [json(), magic()],
+  };
 
   try {
     const result = sass.renderSync(options);

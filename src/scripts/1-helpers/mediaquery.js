@@ -1,4 +1,4 @@
-import { breakpoints } from '#sharedconfig';
+import { breakpoints } from '../../styles/1-config/shared.json';
 
 // same usage as the mediaquery-scss-mixin, just
 // provide the shortcode used in the scss-file and if it

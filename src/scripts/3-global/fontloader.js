@@ -1,5 +1,5 @@
-import Observer from '#module/fontfaceobserver/fontfaceobserver';
-import { fonts } from '#sharedconfig';
+import Observer from '~module/fontfaceobserver/fontfaceobserver';
+import { fonts } from '../../styles/1-config/shared.json';
 
 export default () => {
   const fontObservers = [];

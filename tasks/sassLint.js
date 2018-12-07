@@ -1,3 +1,4 @@
+const path = require('path');
 const sassLint = require('sass-lint');
 const warn = require('./lib/warn');
 const config = require('../kalong.config');
@@ -5,7 +6,7 @@ const config = require('../kalong.config');
 const runSassLint = (opts = {}) => {
   const options = Object.assign(
     {
-      files: `${config.src}{${config.styles},${config.patterns}}**/*.scss`,
+      files: path.join(config.src, config.styles, `${config.patterns}}**/*.scss`),
       configFile: '.sass-lint.yml',
       failOnError: false,
     },

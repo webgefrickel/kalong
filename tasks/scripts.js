@@ -1,44 +1,13 @@
-import fs from 'fs';
-import path from 'path';
-import gulp from 'gulp';
-import { rollup } from 'rollup';
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
-import strip from 'rollup-plugin-strip';
-import json from 'rollup-plugin-json';
-import { minify } from 'uglify-es';
-import browsersync from 'browser-sync';
-import config from '../kalong.config';
-
-const babelConfig = {
-  babelrc: false,
-  presets: [
-    [
-      'env',
-      {
-        targets: { browsers: config.browserslist.default },
-        modules: false,
-      },
-    ],
-  ],
-  plugins: ['external-helpers', 'import-glob'],
-};
-
-const babelConfigEs = {
-  babelrc: false,
-  presets: [
-    [
-      'env',
-      {
-        targets: { browsers: config.browserslist.legacy },
-        modules: false,
-      },
-    ],
-  ],
-  plugins: ['external-helpers', 'import-glob'],
-};
+const fs = require('fs');
+const path = require('path');
+const rollup = require('rollup');
+const json = require('rollup-plugin-json');
+const commonjs = require('rollup-plugin-commonjs');
+const resolve = require('rollup-plugin-node-resolve');
+const babel = require('rollup-plugin-babel');
+const uglify = require('rollup-plugin-uglify');
+const terser = require('rollup-plugin-terser');
+const config = require('../kalong.config');
 
 const walk = (dir, filter) => {
   const list = fs.readdirSync(dir);
@@ -62,22 +31,22 @@ const customResolve = () => {
   return {
     name: 'kalong-resolve',
     resolveId(importee) {
-      if (importee.startsWith('#sharedconfig')) {
-        return path.resolve(config.src, config.styles, '1-config/', 'shared.json');
+      if (importee.startsWith('~config')) {
+        return path.resolve(config.src, `${importee.replace('~config/', config.config)}.json`);
       }
-      if (importee.startsWith('#helper')) {
-        return path.resolve(config.src, `${importee.replace('#helper', `${config.scripts}1-helpers`)}.js`);
+      if (importee.startsWith('~helper')) {
+        return path.resolve(config.src, `${importee.replace('~helper', `${config.scripts}1-helpers`)}.js`);
       }
-      if (importee.startsWith('#vendor')) {
-        return path.resolve(config.src, `${importee.replace('#vendor', `${config.scripts}2-vendor`)}.js`);
+      if (importee.startsWith('~vendor')) {
+        return path.resolve(config.src, `${importee.replace('~vendor', `${config.scripts}2-vendor`)}.js`);
       }
-      if (importee.startsWith('#global')) {
-        return path.resolve(config.src, `${importee.replace('#global', `${config.scripts}3-global`)}.js`);
+      if (importee.startsWith('~global')) {
+        return path.resolve(config.src, `${importee.replace('~global', `${config.scripts}3-global`)}.js`);
       }
-      if (importee.startsWith('#module')) {
-        return path.resolve(config.src, `${importee.replace('#module', '../node_modules/')}.js`);
+      if (importee.startsWith('~module')) {
+        return path.resolve(config.src, `${importee.replace('~module', '../node_modules/')}.js`);
       }
-      if (importee.startsWith('#pattern')) {
+      if (importee.startsWith('~pattern')) {
         const pattern = importee.split('/')[1];
         const searchResults = walk(path.join(config.src, config.patterns), `${pattern}.js`);
 
@@ -89,61 +58,66 @@ const customResolve = () => {
   };
 };
 
-gulp.task('scripts:development', () =>
-  rollup({
-    input: path.join(config.src, config.scripts, 'main.js'),
-    plugins: [customResolve(), json(), resolve(), commonjs(), babel(babelConfigEs)],
-  }).then(bundle =>
+const runScripts = (opts = {}) => {
+  const plugins = [
+  ];
+
+  if (opts.sourceMap === false) {
+    if (opts.legacy) {
+      plugins.push(uglify.uglify());
+    } else {
+      plugins.push();
+    }
+  }
+
+  const options = {
+    input: path.join(config.src, config.scripts, opts.input || 'main.js'),
+    plugins: [
+      customResolve(),
+      json(),
+      resolve(),
+      commonjs(),
+      babel(
+        {
+          presets: [
+            [
+              '@babel/preset-env',
+              {
+                modules: false,
+                targets: (opts.legacy) ? config.legacy : {},
+              },
+            ],
+          ],
+          plugins: ['import-glob'],
+        }
+      ),
+      (opts.sourceMap === undefined)
+        ? null
+        : (opts.legacy) ? uglify.uglify() : terser.terser()
+    ]
+  };
+
+  rollup.rollup(options).then(bundle =>
     bundle
       .write({
-        sourcemap: 'inline',
+        sourcemap: (opts.sourceMap === undefined) ? 'inline' : opts.sourceMap,
         format: 'iife',
-        file: path.join(config.dest, config.scripts, 'main.js'),
+        file: path.join(config.dest, config.scripts, opts.output || 'main.js'),
       })
-      .then(() => {
-        browsersync.reload();
-      })
-  )
-);
+  );
+};
 
-gulp.task('scripts:production', () =>
-  rollup({
-    input: path.join(config.src, config.scripts, 'main.js'),
-    plugins: [
-      customResolve(),
-      json(),
-      resolve(),
-      commonjs(),
-      strip({ sourceMap: false }),
-      babel(babelConfigEs),
-      uglify({}, minify),
-    ],
-  }).then(bundle =>
-    bundle.write({
-      sourcemap: false,
-      format: 'iife',
-      file: path.join(config.dest, config.scripts, 'main.min.js'),
-    })
-  )
-);
+runScripts();
+runScripts({
+  output: `${config.main}.min.js`,
+  sourceMap: false,
+});
+runScripts({
+  input: `main.legacy.js`,
+  output: `${config.main}.legacy.min.js`,
+  legacy: true,
+  sourceMap: false,
+});
 
-gulp.task('scripts:legacy', () =>
-  rollup({
-    input: path.join(config.src, config.scripts, 'main.legacy.js'),
-    plugins: [
-      customResolve(),
-      json(),
-      resolve(),
-      commonjs(),
-      strip({ sourceMap: false }),
-      babel(babelConfig),
-      uglify(),
-    ],
-  }).then(bundle =>
-    bundle.write({
-      sourcemap: false,
-      format: 'iife',
-      file: path.join(config.dest, config.scripts, 'main.legacy.min.js'),
-    })
-  )
-);
+module.exports = runScripts;
+

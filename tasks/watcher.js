@@ -1,3 +1,4 @@
+// TODO refactor to start -- use browsersync + bs.watch?
 const chokidar = require('chokidar');
 const config = require('../kalong.config');
 const runPostcss = require('./postcss');

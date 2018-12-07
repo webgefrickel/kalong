@@ -1,7 +1,7 @@
 // using module.exports here, so that this file can be consumed by fractal as well
 module.exports = {
-  title: 'Yourproject',
-  version: '0.0.1-alpha.2',
+  title: 'Your Project',
+  version: '0.0.1-alpha.1',
 
   // configure your localhost environment here, the host/proxy
   // should point to the root-folder configured below (default: ./public/)
@@ -20,6 +20,7 @@ module.exports = {
   library: './public/patterns/',
 
   // paths to all asset-directories, for src + dest
+  config: 'config/',
   docs: 'docs/',
   fonts: 'fonts/',
   icons: 'icons/',
@@ -28,16 +29,6 @@ module.exports = {
   scripts: 'scripts/',
   styles: 'styles/',
 
-  // configure browsers you want to support for build process
-  browserslist: {
-    default: [
-      'last 2 Firefox versions',
-      'last 2 Chrome versions',
-      'last 2 Safari versions',
-      'last 2 Edge versions',
-      'last 2 iOS versions',
-      'last 2 ChromeAndroid versions',
-    ],
-    legacy: '> 1% in DE',
-  },
+  // configure legacy browsers that get older bloated code
+  legacy: '> 1% in DE',
 };

@@ -39,12 +39,12 @@ runSassLint();
 // Build both minified an non-minified versions
 runSass();
 runSass({
-  outFile: `${config.dest}${config.styles}${config.main}.min.css`,
+  output: `${config.main}.min.css`,
   sourceMap: false,
 });
 
 runPostcss();
 runPostcss({
-  file: `${config.dest}${config.styles}${config.main}.min.css`,
+  input: `${config.main}.min.css`,
   sourceMap: false,
 });

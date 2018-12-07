@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 const postcss = require('postcss');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
@@ -6,28 +7,15 @@ const cssImport = require('postcss-import');
 const config = require('../kalong.config');
 
 const runPostcss = (opts = {}) => {
-  const options = Object.assign(
-    {
-      file: `${config.dest}${config.styles}${config.main}.css`,
-      sourceMap: true,
-      plugins: [
-        cssImport(),
-        autoprefixer({ browsers: config.browserslist.default }),
-      ],
-    },
-    opts
-  );
-
-  // if there is no sourceMap, we assume minify
-  if (options.sourceMap === false) {
-    options.plugins = [
+  const options = {
+    file: path.join(config.dest, config.styles, opts.input || `${config.main}.css`),
+    sourceMap: (opts.sourceMap === undefined),
+    plugin: [
       cssImport(),
       autoprefixer({ browsers: config.browserslist.default }),
-      cssnano({
-        safe: true,
-      }),
-    ];
-  }
+      (opts.souceMap === undefined) ? null : cssnano({ safe: true }),
+    ]
+  };
 
   fs.readFile(options.file, (error, css) => {
     if (error) {
