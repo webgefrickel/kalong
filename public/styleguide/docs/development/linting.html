@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.0.0-alpha.1" type="text/css">
 
 
-<title>Linting | Kalong—Styleguide, v0.0.1-alpha.1</title>
+<title>Linting | Your Project—Styleguide, v0.0.1-alpha.1</title>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 </svg>
 
     </button>
-    <a href="../../index.html" class="Header-title" data-pjax>Kalong—Styleguide, v0.0.1-alpha.1</a>
+    <a href="../../index.html" class="Header-title" data-pjax>Your Project—Styleguide, v0.0.1-alpha.1</a>
 </div>
 
     </div>
@@ -75,20 +75,48 @@
 
     
     
-    <p>This project provides three different linters: one for HTML, one for Sass (.scss-files to be specific) and one for JavaScript.</p>
-<p>All those linters can be configured in their set of rules, and they can be globally deactivated in <em>config.js</em>, section <em>lint</em>.</p>
+    <p>This project provides three different linters: one for HTML, one for
+Sass (.scss-files to be specific) and one for JavaScript.</p>
+<p>All those linters can be configured in their set of rules, and they can
+be globally deactivated in <em>config.js</em>, section <em>lint</em>.</p>
 <h2 id="html-htmlhint">HTML: htmlhint</h2>
-<p>The linter used for your HTML-Code is <a href="http://htmlhint.com">htmlhint</a>. This project comes with a pre-configured set of rules to enforce nice HTML-styling, those rules and their current setting can be found in the file <em>.htmlhintrc</em>, description for the rules <a href="https://github.com/yaniswang/HTMLHint/wiki/Rules">can be found on github</a>.</p>
-<p>If you use a CMS or any other tool that creates your HTML-Output, it sometimes makes more sense to just deactivate linting for HTML or change some of the default rules. But please always check your code for errors with tools such as the <a href="https://validator.w3.org/">W3C Validator</a> to keep yourself sane. Valid HTML (at least regarding nesting and quotes) can save you a lot of headaches when styling your website.</p>
+<p>The linter used for your HTML-Code is <a href="http://htmlhint.com">htmlhint</a>.
+This project comes with a pre-configured set of rules to enforce nice
+HTML-styling, those rules and their current setting can be found in the
+file <em>.htmlhintrc</em>, description for the rules
+<a href="https://github.com/yaniswang/HTMLHint/wiki/Rules">can be found on github</a>.</p>
+<p>If you use a CMS or any other tool that creates your HTML-Output, it
+sometimes makes more sense to just deactivate linting for HTML or change
+some of the default rules. But please always check your code for errors
+with tools such as the <a href="https://validator.w3.org/">W3C Validator</a> to
+keep yourself sane. Valid HTML (at least regarding nesting and quotes)
+can save you a lot of headaches when styling your website.</p>
 <h2 id="javascript-eslint">JavaScript: eslint</h2>
-<p>The linter used for JavaScript is <a href="http://eslint.org">eslint</a>, and this project comes with a pre-configured (kinda restrictive) set of rules, to enforce a consistent and sane code style. You can find all current rules and the settings for them in the file <em>.eslintrc</em>.</p>
-<p>The predefined <em>.eslintrc.yml</em>-file sets all rules you can find <a href="http://eslint.org/docs/rules/">in the eslint documentatoin</a>, in the same order for easy reference.</p>
-<p>Eslint is very customizable, you can write your own plugins, but for starters the default built-in rules are more than enough.</p>
+<p>The linter used for JavaScript is <a href="http://eslint.org">eslint</a>, and this
+project comes with a pre-configured (kinda restrictive) set of rules, to
+enforce a consistent and sane code style. You can find all current rules
+and the settings for them in the file <em>.eslintrc</em>.</p>
+<p>The predefined <em>.eslintrc.yml</em>-file sets all rules you can find
+<a href="http://eslint.org/docs/rules/">in the eslint documentatoin</a>, in the
+same order for easy reference.</p>
+<p>Eslint is very customizable, you can write your own plugins, but for
+starters the default built-in rules are more than enough.</p>
 <h3 id="es6-es2015">ES6 / ES2015</h3>
-<p>Since we use ES6 in this project, eslint is configured to warn you on some things, that can be written better with ES6 (such as arrow-functions or let vs. var). If you don’t want to use any ES6-features at all, you can just set all those rules to zero, to deactivate them.</p>
+<p>Since we use ES6 in this project, eslint is configured to warn you on
+some things, that can be written better with ES6 (such as
+arrow-functions or let vs. var). If you don’t want to use any
+ES6-features at all, you can just set all those rules to zero, to
+deactivate them.</p>
 <h2 id="sass-sass-lint">Sass: sass-lint</h2>
-<p>For linting our Sass we use <a href="https://github.com/sasstools/sass-lint">sass-lint</a>. Configuration for sass-lint can be found in <em>.sass-lint.yaml</em>, and is pre-configured to be quite strict. <a href="https://github.com/sasstools/sass-lint/tree/master/docs/rules">All avaiable rules for sass-lint can be found here</a>. By default anything in the folder <em>./src/scss/vendor</em> will <strong>not</strong> be linted, so you can add third-party stylesheets easily.</p>
-<p>As always: try to keep to the strict defaults and only in edge-cases change the default rules and allow exceptions (such as <code>!important</code>).</p>
+<p>For linting our Sass we use
+<a href="https://github.com/sasstools/sass-lint">sass-lint</a>. Configuration for
+sass-lint can be found in <em>.sass-lint.yaml</em>, and is pre-configured to be
+quite strict.
+<a href="https://github.com/sasstools/sass-lint/tree/master/docs/rules">All avaiable rules for sass-lint can be found here</a>.
+By default anything in the folder <em>./src/scss/vendor</em> will <strong>not</strong> be
+linted, so you can add third-party stylesheets easily.</p>
+<p>As always: try to keep to the strict defaults and only in edge-cases
+change the default rules and allow exceptions (such as <code>!important</code>).</p>
 
     
 

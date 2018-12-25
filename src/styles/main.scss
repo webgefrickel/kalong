@@ -1,6 +1,8 @@
-// first we include global variable-maps from the config and
-// all mixins and config variables and global settings
-@import '1-config/shared.json'; // extra include, because of json-extension
+// first we include global variable-maps from the config
+@import '../config/fonts.json';
+@import '../config/mediaqueries.json';
+
+// and then all mixins and config variables and global settings
 @import '1-config/**/*.scss';
 @import '2-tools/**/*.scss';
 

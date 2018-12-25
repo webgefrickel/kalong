@@ -1,6 +1,6 @@
 files:
   ignore:
-    - 'src/styles/*-vendor/**/*.scss'
+    - 'src/styles/3-vendor/**/*.scss'
 
 # use the default settings to keep this file small
 options:

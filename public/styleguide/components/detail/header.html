@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.0.0-alpha.1" type="text/css">
 
 
-<title>Header | Kalong—Styleguide, v0.0.1-alpha.1</title>
+<title>Header | Your Project—Styleguide, v0.0.1-alpha.1</title>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
 </svg>
 
     </button>
-    <a href="../../index.html" class="Header-title" data-pjax>Kalong—Styleguide, v0.0.1-alpha.1</a>
+    <a href="../../index.html" class="Header-title" data-pjax>Your Project—Styleguide, v0.0.1-alpha.1</a>
 </div>
 
     </div>
@@ -191,15 +191,38 @@
             
             <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">shared:</span>
-<span class="hljs-attr">  breakpoints:</span>
-<span class="hljs-attr">    s:</span> <span class="hljs-number">480</span>
-<span class="hljs-attr">    m:</span> <span class="hljs-number">640</span>
-<span class="hljs-attr">    l:</span> <span class="hljs-number">720</span>
-<span class="hljs-attr">    xl:</span> <span class="hljs-number">960</span>
-<span class="hljs-attr">    xxl:</span> <span class="hljs-number">1100</span>
-<span class="hljs-attr">    xxxl:</span> <span class="hljs-number">1400</span>
-<span class="hljs-attr">    custom:</span> <span class="hljs-string">'(max-width: 30em)'</span>
+<span class="hljs-attr">config:</span>
+<span class="hljs-attr">  config:</span>
+<span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
+<span class="hljs-attr">    version:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.1</span><span class="hljs-bullet">-alpha.1</span>
+<span class="hljs-attr">    scheme:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.localhost</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">3000</span>
+<span class="hljs-attr">    main:</span> <span class="hljs-string">main</span>
+<span class="hljs-attr">    root:</span> <span class="hljs-string">./public/</span>
+<span class="hljs-attr">    src:</span> <span class="hljs-string">./src/</span>
+<span class="hljs-attr">    dest:</span> <span class="hljs-string">./public/assets/</span>
+<span class="hljs-attr">    styleguide:</span> <span class="hljs-string">./public/styleguide/</span>
+<span class="hljs-attr">    library:</span> <span class="hljs-string">./public/patterns/</span>
+<span class="hljs-attr">    config:</span> <span class="hljs-string">config/</span>
+<span class="hljs-attr">    docs:</span> <span class="hljs-string">docs/</span>
+<span class="hljs-attr">    fonts:</span> <span class="hljs-string">fonts/</span>
+<span class="hljs-attr">    icons:</span> <span class="hljs-string">icons/</span>
+<span class="hljs-attr">    images:</span> <span class="hljs-string">images/</span>
+<span class="hljs-attr">    patterns:</span> <span class="hljs-string">patterns/</span>
+<span class="hljs-attr">    scripts:</span> <span class="hljs-string">scripts/</span>
+<span class="hljs-attr">    styles:</span> <span class="hljs-string">styles/</span>
+<span class="hljs-attr">    browsers:</span>
+<span class="hljs-attr">      modern:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Firefox</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Chrome</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Safari</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Edge</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">iOS</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">ChromeAndroid</span> <span class="hljs-string">versions</span>
+<span class="hljs-attr">      legacy:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">'&gt; 0.5% in DE'</span>
+<span class="hljs-attr">    serviceworker:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">  fonts:</span>
 <span class="hljs-attr">    default:</span>
 <span class="hljs-attr">      family:</span> <span class="hljs-string">Roboto</span>
@@ -208,10 +231,27 @@
 <span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
 <span class="hljs-attr">      fontface:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">      file:</span> <span class="hljs-string">roboto-regular</span>
+<span class="hljs-attr">  mediaqueries:</span>
+<span class="hljs-attr">    breakpoints:</span>
+<span class="hljs-attr">      s:</span> <span class="hljs-number">480</span>
+<span class="hljs-attr">      m:</span> <span class="hljs-number">640</span>
+<span class="hljs-attr">      l:</span> <span class="hljs-number">720</span>
+<span class="hljs-attr">      xl:</span> <span class="hljs-number">960</span>
+<span class="hljs-attr">      xxl:</span> <span class="hljs-number">1100</span>
+<span class="hljs-attr">      xxxl:</span> <span class="hljs-number">1400</span>
+<span class="hljs-attr">      custom:</span> <span class="hljs-string">'(max-width: 30em)'</span>
+<span class="hljs-attr">    fonts:</span>
+<span class="hljs-attr">      default:</span>
+<span class="hljs-attr">        family:</span> <span class="hljs-string">Roboto</span>
+<span class="hljs-attr">        fallback:</span> <span class="hljs-string">sans-serif</span>
+<span class="hljs-attr">        weight:</span> <span class="hljs-number">400</span>
+<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        file:</span> <span class="hljs-string">roboto-regular</span>
 <span class="hljs-attr">site:</span>
 <span class="hljs-attr">  lang:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  dir:</span> <span class="hljs-string">ltr</span>
-<span class="hljs-attr">  title:</span> <span class="hljs-string">'Kalong—Styleguide, v0.0.1-alpha.1'</span>
+<span class="hljs-attr">  title:</span> <span class="hljs-string">'Your Project—Styleguide, v0.0.1-alpha.1'</span>
 <span class="hljs-attr">  description:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  themecolor:</span> <span class="hljs-string">'#000000'</span>
 <span class="hljs-attr">  modifiers:</span> <span class="hljs-literal">null</span>

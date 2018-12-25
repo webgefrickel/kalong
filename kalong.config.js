@@ -30,5 +30,18 @@ module.exports = {
   styles: 'styles/',
 
   // configure legacy browsers that get older bloated code
-  legacy: '> 1% in DE',
+  browsers: {
+    modern: [
+      'last 2 Firefox versions',
+      'last 2 Chrome versions',
+      'last 2 Safari versions',
+      'last 2 Edge versions',
+      'last 2 iOS versions',
+      'last 2 ChromeAndroid versions',
+    ],
+    legacy: ['> 0.5% in DE'],
+  },
+
+  // do you want a default serviceworker offline-cache script?
+  serviceworker: true,
 };

@@ -1,14 +1,37 @@
 debug: true
 styleguide: true
-shared:
-  breakpoints:
-    s: 480
-    m: 640
-    l: 720
-    xl: 960
-    xxl: 1100
-    xxxl: 1400
-    custom: '(max-width: 30em)'
+config:
+  config:
+    title: Your Project
+    version: 0.0.1-alpha.1
+    scheme: http
+    proxy: dev.localhost
+    port: 3000
+    main: main
+    root: ./public/
+    src: ./src/
+    dest: ./public/assets/
+    styleguide: ./public/styleguide/
+    library: ./public/patterns/
+    config: config/
+    docs: docs/
+    fonts: fonts/
+    icons: icons/
+    images: images/
+    patterns: patterns/
+    scripts: scripts/
+    styles: styles/
+    browsers:
+      modern:
+        - last 2 Firefox versions
+        - last 2 Chrome versions
+        - last 2 Safari versions
+        - last 2 Edge versions
+        - last 2 iOS versions
+        - last 2 ChromeAndroid versions
+      legacy:
+        - '> 0.5% in DE'
+    serviceworker: true
   fonts:
     default:
       family: Roboto
@@ -17,10 +40,27 @@ shared:
       style: normal
       fontface: true
       file: roboto-regular
+  mediaqueries:
+    breakpoints:
+      s: 480
+      m: 640
+      l: 720
+      xl: 960
+      xxl: 1100
+      xxxl: 1400
+      custom: '(max-width: 30em)'
+    fonts:
+      default:
+        family: Roboto
+        fallback: sans-serif
+        weight: 400
+        style: normal
+        fontface: true
+        file: roboto-regular
 site:
   lang: en
   dir: ltr
-  title: 'Kalong—Styleguide, v0.0.1-alpha.1'
+  title: 'Your Project—Styleguide, v0.0.1-alpha.1'
   description: null
   themecolor: '#000000'
   modifiers: null
@@ -30,9 +70,7 @@ globals:
       - href: '#somepage'
         label: Somepage
 text: >-
-  Et quis nam repellat dolorum harum. Sint porro reprehenderit. Nisi aspernatur
-  hic enim sit. Illo et inventore unde delectus praesentium. Odio voluptatibus
-  voluptatem molestiae asperiores quasi itaque. Error qui omnis quis ea
-  molestiae atque quam voluptatum.
+  Suscipit voluptatibus nobis facere nam accusantium qui. Harum tenetur
+  repudiandae. Nam accusamus aliquam.
 modifiers: example--default
 

@@ -1,11 +1,16 @@
 const config = require('../../kalong.config.js');
-const shared = require('../styles/1-config/shared.json');
+const fonts = require('../config/fonts.json');
+const mediaqueries = require('../config/mediaqueries.json');
 
 module.exports = {
   context: {
     debug: true,
     styleguide: true,
-    shared,
+    config: {
+      config,
+      fonts,
+      mediaqueries,
+    },
     site: {
       lang: 'en',
       dir: 'ltr',

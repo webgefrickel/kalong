@@ -1,4 +1,6 @@
 // read all svg icons files, and provide them as variants
+// this file uses es5/node syntax, fractal does not understand modern js
+// you should not have to change it anyway... just throw in new svg-icons
 const config = require('../../../../kalong.config');
 const path = require('path');
 const fs = require('fs');
@@ -16,9 +18,8 @@ fs.readdirSync(path.join(config.src, config.icons))
   });
 
 module.exports = {
-  status: 'wip',
-  // you should set the default icon to something useful, e.g. the logo
-  default: 'logo',
+  status: 'done',
+  default: 'default',
   context: {
     modifiers: '',
     sprite: '/images/sprite.svg',

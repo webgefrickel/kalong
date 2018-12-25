@@ -1,51 +1,54 @@
-const fs = require('fs');
-const path = require('path');
-const postcss = require('postcss');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-const cssImport = require('postcss-import');
-const config = require('../kalong.config');
+import { join } from 'path';
+import postcss from 'postcss';
+import autoprefixer from 'autoprefixer';
+import cssnano from 'cssnano';
+import cssImport from 'postcss-import';
+import { readFile, writeFile } from './lib/fs';
+import warn from './lib/warn';
+import config from '../kalong.config';
 
-const runPostcss = (opts = {}) => {
+const runPostcss = async (opts = {}) => {
   const options = {
-    file: path.join(config.dest, config.styles, opts.input || `${config.main}.css`),
-    sourceMap: (opts.sourceMap === undefined),
-    plugin: [
+    input: opts.input || join(config.dest, config.styles, `${config.main}.css`),
+    sourceMap: opts.sourceMap === undefined,
+    plugins: [
       cssImport(),
-      autoprefixer({ browsers: config.browserslist.default }),
-      (opts.souceMap === undefined) ? null : cssnano({ safe: true }),
-    ]
+      autoprefixer({ browsers: opts.legacy ? config.browsers.legacy : config.browsers.modern }),
+    ],
   };
 
-  fs.readFile(options.file, (error, css) => {
-    if (error) {
-      console.log(error);
-    }
+  // add cssnano if the sourceMap option is set to false
+  if (opts.sourceMap === false) {
+    options.plugins.push(cssnano({ preset: 'default' }));
+  }
 
-    postcss(options.plugins)
-      .process(css, {
-        from: options.file,
-        to: options.file,
-        map: { inline: options.sourceMap },
-      })
-      .then(result => {
-        result.warnings().forEach(warn => {
-          console.log(warn.toString());
-        });
-        fs.writeFile(options.file, result.css, error => {
-          if (error) {
-            console.log(error);
-          }
+  // if no output file is specified, use the input, overwriting same file
+  options.output = opts.output || options.input;
 
-          // log successful compilation to terminal
-          console.log(
-            `${
-              options.file
-            } has been post-processed with postCSS successfully.`
-          );
-        });
-      });
+  return new Promise(resolve => {
+    readFile(options.input).then(css => {
+      postcss(options.plugins)
+        .process(css, {
+          from: options.input,
+          to: options.output,
+          map: options.sourceMap ? { inline: options.sourceMap } : false,
+        })
+        .then(result => {
+          result.warnings().forEach(warn => {
+            warn(warn.toString());
+          });
+
+          writeFile(options.output, result.css)
+            .then(() => {
+              resolve();
+            })
+            .catch(error => {
+              warn(error);
+            });
+        })
+        .catch(error => warn(error));
+    });
   });
 };
 
-module.exports = runPostcss;
+export default runPostcss;

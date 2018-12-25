@@ -1,6 +1,6 @@
 # Prettier autoformating / fixing config, matching linters
 
-printWidth: 120
+printWidth: 100
 tabWidth: 2
 useTabs: false
 semi: true
@@ -17,7 +17,6 @@ overrides:
   - files: 'package*.json'
     options:
       printWidth: 1000,
-overrides:
   - files: '*.md'
     options:
       printWidth: 72,

@@ -1,45 +1,33 @@
-import path from 'path';
-import gulp from 'gulp';
-import rename from 'gulp-rename';
-import flatten from 'gulp-flatten';
+import { join } from 'path';
+import { sync } from 'glob';
+import { makeDir, copyFile } from './lib/fs';
 import config from '../kalong.config';
 
-gulp.task('copy:fonts', () =>
-  gulp.src(path.join(config.src, config.fonts, '*.{woff,woff2}')).pipe(gulp.dest(path.join(config.dest, config.fonts)))
-);
+const runCopy = async (opts = {}) => {
+  const options = {
+    input: opts.input || join(config.src, config.images, '**/*'),
+    output: opts.output || join(config.dest, config.images),
+    rename: opts.rename || [],
+  };
 
-gulp.task('copy:images', () =>
-  gulp
-    .src(path.join(config.src, config.images, '*.{png,gif,jpg,svg,webp,ico}'))
-    .pipe(gulp.dest(path.join(config.dest, config.images)))
-);
+  const files = sync(options.input);
+  const copies = [makeDir(options.output)];
+  const renamers = [file => file.replace(/^.*[\\/]/, '')];
+  options.rename.forEach(func => {
+    renamers.push(func);
+  });
 
-gulp.task('copy:icons', () =>
-  gulp
-    .src(path.join(config.src, config.icons, '*.svg'))
-    .pipe(gulp.dest(path.join(config.dest, config.images, config.icons)))
-);
+  // create the target first
+  files.forEach(file => {
+    let filename = file;
+    renamers.forEach(func => {
+      filename = func(filename);
+    });
 
-gulp.task('copy:styleguide:patterns', () =>
-  gulp
-    .src(path.join(config.src, config.patterns, '**/*.html'))
-    .pipe(flatten())
-    .pipe(
-      rename(f => {
-        f.basename = f.basename.replace('_', '');
-      })
-    )
-    .pipe(gulp.dest(path.join(config.library)))
-);
+    copies.push(copyFile(file, join(options.output, filename)));
+  });
 
-gulp.task('copy:styleguide:data', () =>
-  gulp
-    .src(path.join(config.styleguide, 'components/data/**/*.html'))
-    .pipe(
-      rename(f => {
-        f.basename = f.basename.replace('_', '');
-        f.extname = '.yml';
-      })
-    )
-    .pipe(gulp.dest(path.join(config.library)))
-);
+  return Promise.all(copies);
+};
+
+export default runCopy;

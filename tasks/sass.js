@@ -1,41 +1,30 @@
-const fs = require('fs');
-const path = require('path');
-const mkdirp = require('mkdirp');
-const sass = require('node-sass');
-const magic = require('node-sass-magic-importer');
-const json = require('node-sass-json-importer');
-const config = require('../kalong.config');
+import { join, dirname } from 'path';
+import sass from 'node-sass';
+import magic from 'node-sass-magic-importer';
+import json from 'node-sass-json-importer';
+import { writeFile, makeDir } from './lib/fs';
+import warn from './lib/warn';
+import config from '../kalong.config';
 
 const runSass = (opts = {}) => {
   // set some sane defaults for development
   const options = {
-    file: path.join(config.src, config.styles, opts.input || `${config.main}.scss`),
-    outFile: path.join(config.dest, config.styles, opts.output || `${config.main}.css`),
+    file: opts.input || join(config.src, config.styles, `${config.main}.scss`),
+    outFile: opts.output || join(config.dest, config.styles, `${config.main}.css`),
+    sourceMap: opts.sourceMap === undefined,
     outputStyle: 'expanded',
-    sourceMap: (opts.sourceMap === undefined),
     importer: [json(), magic()],
   };
 
   try {
     const result = sass.renderSync(options);
-
-    mkdirp(path.dirname(options.outFile), error => {
-      if (error) {
-        console.log(error);
-      }
-    });
-
-    fs.writeFile(options.outFile, result.css, error => {
-      if (error) {
-        console.log(error);
-      }
-    });
-
-    // log successful compilation to terminal
-    console.log(`${options.outFile} has been built successfully.`);
-  } catch (err) {
-    console.log('failure', err);
+    return Promise.all([
+      makeDir(dirname(options.outFile)),
+      writeFile(options.outFile, result.css),
+    ]).catch(error => warn(error));
+  } catch (error) {
+    warn(error);
   }
 };
 
-module.exports = runSass;
+export default runSass;
