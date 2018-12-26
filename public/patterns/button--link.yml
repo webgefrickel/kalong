@@ -13,6 +13,7 @@ config:
     dest: ./public/assets/
     styleguide: ./public/styleguide/
     library: ./public/patterns/
+    assets: assets/
     config: config/
     docs: docs/
     fonts: fonts/

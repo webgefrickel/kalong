@@ -1,83 +1,92 @@
 import { join } from 'path';
-import run from './lib/run';
-import sassLint from './sassLint';
+import clean from './clean';
+import copy from './copy';
 import eslint from './eslint';
 import htmlhint from './htmlhint';
-import clean from './clean';
-import styles from './styles';
-import scripts from './scripts';
+import postcss from './postcss';
+import rollup from './rollup';
+import sass from './sass';
+import sassLint from './sassLint';
 import styleguide from './fractal';
-import copy from './copy';
-import sprite from './svgSprite';
+import svgSprite from './svgSprite';
+import run from './lib/run';
 import config from '../kalong.config';
 
-const preBuild = () =>
-  // before running any compile-tasks: clean output dirs and lint scss/js
-  new Promise(resolve => {
-    Promise.all([run(clean), run(sassLint), run(eslint)]).then(() => {
-      resolve();
-    });
-  });
+const scripts = async () =>
+  Promise.all([
+    run(rollup),
+    run(rollup, {
+      output: join(config.dest, config.scripts, `${config.main}.min.js`),
+      sourceMap: false,
+    }),
+    run(rollup, {
+      input: join(config.src, config.scripts, 'serviceworker.js'),
+      output: join(config.root, `serviceworker.js`),
+      sourceMap: false,
+    }),
+    run(copy, {
+      input: join(config.src, config.scripts, `${config.main}.legacy.js`),
+      output: join(config.dest, config.scripts),
+    }),
+  ]);
 
-const compileAssets = () =>
-  // compile/copy sass and javascript files and create the sprite
-  new Promise(resolve => {
-    Promise.all([run(styles), run(scripts), run(sprite)]).then(() => {
-      resolve();
-    });
-  });
+const styles = async () => {
+  await Promise.all([
+    run(sass),
+    run(sass, {
+      output: join(config.dest, config.styles, `${config.main}.min.css`),
+      sourceMap: false,
+    }),
+  ]);
+  await Promise.all([
+    run(postcss),
+    run(postcss, {
+      output: join(config.dest, config.styles, `${config.main}.min.css`),
+      sourceMap: false,
+    }),
+    run(postcss, {
+      output: join(config.dest, config.styles, `${config.main}.legacy.css`),
+      sourceMap: false,
+      legacy: true,
+    }),
+  ]);
+};
+
+const preBuild = () => Promise.all([run(clean), run(sassLint), run(eslint)]);
+const compileAssets = () => Promise.all([run(styles), run(scripts), run(svgSprite)]);
 
 const copyAssets = () =>
-  // copy fonts and images, the styleguide needs this before compiling
-  new Promise(resolve => {
-    Promise.all([
-      run(copy), // no options: copy images,
-      run(copy, {
-        // copy fonts
-        input: join(config.src, config.fonts, '*.{woff,woff2}'),
-        output: join(config.dest, config.fonts),
-      }),
-    ]).then(() => {
-      resolve();
-    });
-  });
+  Promise.all([
+    run(copy), // no options: copy images,
+    run(copy, {
+      // copy fonts
+      input: join(config.src, config.fonts, '*.{woff,woff2}'),
+      output: join(config.dest, config.fonts),
+    }),
+  ]);
 
 const copyStyleguide = () =>
   // copy all styleguide files to the pattern library
-  new Promise(resolve => {
-    Promise.all([
-      run(copy, {
-        // styleguide HTML pattern files
-        input: join(config.src, config.patterns, '**/*.html'),
-        output: join(config.library),
-        rename: [file => file.replace('_', '')],
-      }),
-      run(copy, {
-        // styleguide data pattern files
-        input: join(config.styleguide, 'components/data/**/*.html'),
-        output: join(config.library),
-        rename: [file => file.replace('_', ''), file => file.replace('.html', '.yml')],
-      }),
-    ]).then(() => {
-      resolve();
-    });
-  });
+  Promise.all([
+    run(copy, {
+      // styleguide HTML pattern files
+      input: join(config.src, config.patterns, '**/*.html'),
+      output: join(config.library),
+      rename: [file => file.replace('_', '')],
+    }),
+    run(copy, {
+      // styleguide data pattern files
+      input: join(config.styleguide, 'components/data/**/*.html'),
+      output: join(config.library),
+      rename: [file => file.replace('_', ''), file => file.replace('.html', '.yml')],
+    }),
+  ]);
 
-const postBuild = () =>
-  // run htmlhint after all html-files are generated/copied
-  new Promise(resolve => {
-    Promise.all([run(htmlhint)]).then(() => {
-      resolve();
-    });
-  });
-
-async function build() {
+(async () => {
   await run(preBuild);
   await run(compileAssets);
   await run(copyAssets);
   await run(styleguide);
   await run(copyStyleguide);
-  await run(postBuild);
-}
-
-build();
+  await run(htmlhint);
+})();

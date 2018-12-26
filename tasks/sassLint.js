@@ -4,30 +4,27 @@ import warn from './lib/warn';
 import config from '../kalong.config';
 
 const runSassLint = async () => {
-  return new Promise(resolve => {
-    const lintPaths = [
-      join(config.src, config.styles, '**/*.scss'),
-      join(config.src, config.patterns, '**/*.scss'),
-    ];
+  const lintPaths = [
+    join(config.src, config.styles, '**/*.scss'),
+    join(config.src, config.patterns, '**/*.scss'),
+  ];
 
-    lintPaths.forEach(files => {
-      const report = sassLint.lintFiles(files, {}, '.sass-lint.yml');
+  lintPaths.forEach(files => {
+    const report = sassLint.lintFiles(files, {}, '.sass-lint.yml');
 
-      if (report.length) {
-        report.forEach(file => {
-          if (file.errorCount || file.warningCount) {
-            warn('sass-lint found errors in the following files:');
-            warn('==============================================');
+    if (report.length) {
+      report.forEach(file => {
+        if (file.errorCount || file.warningCount) {
+          warn('sass-lint found errors in the following files:');
+          warn('==============================================');
 
-            file.messages.forEach(m => {
-              warn(`${file.filePath} on line ${m.line}, column ${m.column}:`);
-              warn(`${m.ruleId}: ${m.message}\n`);
-            });
-          }
-        });
-      }
-    });
-    resolve();
+          file.messages.forEach(m => {
+            warn(`${file.filePath} on line ${m.line}, column ${m.column}:`);
+            warn(`${m.ruleId}: ${m.message}\n`);
+          });
+        }
+      });
+    }
   });
 };
 

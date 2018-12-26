@@ -16,30 +16,6 @@ import copy from './copy';
 import sprite from './svgSprite';
 import config from '../kalong.config';
 
-const watcher = chokidar.watch(config.src, { ignored: /(^|[/\\])\../ });
-const watchSwitch = file => {
-  console.log(file, 'FILE CHANGED');
-  const fileExtension = file.substr(file.lastIndexOf('.') + 1);
-
-  switch (fileExtension) {
-    case 'scss':
-      runSassLint();
-      runSass();
-      runPostcss();
-      break;
-    default:
-      // do nothing
-      break;
-  }
-};
-
-watcher.on('ready', () => {
-  console.log(`Watching files in ${config.src}…`);
-  watcher.on('add', watchSwitch);
-  watcher.on('addDir', watchSwitch);
-  watcher.on('change', watchSwitch);
-});
-
 // gulp.task('default', ['styleguide:development', 'serve'], () => {
 //   // when something in the sass-folder changes, recompile sass
 //   gulp.watch(

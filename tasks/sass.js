@@ -6,7 +6,7 @@ import { writeFile, makeDir } from './lib/fs';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runSass = (opts = {}) => {
+const runSass = async (opts = {}) => {
   // set some sane defaults for development
   const options = {
     file: opts.input || join(config.src, config.styles, `${config.main}.scss`),
@@ -18,10 +18,8 @@ const runSass = (opts = {}) => {
 
   try {
     const result = sass.renderSync(options);
-    return Promise.all([
-      makeDir(dirname(options.outFile)),
-      writeFile(options.outFile, result.css),
-    ]).catch(error => warn(error));
+    await makeDir(dirname(options.outFile));
+    await writeFile(options.outFile, result.css);
   } catch (error) {
     warn(error);
   }

@@ -20,6 +20,7 @@ module.exports = {
   library: './public/patterns/',
 
   // paths to all asset-directories, for src + dest
+  assets: 'assets/',
   config: 'config/',
   docs: 'docs/',
   fonts: 'fonts/',
