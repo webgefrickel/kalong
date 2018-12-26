@@ -26,9 +26,8 @@ export const copyFile = (src, dest) =>
     }
 
     const read = fs.createReadStream(src);
-    read.on('error', error => done(error));
-
     const write = fs.createWriteStream(dest);
+    read.on('error', error => done(error));
     write.on('error', error => done(error));
     write.on('close', error => done(error));
     read.pipe(write);

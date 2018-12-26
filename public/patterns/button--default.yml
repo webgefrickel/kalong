@@ -34,22 +34,6 @@ config:
         - '> 0.5% in DE'
     serviceworker: true
   fonts:
-    default:
-      family: Roboto
-      fallback: sans-serif
-      weight: 400
-      style: normal
-      fontface: true
-      file: roboto-regular
-  mediaqueries:
-    breakpoints:
-      s: 480
-      m: 640
-      l: 720
-      xl: 960
-      xxl: 1100
-      xxxl: 1400
-      custom: '(max-width: 30em)'
     fonts:
       default:
         family: Roboto
@@ -58,6 +42,17 @@ config:
         style: normal
         fontface: true
         file: roboto-regular
+  mediaqueries:
+    mediaqueries:
+      s: 480
+      m: 720
+      l: 960
+      xl: 1100
+      xxl: 1400
+      portrait: '(orientation: portrait)'
+      landscape: '(orientation: landscape)'
+      print: print
+      custom: '(max-width: 30em)'
 site:
   lang: en
   dir: ltr

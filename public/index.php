@@ -4,16 +4,22 @@
 // would use a CMS of any sort, load Twig and all patterns and then
 // play lego.
 
-require_once(dirname(__FILE__) . '/vendor/autoload.php');
+require_once dirname(__FILE__) . '/vendor/autoload.php';
 $assets = '/assets/';
 $patternPath = dirname(__FILE__) . '/patterns/';
 
-$pathFilter = new Twig_Filter('path', function($path) use ($assets) {
+$pathFilter = new Twig_Filter('path', function ($path) use ($assets) {
   return $assets . trim($path, '/');
 });
 
-class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
-  public function __construct(Twig_Node_Expression $expr, Twig_Node_Expression $variables = null, $lineno, $tag = null) {
+class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface
+{
+  public function __construct(
+    Twig_Node_Expression $expr,
+    Twig_Node_Expression $variables = null,
+    $lineno,
+    $tag = null
+  ) {
     $nodes = array('expr' => $expr);
     if ($variables !== null) {
       $nodes['variables'] = $variables;
@@ -22,7 +28,8 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
     parent::__construct($nodes, [], $lineno, $tag);
   }
 
-  public function compile(Twig_Compiler $compiler) {
+  public function compile(Twig_Compiler $compiler)
+  {
     $compiler->addDebugInfo($this);
     $this->addGetTemplate($compiler);
     $compiler->raw('->display(');
@@ -30,7 +37,8 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
     $compiler->raw(");\n");
   }
 
-  protected function addGetTemplate(Twig_Compiler $compiler) {
+  protected function addGetTemplate(Twig_Compiler $compiler)
+  {
     $patternPath = dirname(__FILE__) . '/patterns/';
     $patternString = $this->getNode('expr')->attributes['value'];
     $parts = explode('--', $patternString);
@@ -44,7 +52,7 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
     }
 
     $files = new RecursiveDirectoryIterator($patternPath);
-    foreach(new RecursiveIteratorIterator($files) as $file) {
+    foreach (new RecursiveIteratorIterator($files) as $file) {
       if (strpos($file, $this->pattern . '.html') !== false) {
         $this->file = str_replace($patternPath, '', $file);
       }
@@ -60,7 +68,8 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
       ->raw(')');
   }
 
-  protected function addTemplateArguments(Twig_Compiler $compiler) {
+  protected function addTemplateArguments(Twig_Compiler $compiler)
+  {
     // TODO add variant data :!@)(#%^*
     // echo '<pre>' . var_dump($this->variant) . '</pre>';
 
@@ -75,14 +84,17 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface {
   }
 }
 
-class RenderPattern_TokenParser extends Twig_TokenParser {
-  public function parse(Twig_Token $token) {
+class RenderPattern_TokenParser extends Twig_TokenParser
+{
+  public function parse(Twig_Token $token)
+  {
     $expr = $this->parser->getExpressionParser()->parseExpression();
     list($variables) = $this->parseArguments();
     return new RenderPattern_Node($expr, $variables, $token->getLine(), $this->getTag());
   }
 
-  protected function parseArguments() {
+  protected function parseArguments()
+  {
     $stream = $this->parser->getStream();
 
     $variables = null;
@@ -94,14 +106,15 @@ class RenderPattern_TokenParser extends Twig_TokenParser {
     return array($variables);
   }
 
-  public function getTag() {
+  public function getTag()
+  {
     return 'render';
   }
 }
 
 $twigLoader = new Twig_Loader_Filesystem($patternPath);
 $twig = new Twig_Environment($twigLoader, [
-  'cache' => false
+  'cache' => false,
 ]);
 
 $twig->addFilter($pathFilter);
@@ -121,11 +134,10 @@ $twig->addTokenParser(new RenderPattern_TokenParser());
     'modifiers' => 'theme--kalong-test',
   ],
 
-  'global' => [
-  ],
+  'global' => [],
 
   'sprite' => '/assets/images/sprite.svg',
-  'logolabel' => 'Test'
-] ?>
+  'logolabel' => 'Test',
+]; ?>
 
-<?= $twig->render('page.html', $context) ?>
+<?= $twig->render('page.html', $context); ?>

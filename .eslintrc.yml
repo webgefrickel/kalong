@@ -3,6 +3,7 @@ extends:
   - 'xo-space'
   - 'xo-space/esnext'
   - 'xo-space/browser'
+  - 'prettier'
 
 parserOptions:
   ecmaVersion: 2018
@@ -30,6 +31,3 @@ rules:
   operator-linebreak:
     - error
     - before
-  space-before-function-paren:
-    - error
-    - never

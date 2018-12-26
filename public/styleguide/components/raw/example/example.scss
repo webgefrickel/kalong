@@ -11,4 +11,8 @@
 .example--large {
   @include padding(a 2);
   font-size: 200%;
+
+  @include mediaquery(l) {
+    @include padding(a 4);
+  }
 }

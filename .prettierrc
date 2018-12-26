@@ -20,3 +20,6 @@ overrides:
   - files: '*.md'
     options:
       printWidth: 72,
+  - files: '*.php'
+    options:
+      trailingComma: all
