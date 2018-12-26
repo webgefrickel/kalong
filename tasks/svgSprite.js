@@ -6,7 +6,7 @@ import { writeFile, makeDir } from './lib/fs';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runSvgSprite = async (opts = {}) => {
+export default async (opts = {}) => {
   const options = {
     dest: opts.output || join(config.src, config.images),
     mode: {
@@ -34,6 +34,7 @@ const runSvgSprite = async (opts = {}) => {
     );
   });
 
+  // TODO refactor await
   sprite.compile((error, result) => {
     return Promise.all([
       makeDir(dirname(options.dest)),
@@ -44,5 +45,3 @@ const runSvgSprite = async (opts = {}) => {
     ]).catch(error => warn(error));
   });
 };
-
-export default runSvgSprite;

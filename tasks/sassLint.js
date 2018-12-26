@@ -3,7 +3,7 @@ import sassLint from 'sass-lint';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runSassLint = async () => {
+export default async () => {
   const lintPaths = [
     join(config.src, config.styles, '**/*.scss'),
     join(config.src, config.patterns, '**/*.scss'),
@@ -27,5 +27,3 @@ const runSassLint = async () => {
     }
   });
 };
-
-export default runSassLint;

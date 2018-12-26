@@ -3,7 +3,7 @@ import { CLIEngine } from 'eslint';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runEslint = async () => {
+export default async () => {
   const cli = new CLIEngine({ useEslintrc: true });
   const srcPathJs = join(config.src, config.scripts, '**/*.js');
   const patternPathJs = join(config.src, config.patterns, '**/*.js');
@@ -23,5 +23,3 @@ const runEslint = async () => {
     });
   }
 };
-
-export default runEslint;

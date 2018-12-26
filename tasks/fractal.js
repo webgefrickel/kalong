@@ -67,19 +67,14 @@ const fractalInstance = () => {
   return frctl;
 };
 
-const runFractal = async () => {
+export { fractalInstance }; // for develop task
+
+export default async () => {
   const frctl = fractalInstance();
   const builder = frctl.web.builder();
 
-  return new Promise(resolve => {
-    builder.on('error', err => {
-      warn(err.message);
-    });
-    return builder.build().then(() => {
-      resolve();
-    });
+  builder.on('error', err => {
+    warn(err.message);
   });
+  return builder.build();
 };
-
-export { fractalInstance }; // for develop task
-export default runFractal;

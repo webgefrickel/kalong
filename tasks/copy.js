@@ -3,7 +3,7 @@ import { sync } from 'glob';
 import { makeDir, copyFile } from './lib/fs';
 import config from '../kalong.config';
 
-const runCopy = async (opts = {}) => {
+export default async (opts = {}) => {
   const options = {
     input: opts.input || join(config.src, config.images, '**/*'),
     output: opts.output || join(config.dest, config.images),
@@ -29,5 +29,3 @@ const runCopy = async (opts = {}) => {
 
   return Promise.all(copies);
 };
-
-export default runCopy;

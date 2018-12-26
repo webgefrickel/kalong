@@ -5,10 +5,11 @@ import { readFile } from './lib/fs';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runEslint = async () => {
+export default async () => {
   return new Promise(resolve => {
     const files = sync(join(config.styleguide, 'components/preview/*.html'));
 
+    // TODO Refactor await async
     // read the htmlhint config file, and then proceed
     readFile('.htmlhintrc').then(rc => {
       files.forEach(file => {
@@ -33,5 +34,3 @@ const runEslint = async () => {
     resolve();
   });
 };
-
-export default runEslint;

@@ -6,7 +6,7 @@ import { writeFile, makeDir } from './lib/fs';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runSass = async (opts = {}) => {
+export default async (opts = {}) => {
   // set some sane defaults for development
   const options = {
     file: opts.input || join(config.src, config.styles, `${config.main}.scss`),
@@ -24,5 +24,3 @@ const runSass = async (opts = {}) => {
     warn(error);
   }
 };
-
-export default runSass;

@@ -24,8 +24,8 @@
     "node": "^10.14.1"
   },
   "scripts": {
-    "build": "babel-node tasks/build",
-    "start": "babel-node tasks/develop"
+    "start": "babel-node tasks/start",
+    "build": "babel-node tasks/build"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

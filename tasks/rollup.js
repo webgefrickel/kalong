@@ -66,7 +66,7 @@ const customResolve = () => {
   };
 };
 
-const runRollup = async (opts = {}) => {
+export default async (opts = {}) => {
   const options = {
     input: opts.input || join(config.src, config.scripts, 'main.js'),
     plugins: [
@@ -91,6 +91,8 @@ const runRollup = async (opts = {}) => {
     ],
   };
 
+  // TODO Refactor await
+
   return rollup(options).then(bundle =>
     bundle.write({
       sourcemap: opts.sourceMap === undefined ? 'inline' : opts.sourceMap,
@@ -99,5 +101,3 @@ const runRollup = async (opts = {}) => {
     })
   );
 };
-
-export default runRollup;

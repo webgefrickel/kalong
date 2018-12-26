@@ -7,6 +7,54 @@
 //     logger.success(`Fractal styleguide server is now running at ${server.url}`);
 //   });
 // });
+//
+//
+// gulp.task('default', ['styleguide:development', 'serve'], () => {
+//   // when something in the sass-folder changes, recompile sass
+//   gulp.watch(
+//     [
+//       path.join(config.src, config.patterns, '**/*.scss'),
+//       path.join(config.src, config.styles, '**/*.scss'),
+//     ],
+//     ['lint:styles:development', 'styles:development']
+//   );
+
+//   // any changes to the images-folder? copy them
+//   gulp.watch(
+//     path.join(
+//       config.src,
+//       config.images,
+//       '**/*.{png,gif,jpg,svg,webp,ico}'
+//     ),
+//     ['copy:images']
+//   );
+
+//   // if icons change, regenerate the sprite
+//   gulp.watch(path.join(config.src, config.icons, '**/*.{svg,yml}'), [
+//     'sprite',
+//     'copy:icons',
+//   ]);
+
+//   // watch the javacsript folder for changes, then watchify and lint
+//   gulp.watch(
+//     [
+//       path.join(config.src, config.patterns, '**/*.js'),
+//       path.join(config.src, config.scripts, '**/*.js'),
+//     ],
+//     ['lint:scripts:development', 'scripts:development']
+//   );
+
+//   // add a watcher to the sericeworker script
+//   gulp.watch(
+//     [path.join(config.src, config.scripts, 'serviceworker.js')],
+//     ['lint:scripts:development', 'serviceworker']
+//   );
+
+//   // if any fonts change -- copy them
+//   gulp.watch(path.join(config.src, config.fonts, '**/*.{woff,woff2}'), [
+//     'copy:fonts',
+//   ]);
+// });
 
 import { join } from 'path';
 import browserSync from 'browser-sync';
@@ -49,18 +97,13 @@ const watchSwitch = async file => {
 
 const watch = async () => {
   const watcher = chokidar.watch(config.src, { ignored: /(^|[/\\])\../ });
-  console.log(server);
-
   watcher.on('ready', () => {
-    console.log(`Watching files in ${config.src}…`);
     watcher.on('add', watchSwitch);
     watcher.on('unlink', watchSwitch);
     watcher.on('change', watchSwitch);
   });
 };
 
-const develop = () => {
-  watch();
-};
-
-develop();
+(async () => {
+  await watch();
+})();

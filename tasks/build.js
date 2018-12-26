@@ -52,10 +52,10 @@ const styles = async () => {
   ]);
 };
 
-const preBuild = () => Promise.all([run(clean), run(sassLint), run(eslint)]);
-const compileAssets = () => Promise.all([run(styles), run(scripts), run(svgSprite)]);
+const preBuild = async () => Promise.all([run(clean), run(sassLint), run(eslint)]);
+const compileAssets = async () => Promise.all([run(styles), run(scripts), run(svgSprite)]);
 
-const copyAssets = () =>
+const copyAssets = async () =>
   Promise.all([
     run(copy), // no options: copy images,
     run(copy, {
@@ -65,7 +65,7 @@ const copyAssets = () =>
     }),
   ]);
 
-const copyStyleguide = () =>
+const copyStyleguide = async () =>
   // copy all styleguide files to the pattern library
   Promise.all([
     run(copy, {

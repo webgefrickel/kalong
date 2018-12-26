@@ -7,7 +7,7 @@ import { readFile, writeFile } from './lib/fs';
 import warn from './lib/warn';
 import config from '../kalong.config';
 
-const runPostcss = async (opts = {}) => {
+export default async (opts = {}) => {
   const options = {
     input: opts.input || join(config.dest, config.styles, `${config.main}.css`),
     sourceMap: opts.sourceMap === undefined,
@@ -25,6 +25,7 @@ const runPostcss = async (opts = {}) => {
   // if no output file is specified, use the input, overwriting same file
   options.output = opts.output || options.input;
 
+  // TODO Refactor await
   return new Promise(resolve => {
     readFile(options.input).then(css => {
       postcss(options.plugins)
@@ -50,5 +51,3 @@ const runPostcss = async (opts = {}) => {
     });
   });
 };
-
-export default runPostcss;
