@@ -22,7 +22,7 @@
   $font: null;
 
   @if variable-exists(fonts) == false {
-    @warn '$fonts Sass-map does not exist, please provide one in your config. Defaulting to sans-serf';
+    @warn '$fonts Sass-map does not exist, please provide one in your config. Defaulting to sans-serif';
     $fallback: sans-serif;
     $font: sans-serif;
   } @else if map-has-key($fonts, $family-value) == false {
@@ -30,9 +30,7 @@
     $fallback: sans-serif;
     $font: sans-serif;
   } @else {
-    $fallback: unquote(
-      map-get(map-get($fonts, $family-value), fallback)
-    );
+    $fallback: unquote(map-get(map-get($fonts, $family-value), fallback));
     $font: map-get(map-get($fonts, $family-value), family), $fallback;
   }
 
@@ -73,9 +71,7 @@
   } @else if map-has-key($fonts, $family-value) == false {
     @warn 'Index "#{$family-value}" not found in $fonts Sass map using mixin font-style. Defaulting to normal';
   } @else {
-    $this-font-style: unquote(
-      map-get(map-get($fonts, $family-value), style)
-    );
+    $this-font-style: unquote(map-get(map-get($fonts, $family-value), style));
   }
 
   font-style: $this-font-style;

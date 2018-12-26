@@ -1,7 +1,5 @@
 import config from '../../kalong.config.js';
 
-// TODO overhaul this script
-
 // Update 'version' if you need to refresh the cache
 const cacheVersion = config.version;
 const assetsPath = config.dest.replace(config.root, '/');

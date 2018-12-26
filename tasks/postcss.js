@@ -25,29 +25,21 @@ export default async (opts = {}) => {
   // if no output file is specified, use the input, overwriting same file
   options.output = opts.output || options.input;
 
-  // TODO Refactor await
-  return new Promise(resolve => {
-    readFile(options.input).then(css => {
-      postcss(options.plugins)
-        .process(css, {
-          from: options.input,
-          to: options.output,
-          map: options.sourceMap ? { inline: options.sourceMap } : false,
-        })
-        .then(result => {
-          result.warnings().forEach(warn => {
-            warn(warn.toString());
-          });
-
-          writeFile(options.output, result.css)
-            .then(() => {
-              resolve();
-            })
-            .catch(error => {
-              warn(error);
-            });
-        })
-        .catch(error => warn(error));
+  try {
+    const css = await readFile(options.input);
+    const result = await postcss(options.plugins).process(css, {
+      from: options.input,
+      to: options.output,
+      map: options.sourceMap ? { inline: options.sourceMap } : false,
     });
-  });
+
+    if (result.warnings().length) {
+      result.warnings().forEach(warn => {
+        warn(warn.toString());
+      });
+    }
+    await writeFile(options.output, result.css);
+  } catch (error) {
+    warn(error);
+  }
 };

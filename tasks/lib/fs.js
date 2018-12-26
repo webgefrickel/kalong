@@ -11,11 +11,6 @@ export const writeFile = (file, contents) =>
     fs.writeFile(file, contents, 'utf8', error => (error ? reject(error) : resolve()));
   });
 
-export const renameFile = (src, dest) =>
-  new Promise((resolve, reject) => {
-    fs.rename(src, dest, error => (error ? reject(error) : resolve()));
-  });
-
 export const copyFile = (src, dest) =>
   new Promise((resolve, reject) => {
     let cbCalled = false;
@@ -47,7 +42,6 @@ export const makeDir = name =>
 export default {
   readFile,
   writeFile,
-  renameFile,
   copyFile,
   makeDir,
 };

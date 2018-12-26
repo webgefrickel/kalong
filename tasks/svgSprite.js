@@ -34,14 +34,15 @@ export default async (opts = {}) => {
     );
   });
 
-  // TODO refactor await
-  sprite.compile((error, result) => {
-    return Promise.all([
-      makeDir(dirname(options.dest)),
-      writeFile(
+  try {
+    sprite.compile(async (error, result) => {
+      await makeDir(dirname(options.dest));
+      await writeFile(
         opts.output || join(config.src, config.images, 'sprite.svg'),
         result.symbol.sprite.contents
-      ),
-    ]).catch(error => warn(error));
-  });
+      );
+    });
+  } catch (error) {
+    warn(error);
+  }
 };

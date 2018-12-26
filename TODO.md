@@ -1,4 +1,2 @@
-- mirror-task
 - gleiche api für file-input / options bei allen tasks
-- browsersync.watch vs. chokidar
 - serviceworker vs. scripts / main-input?

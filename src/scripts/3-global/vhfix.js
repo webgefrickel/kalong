@@ -4,11 +4,10 @@ export default () => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
   };
 
+  setVh();
   window.addEventListener('resize', () => {
     window.requestAnimationFrame(() => {
       setVh();
     });
   });
-
-  setVh();
 };

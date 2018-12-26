@@ -1,14 +1,17 @@
-import mediaqueries from '~config/mediaqueries';
+import { mediaqueries } from '~config/mediaqueries';
 
-// same usage as the mediaquery-scss-mixin, just
-// provide the shortcode used in the scss-file and if it
-// is a custom query. this module return true if the
-// given breakpoint matches or false if it doesnt
+// same usage as the mediaquery-scss-mixin, just provide the
+// shortcode used in the scss-file. this module will return true
+// if the given mediaquery matches
 export default shortcode => {
-  console.log(mediaqueries);
-  const custom = false;
+  const queryValue = mediaqueries[shortcode];
+  let mediaquery;
 
-  const query = custom ? mediaqueries[shortcode] : `(min-width: ${mediaqueries[shortcode]}px)`;
+  if (Number.isInteger(queryValue)) {
+    mediaquery = `(min-width: ${queryValue}px)`;
+  } else {
+    mediaquery = queryValue;
+  }
 
-  return window.matchMedia(query).matches;
+  return window.matchMedia(mediaquery).matches;
 };

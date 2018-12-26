@@ -1,5 +1,5 @@
-import Observer from '~module/fontfaceobserver/fontfaceobserver';
-import fonts from '~config/fonts';
+import FontFaceObserver from 'fontfaceobserver';
+import { fonts } from '~config/fonts';
 
 export default () => {
   const fontObservers = [];
@@ -14,7 +14,7 @@ export default () => {
 
     if (f.fontface) {
       fontObservers.push(
-        new Observer(f.family.replace(/'/g, ''), {
+        new FontFaceObserver(f.family.replace(/'/g, ''), {
           weight: f.weight,
           style: f.style,
         })

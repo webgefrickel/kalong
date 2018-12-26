@@ -1,67 +1,14 @@
-// TODO
-// gulp.task('styleguide:development', () => {
-//   const server = frctl.web.server({ sync: true });
-
-//   server.on('error', err => logger.error(err.message));
-//   return server.start().then(() => {
-//     logger.success(`Fractal styleguide server is now running at ${server.url}`);
-//   });
-// });
-//
-//
-// gulp.task('default', ['styleguide:development', 'serve'], () => {
-//   // when something in the sass-folder changes, recompile sass
-//   gulp.watch(
-//     [
-//       path.join(config.src, config.patterns, '**/*.scss'),
-//       path.join(config.src, config.styles, '**/*.scss'),
-//     ],
-//     ['lint:styles:development', 'styles:development']
-//   );
-
-//   // any changes to the images-folder? copy them
-//   gulp.watch(
-//     path.join(
-//       config.src,
-//       config.images,
-//       '**/*.{png,gif,jpg,svg,webp,ico}'
-//     ),
-//     ['copy:images']
-//   );
-
-//   // if icons change, regenerate the sprite
-//   gulp.watch(path.join(config.src, config.icons, '**/*.{svg,yml}'), [
-//     'sprite',
-//     'copy:icons',
-//   ]);
-
-//   // watch the javacsript folder for changes, then watchify and lint
-//   gulp.watch(
-//     [
-//       path.join(config.src, config.patterns, '**/*.js'),
-//       path.join(config.src, config.scripts, '**/*.js'),
-//     ],
-//     ['lint:scripts:development', 'scripts:development']
-//   );
-
-//   // add a watcher to the sericeworker script
-//   gulp.watch(
-//     [path.join(config.src, config.scripts, 'serviceworker.js')],
-//     ['lint:scripts:development', 'serviceworker']
-//   );
-
-//   // if any fonts change -- copy them
-//   gulp.watch(path.join(config.src, config.fonts, '**/*.{woff,woff2}'), [
-//     'copy:fonts',
-//   ]);
-// });
-
 import { join } from 'path';
 import browserSync from 'browser-sync';
 import chokidar from 'chokidar';
+import { fractalInstance } from './fractal';
+import copy from './copy';
+import eslint from './eslint';
+import postcss from './postcss';
+import rollup from './rollup';
 import sass from './sass';
 import sassLint from './sassLint';
-import postcss from './postcss';
+import svgSprite from './svgSprite';
 import run from './lib/run';
 import warn from './lib/warn';
 import config from '../kalong.config';
@@ -73,25 +20,96 @@ const server = browserSync({
   notify: false, // hide that info-popup from browsersync
 });
 
+const fractalServer = fractalInstance().web.server({ sync: true });
+fractalServer.on('error', err => warn(err.message));
+fractalServer.start().then(() => {
+  console.log(`Fractal styleguide server is now running at ${fractalServer.url}`);
+});
+
 const watchSwitch = async file => {
   const fileExtension = file.substr(file.lastIndexOf('.') + 1);
-  console.log(file, 'file changed');
-  console.log(fileExtension, 'file extension');
+  const isServiceworker = file.indexOf('serviceworker') > -1;
+  const isLegacy = file.indexOf(`${config.main}.legacy`) > -1;
 
-  switch (fileExtension) {
-    case 'scss':
-      try {
-        await run(sassLint);
-        await run(sass);
-        await run(postcss);
-        server.reload(`/${config.assets}${config.styles}${config.main}.css`);
-      } catch (error) {
-        warn(error);
-      }
-      break;
-    default:
-      // do nothing
-      break;
+  if (!isLegacy && !isServiceworker) {
+    switch (fileExtension) {
+      case 'scss':
+        try {
+          await run(sassLint);
+          await run(sass);
+          await run(postcss);
+          server.reload(`/${config.assets}${config.styles}${config.main}.css`);
+        } catch (error) {
+          warn(error);
+        }
+        break;
+
+      case 'js':
+        try {
+          await run(eslint);
+          await run(rollup);
+          server.reload(`/${config.assets}${config.scripts}${config.main}.js`);
+        } catch (error) {
+          warn(error);
+        }
+        break;
+
+      case 'json':
+        try {
+          await run(rollup);
+          await run(sass);
+          await run(postcss);
+        } catch (error) {
+          warn(error);
+        }
+        break;
+
+      case 'woff':
+      case 'woff2':
+        await run(copy, {
+          // copy fonts
+          input: join(config.src, config.fonts, '*.{woff,woff2}'),
+          output: join(config.dest, config.fonts),
+        });
+        break;
+
+      case 'svg':
+        await run(svgSprite);
+        await run(copy);
+        server.reload();
+        break;
+
+      case 'png':
+      case 'gif':
+      case 'jpg':
+      case 'webp':
+      case 'ico':
+        await run(copy);
+        server.reload();
+        break;
+
+      default:
+        server.reload();
+        break;
+    }
+  }
+
+  // two special cases: legacy script and serviceworker
+  if (isServiceworker) {
+    await run(rollup, {
+      input: join(config.src, config.scripts, 'serviceworker.js'),
+      output: join(config.root, `serviceworker.js`),
+      sourceMap: false,
+    });
+    server.reload();
+  }
+
+  if (isLegacy) {
+    await run(copy, {
+      input: join(config.src, config.scripts, `${config.main}.legacy.js`),
+      output: join(config.dest, config.scripts),
+    });
+    server.reload();
   }
 };
 

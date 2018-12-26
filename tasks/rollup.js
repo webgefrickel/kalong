@@ -6,6 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import nodeResolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
 import terser from 'rollup-plugin-terser';
+import warn from './lib/warn';
 import config from '../kalong.config';
 
 const walk = (dir, filter) => {
@@ -91,13 +92,14 @@ export default async (opts = {}) => {
     ],
   };
 
-  // TODO Refactor await
-
-  return rollup(options).then(bundle =>
+  try {
+    const bundle = await rollup(options);
     bundle.write({
       sourcemap: opts.sourceMap === undefined ? 'inline' : opts.sourceMap,
       format: 'iife',
       file: opts.output || join(config.dest, config.scripts, 'main.js'),
-    })
-  );
+    });
+  } catch (error) {
+    warn(error);
+  }
 };
