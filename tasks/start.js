@@ -34,34 +34,22 @@ const watchSwitch = async file => {
   if (!isLegacy && !isServiceworker) {
     switch (fileExtension) {
       case 'scss':
-        try {
-          await run(sassLint);
-          await run(sass);
-          await run(postcss);
-          server.reload(`/${config.assets}${config.styles}${config.main}.css`);
-        } catch (error) {
-          warn(error);
-        }
+        await run(sassLint);
+        await run(sass);
+        await run(postcss);
+        server.reload(`/${config.assets}${config.styles}${config.main}.css`);
         break;
 
       case 'js':
-        try {
-          await run(eslint);
-          await run(rollup);
-          server.reload(`/${config.assets}${config.scripts}${config.main}.js`);
-        } catch (error) {
-          warn(error);
-        }
+        await run(eslint);
+        await run(rollup);
+        server.reload(`/${config.assets}${config.scripts}${config.main}.js`);
         break;
 
       case 'json':
-        try {
-          await run(rollup);
-          await run(sass);
-          await run(postcss);
-        } catch (error) {
-          warn(error);
-        }
+        await run(rollup);
+        await run(sass);
+        await run(postcss);
         break;
 
       case 'woff':
@@ -71,6 +59,7 @@ const watchSwitch = async file => {
           input: join(config.src, config.fonts, '*.{woff,woff2}'),
           output: join(config.dest, config.fonts),
         });
+        server.reload();
         break;
 
       case 'svg':
