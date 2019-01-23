@@ -156,7 +156,32 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-621345dc19cef9852c8e44225508cff4-panel-html">
     <code class="Code Code--lang-html">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/main.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="undefined">
+        <pre><span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-keyword">var</span> modern = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'modern-browsers'</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.matchMedia &amp;&amp; <span class="hljs-built_in">window</span>.matchMedia(mq.media).matches;
+    };
+    <span class="hljs-keyword">var</span> loadJs = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
+        <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'script'</span>)[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+        script.src = src;
+        script.async = <span class="hljs-literal">true</span>;
+        ref.parentNode.insertBefore(script, ref);
+    };
+    <span class="hljs-keyword">var</span> loadCss = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
+        <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">var</span> style = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
+        style.href = src;
+        style.rel = <span class="hljs-string">'stylesheet'</span>;
+        head.append(style);
+    };
+    <span class="hljs-keyword">if</span> (modern()) {
+        loadJs(<span class="hljs-string">"../../scripts/main.min.js?v=1548262210333"</span>);
+    } <span class="hljs-keyword">else</span> {
+        loadCSS(<span class="hljs-string">"../../styles/main.legacy.css?v=1548262210333"</span>);
+        loadJs(<span class="hljs-string">"../../scripts/main.legacy.min.js?v=1548262210333"</span>);
+    }
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
@@ -179,15 +204,15 @@
       var loadCss = function (src) { var ref = document.getElementsByTagName('head')[0]; var style = document.createElement('link'); style.href = src; style.rel = 'stylesheet'; head.append(style); };
 
       if (modern()) {
-        loadJs("</span><span class="hljs-template-variable">{{ '/scripts/main.min.js' | path }}</span><span class="xml">");
+        loadJs("</span><span class="hljs-template-variable">{{ '/scripts/main.min.js' | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ hash }}</span><span class="xml">");
         {# if you want to use the serviceworker, uncomment this
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/serviceworker.js');
+          navigator.serviceWorker.register('/serviceworker.js?v=</span><span class="hljs-template-variable">{{ hash }}</span><span class="xml">');
         }
         #}
       } else {
-        loadCSS("</span><span class="hljs-template-variable">{{ '/styles/main.legacy.css' | path }}</span><span class="xml">");
-        loadJs("</span><span class="hljs-template-variable">{{ '/scripts/main.legacy.min.js' | path }}</span><span class="xml">");
+        loadCSS("</span><span class="hljs-template-variable">{{ '/styles/main.legacy.css' | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ hash }}</span><span class="xml">");
+        loadJs("</span><span class="hljs-template-variable">{{ '/scripts/main.legacy.min.js' | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ hash }}</span><span class="xml">");
       }
     </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   {% endif %}
@@ -207,8 +232,9 @@
     <code class="Code Code--lang-yaml">
         
             
-            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
+            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">hash:</span> <span class="hljs-number">1548262210333</span>
 <span class="hljs-attr">config:</span>
 <span class="hljs-attr">  config:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
@@ -634,7 +660,7 @@
         
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="color.html" data-pjax>
-                <span>Color</span>
+                <span>Colors</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -658,7 +684,31 @@
         
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="font.html" data-pjax>
-                <span>Font</span>
+                <span>Fonts & Typefaces</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="font-size.html" data-pjax>
+                <span>Font Sizes</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -682,7 +732,7 @@
         
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="icon.html" data-pjax>
-                <span>Icon</span>
+                <span>Icons & Sprites</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -779,6 +829,30 @@
     
 
             </ul>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="flow.html" data-pjax>
+                <span>Flow</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
         </li>
         
     

@@ -157,7 +157,7 @@
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js  fonts-loaded"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
@@ -168,20 +168,50 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../images/apple-touch-icon.png"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../images/favicon-32x32.png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../images/favicon-16x16.png"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/site.webmanifest"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../images/safari-pinned-tab.svg"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#f00"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#f00"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#f00"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/site.webmanifest"</span> /&gt;</span>
 
     <span class="hljs-comment">&lt;!-- add any og/twitter-card stuff here --&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.css"</span> /&gt;</span>
-
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.min.css?v=1548262210333"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
+        only print,
+        only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
+        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        "</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/fonts/roboto-regular.woff2"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"font/woff2"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/main.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+        <span class="hljs-keyword">var</span> modern = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+            <span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'modern-browsers'</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.matchMedia &amp;&amp; <span class="hljs-built_in">window</span>.matchMedia(mq.media).matches;
+        };
+        <span class="hljs-keyword">var</span> loadJs = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
+            <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'script'</span>)[<span class="hljs-number">0</span>];
+            <span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
+            script.src = src;
+            script.async = <span class="hljs-literal">true</span>;
+            ref.parentNode.insertBefore(script, ref);
+        };
+        <span class="hljs-keyword">var</span> loadCss = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
+            <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>];
+            <span class="hljs-keyword">var</span> style = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
+            style.href = src;
+            style.rel = <span class="hljs-string">'stylesheet'</span>;
+            head.append(style);
+        };
+        <span class="hljs-keyword">if</span> (modern()) {
+            loadJs(<span class="hljs-string">"../../scripts/main.min.js?v=1548262210333"</span>);
+        } <span class="hljs-keyword">else</span> {
+            loadCSS(<span class="hljs-string">"../../styles/main.legacy.css?v=1548262210333"</span>);
+            loadJs(<span class="hljs-string">"../../scripts/main.legacy.min.js?v=1548262210333"</span>);
+        }
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 
@@ -210,8 +240,9 @@
     <code class="Code Code--lang-yaml">
         
             
-            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
+            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">hash:</span> <span class="hljs-number">1548262210333</span>
 <span class="hljs-attr">config:</span>
 <span class="hljs-attr">  config:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
@@ -637,7 +668,7 @@
         
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="color.html" data-pjax>
-                <span>Color</span>
+                <span>Colors</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -661,7 +692,31 @@
         
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="font.html" data-pjax>
-                <span>Font</span>
+                <span>Fonts & Typefaces</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="font-size.html" data-pjax>
+                <span>Font Sizes</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -685,7 +740,7 @@
         
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="icon.html" data-pjax>
-                <span>Icon</span>
+                <span>Icons & Sprites</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -782,6 +837,30 @@
     
 
             </ul>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="flow.html" data-pjax>
+                <span>Flow</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
         </li>
         
     

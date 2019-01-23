@@ -9,23 +9,28 @@
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon.png' | path }}" />
     <link rel="icon" type="image/png" href="{{ '/images/favicon-32x32.png' | path }}" sizes="32x32" />
     <link rel="icon" type="image/png" href="{{ '/images/favicon-16x16.png' | path }}" sizes="16x16" />
-    <link rel="manifest" href="/site.webmanifest" />
     <link rel="mask-icon" href="{{ '/images/safari-pinned-tab.svg' | path }}" color="{{ site.themecolor }}" />
     <meta name="msapplication-TileColor" content="{{ site.themecolor }}">
     <meta name="theme-color" content="{{ site.themecolor }}" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- add any og/twitter-card stuff here -->
 
-    {% if debug %}
+    {%- if debug %}
       <link rel="stylesheet" href="{{ '/styles/main.css' | path }}" />
-    {% else %}
+    {%- else %}
       {# (Edge doesn't apply to print otherwise) Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+ FF 47+ #}
-      <link id="modern-browsers" rel="stylesheet" href="{{ '/styles/main.min.css' | path }}" media="
+      <link id="modern-browsers" rel="stylesheet" href="{{ '/styles/main.min.css' | path }}?v={{ hash }}" media="
         only print,
         only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
         " />
-      <link rel="preload" href="{{ '/fonts/roboto-regular.woff2' | path }}" as="font" type="font/woff2" crossorigin />
-    {% endif %}
+
+      {%- for font, config in config.fonts.fonts %}
+        {%- if config.fontface %}
+          <link rel="preload" href="{{ '/fonts/' + config.file + '.woff2' | path }}" as="font" type="font/woff2" crossorigin />
+        {%- endif %}
+      {%- endfor %}
+    {%- endif %}
   </head>
   <body>

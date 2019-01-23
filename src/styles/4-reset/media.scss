@@ -17,7 +17,3 @@ video {
   max-width: 100%;
   height: auto;
 }
-
-figure {
-  @include margin(a 0, b 1);
-}

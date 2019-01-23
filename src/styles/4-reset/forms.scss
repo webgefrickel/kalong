@@ -38,7 +38,7 @@ select {
 
 // no border/padding/margin for the fieldset
 fieldset {
-  @include margin(a 0, b 1);
+  margin: 0;
   padding: 0;
   border: 0;
 }

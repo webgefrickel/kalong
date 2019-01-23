@@ -8,15 +8,15 @@
       var loadCss = function (src) { var ref = document.getElementsByTagName('head')[0]; var style = document.createElement('link'); style.href = src; style.rel = 'stylesheet'; head.append(style); };
 
       if (modern()) {
-        loadJs("{{ '/scripts/main.min.js' | path }}");
+        loadJs("{{ '/scripts/main.min.js' | path }}?v={{ hash }}");
         {# if you want to use the serviceworker, uncomment this
         if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/serviceworker.js');
+          navigator.serviceWorker.register('/serviceworker.js?v={{ hash }}');
         }
         #}
       } else {
-        loadCSS("{{ '/styles/main.legacy.css' | path }}");
-        loadJs("{{ '/scripts/main.legacy.min.js' | path }}");
+        loadCSS("{{ '/styles/main.legacy.css' | path }}?v={{ hash }}");
+        loadJs("{{ '/scripts/main.legacy.min.js' | path }}?v={{ hash }}");
       }
     </script>
   {% endif %}
