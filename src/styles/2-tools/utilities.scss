@@ -1,13 +1,10 @@
-// general helper functions
-// ======================================================================
-
 @function px-to-rem($pxvalue) {
   @if variable-exists(font-sizes) == false {
-    @warn '$font-sizes Sass-map does not exist, please provide one in your config. Defaulting to 16px-rem-equivalent';
-    @return ($pxvalue / 16px) * 1rem;
+    @warn '$font-sizes Sass-map does not exist, please provide one in your config. Defaulting to base-font-size-equivalent';
+    @return ($pxvalue / $base-font-size) * 1rem;
   } @else if map-has-key($font-sizes, default) == false {
-    @warn 'Index "default" not found in $font-sizes Sass-map using function px-to-rem. Defaulting to 16px-rem-equivalent';
-    @return ($pxvalue / 16px) * 1rem;
+    @warn 'Index "default" not found in $font-sizes Sass-map using function px-to-rem. Defaulting to base-font-size-equivalent';
+    @return ($pxvalue / $base-font-size) * 1rem;
   }
 
   @return ($pxvalue / map-get($font-sizes, default)) * 1rem;
@@ -16,6 +13,11 @@
 // returns true if it is just a number without unit
 @function is-number($value) {
   @return type-of($value) == 'number' and unitless($value);
+}
+
+// checks if a value is given as pixels, e.g. 16px
+@function is-px-value($value) {
+  @return type-of($value) == 'number' and index('px', unit($value)) != null;
 }
 
 // if a unitless number is given, this function returns $base-unit * value

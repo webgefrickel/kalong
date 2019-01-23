@@ -1,8 +1,8 @@
 // base unit definition and width/heights for other stuff
-$base-font-size: 16px;
-$base-line-height: 1.5;
+$base-font-size: map-get($font-sizes, default) !default;
+$base-line-height: 1.5 !default;
+$base-unit: 1rem * $base-line-height !default;
 
-$base-unit: 1rem * $base-line-height;
 $base-half: $base-unit / 2;
 $base-third: $base-unit / 3;
 $base-quart: $base-unit / 4;

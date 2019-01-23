@@ -1,12 +1,6 @@
-$animation-ease-default: ease-in;
-$animation-transition-properties: transform opacity;
-$animation-time-fast: 0.15s;
-$animation-time-default: 0.3s;
-$animation-time-slow: 0.6s;
-
 @mixin transition(
   $props: $animation-transition-properties,
-  $time: $animation-time-default,
+  $duration: $animation-duration-default,
   $ease: $animation-ease-default
 ) {
   $transition: '';
@@ -15,14 +9,32 @@ $animation-time-slow: 0.6s;
   @each $p in $props {
     // we do not need the comma, if we are just starting to combine the string
     @if $transition == '' {
-      $transition: '#{$p} #{$time} #{$ease}';
+      $transition: '#{$p} #{$duration} #{$ease}';
       $will-change: '#{$p}';
     } @else {
-      $transition: '#{$transition}, #{$p} #{$time} #{$ease}';
+      $transition: '#{$transition}, #{$p} #{$duration} #{$ease}';
       $will-change: '#{$will-change}, #{$p}';
     }
   }
 
   will-change: #{$will-change};
   transition: #{$transition};
+}
+
+@mixin animation(
+  $name: $animation-name,
+  $duration: $animation-time-default,
+  $ease: $animation-ease-default,
+  $delay: 0s,
+  $iteration: 1,
+  $direction: normal,
+  $fill: both
+) {
+  animation: #{$name} #{$duration} #{$ease} #{$delay} #{$iteration} #{$direction};
+  animation-fill-mode: $fill;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+    animation-fill-mode: none;
+  }
 }

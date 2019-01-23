@@ -18,6 +18,7 @@ fs.readdirSync(path.join(config.src, config.icons))
   });
 
 module.exports = {
+  label: 'Icons & Sprites',
   status: 'done',
   default: 'default',
   collated: true,

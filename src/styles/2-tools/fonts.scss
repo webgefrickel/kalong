@@ -2,13 +2,19 @@
 @function font-size($fontsize-value: default) {
   @if variable-exists(font-sizes) == false {
     @warn '$font-sizes Sass-map does not exist, please provide one in your config. Defaulting to 16px';
-    @return px-to-rem(16px);
+    @return px-to-rem($base-font-size);
   } @else if map-has-key($font-sizes, $fontsize-value) == false {
     @warn 'Index "#{$fontsize-value}" not found in $font-sizes Sass-map using function font-size. Defaulting to 16px';
-    @return px-to-rem(16px);
+    @return px-to-rem($base-font-size);
   }
 
-  @return px-to-rem(map-get($font-sizes, $fontsize-value));
+  $val: map-get($font-sizes, $fontsize-value);
+
+  @if is-px-value($val) {
+    @return px-to-rem($val);
+  } @else {
+    @return $val;
+  }
 }
 
 // font-size mixin using the function above

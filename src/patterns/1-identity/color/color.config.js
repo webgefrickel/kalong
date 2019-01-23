@@ -2,6 +2,7 @@
 const colors = require('../../../config/colors');
 
 module.exports = {
+  label: 'Colors',
   status: 'done',
   notes: `Use the color-functions and mixins in Sass to use those colors, for example:
     <pre>
@@ -13,6 +14,6 @@ module.exports = {
     See src/styles/2-tools/colors.scss.
     `,
   context: {
-    colors: colors.colors
-  }
+    colors: colors.colors,
+  },
 };

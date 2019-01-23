@@ -2,6 +2,7 @@
 const fonts = require('../../../config/fonts');
 
 module.exports = {
+  label: 'Fonts & Typefaces',
   status: 'done',
   notes: `Use the font-functions and mixins in Sass to use the fonts, for example:
     <pre>
