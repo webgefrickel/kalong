@@ -156,32 +156,7 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-621345dc19cef9852c8e44225508cff4-panel-html">
     <code class="Code Code--lang-html">
         
-        <pre><span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> modern = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'modern-browsers'</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.matchMedia &amp;&amp; <span class="hljs-built_in">window</span>.matchMedia(mq.media).matches;
-    };
-    <span class="hljs-keyword">var</span> loadJs = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
-        <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'script'</span>)[<span class="hljs-number">0</span>];
-        <span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
-        script.src = src;
-        script.async = <span class="hljs-literal">true</span>;
-        ref.parentNode.insertBefore(script, ref);
-    };
-    <span class="hljs-keyword">var</span> loadCss = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
-        <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>];
-        <span class="hljs-keyword">var</span> style = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
-        style.href = src;
-        style.rel = <span class="hljs-string">'stylesheet'</span>;
-        head.append(style);
-    };
-    <span class="hljs-keyword">if</span> (modern()) {
-        loadJs(<span class="hljs-string">"../../scripts/main.min.js?v=1548262210333"</span>);
-    } <span class="hljs-keyword">else</span> {
-        loadCSS(<span class="hljs-string">"../../styles/main.legacy.css?v=1548262210333"</span>);
-        loadJs(<span class="hljs-string">"../../scripts/main.legacy.min.js?v=1548262210333"</span>);
-    }
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/main.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="undefined">
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
@@ -232,9 +207,9 @@
     <code class="Code Code--lang-yaml">
         
             
-            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">null</span>
+            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">hash:</span> <span class="hljs-number">1548262210333</span>
+<span class="hljs-attr">hash:</span> <span class="hljs-number">1548262343470</span>
 <span class="hljs-attr">config:</span>
 <span class="hljs-attr">  config:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>

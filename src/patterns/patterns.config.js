@@ -5,7 +5,7 @@ const mediaqueries = require('../config/mediaqueries');
 
 module.exports = {
   context: {
-    debug: false,
+    debug: true,
     styleguide: true,
     hash: new Date().getTime(),
     config: {
