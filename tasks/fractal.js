@@ -1,16 +1,16 @@
 import { join } from 'path';
 import fractal from '@frctl/fractal';
 import nunjucks from '@frctl/nunjucks';
-import theme from 'kalong-frctl';
 import warn from './lib/warn';
+import styleguide from '../styleguide';
 import config from '../kalong.config';
 
 const fractalInstance = () => {
   const frctl = fractal.create();
   const engine = nunjucks({ paths: [`.${config.src}${config.patterns}`] });
-  const collator = markup => `<div class="styleguide-pattern-wrapper">\n${markup}\n</div>\n`;
 
-  frctl.set('project.title', `${config.title}—Styleguide, v${config.version}`);
+  frctl.set('project.title', `${config.title}—Styleguide`);
+  frctl.set('project.version', `v${config.version}`);
 
   frctl.docs.engine(engine);
   frctl.docs.set('path', join(config.src, config.docs));
@@ -29,17 +29,16 @@ const fractalInstance = () => {
     },
   });
 
-  frctl.web.theme(theme());
+  frctl.web.theme(styleguide);
   frctl.web.set('static.path', join(config.dest));
   frctl.web.set('builder.dest', join(config.styleguide));
 
   frctl.components.engine(engine);
   frctl.components.set('default.preview', '@preview');
-  frctl.components.set('default.collated', true);
+  frctl.components.set('default.collated', false);
   frctl.components.set('ext', '.html');
   frctl.components.set('label', 'Patterns');
   frctl.components.set('path', join(config.src, config.patterns));
-  frctl.components.set('default.collator', collator);
   frctl.components.set('default.status', 'prototype');
   frctl.components.set('statuses', {
     prototype: {

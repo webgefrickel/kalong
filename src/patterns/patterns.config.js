@@ -1,6 +1,7 @@
-const config = require('../../kalong.config.js');
-const fonts = require('../config/fonts.json');
-const mediaqueries = require('../config/mediaqueries.json');
+const config = require('../../kalong.config');
+const fonts = require('../config/fonts');
+const colors = require('../config/colors');
+const mediaqueries = require('../config/mediaqueries');
 
 module.exports = {
   context: {
@@ -14,9 +15,9 @@ module.exports = {
     site: {
       lang: 'en',
       dir: 'ltr',
-      title: config.title + '—Styleguide, v' + config.version,
+      title: config.title + '—Styleguide',
       description: '',
-      themecolor: '#000000',
+      themecolor: colors.colors.main,
       modifiers: '', // global css-classes, applied to <html>
     },
     globals: {

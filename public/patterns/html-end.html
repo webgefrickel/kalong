@@ -1,28 +1,23 @@
   {% if debug %}
     <script src="{{ '/scripts/main.js' | path }}" defer></script>
-
-
-
-
-    {# TODO try different modern js loading approach #}
-
-
-
   {% else %}
     <!-- load legacy js code for browsers that do not support es2017+ -->
     <script>
-      var modern = function() { try { new Function("(a = 0) => a"); return true; } catch (err) { return false; } }();
-      var loadJs = function(src, cb) { "use strict"; var ref = document.getElementsByTagName("script")[0]; var script = document.createElement("script"); script.src = src; script.async = true; ref.parentNode.insertBefore(script, ref); if (cb && typeof(cb) === "function") { script.onload = cb; } return script; };
-      if (modern) {
+      var modern = function() { var mq = document.getElementById('modern-browsers'); return window.matchMedia && window.matchMedia(mq.media).matches; };
+      var loadJs = function(src) { var ref = document.getElementsByTagName('script')[0]; var script = document.createElement('script'); script.src = src; script.async = true; ref.parentNode.insertBefore(script, ref); };
+      var loadCss = function (src) { var ref = document.getElementsByTagName('head')[0]; var style = document.createElement('link'); style.href = src; style.rel = 'stylesheet'; head.append(style); };
+
+      if (modern()) {
         loadJs("{{ '/scripts/main.min.js' | path }}");
+        {# if you want to use the serviceworker, uncomment this
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.register('/serviceworker.js');
+        }
+        #}
       } else {
+        loadCSS("{{ '/styles/main.legacy.css' | path }}");
         loadJs("{{ '/scripts/main.legacy.min.js' | path }}");
       }
-      {# if you want to use the serviceworker, uncomment this
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/serviceworker.js');
-      }
-      #}
     </script>
   {% endif %}
   </body>

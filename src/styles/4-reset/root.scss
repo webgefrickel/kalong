@@ -38,6 +38,6 @@ body {
 // text selection styles
 ::selection {
   @include background-color(main);
-  @include color(inverted);
+  @include color(background);
   text-shadow: none;
 }

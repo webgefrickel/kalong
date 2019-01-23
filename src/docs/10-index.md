@@ -5,10 +5,9 @@ title: kalong—a frontend styleguide development toolkit
 Welcome to kalong. It looks like you've just started development on a
 new project. You should change this readme-file (have a look at
 /src/docs/overview.md) and provide some useful information on this
-starting page.
+starting page for people using this styleguide.
 
-Since you are reading this, here are some hints and documentation on how
-to get started with kalong:
+First time using kalong? Please read the docs:
 
+- [Getting Started](docs/development/getting-started)
 - [General Conventions](docs/development/conventions)
--

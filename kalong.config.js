@@ -1,6 +1,9 @@
 // using module.exports here, so that this file can be consumed by fractal as well
 module.exports = {
   title: 'Your Project',
+
+  // Provide an own version number and don't use the package.json-version,
+  // since this describes the version number of kalong, and not the resulting styleguide
   version: '0.0.1-alpha.1',
 
   // configure your localhost environment here, the host/proxy
@@ -42,7 +45,4 @@ module.exports = {
     ],
     legacy: ['> 0.5% in DE'],
   },
-
-  // do you want a default serviceworker offline-cache script?
-  serviceworker: true,
 };

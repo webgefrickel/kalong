@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" class="no-js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>
+    window.frctl = {
+        env: 'static'
+    };
+    </script>
+    <script>var cl = document.querySelector('html').classList; cl.remove('no-js'); cl.add('has-js');</script>
+    <link rel="shortcut icon" href="../../subtheme/favicon.ico" type="image/ico">
+
+<link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.2.0" type="text/css">
+
+<link rel="stylesheet" href="../../subtheme/styleguide.css?cachebust=1.2.0" type="text/css">
+
+
+<title>Color | Your Project—Styleguide</title>
+
+</head>
+<body>
+
+
+
+<div class="Frame" id="frame">
+
+    <div class="Frame-header">
+        <div class="Header">
+  <button class="Header-button Header-navToggle" data-action="toggle-sidebar">
+    <svg class="Header-navToggleIcon Header-navToggleIcon--open" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 6.4L17.6 5 12 10.6 6.4 5 5 6.4 10.6 12 5 17.6 6.4 19 12 13.4 17.6 19 19 17.6 13.4 12z"/>
+</svg>
+
+    <svg class="Header-navToggleIcon Header-navToggleIcon--closed" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+</svg>
+
+  </button>
+  <a href="../../index.html" class="Header-title" data-pjax>Your Project—Styleguide</a>
+  <span class="Header-version">v0.0.1-alpha.1</span>
+</div>
+
+    </div>
+
+    <div class="Frame-body" data-role="body">
+
+        <div class="Frame-panel Frame-panel--main" data-role="main">
+            <div class="Frame-inner" id="pjax-container">
+            
+
+
+    
+    
+
+<div class="Pen" data-behaviour="pen" id="pen-df70205bb06926aac4883cbbfe8ef6b2">
+
+    
+
+    <div class="Pen-panel Pen-header">
+    <h1 class="Pen-title">
+        <a class="Pen-previewLink" href="../preview/color.html" title="Component preview">
+            Color
+            <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+
+        </a>
+    </h1>
+    
+
+<div class="Status Status--tag">
+
+<label class="Status-label" style="background-color: #2b9e0f; border-color: #2b9e0f;">Done</label>
+
+</div>
+
+
+</div>
+
+
+    <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-df70205bb06926aac4883cbbfe8ef6b2">
+    <div class="Preview-wrapper" data-role="resizer">
+        <div class="Preview-resizer">
+            
+             <iframe
+                class="Preview-iframe"
+                data-role="window"
+                src="../preview/color.html"
+                sandbox="allow-same-origin allow-scripts allow-forms"
+                 style=""
+                marginwidth="0" marginheight="0" frameborder="0" vspace="0" hspace="0" scrolling="yes">
+            </iframe>
+        </div>
+        <div class="Preview-handle" data-role="resize-handle"></div>
+        <div class="Preview-overlay"></div>
+    </div>
+</div>
+
+
+    <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
+
+    <div class="Pen-panel Pen-info" data-role="info">
+    <div class="Browser" data-behaviour="browser" id="browser-df70205bb06926aac4883cbbfe8ef6b2">
+
+    
+
+<div class="Browser-controls">
+  <ul class="Browser-tabs">
+    
+      
+        <li class="Browser-tab Browser-tab--html is-active " data-role="tab">
+          <a href="#browser-df70205bb06926aac4883cbbfe8ef6b2-panel-html">Rendered HTML</a>
+        </li>
+      
+    
+      
+        <li class="Browser-tab Browser-tab--view" data-role="tab">
+          <a href="#browser-df70205bb06926aac4883cbbfe8ef6b2-panel-view">Source</a>
+        </li>
+      
+    
+      
+      
+        
+      
+      
+    
+      
+        <li class="Browser-tab Browser-tab--context" data-role="tab">
+          <a href="#browser-df70205bb06926aac4883cbbfe8ef6b2-panel-context">Context</a>
+        </li>
+      
+    
+      
+        <li class="Browser-tab Browser-tab--notes" data-role="tab">
+          <a href="#browser-df70205bb06926aac4883cbbfe8ef6b2-panel-notes">Notes</a>
+        </li>
+      
+    
+      
+        <li class="Browser-tab Browser-tab--info" data-role="tab">
+          <a href="#browser-df70205bb06926aac4883cbbfe8ef6b2-panel-info">Info</a>
+        </li>
+      
+    
+  </ul>
+</div>
+
+
+    
+    
+<div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-df70205bb06926aac4883cbbfe8ef6b2-panel-html">
+    <code class="Code Code--lang-html">
+        
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"overflow: hidden;"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 160px; padding: 5px; border: 1px solid #ccc; float: left; margin: 0 10px 10px 0;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #f00; width: 100%; height: 120px; margin-bottom: 0.2em;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"font-size: 14px;"</span>&gt;</span>
+        main (#f00)
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 160px; padding: 5px; border: 1px solid #ccc; float: left; margin: 0 10px 10px 0;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #000; width: 100%; height: 120px; margin-bottom: 0.2em;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"font-size: 14px;"</span>&gt;</span>
+        default (#000)
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 160px; padding: 5px; border: 1px solid #ccc; float: left; margin: 0 10px 10px 0;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #fff; width: 100%; height: 120px; margin-bottom: 0.2em;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"font-size: 14px;"</span>&gt;</span>
+        background (#fff)
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 160px; padding: 5px; border: 1px solid #ccc; float: left; margin: 0 10px 10px 0;"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: #f00; width: 100%; height: 120px; margin-bottom: 0.2em;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"font-size: 14px;"</span>&gt;</span>
+        error (#f00)
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+        
+    </code>
+</div>
+
+    
+    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-df70205bb06926aac4883cbbfe8ef6b2-panel-view">
+    <code class="Code Code--lang-html">
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"overflow: hidden;"</span>&gt;</span>
+  {% for label, value in colors %}
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"width: 160px; padding: 5px; border: 1px solid #ccc; float: left; margin: 0 10px 10px 0;"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background-color: {{ value }}; width: 100%; height: 120px; margin-bottom: 0.2em;"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"font-size: 14px;"</span>&gt;</span>
+        {{ label }} ({{ value }})
+      <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  {% endfor %}
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></pre>
+    </code>
+</div>
+
+    
+    
+
+
+
+
+    
+    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-df70205bb06926aac4883cbbfe8ef6b2-panel-context">
+    <code class="Code Code--lang-yaml">
+        
+            
+            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">config:</span>
+<span class="hljs-attr">  config:</span>
+<span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
+<span class="hljs-attr">    version:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.1</span><span class="hljs-bullet">-alpha.1</span>
+<span class="hljs-attr">    scheme:</span> <span class="hljs-string">http</span>
+<span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.localhost</span>
+<span class="hljs-attr">    port:</span> <span class="hljs-number">3000</span>
+<span class="hljs-attr">    main:</span> <span class="hljs-string">main</span>
+<span class="hljs-attr">    root:</span> <span class="hljs-string">./public/</span>
+<span class="hljs-attr">    src:</span> <span class="hljs-string">./src/</span>
+<span class="hljs-attr">    dest:</span> <span class="hljs-string">./public/assets/</span>
+<span class="hljs-attr">    styleguide:</span> <span class="hljs-string">./public/styleguide/</span>
+<span class="hljs-attr">    library:</span> <span class="hljs-string">./public/patterns/</span>
+<span class="hljs-attr">    assets:</span> <span class="hljs-string">assets/</span>
+<span class="hljs-attr">    config:</span> <span class="hljs-string">config/</span>
+<span class="hljs-attr">    docs:</span> <span class="hljs-string">docs/</span>
+<span class="hljs-attr">    fonts:</span> <span class="hljs-string">fonts/</span>
+<span class="hljs-attr">    icons:</span> <span class="hljs-string">icons/</span>
+<span class="hljs-attr">    images:</span> <span class="hljs-string">images/</span>
+<span class="hljs-attr">    patterns:</span> <span class="hljs-string">patterns/</span>
+<span class="hljs-attr">    scripts:</span> <span class="hljs-string">scripts/</span>
+<span class="hljs-attr">    styles:</span> <span class="hljs-string">styles/</span>
+<span class="hljs-attr">    browsers:</span>
+<span class="hljs-attr">      modern:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Firefox</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Chrome</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Safari</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Edge</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">iOS</span> <span class="hljs-string">versions</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">ChromeAndroid</span> <span class="hljs-string">versions</span>
+<span class="hljs-attr">      legacy:</span>
+<span class="hljs-bullet">        -</span> <span class="hljs-string">'&gt; 0.5% in DE'</span>
+<span class="hljs-attr">  fonts:</span>
+<span class="hljs-attr">    fonts:</span>
+<span class="hljs-attr">      default:</span>
+<span class="hljs-attr">        family:</span> <span class="hljs-string">Roboto</span>
+<span class="hljs-attr">        fallback:</span> <span class="hljs-string">sans-serif</span>
+<span class="hljs-attr">        weight:</span> <span class="hljs-number">400</span>
+<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">        file:</span> <span class="hljs-string">roboto-regular</span>
+<span class="hljs-attr">      mono:</span>
+<span class="hljs-attr">        family:</span> <span class="hljs-string">Hack</span>
+<span class="hljs-attr">        fallback:</span> <span class="hljs-string">monospace</span>
+<span class="hljs-attr">        weight:</span> <span class="hljs-number">700</span>
+<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  mediaqueries:</span>
+<span class="hljs-attr">    mediaqueries:</span>
+<span class="hljs-attr">      s:</span> <span class="hljs-number">480</span>
+<span class="hljs-attr">      m:</span> <span class="hljs-number">720</span>
+<span class="hljs-attr">      l:</span> <span class="hljs-number">960</span>
+<span class="hljs-attr">      xl:</span> <span class="hljs-number">1100</span>
+<span class="hljs-attr">      xxl:</span> <span class="hljs-number">1400</span>
+<span class="hljs-attr">      portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
+<span class="hljs-attr">      landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
+<span class="hljs-attr">      print:</span> <span class="hljs-string">print</span>
+<span class="hljs-attr">      custom:</span> <span class="hljs-string">'(max-width: 30em)'</span>
+<span class="hljs-attr">site:</span>
+<span class="hljs-attr">  lang:</span> <span class="hljs-string">en</span>
+<span class="hljs-attr">  dir:</span> <span class="hljs-string">ltr</span>
+<span class="hljs-attr">  title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
+<span class="hljs-attr">  description:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  themecolor:</span> <span class="hljs-string">'#f00'</span>
+<span class="hljs-attr">  modifiers:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">globals:</span>
+<span class="hljs-attr">  nav:</span>
+<span class="hljs-attr">    main:</span>
+<span class="hljs-attr">      - href:</span> <span class="hljs-string">'#somepage'</span>
+<span class="hljs-attr">        label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">colors:</span>
+<span class="hljs-attr">  main:</span> <span class="hljs-string">'#f00'</span>
+<span class="hljs-attr">  default:</span> <span class="hljs-string">'#000'</span>
+<span class="hljs-attr">  background:</span> <span class="hljs-string">'#fff'</span>
+<span class="hljs-attr">  error:</span> <span class="hljs-string">'#f00'</span>
+</pre>
+            
+        
+    </code>
+</div>
+
+    
+    <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-df70205bb06926aac4883cbbfe8ef6b2-panel-notes">
+    <div class="Prose Prose--condensed">
+        
+        <p>Use the color-functions and mixins in Sass to use those colors, for example:
+    <pre>
+    .element {
+      @include background-color(main);
+      border: 1px solid color(error);
+      // etc. pp.
+    }</pre>
+    See src/styles/2-tools/colors.scss.</p>
+
+        
+    </div>
+</div>
+
+    
+    <div class="Browser-panel" data-role="tab-panel" id="browser-df70205bb06926aac4883cbbfe8ef6b2-panel-info">
+    <ul class="Meta">
+        <li class="Meta-item">
+            <strong class="Meta-key">Handle:</strong>
+            <span class="Meta-value">@color</span>
+        </li>
+        
+        
+        
+        
+        
+        <li class="Meta-item">
+            <strong class="Meta-key">Preview:</strong>
+            <span class="Meta-value">
+                <ul>
+                    <li><a data-no-pjax href="../preview/color.html"><span>With layout</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a></li>
+                    <li><a data-no-pjax href="../render/color.html"><span>Component only</span> <svg fill="#000000" height="22" viewBox="0 0 24 24" width="22" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 0h24v24H0z" fill="none"/>
+    <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2H5V8h14v10h-4v2h4c1.1 0 2-.9 2-2V6c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"/>
+</svg>
+</a></li>
+                </ul>
+            </span>
+        </li>
+        <li class="Meta-item">
+            <strong class="Meta-key">Filesystem Path:</strong>
+            <span class="Meta-value">src/patterns/1-identity/color/color.html</span>
+        </li>
+        
+        
+    </ul>
+</div>
+
+    
+
+</div>
+
+</div>
+
+
+    
+
+</div>
+
+
+            </div>
+        </div>
+
+        <div class="Frame-handle" data-role="frame-resize-handle"></div>
+        
+        <div class="Frame-panel Frame-panel--sidebar" data-role="sidebar">
+            <nav class="Navigation">
+
+    
+<div class="Navigation-group">
+
+<div class="Tree" data-behaviour="tree" id="tree-docs">
+    <h3 class="Tree-title">documentation</h3>
+    <ul class="Tree-items Tree-depth-1">
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-docs-collection-development">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Development</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/conventions.html" data-pjax>
+                <span>Conventions</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/workflow.html" data-pjax>
+                <span>Workflow</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/linting.html" data-pjax>
+                <span>Linting</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/images.html" data-pjax>
+                <span>Images</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/javascript.html" data-pjax>
+                <span>Javascript</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/sass.html" data-pjax>
+                <span>Sass</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/tools.html" data-pjax>
+                <span>Tools</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../docs/development/tasks.html" data-pjax>
+                <span>Tasks</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="../../index.html" data-pjax>
+                <span>Overview</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+    </ul>
+</div>
+
+</div>
+
+
+
+    
+<div class="Navigation-group">
+
+<div class="Tree" data-behaviour="tree" id="tree-components">
+    <h3 class="Tree-title">Patterns</h3>
+    <ul class="Tree-items Tree-depth-1">
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-identity">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Identity</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity is-current" data-state="current" data-role="item">
+            <a class="Tree-entityLink" href="" data-pjax>
+                <span>Color</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="font.html" data-pjax>
+                <span>Font</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="icon.html" data-pjax>
+                <span>Icon</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-elements">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Elements</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-button">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Button</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="button--default.html" data-pjax>
+                <span>Default</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="button--link.html" data-pjax>
+                <span>Link</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="form.html" data-pjax>
+                <span>Form</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="image.html" data-pjax>
+                <span>Image</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-components">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Components</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="footer.html" data-pjax>
+                <span>Footer</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="header.html" data-pjax>
+                <span>Header</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="logo.html" data-pjax>
+                <span>Logo</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="nav.html" data-pjax>
+                <span>Nav</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-templates">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Templates</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="page.html" data-pjax>
+                <span>Page</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-pages">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Pages</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="homepage.html" data-pjax>
+                <span>Homepage</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+            </ul>
+        </li>
+        
+    
+
+    </ul>
+</div>
+
+</div>
+
+
+
+</nav>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.0"></script>
+
+
+
+</body>
+</html>

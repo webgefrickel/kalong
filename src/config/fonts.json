@@ -7,6 +7,13 @@
       "style": "normal",
       "fontface": true,
       "file": "roboto-regular"
+    },
+    "mono": {
+      "family": "Hack",
+      "fallback": "monospace",
+      "weight": 700,
+      "style": "normal",
+      "fontface": false
     }
   }
 }
