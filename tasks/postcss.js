@@ -38,6 +38,7 @@ export default async (opts = {}) => {
         warn(warn.toString());
       });
     }
+
     await writeFile(options.output, result.css);
   } catch (error) {
     warn(error);

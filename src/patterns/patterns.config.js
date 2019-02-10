@@ -14,14 +14,15 @@ module.exports = {
       mediaqueries,
     },
     site: {
-      lang: 'en',
+      lang: 'de',
       dir: 'ltr',
       title: config.title + '—Styleguide',
       description: '',
-      themecolor: colors.colors.main,
+      defaultColor: colors.colors.default,
+      mainColor: colors.colors.main,
       modifiers: '', // global css-classes, applied to <html>
     },
-    globals: {
+    global: {
       nav: {
         main: [
           {

@@ -130,8 +130,6 @@ $twig->addTokenParser(new RenderPattern_TokenParser());
     'dir' => 'ltr',
     'title' => 'Kalong Test',
     'description' => 'Meta-Description',
-    'themecolor' => '#ffffff',
-    'modifiers' => 'theme--kalong-test',
   ],
 
   'global' => [],

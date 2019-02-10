@@ -34,27 +34,32 @@ const customResolve = () => {
       if (importee.startsWith('~config')) {
         return resolve(config.src, `${importee.replace('~config/', config.config)}.json`);
       }
+
       if (importee.startsWith('~helper')) {
         return resolve(
           config.src,
           `${importee.replace('~helper', `${config.scripts}1-helpers`)}.js`
         );
       }
+
       if (importee.startsWith('~vendor')) {
         return resolve(
           config.src,
           `${importee.replace('~vendor', `${config.scripts}2-vendor`)}.js`
         );
       }
+
       if (importee.startsWith('~global')) {
         return resolve(
           config.src,
           `${importee.replace('~global', `${config.scripts}3-global`)}.js`
         );
       }
+
       if (importee.startsWith('~module')) {
         return resolve(config.src, `${importee.replace('~module', '../node_modules/')}.js`);
       }
+
       if (importee.startsWith('~pattern')) {
         const pattern = importee.split('/')[1];
         const searchResults = walk(join(config.src, config.patterns), `${pattern}.js`);
