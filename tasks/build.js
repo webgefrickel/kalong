@@ -1,9 +1,11 @@
 import { join } from 'path';
+import Ora from 'ora';
 import clean from './clean';
 import copy from './copy';
 import eslint from './eslint';
 import fractal from './fractal';
 import htmlhint from './htmlhint';
+import pa11y from './pa11y';
 import postcss from './postcss';
 import rollup from './rollup';
 import sass from './sass';
@@ -21,7 +23,7 @@ const scripts = async () =>
     }),
     run(rollup, {
       input: join(config.src, config.scripts, 'serviceworker.js'),
-      output: join(config.root, `serviceworker.js`),
+      output: join(config.root, '.well-known/', 'serviceworker.js'),
       sourceMap: false,
     }),
     run(copy, {
@@ -54,6 +56,7 @@ const styles = async () => {
 
 const preBuild = async () => Promise.all([run(clean), run(sassLint), run(eslint)]);
 const compileAssets = async () => Promise.all([run(styles), run(scripts), run(svgSprite)]);
+const postBuild = async () => Promise.all([run(htmlhint), run(pa11y)]);
 
 const copyAssets = async () =>
   Promise.all([
@@ -83,11 +86,23 @@ const copyStyleguide = async () =>
   ]);
 
 (async () => {
+  const spinner = new Ora({
+    text: 'Building everything',
+  });
+
+  spinner.start();
+  spinner.text = 'Running prebuild-tasks';
   await run(preBuild);
+  spinner.text = 'Compiling assets';
   await run(compileAssets);
+  spinner.text = 'Copying assets';
   await run(copyAssets);
+  spinner.text = 'Running fractal styleguide build';
   await run(fractal);
+  spinner.text = 'Copying styleguide data and patterns';
   await run(copyStyleguide);
-  await run(htmlhint);
-  console.log('Build complete.');
+  spinner.text = 'Running postbuild-tasks';
+  await run(postBuild);
+  spinner.text = 'Done';
+  spinner.succeed();
 })();

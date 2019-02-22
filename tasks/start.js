@@ -30,10 +30,12 @@ const watchSwitch = async file => {
   const fileExtension = file.substr(file.lastIndexOf('.') + 1);
   const isServiceworker = file.indexOf('serviceworker') > -1;
   const isLegacy = file.indexOf(`${config.main}.legacy`) > -1;
+  const isSprite = file.indexOf('sprite.svg') > -1;
 
   if (!isLegacy && !isServiceworker) {
     switch (fileExtension) {
       case 'scss':
+        console.log('Linting and Rebuilding scss/postcss...');
         await run(sassLint);
         await run(sass);
         await run(postcss);
@@ -41,19 +43,23 @@ const watchSwitch = async file => {
         break;
 
       case 'js':
+        console.log('Linting and Rebuilding js...');
         await run(eslint);
         await run(rollup);
         server.reload(`/${config.assets}${config.scripts}${config.main}.js`);
         break;
 
       case 'json':
+        console.log('JSON change detected: Rebuilding sass and js...');
         await run(rollup);
         await run(sass);
         await run(postcss);
+        server.reload();
         break;
 
       case 'woff':
       case 'woff2':
+        console.log('Copying fonts...');
         await run(copy, {
           // copy fonts
           input: join(config.src, config.fonts, '*.{woff,woff2}'),
@@ -63,21 +69,26 @@ const watchSwitch = async file => {
         break;
 
       case 'svg':
-        await run(svgSprite);
-        await run(copy);
-        server.reload();
+        if (!isSprite) {
+          console.log('Rebuilding sprite...');
+          await run(svgSprite);
+          await run(copy);
+          server.reload();
+        }
+
         break;
 
       case 'png':
       case 'gif':
       case 'jpg':
       case 'webp':
-      case 'ico':
+        console.log('Copying images...');
         await run(copy);
         server.reload();
         break;
 
       default:
+        console.log('Reloading...');
         server.reload();
         break;
     }
@@ -87,7 +98,7 @@ const watchSwitch = async file => {
   if (isServiceworker) {
     await run(rollup, {
       input: join(config.src, config.scripts, 'serviceworker.js'),
-      output: join(config.root, `serviceworker.js`),
+      output: join(config.root, '.well-known/', 'serviceworker.js'),
       sourceMap: false,
     });
     server.reload();

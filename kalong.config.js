@@ -8,8 +8,8 @@ module.exports = {
 
   // configure your localhost environment here, the host/proxy
   // should point to the root-folder configured below (default: ./public/)
-  scheme: 'http',
-  proxy: 'dev.localhost',
+  scheme: 'https',
+  proxy: 'dev.dev.localhost',
   port: 3000,
 
   // main file name (for styles and scripts)
@@ -20,7 +20,7 @@ module.exports = {
   src: './src/',
   dest: './public/assets/',
   styleguide: './public/styleguide/',
-  library: './public/patterns/',
+  library: './public/site/patterns/',
 
   // paths to all asset-directories, for src + dest
   assets: 'assets/',
