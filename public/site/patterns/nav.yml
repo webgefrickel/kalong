@@ -1,19 +1,19 @@
 debug: true
 styleguide: true
-hash: 1549809547558
+hash: 1550847475514
 config:
   config:
     title: Your Project
     version: 0.0.1-alpha.1
-    scheme: http
-    proxy: dev.localhost
+    scheme: https
+    proxy: dev.dev.localhost
     port: 3000
     main: main
     root: ./public/
     src: ./src/
     dest: ./public/assets/
     styleguide: ./public/styleguide/
-    library: ./public/patterns/
+    library: ./public/site/patterns/
     assets: assets/
     config: config/
     docs: docs/
@@ -72,12 +72,4 @@ global:
     main:
       - href: '#somepage'
         label: Somepage
-fontSizes:
-  default: 16px
-  h1: 48px
-  h2: calc(20px + 1vw)
-  h3: 120%
-  h4: 20px
-  h5: 16px
-  h6: 12px
 
