@@ -74,7 +74,7 @@
 
 <div class="Status Status--tag">
 
-<label class="Status-label" style="background-color: #999999; border-color: #999999;">Prototype</label>
+<label class="Status-label" style="background-color: #ed8015; border-color: #ed8015;">Work in Progress</label>
 
 </div>
 
@@ -156,7 +156,29 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-2128b47472303ece535235f84bfd64fd-panel-html">
     <code class="Code Code--lang-html">
         
-        <pre></pre>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"logo"</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"Back to the homepage"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">svg</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"icon  icon--logo"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"../../images/sprite.svg#icon--logo"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav"</span>&gt;</span>
+        Main Navigation
+    <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"main"</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Homepage content and patterns here&amp;hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+
+<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"footer"</span>&gt;</span>
+    Footercontent
+<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span></pre>
         
     </code>
 </div>
@@ -164,7 +186,11 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-2128b47472303ece535235f84bfd64fd-panel-view">
     <code class="Code Code--lang-html">
-        <pre></pre>
+        <pre>{% extends '<a href="page.html">@page</a>' %}
+
+{% block main %}
+  <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Homepage content and patterns here&amp;hellip;<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+{% endblock %}</pre>
     </code>
 </div>
 
@@ -181,20 +207,20 @@
             
             <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">hash:</span> <span class="hljs-number">1549809547558</span>
+<span class="hljs-attr">hash:</span> <span class="hljs-number">1550847475514</span>
 <span class="hljs-attr">config:</span>
 <span class="hljs-attr">  config:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
 <span class="hljs-attr">    version:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.1</span><span class="hljs-bullet">-alpha.1</span>
-<span class="hljs-attr">    scheme:</span> <span class="hljs-string">http</span>
-<span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.localhost</span>
+<span class="hljs-attr">    scheme:</span> <span class="hljs-string">https</span>
+<span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.dev.localhost</span>
 <span class="hljs-attr">    port:</span> <span class="hljs-number">3000</span>
 <span class="hljs-attr">    main:</span> <span class="hljs-string">main</span>
 <span class="hljs-attr">    root:</span> <span class="hljs-string">./public/</span>
 <span class="hljs-attr">    src:</span> <span class="hljs-string">./src/</span>
 <span class="hljs-attr">    dest:</span> <span class="hljs-string">./public/assets/</span>
 <span class="hljs-attr">    styleguide:</span> <span class="hljs-string">./public/styleguide/</span>
-<span class="hljs-attr">    library:</span> <span class="hljs-string">./public/patterns/</span>
+<span class="hljs-attr">    library:</span> <span class="hljs-string">./public/site/patterns/</span>
 <span class="hljs-attr">    assets:</span> <span class="hljs-string">assets/</span>
 <span class="hljs-attr">    config:</span> <span class="hljs-string">config/</span>
 <span class="hljs-attr">    docs:</span> <span class="hljs-string">docs/</span>
@@ -301,6 +327,15 @@
             <strong class="Meta-key">Filesystem Path:</strong>
             <span class="Meta-value">src/patterns/5-pages/homepage/homepage.html</span>
         </li>
+        
+        <li class="Meta-item">
+            <strong class="Meta-key">References <em class="Meta-count">(1)</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            
+                <a href="page.html">@<span>page</span></a>
+            
+            </span>
+        </li class="Meta-item">
         
         
     </ul>
@@ -1021,7 +1056,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
 
 
 </div>
