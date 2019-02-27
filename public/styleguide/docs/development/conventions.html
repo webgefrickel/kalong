@@ -81,22 +81,27 @@
     <p>Disclaimer: This is a highly opinionated project and set of files and
 conventions. If you don’t like any of those: feel free to change them
 for your project or fork the hell out of this repository. Be sure to
-update documentation if you do so.</p>
+update this documentation if you do so.</p>
 <h2 id="language">Language</h2>
 <p>Documentation should be written in English, since it is the most
 accessible language for developers worldwide, even if the page/content
 itself is in other languages. Try to use simple language and provide
 examples wherever applicable.</p>
 <h2 id="spaces-ftw-">Spaces FTW!</h2>
-<p>If your editor of choice supports
+<p>If your text-editor/IDE of choice supports
 <a href="http://editorconfig.org">editorconfig</a>, you should already be fine,
 this project provides an .editorconfig-file that sets all conventions.
 If not: 2 Spaces for <em>everything</em>, UTF-8 everything, Unix-Style
 linebreaks, no trailing spaces except for Markdown and text-files.</p>
+<h2 id="prettier-code">Prettier code</h2>
+<p>This repository also includes a <a href="https://prettier.io">prettier</a>
+config file. If your text-editor/IDE of choice supports prettier, just
+activate it an never think about code-stlyling again. Highly recommended,
+but not included in the build-chain. </p>
 <h2 id="linting">Linting</h2>
-<p>The JavaScript-, HTML- and Sass-linters will be enabled by default with
-the settings from above, so if you try to move away from those
-conventions: you will be warned :) The linters will try to enforce a
+<p>The JavaScript-, HTML/a11y- and Sass-linters will be enabled by default with
+the all the code-formatting settings from above, so if you try to move away 
+from those conventions: you will be warned :) The linters will try to enforce a
 specific coding style regarding whitespace, naming stuff, usage of
 variables etc. to make your code consistent, so please try to stick to
 it. You can always customize the linters:
@@ -105,15 +110,6 @@ it. You can always customize the linters:
 <p>Files should always be in lowercase, use dashes where applicable. No
 underscores, unless you want to exclude files from the styleguide, see
 <a href="https://fractal.build/guide/core-concepts/naming">Naming and referencing in Fractal</a>.</p>
-<hr>
-<p>For more details on language-specific coding conventions or coding
-styles, have a look here:</p>
-<ul>
-<li><a href="docs/development/best-practices">Best Practices</a></li>
-<li><a href="docs/development/sass">HTML and Nunjucks</a></li>
-<li><a href="docs/development/sass">CSS and Sass</a></li>
-<li><a href="docs/development/javascript">JavaScript</a></li>
-</ul>
 
     
 
@@ -153,6 +149,30 @@ styles, have a look here:</p>
             
             
             
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="getting-started.html" data-pjax>
+                <span>Getting Started</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
     
         
         
@@ -303,30 +323,6 @@ styles, have a look here:</p>
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="tools.html" data-pjax>
                 <span>Tools</span>
-                
-
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
-        </li>
-        
-    
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="tasks.html" data-pjax>
-                <span>Tasks</span>
                 
 
 <div class="Status Status--unlabelled">

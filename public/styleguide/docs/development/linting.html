@@ -78,38 +78,19 @@
 
     
     
-    <p>This project provides three different linters: one for HTML, one for
+    <p>This project provides four different linters: one for HTML, one for accessibility issues, one for
 Sass (.scss-files to be specific) and one for JavaScript.</p>
-<p>All those linters can be configured in their set of rules, and they can
-be globally deactivated in <em>config.js</em>, section <em>lint</em>.</p>
-<h2 id="html-htmlhint">HTML: htmlhint</h2>
-<p>The linter used for your HTML-Code is <a href="http://htmlhint.com">htmlhint</a>.
-This project comes with a pre-configured set of rules to enforce nice
-HTML-styling, those rules and their current setting can be found in the
-file <em>.htmlhintrc</em>, description for the rules
-<a href="https://github.com/yaniswang/HTMLHint/wiki/Rules">can be found on github</a>.</p>
-<p>If you use a CMS or any other tool that creates your HTML-Output, it
-sometimes makes more sense to just deactivate linting for HTML or change
-some of the default rules. But please always check your code for errors
-with tools such as the <a href="https://validator.w3.org/">W3C Validator</a> to
-keep yourself sane. Valid HTML (at least regarding nesting and quotes)
-can save you a lot of headaches when styling your website.</p>
 <h2 id="javascript-eslint">JavaScript: eslint</h2>
 <p>The linter used for JavaScript is <a href="http://eslint.org">eslint</a>, and this
 project comes with a pre-configured (kinda restrictive) set of rules, to
-enforce a consistent and sane code style. You can find all current rules
-and the settings for them in the file <em>.eslintrc</em>.</p>
-<p>The predefined <em>.eslintrc.yml</em>-file sets all rules you can find
-<a href="http://eslint.org/docs/rules/">in the eslint documentatoin</a>, in the
-same order for easy reference.</p>
+enforce a consistent and sane code style base on <a href="https://github.com/xojs/xo">XO</a> and recommendations from eslint. You can find all current rules
+and the settings for them in the file <em>.eslintrc.yml</em>.</p>
 <p>Eslint is very customizable, you can write your own plugins, but for
-starters the default built-in rules are more than enough.</p>
+starters the default built-in rules should be more than enough.</p>
 <h3 id="es6-es2015">ES6 / ES2015</h3>
 <p>Since we use ES6 in this project, eslint is configured to warn you on
-some things, that can be written better with ES6 (such as
-arrow-functions or let vs. var). If you don’t want to use any
-ES6-features at all, you can just set all those rules to zero, to
-deactivate them.</p>
+some things, that can be written better/easier with ES6 (such as
+arrow-functions, let vs. var or destructuring). Please make use of those new awesome language features where applicable.</p>
 <h2 id="sass-sass-lint">Sass: sass-lint</h2>
 <p>For linting our Sass we use
 <a href="https://github.com/sasstools/sass-lint">sass-lint</a>. Configuration for
@@ -120,6 +101,18 @@ By default anything in the folder <em>./src/scss/vendor</em> will <strong>not</s
 linted, so you can add third-party stylesheets easily.</p>
 <p>As always: try to keep to the strict defaults and only in edge-cases
 change the default rules and allow exceptions (such as <code>!important</code>).</p>
+<h2 id="html-htmlhint">HTML: htmlhint</h2>
+<p>The linter used for HTML-Code is <a href="http://htmlhint.com">htmlhint</a>.
+The pre-defined rules can be found and changed in <em>.htmlhintrc</em>, description for the rules
+<a href="https://github.com/yaniswang/HTMLHint/wiki/Rules">can be found on github</a>.</p>
+<p>If you use a CMS or any other tool that creates your HTML-Output, it
+sometimes makes more sense to change some of the default rules. But please always check your code for errors
+with tools such as the <a href="https://validator.w3.org/">W3C Validator</a> to
+keep yourself sane. Valid HTML (at least regarding nesting and quotes)
+can save you a lot of headaches when styling your website.</p>
+<h2 id="accessibility-pa11y">Accessibility: pa11y</h2>
+<p>All pages (e.g. patterns residing in src/patterns/5-pages) will be checked for accessibility issues with <a href="https://github.com/pa11y/pa11y">pa11y</a> and its default ruleset. Please try to fix any errors, since this will enhance accessibility of your components and the site.</p>
+<p>Note: HTML and accessibility will only be checked during a full build. Sass and JavaScript will also be linted during development.</p>
 
     
 
@@ -159,6 +152,30 @@ change the default rules and allow exceptions (such as <code>!important</code>).
             
             
             
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="getting-started.html" data-pjax>
+                <span>Getting Started</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
     
         
         
@@ -309,30 +326,6 @@ change the default rules and allow exceptions (such as <code>!important</code>).
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="tools.html" data-pjax>
                 <span>Tools</span>
-                
-
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
-        </li>
-        
-    
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="tasks.html" data-pjax>
-                <span>Tasks</span>
                 
 
 <div class="Status Status--unlabelled">

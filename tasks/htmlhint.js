@@ -1,6 +1,6 @@
 import { join } from 'path';
-import { HTMLHint } from 'htmlhint';
 import { sync } from 'glob';
+import htmlhint from 'htmlhint';
 import { readFile } from './lib/fs';
 import warn from './lib/warn';
 import config from '../kalong.config';
@@ -13,7 +13,7 @@ export default async () => {
     // ignore files that end with -start.html or -end.html
     if (file.indexOf('-start.html') === -1 && file.indexOf('-end.html') === -1) {
       const html = await readFile(file);
-      const messages = HTMLHint.verify(html, JSON.parse(rc));
+      const messages = htmlhint.verify(html, JSON.parse(rc));
 
       if (messages.length) {
         warn('htmlhint found errors in the following files:');

@@ -78,26 +78,23 @@
 
     
     
-    <p>All images that are not user-generated should go into <em>./src/images/</em>,
+    <h2 id="images">Images</h2>
+<p>All images that are not user-generated should go into <em>./src/images/</em>,
 be it SVG, PNG, GIF or PNG. You can use those images directly in your
 Sass as background-images with sth. like
 <code>background-image: url(&#39;../images/imagename.png&#39;);</code> or in your
-HTML—default path is ./assets/images/.</p>
+HTML—the default path is ./assets/images/.</p>
+<p>This project comes with a pattern for images, ready for all the stuff you want (sizes, srcset etc.)—have a look at src/patterns/2-elements/image</p>
+<h2 id="svg-sprites">SVG Sprites</h2>
 <p>SVGs you want to create a sprite of should be copied in <em>./src/icons/</em>
-and be given a meaningful name. The sprite can be included directly in
-HTML like this:</p>
-<code><pre>&lt;svg <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"icon  icon--menu"</span>&gt;
-  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"assets/images/sprite.svg#icon--menu"</span> /&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span></pre></code><p>Default styling for all icons is provided via
-<em>./src/patterns/components/icons/icons.scss</em>. You can then style your
+and be given a meaningful name. Single icons can then be used with the icon-pattern provided in src/patterns/1-identity/icon like this:</p>
+<code><pre>&lt;svg <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"icon  icon--logo  logo__icon"</span>&gt;
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">use</span> <span class="hljs-attr">xlink:href</span>=<span class="hljs-string">"../../images/sprite.svg#icon--logo"</span>/&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">svg</span>&gt;</span></span>
+</pre></code><p>You can then style your
 icons via CSS, size them, change the fill color etc., using the
 modifier-class as above. Including SVG via fragment-identifiers is still
-not supported in IE and buggy in Safari, so be sure to include the
-svgxuse polyfill, that comes pre-installed with this package.</p>
-<p>For more information on how to use the SVG sprites, refer to this
-article:
-<a href="http://blog.cloudfour.com/our-svg-icon-process/">Cloudfour: Our SVG Icon process</a>.</p>
-<p>Feel free to change the sprites gulp task, if you need multiple sprites.</p>
+not supported in IE and buggy in Safari, so be sure to include a polyfill such as <a href="https://github.com/Keyamoon/svgxuse">svgxuse</a> if you want to support those browsers.</p>
 <h2 id="recommendations">Recommendations</h2>
 <p>Always try to use the right image-format for the thing you want to do,
 and compare their sizes to one another. Sometimes a JPG is better than a
@@ -105,7 +102,7 @@ PNG regarding image size and quality; and sometimes it is the other way
 around.</p>
 <p>Use software like <a href="https://imageoptim.com/">imageoptim</a> and
 <a href="http://pngmini.com/">imagealpha</a> to further reduce the size of your
-images — they can sometimes achieve amazing results in compression.</p>
+images — they can sometimes achieve amazing results in compression (and IMHO are better than any build-chain image-compression tools).</p>
 
     
 
@@ -145,6 +142,30 @@ images — they can sometimes achieve amazing results in compression.</p>
             
             
             
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="getting-started.html" data-pjax>
+                <span>Getting Started</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
     
         
         
@@ -295,30 +316,6 @@ images — they can sometimes achieve amazing results in compression.</p>
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="tools.html" data-pjax>
                 <span>Tools</span>
-                
-
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
-        </li>
-        
-    
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="tasks.html" data-pjax>
-                <span>Tasks</span>
                 
 
 <div class="Status Status--unlabelled">

@@ -79,119 +79,13 @@
     
     
     <h2 id="structure">Structure</h2>
+<h2 id="automatic-code-execution">Automatic code-execution</h2>
+<h2 id="provided-helpers">Provided helpers</h2>
+<h2 id="3rd-party-code">3rd-Party code</h2>
 <p>Install every module/library/script/tool/helper — whatever you want with
 npm. This project uses rollup with some plugins to make all those
-awesome tools usable for your browser/frontend. Then just use the new
-ES2015-modules import-syntax and you are all set. Have a look at the
-included modules for fontloading and using breakpoints in your
-JavaScript.</p>
-<p>For JavaScript it’s the same as with Sass: there is one main-file, that
-will be loaded as the entry-point for all your JavaScript, include all
-your other modules from there.</p>
-<p>A very basic sample is provided in the folder <em>./src/js/</em>.</p>
-<h2 id="your-own-modules">Your own modules</h2>
-<p>The recommended way would be to create your own modules, document them
-and throw them on npm. If this is not feasible, just create a file in
-<em>./src/js/modules/</em> with the name of your module, for example
-<em>somemodule.js</em></p>
-<p>To keep things consistent throughout the project I would recommend one
-simple rule:</p>
-<p><strong>One module, one file, one function</strong></p>
-<p>Meaning: every module should get its own file (e.g. in
-<em>/src/js/modules/somemodule.js</em>), the module should have the same
-filename as the exported function, and there should be only ever one
-function, that said module exports.</p>
-<p>With ES6 this could look like this:</p>
-<code class="lang-js"><pre><span class="hljs-comment">// use ES2015 modules to import other stuff you might need</span>
-<span class="hljs-keyword">import</span> stuff <span class="hljs-keyword">from</span> <span class="hljs-string">'othermodule'</span>;
-
-<span class="hljs-comment">// those two vars will be used in your module, but won't be exported</span>
-<span class="hljs-keyword">const</span> wontBeExported = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { ... };
-<span class="hljs-keyword">const</span> wontBeExportedEither = <span class="hljs-number">12</span>;
-
-<span class="hljs-comment">// that's the function this module will export</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
-  <span class="hljs-comment">// do stuff...</span>
-
-  <span class="hljs-keyword">return</span> <span class="hljs-string">'sth'</span>; <span class="hljs-comment">// if needed</span>
-};</pre></code><p>If you have to export multiple, similar functions that should live in
-one module, you can do so with the new ES6-modules, but I would advise
-to stick to the pattern above, and then just do sth. like:</p>
-<code class="lang-js"><pre><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
-  ...
-
-  <span class="hljs-comment">// using new ES6 Enhanced Object Literals to export multiple functions</span>
-  <span class="hljs-keyword">return</span> {
-    funcOne () {
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'fuck yeah'</span>);
-    },
-    funcTwo () {
-      <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'this is nice'</span>);
-    }
-  };
-
-};
-</pre></code><p>This way you can throw similar functions into one module, and use it
-like this:</p>
-<code class="lang-js"><pre><span class="hljs-keyword">import</span> someModule <span class="hljs-keyword">from</span> <span class="hljs-string">'./modules/somemodule'</span>;
-
-someModule().funcOne();
-someModule().funcTwo();</pre></code><p>The idea is: don’t make me think. And this way I just have to remember
-that I will always get <strong>one</strong> function if I import sth.</p>
-<p>Keep your modules as short, concise and reusable as possible and
-refactor all the time :)</p>
-<h3 id="recommended-es6-features">Recommended ES6-Features</h3>
-<p>Since ES6 is here to stay: use it. You still can write ‘normal’
-JavaScript, but I really recommend to check some of the new features
-out. Though there are features that are not well supported, I recommend
-only those, that can be easily transpiled with babel.js and don’t
-require a polyfill:</p>
-<ul>
-<li>arrow functions</li>
-<li>let and const</li>
-<li>ES6 modules (import + export)</li>
-<li>Default + Rest + Spread</li>
-<li>destructuring</li>
-<li>literal object creation</li>
-<li>template strings</li>
-<li>classes (if you really need those over basic \$.extend or
-_.assign…)</li>
-</ul>
-<p>For more information refer to the
-<a href="http://babeljs.io/docs/learn-es2015/">Learn ES2015 page on babeljs.io</a>.
-If you want to use ‘advanced’ features like WeakMap etc., you have to
-use the polyfill from babel.</p>
-<p>If you want to use promises this package includes
-<a href="https://github.com/stefanpenner/es6-promise">es6-promise</a> to include a
-fallback for IE&lt;=11.</p>
-<h2 id="plugin-library-polyfill-recommendations">Plugin, library polyfill Recommendations</h2>
-<p>For general “somebody wants a simple website with carousels and stuff” I
-hereby recommend some plugins to save some time:</p>
-<ul>
-<li><a href="http://jquery.com/">jQuery</a>, because after all: you might need jQuery
-;)</li>
-<li><a href="https://github.com/Keyamoon/svgxuse">svgxuse</a>: a polyfill to make the
-SVG-sprites work in IE (included)</li>
-<li>Carousel/Slider: <a href="https://github.com/kenwheeler/slick">slick</a>, the
-last carousel you’ll ever need</li>
-<li>Lightbox:
-<a href="https://github.com/dimsemenov/Magnific-Popup">Magnific Popup</a> or the
-older <a href="https://github.com/jackmoore/colorbox">colorbox</a></li>
-<li>Native Video: <a href="https://github.com/videojs/video.js">video.js</a> or
-<a href="https://github.com/johndyer/mediaelement">mediaelement</a></li>
-<li>Though I still recommend jQuery, I don’t recommend jQuery UI. It feels
-outdated, and there are a lot of smaller, better plugins for stuff
-like datepickers for example:
-<a href="http://amsul.ca/pickadate.js/">pickadate</a></li>
-<li>For all your functional needs and the occasional debounce/throttle:
-<a href="https://lodash.com/">lodash</a></li>
-<li>In case you use responsive images, use
-<a href="https://scottjehl.github.io/picturefill/">picturefill</a></li>
-</ul>
-<p>For an insane list of awesome stuff, have a look at those two lists:
-<a href="https://github.com/sorrycc/awesome-javascript">https://github.com/sorrycc/awesome-javascript</a>
-and
-<a href="https://github.com/sindresorhus/awesome">https://github.com/sindresorhus/awesome</a>.</p>
+awesome tools usable for your browser. Then just use the new
+ES2015-modules import-syntax and you are all set. </p>
 
     
 
@@ -231,6 +125,30 @@ and
             
             
             
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="getting-started.html" data-pjax>
+                <span>Getting Started</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
     
         
         
@@ -381,30 +299,6 @@ and
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="tools.html" data-pjax>
                 <span>Tools</span>
-                
-
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
-        </li>
-        
-    
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="tasks.html" data-pjax>
-                <span>Tasks</span>
                 
 
 <div class="Status Status--unlabelled">
