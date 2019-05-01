@@ -30,6 +30,7 @@ module.exports = {
   icons: 'icons/',
   images: 'images/',
   patterns: 'patterns/',
+  templates: 'templates/',
   scripts: 'scripts/',
   styles: 'styles/',
 

@@ -1,6 +1,15 @@
+Icon
 .DS_Store
 npm-debug.log
-npm-debug.log*
-.sass-cache
 node_modules
-public/tmp*.html
+
+# Kirby specific ignores
+/public/media/*
+!/public/media/index.html
+/public/site/cache/*
+!/public/site/cache/index.html
+/public/site/accounts/*
+!/public/site/accounts/index.html
+/public/site/sessions/*
+!/public/site/sessions/index.html
+/public/site/config/.license

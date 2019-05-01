@@ -1,6 +1,6 @@
 debug: true
 styleguide: true
-hash: 1556116944174
+hash: 1556724620746
 config:
   config:
     title: Your Project
@@ -21,6 +21,7 @@ config:
     icons: icons/
     images: images/
     patterns: patterns/
+    templates: templates/
     scripts: scripts/
     styles: styles/
     browsers:

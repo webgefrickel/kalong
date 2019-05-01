@@ -55,7 +55,7 @@
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-f13e12ceca4c7c2fe9f615da75baad74">
+<div class="Pen" data-behaviour="pen" id="pen-7488df13a9d38be82560f9c1f4317b17">
 
     
 
@@ -82,7 +82,7 @@
 </div>
 
 
-    <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-f13e12ceca4c7c2fe9f615da75baad74">
+    <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-7488df13a9d38be82560f9c1f4317b17">
     <div class="Preview-wrapper" data-role="resizer">
         <div class="Preview-resizer">
             
@@ -104,7 +104,7 @@
     <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
 
     <div class="Pen-panel Pen-info" data-role="info">
-    <div class="Browser" data-behaviour="browser" id="browser-f13e12ceca4c7c2fe9f615da75baad74">
+    <div class="Browser" data-behaviour="browser" id="browser-7488df13a9d38be82560f9c1f4317b17">
 
     
 
@@ -113,13 +113,13 @@
     
       
         <li class="Browser-tab Browser-tab--html is-active " data-role="tab">
-          <a href="#browser-f13e12ceca4c7c2fe9f615da75baad74-panel-html">Rendered HTML</a>
+          <a href="#browser-7488df13a9d38be82560f9c1f4317b17-panel-html">Rendered HTML</a>
         </li>
       
     
       
         <li class="Browser-tab Browser-tab--view" data-role="tab">
-          <a href="#browser-f13e12ceca4c7c2fe9f615da75baad74-panel-view">Source</a>
+          <a href="#browser-7488df13a9d38be82560f9c1f4317b17-panel-view">Source</a>
         </li>
       
     
@@ -131,19 +131,19 @@
     
       
         <li class="Browser-tab Browser-tab--context" data-role="tab">
-          <a href="#browser-f13e12ceca4c7c2fe9f615da75baad74-panel-context">Context</a>
+          <a href="#browser-7488df13a9d38be82560f9c1f4317b17-panel-context">Context</a>
         </li>
       
     
       
         <li class="Browser-tab Browser-tab--notes" data-role="tab">
-          <a href="#browser-f13e12ceca4c7c2fe9f615da75baad74-panel-notes">Notes</a>
+          <a href="#browser-7488df13a9d38be82560f9c1f4317b17-panel-notes">Notes</a>
         </li>
       
     
       
         <li class="Browser-tab Browser-tab--info" data-role="tab">
-          <a href="#browser-f13e12ceca4c7c2fe9f615da75baad74-panel-info">Info</a>
+          <a href="#browser-7488df13a9d38be82560f9c1f4317b17-panel-info">Info</a>
         </li>
       
     
@@ -153,7 +153,7 @@
 
     
     
-<div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-f13e12ceca4c7c2fe9f615da75baad74-panel-html">
+<div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-html">
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
@@ -183,7 +183,7 @@
 </div>
 
     
-    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-f13e12ceca4c7c2fe9f615da75baad74-panel-view">
+    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-view">
     <code class="Code Code--lang-html">
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js{% if debug %}  fonts-loaded{% endif %}{% if site.modifiers %}  {{ site.modifiers }}{% endif %}"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"{{ site.lang }}"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"{{ site.dir }}"</span>&gt;</span>
@@ -215,7 +215,8 @@
 
       {%- for font, fontConfig in config.fonts.fonts %}
         {%- if fontConfig.fontface %}
-          <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/fonts/' + fontConfig.file + '.woff2' | path }}"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"font/woff2"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
+          {%- set fontFile = ['/fonts/', fontConfig.file, '.woff2'] %}
+          <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ fontFile | join | path }}"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"font/woff2"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
         {%- endif %}
       {%- endfor %}
     {%- endif %}
@@ -231,13 +232,13 @@
 
 
     
-    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-f13e12ceca4c7c2fe9f615da75baad74-panel-context">
+    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-context">
     <code class="Code Code--lang-yaml">
         
             
             <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">hash:</span> <span class="hljs-number">1556116944174</span>
+<span class="hljs-attr">hash:</span> <span class="hljs-number">1556724620746</span>
 <span class="hljs-attr">config:</span>
 <span class="hljs-attr">  config:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
@@ -258,6 +259,7 @@
 <span class="hljs-attr">    icons:</span> <span class="hljs-string">icons/</span>
 <span class="hljs-attr">    images:</span> <span class="hljs-string">images/</span>
 <span class="hljs-attr">    patterns:</span> <span class="hljs-string">patterns/</span>
+<span class="hljs-attr">    templates:</span> <span class="hljs-string">templates/</span>
 <span class="hljs-attr">    scripts:</span> <span class="hljs-string">scripts/</span>
 <span class="hljs-attr">    styles:</span> <span class="hljs-string">styles/</span>
 <span class="hljs-attr">    browsers:</span>
@@ -316,7 +318,7 @@
 </div>
 
     
-    <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-f13e12ceca4c7c2fe9f615da75baad74-panel-notes">
+    <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-notes">
     <div class="Prose Prose--condensed">
         
         <p class="Browser-isEmptyNote">There are no notes for this item.</p>
@@ -325,7 +327,7 @@
 </div>
 
     
-    <div class="Browser-panel" data-role="tab-panel" id="browser-f13e12ceca4c7c2fe9f615da75baad74-panel-info">
+    <div class="Browser-panel" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-info">
     <ul class="Meta">
         <li class="Meta-item">
             <strong class="Meta-key">Handle:</strong>
@@ -355,7 +357,7 @@
         </li>
         <li class="Meta-item">
             <strong class="Meta-key">Filesystem Path:</strong>
-            <span class="Meta-value">src/patterns/4-templates/_html-start/_html-start.html</span>
+            <span class="Meta-value">src/patterns/4-layouts/_html-start/_html-start.html</span>
         </li>
         
         
@@ -1026,9 +1028,9 @@
         
     
         
-        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-templates">
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-layouts">
             <h4 class="Tree-collectionLabel" data-role="toggle">
-                <span>Templates</span>
+                <span>Layouts</span>
             </h4>
             <ul class="Tree-collectionItems" data-role="items">
             
@@ -1066,9 +1068,9 @@
         
     
         
-        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-pages">
+        <li class="Tree-item Tree-collection Tree-depth-2" data-behaviour="collection" id="tree-components-collection-templates">
             <h4 class="Tree-collectionLabel" data-role="toggle">
-                <span>Pages</span>
+                <span>Templates</span>
             </h4>
             <ul class="Tree-collectionItems" data-role="items">
             
@@ -1079,8 +1081,8 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="homepage.html" data-pjax>
-                <span>Homepage</span>
+            <a class="Tree-entityLink" href="home.html" data-pjax>
+                <span>Home</span>
                 
 
 <div class="Status Status--unlabelled">

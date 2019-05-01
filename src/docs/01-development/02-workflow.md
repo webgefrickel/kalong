@@ -29,8 +29,8 @@ There are five folders to start with, roughly implementing the idea of
   All your templates: those usually glue
   everything from above together, and add the basic `<head>` and
   HTML-Structure.
-- patterns/4-pages
-  Actual pages, that make use of templates, real-world examples for different types of pages you will have in your styleguide.
+- patterns/5-layouts
+  Actual page-layouts with content, that make use of templates, real-world examples, with placeholder stuff. Those will be copied to be ready-to-use in kirby, by default.
 
 (Note: there is a file _preview.html included as well: this provides the
 wrapping template used for each pattern-preview in this styleguide.

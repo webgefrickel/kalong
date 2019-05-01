@@ -48,6 +48,6 @@ can save you a lot of headaches when styling your website.
 
 ## Accessibility: pa11y
 
-All pages (e.g. patterns residing in src/patterns/5-pages) will be checked for accessibility issues with [pa11y](https://github.com/pa11y/pa11y) and its default ruleset. Please try to fix any errors, since this will enhance accessibility of your components and the site.
+All layouts (e.g. patterns residing in src/patterns/5-layouts) will be checked for accessibility issues with [pa11y](https://github.com/pa11y/pa11y) and its default ruleset. Please try to fix any errors, since this will enhance accessibility of your components and the site.
 
 Note: HTML and accessibility will only be checked during a full build. Sass and JavaScript will also be linted during development.

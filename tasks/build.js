@@ -11,6 +11,7 @@ import rollup from './rollup';
 import sass from './sass';
 import sassLint from './sassLint';
 import svgSprite from './svgSprite';
+import templates from './templates';
 import run from './lib/run';
 import config from '../kalong.config';
 
@@ -71,18 +72,19 @@ const copyAssets = async () =>
 const copyStyleguide = async () =>
   // copy all styleguide files to the pattern library
   Promise.all([
+    // styleguide HTML pattern files
     run(copy, {
-      // styleguide HTML pattern files
       input: join(config.src, config.patterns, '**/*.html'),
       output: join(config.library),
       rename: [file => file.replace('_', '')],
     }),
+    // styleguide data pattern files
     run(copy, {
-      // styleguide data pattern files
       input: join(config.styleguide, 'components/data/**/*.html'),
       output: join(config.library),
       rename: [file => file.replace('_', ''), file => file.replace('.html', '.yml')],
     }),
+    run(templates),
   ]);
 
 (async () => {
