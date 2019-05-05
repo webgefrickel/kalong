@@ -6,3 +6,4 @@
   old/no longer maintained, as it seems
 - Update to current version of @frctl/nunjucks
 - Update to chokidar v3
+- Image helper with focus for kirby

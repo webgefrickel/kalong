@@ -1,6 +1,6 @@
 debug: true
 styleguide: true
-hash: 1557081730263
+hash: 1557082570822
 config:
   config:
     title: Your Project
@@ -79,9 +79,9 @@ caption: null
 alt: Alternativtext für das Bild
 sources:
   - width: 480
-    src: //via.placeholder.com/480x360
+    src: //picsum.photos/480/360
   - width: 960
-    src: //via.placeholder.com/960x720
-  - width: 1920
-    src: //via.placeholder.com/1920x1440
+    src: //picsum.photos/960/720
+  - width: 1440
+    src: //picsum.photos/1440/1080
 
