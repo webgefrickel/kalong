@@ -1,0 +1,9 @@
+label: Text
+type: textarea
+size: large
+buttons:
+  - headlines
+  - italic
+  - bold
+  - link
+  - file

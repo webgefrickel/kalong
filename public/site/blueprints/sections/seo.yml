@@ -1,0 +1,10 @@
+type: fields
+fields:
+  seotitle:
+    type: text
+    label: Titel der Webseite
+    required: true
+  seodescription:
+    type: text
+    label: Kurzbeschreibung
+    required: true

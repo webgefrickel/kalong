@@ -1,20 +1,31 @@
-title: Simple Page
-icon: 📝
-preset: page
+title: Standard-Seite
+icon: page
 
 status:
-  draft: true
+  draft:
+    label: Entwurf
+    text: Diese Seite ist noch nicht öffentlich
   unlisted:
-    label: Hidden Page
-    text: The page is not listed in the main menu
+    label: Versteckte Seite
+    text: Die Seite taucht nicht in der Navigation auf, ist aber aufrufbar
   listed:
-    label: Menu Page
-    text: The page is listed in the main menu
+    label: Öffentliche Seite
+    text: Die ist veröffentlicht und Seite taucht in der Navigation auf
 
-pages:
-  template: default
+columns:
+  - width: 2/3
+    sections:
+      content:
+        type: fields
+        fields:
+          text:
+            extends: fields/text
+  - width: 1/3
+    sections:
+      images:
+        type: files
+        headline: Bilder
+        template: image
+        info: "{{ file.dimensions }}"
 
-fields:
-  text:
-    type: textarea
-    size: huge
+

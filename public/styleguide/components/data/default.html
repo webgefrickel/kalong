@@ -1,0 +1,77 @@
+debug: true
+styleguide: true
+hash: 1557081730263
+config:
+  config:
+    title: Your Project
+    version: 0.0.1-alpha.1
+    scheme: https
+    proxy: dev.dev.localhost
+    port: 3000
+    main: main
+    root: ./public/
+    src: ./src/
+    dest: ./public/assets/
+    styleguide: ./public/styleguide/
+    library: ./public/site/patterns/
+    assets: assets/
+    config: config/
+    docs: docs/
+    fonts: fonts/
+    icons: icons/
+    images: images/
+    patterns: patterns/
+    templates: templates/
+    scripts: scripts/
+    styles: styles/
+    browsers:
+      modern:
+        - last 2 Firefox versions
+        - last 2 Chrome versions
+        - last 2 Safari versions
+        - last 2 Edge versions
+        - last 2 iOS versions
+        - last 2 ChromeAndroid versions
+      legacy:
+        - '> 0.5% in DE'
+  fonts:
+    fonts:
+      default:
+        family: Roboto
+        fallback: sans-serif
+        weight: 400
+        style: normal
+        fontface: true
+        file: roboto-regular
+      mono:
+        family: Hack
+        fallback: monospace
+        weight: 700
+        style: normal
+        fontface: null
+  mediaqueries:
+    mediaqueries:
+      s: 480
+      m: 720
+      l: 960
+      xl: 1100
+      xxl: 1400
+      portrait: '(orientation: portrait)'
+      landscape: '(orientation: landscape)'
+      print: print
+      custom: '(max-width: 30em)'
+site:
+  lang: de
+  dir: ltr
+  title: Your Project—Styleguide
+  description: null
+  defaultColor: '#000'
+  mainColor: '#f00'
+  modifiers: null
+global:
+  nav:
+    main:
+      - href: '#somepage'
+        label: Somepage
+text: <p>Default page content and patterns here&hellip</p>
+

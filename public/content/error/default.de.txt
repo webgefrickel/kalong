@@ -1,0 +1,13 @@
+Title: Error
+
+----
+
+Text: 
+
+Leider konnte die gewünschte Seite nicht gefunden werden. 
+
+(link: / text: Zurück zur Startseite)
+
+----
+
+Intro: The page could not be found.

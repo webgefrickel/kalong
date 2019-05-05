@@ -20,8 +20,8 @@ function kalong($pattern = null) {
   $data['site']['modifiers'] = '';
   $data['site']['dir'] = 'ltr';
   $data['site']['lang'] = $site->language()->code();
-  $data['site']['title'] = $homepage->hometitle();
-  $data['site']['description'] = $homepage->description();
+  $data['site']['title'] = $homepage->seotitle();
+  $data['site']['description'] = $homepage->seodescription();
   $data['site']['author'] = $homepage->hometitle();
 
   // page data

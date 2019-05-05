@@ -7,7 +7,7 @@ return [
   'routes' => require_once('routes.php'),
   'hooks' => require_once('hooks.php'),
   'thumbs' => [
-    'driver' => 'img',
+    'driver' => 'im',
     'quality' => '75',
   ],
 
