@@ -23,7 +23,7 @@
 
 @mixin animation(
   $name: $animation-name,
-  $duration: $animation-time-default,
+  $duration: $animation-duration-default,
   $ease: $animation-ease-default,
   $delay: 0s,
   $iteration: 1,
