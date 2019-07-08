@@ -161,7 +161,9 @@
 
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Your Project—Styleguide Home<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
+        — Your Project—Styleguide
+    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
 
@@ -189,7 +191,13 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js{% if debug %}  fonts-loaded{% endif %}{% if site.modifiers %}  {{ site.modifiers }}{% endif %}"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"{{ site.lang }}"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"{{ site.dir }}"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ site.title }}{% if page.title %} — {{ page .title }}{% else %} Home{%endif %}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
+      {%- if page.isHomePage %}
+        {{ site.title }} — {{ site.description }}
+      {%- else %}
+        {{ page.title }} — {{ site.title }}
+      {%- endif %}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
 
@@ -238,7 +246,7 @@
             
             <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">hash:</span> <span class="hljs-number">1557083196946</span>
+<span class="hljs-attr">hash:</span> <span class="hljs-number">1562588897908</span>
 <span class="hljs-attr">config:</span>
 <span class="hljs-attr">  config:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
@@ -289,15 +297,15 @@
 <span class="hljs-attr">        fontface:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  mediaqueries:</span>
 <span class="hljs-attr">    mediaqueries:</span>
-<span class="hljs-attr">      s:</span> <span class="hljs-number">480</span>
-<span class="hljs-attr">      m:</span> <span class="hljs-number">720</span>
-<span class="hljs-attr">      l:</span> <span class="hljs-number">960</span>
-<span class="hljs-attr">      xl:</span> <span class="hljs-number">1100</span>
-<span class="hljs-attr">      xxl:</span> <span class="hljs-number">1400</span>
+<span class="hljs-attr">      s:</span> <span class="hljs-number">48</span>
+<span class="hljs-attr">      m:</span> <span class="hljs-number">72</span>
+<span class="hljs-attr">      l:</span> <span class="hljs-number">96</span>
+<span class="hljs-attr">      xl:</span> <span class="hljs-number">110</span>
+<span class="hljs-attr">      xxl:</span> <span class="hljs-number">140</span>
 <span class="hljs-attr">      portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
 <span class="hljs-attr">      landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
 <span class="hljs-attr">      print:</span> <span class="hljs-string">print</span>
-<span class="hljs-attr">      custom:</span> <span class="hljs-string">'(max-width: 30em)'</span>
+<span class="hljs-attr">      custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
 <span class="hljs-attr">site:</span>
 <span class="hljs-attr">  lang:</span> <span class="hljs-string">de</span>
 <span class="hljs-attr">  dir:</span> <span class="hljs-string">ltr</span>

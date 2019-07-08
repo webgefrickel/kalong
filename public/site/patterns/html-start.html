@@ -2,7 +2,13 @@
 <html class="no-js{% if debug %}  fonts-loaded{% endif %}{% if site.modifiers %}  {{ site.modifiers }}{% endif %}" lang="{{ site.lang }}" dir="{{ site.dir }}">
   <head>
     <meta charset="utf-8" />
-    <title>{{ site.title }}{% if page.title %} — {{ page .title }}{% else %} Home{%endif %}</title>
+    <title>
+      {%- if page.isHomePage %}
+        {{ site.title }} — {{ site.description }}
+      {%- else %}
+        {{ page.title }} — {{ site.title }}
+      {%- endif %}
+    </title>
     <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
