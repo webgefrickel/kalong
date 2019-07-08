@@ -82,15 +82,7 @@ export default async (opts = {}) => {
       commonjs(),
       babel({
         babelrc: false,
-        presets: [
-          [
-            '@babel/preset-env',
-            {
-              modules: false,
-              targets: config.browsers.modern,
-            },
-          ],
-        ],
+        presets: [['@babel/preset-env', { modules: false }]],
         plugins: ['import-glob'],
       }),
       opts.sourceMap === undefined ? null : terser.terser(),

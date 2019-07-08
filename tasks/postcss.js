@@ -8,13 +8,11 @@ import warn from './lib/warn';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
+  const prefixerOptions = opts.legacy ? { overrideBrowserslist: '> 0.1% in DE' } : {};
   const options = {
     input: opts.input || join(config.dest, config.styles, `${config.main}.css`),
     sourceMap: opts.sourceMap === undefined,
-    plugins: [
-      cssImport(),
-      autoprefixer({ browsers: opts.legacy ? config.browsers.legacy : config.browsers.modern }),
-    ],
+    plugins: [cssImport(), autoprefixer(prefixerOptions)],
   };
 
   // add cssnano if the sourceMap option is set to false
