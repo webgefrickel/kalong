@@ -11,9 +11,9 @@
   } @else {
     $mediaquery: map-get($mediaqueries, $key);
 
-    // use min-width if it is just a number, assuming width in pixels
+    // use min-width if it is just a number, assuming width in rem
     @if is-number($mediaquery) {
-      @media (min-width: #{$mediaquery * 1px}) {
+      @media (min-width: #{$mediaquery * 1rem}) {
         @content;
       }
     } @else {

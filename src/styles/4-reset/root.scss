@@ -2,7 +2,7 @@
   @include color(default);
   @include background-color(background);
   box-sizing: border-box; // sane box-sizing everywhere
-  font-size: $base-font-size; // as reference for rem
+  font-size: 62.5%; // this should default to 10px in most browsers
   font-kerning: normal;
   font-variant-ligatures: common-ligatures contextual;
   font-feature-settings: 'kern', 'liga', 'clig', 'calt';
@@ -21,6 +21,7 @@
 
 body {
   @include font(default);
+  @include font-size(default);
   @include background-color(background);
 
   // remove this if you want custom print-styles

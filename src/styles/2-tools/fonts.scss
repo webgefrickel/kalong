@@ -1,25 +1,14 @@
-// function to easily get the font-size and convert it to rem
-@function font-size($fontsize-value: default) {
-  @if variable-exists(font-sizes) == false {
-    @warn '$font-sizes Sass-map does not exist, please provide one in your config. Defaulting to 16px';
-    @return px-to-rem($base-font-size);
-  } @else if map-has-key($font-sizes, $fontsize-value) == false {
-    @warn 'Index "#{$fontsize-value}" not found in $font-sizes Sass-map using function font-size. Defaulting to 16px';
-    @return px-to-rem($base-font-size);
-  }
-
-  $val: map-get($font-sizes, $fontsize-value);
-
-  @if is-px-value($val) {
-    @return px-to-rem($val);
-  } @else {
-    @return $val;
-  }
-}
-
 // font-size mixin using the function above
 @mixin font-size($fontsize-value: default) {
-  font-size: font-size($fontsize-value);
+  @if variable-exists(font-sizes) == false {
+    @warn '$font-sizes Sass-map does not exist, please provide one in your config.';
+    font-size: 10rem;
+  } @else if map-has-key($font-sizes, $fontsize-value) == false {
+    @warn 'Index "#{$fontsize-value}" not found in $font-sizes Sass-map using function font-size.';
+    font-size: 10rem;
+  }
+
+  font-size: map-get($font-sizes, $fontsize-value);
 }
 
 // mixins for font-face, for usage with fontfaceobserver
