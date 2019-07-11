@@ -157,13 +157,11 @@
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js  fonts-loaded"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"de"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
-        — Your Project—Styleguide
-    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Your Project—Styleguide<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
 
@@ -176,7 +174,13 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#f00"</span> /&gt;</span>
 
     <span class="hljs-comment">&lt;!-- add any og/twitter-card stuff here --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.css"</span> /&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.min.css?v=1562868063500"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
+        only print,
+        only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
+        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
+        "</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../fonts/roboto-regular.woff2"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"font/woff2"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre>
@@ -188,40 +192,34 @@
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-view">
     <code class="Code Code--lang-html">
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js{% if debug %}  fonts-loaded{% endif %}{% if site.modifiers %}  {{ site.modifiers }}{% endif %}"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"{{ site.lang }}"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"{{ site.dir }}"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js{% if config.debug %}  fonts-loaded{% endif %}{% if page.modifiers %}  {{ page.modifiers }}{% endif %}"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"{{ language.code }}"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"{{ language.direction }}"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>
-      {%- if page.isHomePage %}
-        {{ site.title }} — {{ site.description }}
-      {%- else %}
-        {{ page.title }} — {{ site.title }}
-      {%- endif %}
-    <span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ page.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ page.description }}"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/images/apple-touch-icon.png' | path }}"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"32x32"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/images/favicon-32x32.png' | path }}"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"16x16"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"image/png"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/images/favicon-16x16.png' | path }}"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/images/safari-pinned-tab.svg' | path }}"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"{{ site.defaultColor }}"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"mask-icon"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/images/safari-pinned-tab.svg' | path }}"</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"{{ config.colors.default }}"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"manifest"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/site.webmanifest"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ site.mainColor }}"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ site.mainColor }}"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"msapplication-TileColor"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ config.colors.main }}"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ config.colors.main }}"</span> /&gt;</span>
 
     <span class="hljs-comment">&lt;!-- add any og/twitter-card stuff here --&gt;</span>
 
-    {%- if debug %}
+    {%- if config.debug %}
       <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/styles/main.css' | path }}"</span> /&gt;</span>
     {%- else %}
       {# (Edge doesn't apply to print otherwise) Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+ FF 47+ #}
-      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/styles/main.min.css' | path }}?v={{ hash }}"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
+      <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/styles/main.min.css' | path }}?v={{ config.hash }}"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
         only print,
         only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
         "</span> /&gt;</span>
 
-      {%- for font, fontConfig in config.fonts.fonts %}
+      {%- for font, fontConfig in config.fonts %}
         {%- if fontConfig.fontface %}
           {%- set fontFile = ['/fonts/', fontConfig.file, '.woff2'] %}
           <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ fontFile | join | path }}"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"font/woff2"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
@@ -244,15 +242,12 @@
     <code class="Code Code--lang-yaml">
         
             
-            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">hash:</span> <span class="hljs-number">1562588897908</span>
-<span class="hljs-attr">config:</span>
-<span class="hljs-attr">  config:</span>
+            <pre><span class="hljs-attr">config:</span>
+<span class="hljs-attr">  kalong:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
 <span class="hljs-attr">    version:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.1</span><span class="hljs-bullet">-alpha.1</span>
-<span class="hljs-attr">    scheme:</span> <span class="hljs-string">https</span>
 <span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.dev.localhost</span>
+<span class="hljs-attr">    https:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">    port:</span> <span class="hljs-number">3000</span>
 <span class="hljs-attr">    main:</span> <span class="hljs-string">main</span>
 <span class="hljs-attr">    root:</span> <span class="hljs-string">./public/</span>
@@ -270,55 +265,48 @@
 <span class="hljs-attr">    templates:</span> <span class="hljs-string">templates/</span>
 <span class="hljs-attr">    scripts:</span> <span class="hljs-string">scripts/</span>
 <span class="hljs-attr">    styles:</span> <span class="hljs-string">styles/</span>
-<span class="hljs-attr">    browsers:</span>
-<span class="hljs-attr">      modern:</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Firefox</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Chrome</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Safari</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Edge</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">iOS</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">ChromeAndroid</span> <span class="hljs-string">versions</span>
-<span class="hljs-attr">      legacy:</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">'&gt; 0.5% in DE'</span>
 <span class="hljs-attr">  fonts:</span>
-<span class="hljs-attr">    fonts:</span>
-<span class="hljs-attr">      default:</span>
-<span class="hljs-attr">        family:</span> <span class="hljs-string">Roboto</span>
-<span class="hljs-attr">        fallback:</span> <span class="hljs-string">sans-serif</span>
-<span class="hljs-attr">        weight:</span> <span class="hljs-number">400</span>
-<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">        file:</span> <span class="hljs-string">roboto-regular</span>
-<span class="hljs-attr">      mono:</span>
-<span class="hljs-attr">        family:</span> <span class="hljs-string">Hack</span>
-<span class="hljs-attr">        fallback:</span> <span class="hljs-string">monospace</span>
-<span class="hljs-attr">        weight:</span> <span class="hljs-number">700</span>
-<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">    default:</span>
+<span class="hljs-attr">      family:</span> <span class="hljs-string">Roboto</span>
+<span class="hljs-attr">      fallback:</span> <span class="hljs-string">sans-serif</span>
+<span class="hljs-attr">      weight:</span> <span class="hljs-number">400</span>
+<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      file:</span> <span class="hljs-string">roboto-regular</span>
+<span class="hljs-attr">    mono:</span>
+<span class="hljs-attr">      family:</span> <span class="hljs-string">Hack</span>
+<span class="hljs-attr">      fallback:</span> <span class="hljs-string">monospace</span>
+<span class="hljs-attr">      weight:</span> <span class="hljs-number">700</span>
+<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  mediaqueries:</span>
-<span class="hljs-attr">    mediaqueries:</span>
-<span class="hljs-attr">      s:</span> <span class="hljs-number">48</span>
-<span class="hljs-attr">      m:</span> <span class="hljs-number">72</span>
-<span class="hljs-attr">      l:</span> <span class="hljs-number">96</span>
-<span class="hljs-attr">      xl:</span> <span class="hljs-number">110</span>
-<span class="hljs-attr">      xxl:</span> <span class="hljs-number">140</span>
-<span class="hljs-attr">      portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
-<span class="hljs-attr">      landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
-<span class="hljs-attr">      print:</span> <span class="hljs-string">print</span>
-<span class="hljs-attr">      custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
-<span class="hljs-attr">site:</span>
-<span class="hljs-attr">  lang:</span> <span class="hljs-string">de</span>
-<span class="hljs-attr">  dir:</span> <span class="hljs-string">ltr</span>
+<span class="hljs-attr">    s:</span> <span class="hljs-number">48</span>
+<span class="hljs-attr">    m:</span> <span class="hljs-number">72</span>
+<span class="hljs-attr">    l:</span> <span class="hljs-number">96</span>
+<span class="hljs-attr">    xl:</span> <span class="hljs-number">110</span>
+<span class="hljs-attr">    xxl:</span> <span class="hljs-number">140</span>
+<span class="hljs-attr">    portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
+<span class="hljs-attr">    landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
+<span class="hljs-attr">    print:</span> <span class="hljs-string">print</span>
+<span class="hljs-attr">    custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
+<span class="hljs-attr">  colors:</span>
+<span class="hljs-attr">    main:</span> <span class="hljs-string">'#f00'</span>
+<span class="hljs-attr">    default:</span> <span class="hljs-string">'#000'</span>
+<span class="hljs-attr">    background:</span> <span class="hljs-string">'#fff'</span>
+<span class="hljs-attr">    error:</span> <span class="hljs-string">'#f00'</span>
+<span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1562868063500</span>
+<span class="hljs-attr">language:</span>
+<span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
+<span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
+<span class="hljs-attr">  direction:</span> <span class="hljs-string">ltr</span>
+<span class="hljs-attr">page:</span>
 <span class="hljs-attr">  title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
-<span class="hljs-attr">  description:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">  defaultColor:</span> <span class="hljs-string">'#000'</span>
-<span class="hljs-attr">  mainColor:</span> <span class="hljs-string">'#f00'</span>
-<span class="hljs-attr">  modifiers:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">global:</span>
-<span class="hljs-attr">  nav:</span>
-<span class="hljs-attr">    main:</span>
-<span class="hljs-attr">      - href:</span> <span class="hljs-string">'#somepage'</span>
-<span class="hljs-attr">        label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">nav:</span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    - href:</span> <span class="hljs-string">'#somepage'</span>
+<span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
 </pre>
             
         

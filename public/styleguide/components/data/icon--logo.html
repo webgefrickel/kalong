@@ -1,12 +1,9 @@
-debug: true
-styleguide: true
-hash: 1562588897908
 config:
-  config:
+  kalong:
     title: Your Project
     version: 0.0.1-alpha.1
-    scheme: https
     proxy: dev.dev.localhost
+    https: true
     port: 3000
     main: main
     root: ./public/
@@ -24,55 +21,48 @@ config:
     templates: templates/
     scripts: scripts/
     styles: styles/
-    browsers:
-      modern:
-        - last 2 Firefox versions
-        - last 2 Chrome versions
-        - last 2 Safari versions
-        - last 2 Edge versions
-        - last 2 iOS versions
-        - last 2 ChromeAndroid versions
-      legacy:
-        - '> 0.5% in DE'
   fonts:
-    fonts:
-      default:
-        family: Roboto
-        fallback: sans-serif
-        weight: 400
-        style: normal
-        fontface: true
-        file: roboto-regular
-      mono:
-        family: Hack
-        fallback: monospace
-        weight: 700
-        style: normal
-        fontface: null
+    default:
+      family: Roboto
+      fallback: sans-serif
+      weight: 400
+      style: normal
+      fontface: true
+      file: roboto-regular
+    mono:
+      family: Hack
+      fallback: monospace
+      weight: 700
+      style: normal
+      fontface: null
   mediaqueries:
-    mediaqueries:
-      s: 48
-      m: 72
-      l: 96
-      xl: 110
-      xxl: 140
-      portrait: '(orientation: portrait)'
-      landscape: '(orientation: landscape)'
-      print: print
-      custom: '(max-width: 30rem)'
-site:
-  lang: de
-  dir: ltr
+    s: 48
+    m: 72
+    l: 96
+    xl: 110
+    xxl: 140
+    portrait: '(orientation: portrait)'
+    landscape: '(orientation: landscape)'
+    print: print
+    custom: '(max-width: 30rem)'
+  colors:
+    main: '#f00'
+    default: '#000'
+    background: '#fff'
+    error: '#f00'
+  debug: null
+  styleguide: true
+  hash: 1562868063500
+language:
+  code: en
+  locale: en_US
+  direction: ltr
+page:
   title: Your Project—Styleguide
-  description: null
-  defaultColor: '#000'
-  mainColor: '#f00'
-  modifiers: null
-global:
-  nav:
-    main:
-      - href: '#somepage'
-        label: Somepage
+nav:
+  main:
+    - href: '#somepage'
+      label: Somepage
 modifiers: null
 sprite: /images/sprite.svg
 icon: logo

@@ -1,4 +1,4 @@
-{% if not styleguide %}
+{% if not config.styleguide %}
   {% render '@html-start' %}
 {% endif %}
 
@@ -11,6 +11,6 @@
 
 {% render '@footer' %}
 
-{% if not styleguide %}
+{% if not config.styleguide %}
   {% render '@html-end' %}
 {% endif %}

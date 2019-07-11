@@ -1,36 +1,34 @@
-const config = require('../../kalong.config');
-const fonts = require('../config/fonts');
-const colors = require('../config/colors');
-const mediaqueries = require('../config/mediaqueries');
+const kalong = require('../../kalong.config');
+const { fonts } = require('../config/fonts');
+const { colors } = require('../config/colors');
+const { mediaqueries } = require('../config/mediaqueries');
 
 module.exports = {
   context: {
-    debug: true,
-    styleguide: true,
-    hash: new Date().getTime(),
     config: {
-      config,
+      kalong,
       fonts,
       mediaqueries,
+      colors,
+      debug: false,
+      styleguide: true,
+      hash: new Date().getTime(),
     },
-    site: {
-      lang: 'de',
-      dir: 'ltr',
-      title: config.title + '—Styleguide',
-      description: '',
-      defaultColor: colors.colors.default,
-      mainColor: colors.colors.main,
-      modifiers: '', // global css-classes, applied to <html>
+    language: {
+      code: 'en',
+      locale: 'en_US',
+      direction: 'ltr',
     },
-    global: {
-      nav: {
-        main: [
-          {
-            href: '#somepage',
-            label: 'Somepage',
-          },
-        ],
-      },
+    page: {
+      title: `${kalong.title}—Styleguide`,
+    },
+    nav: {
+      main: [
+        {
+          href: '#somepage',
+          label: 'Somepage',
+        },
+      ],
     },
   },
 };

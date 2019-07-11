@@ -414,15 +414,12 @@
     <code class="Code Code--lang-yaml">
         
             
-            <pre><span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">hash:</span> <span class="hljs-number">1562588897908</span>
-<span class="hljs-attr">config:</span>
-<span class="hljs-attr">  config:</span>
+            <pre><span class="hljs-attr">config:</span>
+<span class="hljs-attr">  kalong:</span>
 <span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
 <span class="hljs-attr">    version:</span> <span class="hljs-number">0.0</span><span class="hljs-number">.1</span><span class="hljs-bullet">-alpha.1</span>
-<span class="hljs-attr">    scheme:</span> <span class="hljs-string">https</span>
 <span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.dev.localhost</span>
+<span class="hljs-attr">    https:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">    port:</span> <span class="hljs-number">3000</span>
 <span class="hljs-attr">    main:</span> <span class="hljs-string">main</span>
 <span class="hljs-attr">    root:</span> <span class="hljs-string">./public/</span>
@@ -440,55 +437,48 @@
 <span class="hljs-attr">    templates:</span> <span class="hljs-string">templates/</span>
 <span class="hljs-attr">    scripts:</span> <span class="hljs-string">scripts/</span>
 <span class="hljs-attr">    styles:</span> <span class="hljs-string">styles/</span>
-<span class="hljs-attr">    browsers:</span>
-<span class="hljs-attr">      modern:</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Firefox</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Chrome</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Safari</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">Edge</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">iOS</span> <span class="hljs-string">versions</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">last</span> <span class="hljs-number">2</span> <span class="hljs-string">ChromeAndroid</span> <span class="hljs-string">versions</span>
-<span class="hljs-attr">      legacy:</span>
-<span class="hljs-bullet">        -</span> <span class="hljs-string">'&gt; 0.5% in DE'</span>
 <span class="hljs-attr">  fonts:</span>
-<span class="hljs-attr">    fonts:</span>
-<span class="hljs-attr">      default:</span>
-<span class="hljs-attr">        family:</span> <span class="hljs-string">Roboto</span>
-<span class="hljs-attr">        fallback:</span> <span class="hljs-string">sans-serif</span>
-<span class="hljs-attr">        weight:</span> <span class="hljs-number">400</span>
-<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">        file:</span> <span class="hljs-string">roboto-regular</span>
-<span class="hljs-attr">      mono:</span>
-<span class="hljs-attr">        family:</span> <span class="hljs-string">Hack</span>
-<span class="hljs-attr">        fallback:</span> <span class="hljs-string">monospace</span>
-<span class="hljs-attr">        weight:</span> <span class="hljs-number">700</span>
-<span class="hljs-attr">        style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">        fontface:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">    default:</span>
+<span class="hljs-attr">      family:</span> <span class="hljs-string">Roboto</span>
+<span class="hljs-attr">      fallback:</span> <span class="hljs-string">sans-serif</span>
+<span class="hljs-attr">      weight:</span> <span class="hljs-number">400</span>
+<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">      file:</span> <span class="hljs-string">roboto-regular</span>
+<span class="hljs-attr">    mono:</span>
+<span class="hljs-attr">      family:</span> <span class="hljs-string">Hack</span>
+<span class="hljs-attr">      fallback:</span> <span class="hljs-string">monospace</span>
+<span class="hljs-attr">      weight:</span> <span class="hljs-number">700</span>
+<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  mediaqueries:</span>
-<span class="hljs-attr">    mediaqueries:</span>
-<span class="hljs-attr">      s:</span> <span class="hljs-number">48</span>
-<span class="hljs-attr">      m:</span> <span class="hljs-number">72</span>
-<span class="hljs-attr">      l:</span> <span class="hljs-number">96</span>
-<span class="hljs-attr">      xl:</span> <span class="hljs-number">110</span>
-<span class="hljs-attr">      xxl:</span> <span class="hljs-number">140</span>
-<span class="hljs-attr">      portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
-<span class="hljs-attr">      landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
-<span class="hljs-attr">      print:</span> <span class="hljs-string">print</span>
-<span class="hljs-attr">      custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
-<span class="hljs-attr">site:</span>
-<span class="hljs-attr">  lang:</span> <span class="hljs-string">de</span>
-<span class="hljs-attr">  dir:</span> <span class="hljs-string">ltr</span>
+<span class="hljs-attr">    s:</span> <span class="hljs-number">48</span>
+<span class="hljs-attr">    m:</span> <span class="hljs-number">72</span>
+<span class="hljs-attr">    l:</span> <span class="hljs-number">96</span>
+<span class="hljs-attr">    xl:</span> <span class="hljs-number">110</span>
+<span class="hljs-attr">    xxl:</span> <span class="hljs-number">140</span>
+<span class="hljs-attr">    portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
+<span class="hljs-attr">    landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
+<span class="hljs-attr">    print:</span> <span class="hljs-string">print</span>
+<span class="hljs-attr">    custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
+<span class="hljs-attr">  colors:</span>
+<span class="hljs-attr">    main:</span> <span class="hljs-string">'#f00'</span>
+<span class="hljs-attr">    default:</span> <span class="hljs-string">'#000'</span>
+<span class="hljs-attr">    background:</span> <span class="hljs-string">'#fff'</span>
+<span class="hljs-attr">    error:</span> <span class="hljs-string">'#f00'</span>
+<span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1562868063500</span>
+<span class="hljs-attr">language:</span>
+<span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
+<span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
+<span class="hljs-attr">  direction:</span> <span class="hljs-string">ltr</span>
+<span class="hljs-attr">page:</span>
 <span class="hljs-attr">  title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
-<span class="hljs-attr">  description:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">  defaultColor:</span> <span class="hljs-string">'#000'</span>
-<span class="hljs-attr">  mainColor:</span> <span class="hljs-string">'#f00'</span>
-<span class="hljs-attr">  modifiers:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">global:</span>
-<span class="hljs-attr">  nav:</span>
-<span class="hljs-attr">    main:</span>
-<span class="hljs-attr">      - href:</span> <span class="hljs-string">'#somepage'</span>
-<span class="hljs-attr">        label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">nav:</span>
+<span class="hljs-attr">  main:</span>
+<span class="hljs-attr">    - href:</span> <span class="hljs-string">'#somepage'</span>
+<span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
 </pre>
             
         

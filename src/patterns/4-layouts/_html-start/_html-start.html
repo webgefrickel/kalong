@@ -1,38 +1,32 @@
 <!doctype html>
-<html class="no-js{% if debug %}  fonts-loaded{% endif %}{% if site.modifiers %}  {{ site.modifiers }}{% endif %}" lang="{{ site.lang }}" dir="{{ site.dir }}">
+<html class="no-js{% if config.debug %}  fonts-loaded{% endif %}{% if page.modifiers %}  {{ page.modifiers }}{% endif %}" lang="{{ language.code }}" dir="{{ language.direction }}">
   <head>
     <meta charset="utf-8" />
-    <title>
-      {%- if page.isHomePage %}
-        {{ site.title }} — {{ site.description }}
-      {%- else %}
-        {{ page.title }} — {{ site.title }}
-      {%- endif %}
-    </title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}" />
+    <title>{{ page.title }}</title>
+    <meta name="description" content="{{ page.description }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="apple-touch-icon" sizes="180x180" href="{{ '/images/apple-touch-icon.png' | path }}" />
     <link rel="icon" sizes="32x32" type="image/png" href="{{ '/images/favicon-32x32.png' | path }}" />
     <link rel="icon" sizes="16x16" type="image/png" href="{{ '/images/favicon-16x16.png' | path }}" />
-    <link rel="mask-icon" href="{{ '/images/safari-pinned-tab.svg' | path }}" color="{{ site.defaultColor }}" />
+    <link rel="mask-icon" href="{{ '/images/safari-pinned-tab.svg' | path }}" color="{{ config.colors.default }}" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="{{ site.mainColor }}" />
-    <meta name="theme-color" content="{{ site.mainColor }}" />
+    <meta name="msapplication-TileColor" content="{{ config.colors.main }}" />
+    <meta name="theme-color" content="{{ config.colors.main }}" />
 
     <!-- add any og/twitter-card stuff here -->
 
-    {%- if debug %}
+    {%- if config.debug %}
       <link rel="stylesheet" href="{{ '/styles/main.css' | path }}" />
     {%- else %}
       {# (Edge doesn't apply to print otherwise) Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+ FF 47+ #}
-      <link id="modern-browsers" rel="stylesheet" href="{{ '/styles/main.min.css' | path }}?v={{ hash }}" media="
+      <link id="modern-browsers" rel="stylesheet" href="{{ '/styles/main.min.css' | path }}?v={{ config.hash }}" media="
         only print,
         only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
         " />
 
-      {%- for font, fontConfig in config.fonts.fonts %}
+      {%- for font, fontConfig in config.fonts %}
         {%- if fontConfig.fontface %}
           {%- set fontFile = ['/fonts/', fontConfig.file, '.woff2'] %}
           <link rel="preload" href="{{ fontFile | join | path }}" as="font" type="font/woff2" crossorigin />
