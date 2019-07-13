@@ -10,4 +10,5 @@ export default async () =>
     join(config.dest, config.images, '**/*'),
     join(config.dest, config.fonts, '**/*'),
     join(config.library, '**/*'),
+    join(config.library, '../', config.templates, '**/*'),
   ]);

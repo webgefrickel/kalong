@@ -65,7 +65,7 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface
             $this->variant = $parts[1];
         }
 
-        $this->file = $this->pattern . '.html';
+        $this->file = $this->pattern . '.twig';
 
         $compiler
             ->write('$this->loadTemplate(')

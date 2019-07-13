@@ -1,13 +1,12 @@
 <?php
 
-function kalong($pattern = null) {
+function kalong($pattern = null, $page = null) {
   $path = kirby()->option('kalong');
   $site = kirby()->site();
-  $pages = kirby()->site()->index();
-  $page = $pages->current();
+  $page = ($page !== null) ? $page : $site->homepage();
 
   // load the default page data, and override anything in need of override
-  $globalData = YAML::decode(file_get_contents($path . 'page.yml'));
+  $globalData = YAML::decode(file_get_contents($path . 'layout.yml'));
   $patternData = ($pattern !== null) ? YAML::decode(file_get_contents($path . $pattern . '.yml')) : [];
   $data = array_merge($globalData, $patternData);
 
@@ -16,8 +15,11 @@ function kalong($pattern = null) {
   $data['config']['styleguide'] = false;
 
   // global data
-  $data['kirby'] = kirby();
   $data['language'] = kirby()->language();
+
+  // global page data
+  $data['pageTitle'] = $page->title() . ' — ' . $site->seotitle();
+  $data['pageDescription'] = $page->seodescription();
 
   // navigation objects
   $data['nav'] = [];

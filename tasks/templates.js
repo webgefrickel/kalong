@@ -25,7 +25,7 @@ export default async () => {
       } else {
         // replace html with twig for usage in kirby
         const pattern = match[1].slice(1);
-        const newLine = line.replace(`@${pattern}`, `@pattern/${pattern}.html`);
+        const newLine = line.replace(`@${pattern}`, `@pattern/${pattern}.twig`);
         newContents += `${newLine}\n`;
       }
     });

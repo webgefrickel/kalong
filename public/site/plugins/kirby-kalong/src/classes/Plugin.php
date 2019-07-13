@@ -45,7 +45,7 @@ class Plugin
             $variant = $parts[1];
         }
 
-        $file = $pattern . '.html';
+        $file = $pattern . '.twig';
         $path = '@pattern/' . $file;
 
         $defaultData = kalong(($variant) ? $pattern . '--' . $variant : $pattern);

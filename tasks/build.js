@@ -76,7 +76,7 @@ const copyStyleguide = async () =>
     run(copy, {
       input: join(config.src, config.patterns, '**/*.html'),
       output: join(config.library),
-      rename: [file => file.replace('_', '')],
+      rename: [file => file.replace('_', '').replace('.html', '.twig')],
     }),
     // styleguide data pattern files
     run(copy, {
