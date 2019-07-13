@@ -1,9 +1,11 @@
 <?php
 
+use Kirby\Exception\Exception;
+
 return [
     'props' => [
         /**
-         * Default date when a new Page/File/User gets created
+         * Default date when a new page/file/user gets created
          */
         'default' => function ($default = null) {
             return $default;
@@ -39,7 +41,7 @@ return [
          */
         'placeholder' => null,
         /**
-         * Pass true or an array of time field options to show the time selector.
+         * Pass `true` or an array of time field options to show the time selector.
          */
         'time' => function ($time = false) {
             return $time;
@@ -79,6 +81,49 @@ return [
         return '';
     },
     'validations' => [
-        'date'
+        'date',
+        'minMax' => function ($value) {
+            $min    = $this->min ? strtotime($this->min) : null;
+            $max    = $this->max ? strtotime($this->max) : null;
+            $value  = strtotime($this->value());
+            $format = 'd.m.Y';
+            $errors = [];
+
+            if ($value && $min && $value < $min) {
+                $errors['min'] = $min;
+            }
+
+            if ($value && $max && $value > $max) {
+                $errors['max'] = $max;
+            }
+
+            if (empty($errors) === false) {
+                if ($min && $max) {
+                    throw new Exception([
+                        'key' => 'validation.date.between',
+                        'data' => [
+                            'min' => date($format, $min),
+                            'max' => date($format, $max)
+                        ]
+                    ]);
+                } elseif ($min) {
+                    throw new Exception([
+                        'key' => 'validation.date.after',
+                        'data' => [
+                            'date' => date($format, $min),
+                        ]
+                    ]);
+                } else {
+                    throw new Exception([
+                        'key' => 'validation.date.before',
+                        'data' => [
+                            'date' => date($format, $max),
+                        ]
+                    ]);
+                }
+            }
+
+            return true;
+        },
     ]
 ];
