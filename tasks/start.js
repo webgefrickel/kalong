@@ -16,7 +16,7 @@ import config from '../kalong.config';
 const server = browserSync({
   https: config.https,
   proxy: {
-    target: `${(config.https) ? 'https' : 'http'}://${config.proxy}`
+    target: `${config.https ? 'https' : 'http'}://${config.proxy}`,
   },
   port: config.port,
   open: false, // dont open the browser on start
@@ -117,11 +117,14 @@ const watchSwitch = async file => {
 };
 
 const watch = async () => {
-  const watcher = chokidar.watch(config.src, { ignored: /(^|[/\\])\../ });
+  const watcher = chokidar.watch(`${config.src.replace('./', '')}**/*`, {
+    ignored: /(^|[/\\])\../,
+  });
+
   watcher.on('ready', () => {
-    watcher.on('add', watchSwitch);
-    watcher.on('unlink', watchSwitch);
-    watcher.on('change', watchSwitch);
+    watcher.on('add', file => watchSwitch(file));
+    watcher.on('unlink', file => watchSwitch(file));
+    watcher.on('change', file => watchSwitch(file));
   });
 };
 
