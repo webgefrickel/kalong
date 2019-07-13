@@ -162,7 +162,7 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>Your Project—Styleguide<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">""</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"A pattern library for Your Project"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../images/apple-touch-icon.png"</span> /&gt;</span>
@@ -175,7 +175,7 @@
 
     <span class="hljs-comment">&lt;!-- add any og/twitter-card stuff here --&gt;</span>
 
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.min.css?v=1562868063500"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.min.css?v=1563007315699"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
         only print,
         only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
         only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
@@ -192,11 +192,11 @@
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-7488df13a9d38be82560f9c1f4317b17-panel-view">
     <code class="Code Code--lang-html">
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js{% if config.debug %}  fonts-loaded{% endif %}{% if page.modifiers %}  {{ page.modifiers }}{% endif %}"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"{{ language.code }}"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"{{ language.direction }}"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js{% if config.debug %}  fonts-loaded{% endif %}{% if pageModifiers %}  {{ pageModifiers }}{% endif %}"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"{{ language.code }}"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"{{ language.direction }}"</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ page.title }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ page.description }}"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{{ pageTitle }}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"{{ pageDescription }}"</span> /&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1"</span> /&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"apple-touch-icon"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"180x180"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"{{ '/images/apple-touch-icon.png' | path }}"</span> /&gt;</span>
@@ -296,17 +296,18 @@
 <span class="hljs-attr">    error:</span> <span class="hljs-string">'#f00'</span>
 <span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1562868063500</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1563007315699</span>
 <span class="hljs-attr">language:</span>
 <span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
 <span class="hljs-attr">  direction:</span> <span class="hljs-string">ltr</span>
-<span class="hljs-attr">page:</span>
-<span class="hljs-attr">  title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">nav:</span>
 <span class="hljs-attr">  main:</span>
 <span class="hljs-attr">    - href:</span> <span class="hljs-string">'#somepage'</span>
 <span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
+<span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
+<span class="hljs-attr">pageModifiers:</span> <span class="hljs-literal">null</span>
 </pre>
             
         
@@ -361,7 +362,7 @@
             <strong class="Meta-key">Referenced by <em class="Meta-count">(2)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
             
-                <a href="page.html">@<span>page</span></a>, 
+                <a href="layout.html">@<span>layout</span></a>, 
             
                 <a href="preview.html">@<span>preview</span></a>
             
@@ -1037,8 +1038,8 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="page.html" data-pjax>
-                <span>Page</span>
+            <a class="Tree-entityLink" href="layout.html" data-pjax>
+                <span>Layout</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -1077,6 +1078,41 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="home.html" data-pjax>
+                <span>Home</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-page">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Page</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="default.html" data-pjax>
                 <span>Default</span>
                 
@@ -1098,27 +1134,8 @@
         </li>
         
     
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="home.html" data-pjax>
-                <span>Home</span>
-                
 
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
+            </ul>
         </li>
         
     

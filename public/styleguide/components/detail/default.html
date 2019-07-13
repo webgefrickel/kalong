@@ -55,7 +55,7 @@
     
     
 
-<div class="Pen" data-behaviour="pen" id="pen-58d5e5a622f64ab9015eac241df5e2ae">
+<div class="Pen" data-behaviour="pen" id="pen-9c2c72ba8668e757b8dac8aeddaaed16">
 
     
 
@@ -82,7 +82,7 @@
 </div>
 
 
-    <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-58d5e5a622f64ab9015eac241df5e2ae">
+    <div class="Pen-panel Pen-preview Preview" data-behaviour="preview" id="preview-9c2c72ba8668e757b8dac8aeddaaed16">
     <div class="Preview-wrapper" data-role="resizer">
         <div class="Preview-resizer">
             
@@ -104,7 +104,7 @@
     <div class="Pen-handle Pen-handle--browser" data-role="resize-handle"></div>
 
     <div class="Pen-panel Pen-info" data-role="info">
-    <div class="Browser" data-behaviour="browser" id="browser-58d5e5a622f64ab9015eac241df5e2ae">
+    <div class="Browser" data-behaviour="browser" id="browser-9c2c72ba8668e757b8dac8aeddaaed16">
 
     
 
@@ -113,13 +113,13 @@
     
       
         <li class="Browser-tab Browser-tab--html is-active " data-role="tab">
-          <a href="#browser-58d5e5a622f64ab9015eac241df5e2ae-panel-html">Rendered HTML</a>
+          <a href="#browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-html">Rendered HTML</a>
         </li>
       
     
       
         <li class="Browser-tab Browser-tab--view" data-role="tab">
-          <a href="#browser-58d5e5a622f64ab9015eac241df5e2ae-panel-view">Source</a>
+          <a href="#browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-view">Source</a>
         </li>
       
     
@@ -131,19 +131,19 @@
     
       
         <li class="Browser-tab Browser-tab--context" data-role="tab">
-          <a href="#browser-58d5e5a622f64ab9015eac241df5e2ae-panel-context">Context</a>
+          <a href="#browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-context">Context</a>
         </li>
       
     
       
         <li class="Browser-tab Browser-tab--notes" data-role="tab">
-          <a href="#browser-58d5e5a622f64ab9015eac241df5e2ae-panel-notes">Notes</a>
+          <a href="#browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-notes">Notes</a>
         </li>
       
     
       
         <li class="Browser-tab Browser-tab--info" data-role="tab">
-          <a href="#browser-58d5e5a622f64ab9015eac241df5e2ae-panel-info">Info</a>
+          <a href="#browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-info">Info</a>
         </li>
       
     
@@ -153,7 +153,7 @@
 
     
     
-<div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-58d5e5a622f64ab9015eac241df5e2ae-panel-html">
+<div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-html">
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"header"</span>&gt;</span>
@@ -165,7 +165,16 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav"</span>&gt;</span>
-        Main Navigation
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__heading"</span>&gt;</span>Main navigation<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__list"</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#somepage"</span>&gt;</span>
+          Somepage
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
@@ -184,9 +193,9 @@
 </div>
 
     
-    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-58d5e5a622f64ab9015eac241df5e2ae-panel-view">
+    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-view">
     <code class="Code Code--lang-html">
-        <pre>{% extends '<a href="page.html">@page</a>' %}
+        <pre>{% extends '<a href="layout.html">@layout</a>' %}
 
 {% block main %}
   {{ text | safe }}
@@ -201,7 +210,7 @@
 
 
     
-    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-58d5e5a622f64ab9015eac241df5e2ae-panel-context">
+    <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-context">
     <code class="Code Code--lang-yaml">
         
             
@@ -259,17 +268,18 @@
 <span class="hljs-attr">    error:</span> <span class="hljs-string">'#f00'</span>
 <span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1562868063500</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1563007315699</span>
 <span class="hljs-attr">language:</span>
 <span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
 <span class="hljs-attr">  direction:</span> <span class="hljs-string">ltr</span>
-<span class="hljs-attr">page:</span>
-<span class="hljs-attr">  title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">nav:</span>
 <span class="hljs-attr">  main:</span>
 <span class="hljs-attr">    - href:</span> <span class="hljs-string">'#somepage'</span>
 <span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
+<span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
+<span class="hljs-attr">pageModifiers:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">text:</span> <span class="hljs-string">&lt;p&gt;Default</span> <span class="hljs-string">page</span> <span class="hljs-string">content</span> <span class="hljs-string">and</span> <span class="hljs-string">patterns</span> <span class="hljs-string">here&amp;hellip;&lt;/p&gt;</span>
 </pre>
             
@@ -278,7 +288,7 @@
 </div>
 
     
-    <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-58d5e5a622f64ab9015eac241df5e2ae-panel-notes">
+    <div class="Browser-panel Browser-notes" data-role="tab-panel" id="browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-notes">
     <div class="Prose Prose--condensed">
         
         <p class="Browser-isEmptyNote">There are no notes for this item.</p>
@@ -287,7 +297,7 @@
 </div>
 
     
-    <div class="Browser-panel" data-role="tab-panel" id="browser-58d5e5a622f64ab9015eac241df5e2ae-panel-info">
+    <div class="Browser-panel" data-role="tab-panel" id="browser-9c2c72ba8668e757b8dac8aeddaaed16-panel-info">
     <ul class="Meta">
         <li class="Meta-item">
             <strong class="Meta-key">Handle:</strong>
@@ -317,14 +327,14 @@
         </li>
         <li class="Meta-item">
             <strong class="Meta-key">Filesystem Path:</strong>
-            <span class="Meta-value">src/patterns/5-templates/default/default.html</span>
+            <span class="Meta-value">src/patterns/5-templates/page/default.html</span>
         </li>
         
         <li class="Meta-item">
             <strong class="Meta-key">References <em class="Meta-count">(1)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
             
-                <a href="page.html">@<span>page</span></a>
+                <a href="layout.html">@<span>layout</span></a>
             
             </span>
         </li class="Meta-item">
@@ -999,8 +1009,8 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="page.html" data-pjax>
-                <span>Page</span>
+            <a class="Tree-entityLink" href="layout.html" data-pjax>
+                <span>Layout</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -1038,6 +1048,41 @@
     
         
         
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="home.html" data-pjax>
+                <span>Home</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-page">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Page</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
         <li class="Tree-item Tree-entity is-current" data-state="current" data-role="item">
             <a class="Tree-entityLink" href="" data-pjax>
                 <span>Default</span>
@@ -1060,27 +1105,8 @@
         </li>
         
     
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="home.html" data-pjax>
-                <span>Home</span>
-                
 
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
+            </ul>
         </li>
         
     

@@ -165,7 +165,16 @@
 <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
 
     <span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav"</span>&gt;</span>
-        Main Navigation
+        <span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__heading"</span>&gt;</span>Main navigation<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__list"</span>&gt;</span>
+
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__item"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"nav__link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#somepage"</span>&gt;</span>
+          Somepage
+        <span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span>
@@ -187,7 +196,7 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-7bc0eae864b6631dc3be967db0f05d8e-panel-view">
     <code class="Code Code--lang-html">
-        <pre>{% extends '<a href="page.html">@page</a>' %}
+        <pre>{% extends '<a href="layout.html">@layout</a>' %}
 
 {% block main %}
   <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Yay, homepage!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
@@ -261,17 +270,18 @@
 <span class="hljs-attr">    error:</span> <span class="hljs-string">'#f00'</span>
 <span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1562868063500</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1563007315699</span>
 <span class="hljs-attr">language:</span>
 <span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
 <span class="hljs-attr">  direction:</span> <span class="hljs-string">ltr</span>
-<span class="hljs-attr">page:</span>
-<span class="hljs-attr">  title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">nav:</span>
 <span class="hljs-attr">  main:</span>
 <span class="hljs-attr">    - href:</span> <span class="hljs-string">'#somepage'</span>
 <span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
+<span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
+<span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
+<span class="hljs-attr">pageModifiers:</span> <span class="hljs-literal">null</span>
 <span class="hljs-attr">text:</span> <span class="hljs-string">&lt;p&gt;Homepage</span> <span class="hljs-string">content</span> <span class="hljs-string">and</span> <span class="hljs-string">patterns</span> <span class="hljs-string">here&amp;hellip;&lt;/p&gt;</span>
 </pre>
             
@@ -326,7 +336,7 @@
             <strong class="Meta-key">References <em class="Meta-count">(1)</em>:</strong>
             <span class="Meta-value Meta-value--linkList">
             
-                <a href="page.html">@<span>page</span></a>
+                <a href="layout.html">@<span>layout</span></a>
             
             </span>
         </li class="Meta-item">
@@ -1001,8 +1011,8 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="page.html" data-pjax>
-                <span>Page</span>
+            <a class="Tree-entityLink" href="layout.html" data-pjax>
+                <span>Layout</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -1040,6 +1050,41 @@
     
         
         
+        <li class="Tree-item Tree-entity is-current" data-state="current" data-role="item">
+            <a class="Tree-entityLink" href="" data-pjax>
+                <span>Home</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+        
+        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-page">
+            <h4 class="Tree-collectionLabel" data-role="toggle">
+                <span>Page</span>
+            </h4>
+            <ul class="Tree-collectionItems" data-role="items">
+            
+            
+            
+            
+    
+        
+        
         <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="default.html" data-pjax>
                 <span>Default</span>
@@ -1062,27 +1107,8 @@
         </li>
         
     
-        
-        
-        <li class="Tree-item Tree-entity is-current" data-state="current" data-role="item">
-            <a class="Tree-entityLink" href="" data-pjax>
-                <span>Home</span>
-                
 
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
+            </ul>
         </li>
         
     
