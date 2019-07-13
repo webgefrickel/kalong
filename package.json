@@ -20,15 +20,14 @@
     "styleguide"
   ],
   "engines": {
-    "node": "^8.15.0"
+    "node": "^10.16.0"
   },
   "scripts": {
     "start": "babel-node tasks/start",
-    "build": "babel-node tasks/build",
-    "templates": "babel-node tasks/templates"
+    "build": "babel-node tasks/build"
   },
   "devDependencies": {
-    "@babel/core": "7.5.0",
+    "@babel/core": "7.5.4",
     "@babel/node": "7.5.0",
     "@babel/preset-env": "7.5.4",
     "@frctl/fractal": "1.1.7",
