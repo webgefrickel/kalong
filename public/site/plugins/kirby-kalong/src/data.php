@@ -3,7 +3,8 @@
 function kalong($pattern = null, $page = null) {
   $path = kirby()->option('kalong');
   $site = kirby()->site();
-  $page = ($page !== null) ? $page : $site->homepage();
+  $home = $site->homepage();
+  $page = ($page !== null) ? $page : $home;
 
   // load the default page data, and override anything in need of override
   $globalData = YAML::decode(file_get_contents($path . 'layout.yml'));
@@ -18,7 +19,7 @@ function kalong($pattern = null, $page = null) {
   $data['language'] = kirby()->language();
 
   // global page data
-  $data['pageTitle'] = $page->title() . ' — ' . $site->seotitle();
+  $data['pageTitle'] = $page->title() . ' — ' . $home->seotitle();
   $data['pageDescription'] = $page->seodescription();
 
   // navigation objects
