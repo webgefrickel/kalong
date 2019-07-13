@@ -1,10 +1,12 @@
 type: fields
 fields:
+  line:
+    type: line
   seotitle:
+    width: 1/2
     type: text
-    label: Titel der Webseite
-    required: true
+    label: Titel der Seite (SEO)
   seodescription:
+    width: 1/2
     type: text
-    label: Kurzbeschreibung
-    required: true
+    label: Kurzbeschreibung (SEO)

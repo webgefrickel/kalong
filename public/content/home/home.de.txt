@@ -2,4 +2,12 @@ Title: Home
 
 ----
 
-Text: Welcome to kalong, married successfully with kirby.
+Text: Es funktioniert! Juhu!
+
+----
+
+Seotitle: Seitentitel, global
+
+----
+
+Seodescription: Kurzbeschreibung der Seite, global

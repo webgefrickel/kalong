@@ -1,0 +1,4 @@
+type: files
+headline: Bilder
+template: image
+info: "{{ file.dimensions }}"

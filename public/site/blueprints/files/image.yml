@@ -22,3 +22,4 @@ columns:
             label: Kurzbeschreibung
             type: textarea
             size: small
+            buttons: false

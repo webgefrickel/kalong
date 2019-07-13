@@ -3,6 +3,9 @@
 return [
   'debug' => true,
 
+  // default homepage
+  'home' => 'home',
+
   // we use languages by default
   'languages' => true,
   'date.handler' => 'strftime',

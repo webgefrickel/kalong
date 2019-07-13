@@ -1,14 +1,7 @@
 title: Dashboard
 
 columns:
-  - width: 1/2
-    sections:
-      seo: sections/seo
-  - width: 1/2
-    sections:
+  - sections:
       pages:
+        headline: Seiten
         type: pages
-        create: default
-        template:
-          - home
-          - default

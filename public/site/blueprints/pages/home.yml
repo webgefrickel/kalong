@@ -4,13 +4,13 @@ icon: 🏠
 options:
   status: false
 
-sections:
-  info:
-    headline: Info
-    type: info
-    text: Hilfetext
-  fields:
-    type: fields
-    fields:
-      text:
-        extends: fields/text
+columns:
+  left:
+    sections:
+      content:
+        type: fields
+        fields:
+          text: fields/text
+  bottom:
+    sections:
+      seo: sections/seo
