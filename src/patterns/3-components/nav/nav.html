@@ -1,4 +1,13 @@
 <nav class="nav">
-  Main Navigation
+  <h2 class="nav__heading">Main navigation</h2>
+  <ul class="nav__list">
+    {% for item in nav.main %}
+      <li class="nav__item">
+        <a class="nav__link" href="{{ item.href }}">
+          {{ item.label }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
 </nav>
 

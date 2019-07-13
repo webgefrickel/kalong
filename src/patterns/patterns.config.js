@@ -19,9 +19,6 @@ module.exports = {
       locale: 'en_US',
       direction: 'ltr',
     },
-    page: {
-      title: `${kalong.title}—Styleguide`,
-    },
     nav: {
       main: [
         {
@@ -30,5 +27,8 @@ module.exports = {
         },
       ],
     },
+    pageTitle: `${kalong.title}—Styleguide`,
+    pageDescription: `A pattern library for ${kalong.title}`,
+    pageModifiers: '',
   },
 };
