@@ -4,7 +4,7 @@ module.exports = {
 
   // Provide an own version number and don't use the package.json-version,
   // since this describes the version number of kalong, and not the resulting styleguide
-  version: '0.0.1-alpha.1',
+  version: '0.1.0',
 
   // configure your localhost environment here, the host/proxy
   // should point to the root-folder configured below (default: ./public/)

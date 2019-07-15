@@ -14,24 +14,24 @@ things more strict, the linter will let you know :)
 
 There is one main-file, where everything is included (mixins, modules,
 configurations etc.) in the order you specify. By default it's
-_./src/styles/main.scss_. This will be compiled into one single CSS-file,
-which you can then use on your website. I still prefer this approach
-over multiple files that need to be loaded on different pages (as long
-as it's a small website), because once the main stylesheet is loaded, it
-is cached. 
+_./src/styles/main.scss_. This will be compiled into one single
+CSS-file, which you can then use on your website (OK, acutally three
+files will be generated: main.css for development purposes, main.min.css
+for production and main.legacy.css for old browsers (with a fallback
+autoprefixer configuration. If you use the html-start pattern, you
+should not be concerned about this.
+
+I still prefer this approach over multiple files that need to be loaded
+on different pages (as long as it's a small website), because once the
+main stylesheet is loaded, it is cached.
 
 ## Global configuration
+
 JSON FILES
 
 All other files are structure in the following folders:
 
-1-config
-2-tools
-3-vendor
-4-reset
-5-patterns
-6-themes
-7-overrides
+1-config 2-tools 3-vendor 4-reset 5-patterns 6-themes 7-overrides
 
 ## Conventions
 
@@ -54,7 +54,11 @@ describe your modules, and with Sass this can look like:
 }
 ```
 
-Please try to limit any CSS-declarations to exactly the name of its component. You should rather create a new CSS-only-component than add selectors that have nothing to do with a pattern. Please don't use `&__` and `&--` avaible in sass, since this will increase searchability throughout the project.
+Please try to limit any CSS-declarations to exactly the name of its
+component. You should rather create a new CSS-only-component than add
+selectors that have nothing to do with a pattern. Please don't use `&__`
+and `&--` avaible in sass, since this will increase searchability
+throughout the project.
 
 ### Linting
 
@@ -74,6 +78,5 @@ change browsersupport-array accordingly.
 ## Defaults
 
 By default, this project uses REM as units for fonts, assumes a
-mobile-first strategy and tries to set
-sane margin/padding defaults by defining a base-unit.
-
+mobile-first strategy and tries to set sane margin/padding defaults by
+defining a base-unit.
