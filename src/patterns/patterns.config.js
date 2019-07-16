@@ -1,6 +1,5 @@
 const kalong = require('../../kalong.config');
 const { fonts } = require('../config/fonts');
-const { colors } = require('../config/colors');
 const { mediaqueries } = require('../config/mediaqueries');
 
 module.exports = {
@@ -9,7 +8,10 @@ module.exports = {
       kalong,
       fonts,
       mediaqueries,
-      colors,
+      colors: {
+        default: '#000',
+        main: '#f00',
+      },
       debug: false,
       styleguide: true,
       hash: new Date().getTime(),
