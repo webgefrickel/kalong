@@ -27,9 +27,9 @@
     "build": "babel-node tasks/build"
   },
   "devDependencies": {
-    "@babel/core": "7.5.4",
-    "@babel/node": "7.5.0",
-    "@babel/preset-env": "7.5.4",
+    "@babel/core": "7.5.5",
+    "@babel/node": "7.5.5",
+    "@babel/preset-env": "7.5.5",
     "@frctl/fractal": "1.1.7",
     "@frctl/mandelbrot": "1.2.1",
     "@frctl/nunjucks": "1.0.3",
@@ -39,7 +39,7 @@
     "chokidar": "3.0.2",
     "cssnano": "4.1.10",
     "del": "5.0.0",
-    "eslint": "6.0.1",
+    "eslint": "6.1.0",
     "eslint-config-prettier": "6.0.0",
     "eslint-config-xo-space": "0.21.0",
     "glob": "7.1.4",
