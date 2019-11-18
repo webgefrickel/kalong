@@ -9,13 +9,14 @@ return [
   // we use languages by default
   'languages' => true,
   'date.handler' => 'strftime',
+  'slugs' => 'de',
 
   // thumbnail configuration
   'thumbs' => [
     'driver' => 'im',
     'quality' => '75',
     'srcsets' => [
-      'default' => [480, 960, 1440, 2400],
+      'default' => [480, 720, 960, 1440, 1920, 2400],
     ]
   ],
 

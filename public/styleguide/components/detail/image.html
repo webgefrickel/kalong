@@ -161,7 +161,14 @@
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image"</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Alternativtext für das Bild"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__src"</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//picsum.photos/480/360"</span> <span class="hljs-attr">srcset</span>=<span class="hljs-string">"//picsum.photos/480/360 480w, //picsum.photos/960/720 960w, //picsum.photos/1440/1080 1440w"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"100vw"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">picture</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__picture"</span>&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__source"</span> <span class="hljs-attr">srcset</span>=<span class="hljs-string">"//picsum.photos/480/320 480w, //picsum.photos/960/640 960w, //picsum.photos/1440/960 1440w"</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">"100vw"</span> /&gt;</span>
+
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"//picsum.photos/240/160"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Alternativtext für das Bild"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__fallback"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">picture</span>&gt;</span>
+
+    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__caption"</span>&gt;</span>Bildunterschrift<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></pre>
         
@@ -171,13 +178,18 @@
     
     <div class="Browser-panel Browser-code" data-role="tab-panel" id="browser-f1ddf5821f59df07aff1e6c5f60c8922-panel-view">
     <code class="Code Code--lang-html">
-        <pre>{% set fallback = sources | first %}
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image{% if modifiers %}  {{ modifiers }}{% endif %}"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">picture</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__picture"</span>&gt;</span>
+    {% for source in sources %}
+      <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__source"</span>
+        <span class="hljs-attr">srcset</span>=<span class="hljs-string">"{{ source.srcset }}"</span>
+        {% <span class="hljs-attr">if</span> <span class="hljs-attr">source.media</span> %} <span class="hljs-attr">media</span>=<span class="hljs-string">"{{ source.media }}"</span>{% <span class="hljs-attr">endif</span> %}
+        {% <span class="hljs-attr">if</span> <span class="hljs-attr">source.sizes</span> %} <span class="hljs-attr">sizes</span>=<span class="hljs-string">"{{ source.sizes }}"</span>{% <span class="hljs-attr">endif</span> %}
+      /&gt;</span>
+    {% endfor %}
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"{{ fallback }}"</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"{{ alt }}"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__fallback"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">picture</span>&gt;</span>
 
-<span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image{% if modifiers %}  {{ modifiers }}{% endif %}"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"{{ alt }}"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__src"</span>
-    <span class="hljs-attr">src</span>=<span class="hljs-string">"{{ fallback.src }}"</span>
-    <span class="hljs-attr">srcset</span>=<span class="hljs-string">"{% for size in sources %}{{ size.src }} {{ size.width }}w{% if not loop.last %}, {% endif %}{% endfor %}"</span>
-    <span class="hljs-attr">sizes</span>=<span class="hljs-string">"{{ sizes }}"</span> /&gt;</span>
   {% if caption %}
     <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"image__caption"</span>&gt;</span>{{ caption | safe }}<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
   {% endif %}
@@ -211,9 +223,21 @@
                             
                             <code class="Code Code--lang-SCSS FileBrowser-code">
                                 <pre><span class="hljs-selector-class">.image</span> {
+  <span class="hljs-attribute">display</span>: block;
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
 }
 
+<span class="hljs-selector-class">.image__picture</span> {
+  <span class="hljs-attribute">display</span>: block;
+}
+
+<span class="hljs-selector-class">.image__fallback</span> {
+  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+}
+
+<span class="hljs-selector-class">.image__caption</span> {
+  @<span class="hljs-keyword">include</span> margin(t 1/<span class="hljs-number">2</span>);
+}
 </pre>
                             </code>
                             
@@ -230,7 +254,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">25 Bytes</span>
+                    <span class="Meta-value">165 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -281,7 +305,7 @@
 <span class="hljs-attr">      fallback:</span> <span class="hljs-string">monospace</span>
 <span class="hljs-attr">      weight:</span> <span class="hljs-number">700</span>
 <span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">false</span>
 <span class="hljs-attr">  mediaqueries:</span>
 <span class="hljs-attr">    s:</span> <span class="hljs-number">48</span>
 <span class="hljs-attr">    m:</span> <span class="hljs-number">72</span>
@@ -295,9 +319,9 @@
 <span class="hljs-attr">  colors:</span>
 <span class="hljs-attr">    default:</span> <span class="hljs-string">'#000'</span>
 <span class="hljs-attr">    main:</span> <span class="hljs-string">'#f00'</span>
-<span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1564501868565</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1574082137061</span>
 <span class="hljs-attr">language:</span>
 <span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
@@ -308,18 +332,17 @@
 <span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
 <span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
-<span class="hljs-attr">pageModifiers:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">modifiers:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">sizes:</span> <span class="hljs-number">100</span><span class="hljs-string">vw</span>
-<span class="hljs-attr">caption:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">pageModifiers:</span> <span class="hljs-string">''</span>
+<span class="hljs-attr">modifiers:</span> <span class="hljs-string">''</span>
+<span class="hljs-attr">fallback:</span> <span class="hljs-string">//picsum.photos/240/160</span>
 <span class="hljs-attr">alt:</span> <span class="hljs-string">Alternativtext</span> <span class="hljs-string">für</span> <span class="hljs-string">das</span> <span class="hljs-string">Bild</span>
+<span class="hljs-attr">caption:</span> <span class="hljs-string">Bildunterschrift</span>
 <span class="hljs-attr">sources:</span>
-<span class="hljs-attr">  - width:</span> <span class="hljs-number">480</span>
-<span class="hljs-attr">    src:</span> <span class="hljs-string">//picsum.photos/480/360</span>
-<span class="hljs-attr">  - width:</span> <span class="hljs-number">960</span>
-<span class="hljs-attr">    src:</span> <span class="hljs-string">//picsum.photos/960/720</span>
-<span class="hljs-attr">  - width:</span> <span class="hljs-number">1440</span>
-<span class="hljs-attr">    src:</span> <span class="hljs-string">//picsum.photos/1440/1080</span>
+<span class="hljs-attr">  - media:</span> <span class="hljs-string">''</span>
+<span class="hljs-attr">    sizes:</span> <span class="hljs-number">100</span><span class="hljs-string">vw</span>
+<span class="hljs-attr">    srcset:</span> <span class="hljs-string">&gt;-</span>
+      <span class="hljs-string">//picsum.photos/480/320</span> <span class="hljs-number">480</span><span class="hljs-string">w,</span> <span class="hljs-string">//picsum.photos/960/640</span> <span class="hljs-number">960</span><span class="hljs-string">w,</span>
+      <span class="hljs-string">//picsum.photos/1440/960</span> <span class="hljs-number">1440</span><span class="hljs-string">w</span>
 </pre>
             
         

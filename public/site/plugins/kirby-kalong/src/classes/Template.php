@@ -19,17 +19,27 @@ use Kirby\Toolkit\F;
  */
 class Template extends \Kirby\Cms\Template
 {
-    protected $twig;
-    protected $kirby;
+    private static $twig;
 
-    public function __construct(App $kirby, string $name, string $type = 'html')
+    /**
+     * Creates a new template object
+     *
+     * @param string $name
+     * @param string $type
+     * @param string $defaultType
+     */
+    public function __construct(string $name, string $contentType = 'html', string $defaultType = 'html')
     {
-        parent::__construct($name, $type);
+        parent::__construct($name, $contentType, $defaultType);
         $viewPath    = dirname($this->file());
-        $this->twig = new Environment($viewPath);
-        $this->kirby = $kirby;
+        static::$twig = new Environment($viewPath);
     }
 
+    /**
+     * Returns the expected template file extension
+     *
+     * @return string
+     */
     public function extension(): string
     {
         return 'twig';
@@ -42,17 +52,39 @@ class Template extends \Kirby\Cms\Template
     }
 
     /**
-     * Returns a template file path by name
-     * @param string $name
-     * @return string
+     * Detects the location of the template file
+     * if it exists.
+     *
+     * @return string|null
      */
-    // public function file($name)
     public function file(): ?string
     {
         $usephp = option('mgfagency.twig.usephp', true);
         $type = $this->type();
-        $name = $type !== null && $type !== 'html' ? $this->name() . '.' . $type : $this->name();
 
+        if ($this->hasDefaultType() === true) {
+
+            $base = $this->root() . '/' . $this->name();
+            $twig = $base . '.twig';
+            $php  = $base . '.php';
+
+            if ($usephp and !is_file($twig) and is_file($php)) {
+                return F::realpath($php, $this->root());
+            } else {
+                try {
+                    return F::realpath($twig, $this->root());
+                } catch (Exception $e) {
+                    $path = App::instance()->extension($this->store(), $this->name());
+
+                    if ($path !== null) {
+                        return $path;
+                    }
+                }
+            }
+
+        }
+
+        $name = $this->name() . '.' . $type;
         $base = $this->root() . '/' . $name;
         $twig = $base . '.twig';
         $php  = $base . '.php';
@@ -64,24 +96,21 @@ class Template extends \Kirby\Cms\Template
             try {
                 return F::realpath($twig, $this->root());
             } catch (Exception $e) {
-                return App::instance()->extension('templates', $name);
+                // Look for the template with type extension provided by an extension.
+                // This might be null if the template does not exist.
+                return App::instance()->extension($this->store(), $name);
             }
         }
     }
 
     /**
-     * Renders the template by page with the additional data
-     * @param Page|string $template
      * @param array $data
-     * @param boolean $return
      * @return string
-     * @throws Exception
      */
-    // public function render($template, $data = [], $return = true)
     public function render(array $data = []): string
     {
         if ($this->isTwig()) {
-            return $this->twig->renderPath($this->name() . '.' . $this->extension(), $data, true);
+            return static::$twig->renderPath($this->name() . '.' . $this->extension(), $data, true);
         }
         return parent::render($data);
     }

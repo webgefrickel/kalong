@@ -34,7 +34,7 @@ config:
       fallback: monospace
       weight: 700
       style: normal
-      fontface: null
+      fontface: false
   mediaqueries:
     s: 48
     m: 72
@@ -48,9 +48,9 @@ config:
   colors:
     default: '#000'
     main: '#f00'
-  debug: null
+  debug: true
   styleguide: true
-  hash: 1564501868565
+  hash: 1574082137061
 language:
   code: en
   locale: en_US
@@ -61,16 +61,15 @@ nav:
       label: Somepage
 pageTitle: Your Project—Styleguide
 pageDescription: A pattern library for Your Project
-pageModifiers: null
-modifiers: null
-sizes: 100vw
-caption: null
+pageModifiers: ''
+modifiers: ''
+fallback: //picsum.photos/240/160
 alt: Alternativtext für das Bild
+caption: Bildunterschrift
 sources:
-  - width: 480
-    src: //picsum.photos/480/360
-  - width: 960
-    src: //picsum.photos/960/720
-  - width: 1440
-    src: //picsum.photos/1440/1080
+  - media: ''
+    sizes: 100vw
+    srcset: >-
+      //picsum.photos/480/320 480w, //picsum.photos/960/640 960w,
+      //picsum.photos/1440/960 1440w
 

@@ -53,19 +53,19 @@ class Plugin
 
         if ($merge) {
             if (!empty($userData)) {
-                $data = array_merge(Tpl::$data, $defaultData, $userData);
+                $data = array_merge(Template::$data, $defaultData, $userData);
             } else {
-                $data = array_merge(Tpl::$data, $defaultData);
+                $data = array_merge(Template::$data, $defaultData);
             }
         } else {
             if (!empty($userData)) {
-                $data = array_merge(Tpl::$data, $userData);
+                $data = array_merge(Template::$data, $userData);
             } else {
-                $data = array_merge(Tpl::$data, $defaultData);
+                $data = array_merge(Template::$data, $defaultData);
             }
         }
 
-        $twig = TwigEnv::instance();
+        $twig = Environment::instance();
 
         // treat template as a path only if it *looks like* a Twig template path
         if (Str::startsWith($path, '@') || Str::endsWith(strtolower($path), '.twig')) {

@@ -83,7 +83,7 @@ export default async (opts = {}) => {
       babel({
         babelrc: false,
         presets: [['@babel/preset-env', { modules: false }]],
-        plugins: ['import-glob'],
+        plugins: ['import-glob', 'lodash'],
       }),
       opts.sourceMap === undefined ? null : terser.terser(),
     ],

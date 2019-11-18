@@ -157,7 +157,7 @@
     <code class="Code Code--lang-html">
         
         <pre><span class="hljs-meta">&lt;!doctype html&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"no-js  fonts-loaded"</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span> <span class="hljs-attr">dir</span>=<span class="hljs-string">"ltr"</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"utf-8"</span> /&gt;</span>
@@ -174,44 +174,12 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"theme-color"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"#f00"</span> /&gt;</span>
 
     <span class="hljs-comment">&lt;!-- add any og/twitter-card stuff here --&gt;</span>
-
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"modern-browsers"</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.min.css?v=1564501868565"</span> <span class="hljs-attr">media</span>=<span class="hljs-string">"
-        only print,
-        only all and (pointer: fine), only all and (pointer: coarse), only all and (pointer: none),
-        only all and (min--moz-device-pixel-ratio:0) and (display-mode:browser), (min--moz-device-pixel-ratio:0) and (display-mode:fullscreen)
-        "</span> /&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"preload"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../fonts/roboto-regular.woff2"</span> <span class="hljs-attr">as</span>=<span class="hljs-string">"font"</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"font/woff2"</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"../../styles/main.css"</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
 
-    <span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-        <span class="hljs-keyword">var</span> modern = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-            <span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'modern-browsers'</span>);
-            <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.matchMedia &amp;&amp; <span class="hljs-built_in">window</span>.matchMedia(mq.media).matches;
-        };
-        <span class="hljs-keyword">var</span> loadJs = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
-            <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'script'</span>)[<span class="hljs-number">0</span>];
-            <span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
-            script.src = src;
-            script.async = <span class="hljs-literal">true</span>;
-            ref.parentNode.insertBefore(script, ref);
-        };
-        <span class="hljs-keyword">var</span> loadCss = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
-            <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>];
-            <span class="hljs-keyword">var</span> style = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
-            style.href = src;
-            style.rel = <span class="hljs-string">'stylesheet'</span>;
-            head.append(style);
-        };
-        <span class="hljs-keyword">if</span> (modern()) {
-            loadJs(<span class="hljs-string">"../../scripts/main.min.js?v=1564501868565"</span>);
-        } <span class="hljs-keyword">else</span> {
-            loadCSS(<span class="hljs-string">"../../styles/main.legacy.css?v=1564501868565"</span>);
-            loadJs(<span class="hljs-string">"../../scripts/main.legacy.min.js?v=1564501868565"</span>);
-        }
-    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/main.js"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 
@@ -276,7 +244,7 @@
 <span class="hljs-attr">      fallback:</span> <span class="hljs-string">monospace</span>
 <span class="hljs-attr">      weight:</span> <span class="hljs-number">700</span>
 <span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">false</span>
 <span class="hljs-attr">  mediaqueries:</span>
 <span class="hljs-attr">    s:</span> <span class="hljs-number">48</span>
 <span class="hljs-attr">    m:</span> <span class="hljs-number">72</span>
@@ -290,9 +258,9 @@
 <span class="hljs-attr">  colors:</span>
 <span class="hljs-attr">    default:</span> <span class="hljs-string">'#000'</span>
 <span class="hljs-attr">    main:</span> <span class="hljs-string">'#f00'</span>
-<span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1564501868565</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1574082137061</span>
 <span class="hljs-attr">language:</span>
 <span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
@@ -303,7 +271,7 @@
 <span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
 <span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
-<span class="hljs-attr">pageModifiers:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">pageModifiers:</span> <span class="hljs-string">''</span>
 </pre>
             
         

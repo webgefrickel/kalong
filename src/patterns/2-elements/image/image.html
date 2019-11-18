@@ -1,10 +1,15 @@
-{% set fallback = sources | first %}
-
 <figure class="image{% if modifiers %}  {{ modifiers }}{% endif %}">
-  <img alt="{{ alt }}" class="image__src"
-    src="{{ fallback.src }}"
-    srcset="{% for size in sources %}{{ size.src }} {{ size.width }}w{% if not loop.last %}, {% endif %}{% endfor %}"
-    sizes="{{ sizes }}" />
+  <picture class="image__picture">
+    {% for source in sources %}
+      <source class="image__source"
+        srcset="{{ source.srcset }}"
+        {% if source.media %} media="{{ source.media }}"{% endif %}
+        {% if source.sizes %} sizes="{{ source.sizes }}"{% endif %}
+      />
+    {% endfor %}
+    <img src="{{ fallback }}" alt="{{ alt }}" class="image__fallback" />
+  </picture>
+
   {% if caption %}
     <figcaption class="image__caption">{{ caption | safe }}</figcaption>
   {% endif %}

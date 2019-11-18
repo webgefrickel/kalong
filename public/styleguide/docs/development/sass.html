@@ -104,7 +104,7 @@ main stylesheet is loaded, it is cached.</p>
 <h3 id="bem">BEM</h3>
 <p>This project uses the oldschool BEM-Style (Block, Element, Modifier) to
 describe your modules, and with Sass this can look like:</p>
-<code class="lang-scss"><pre><span class="hljs-selector-class">.some-module</span> {
+<pre><code class="language-scss"><span class="hljs-selector-class">.some-module</span> {
   <span class="hljs-attribute">display</span>: inline-block;
 }
 
@@ -114,7 +114,7 @@ describe your modules, and with Sass this can look like:</p>
 
 <span class="hljs-selector-class">.some-module__block-inside</span> {
   <span class="hljs-attribute">display</span>: flex;
-}</pre></code><p>Please try to limit any CSS-declarations to exactly the name of its
+}</code></pre><p>Please try to limit any CSS-declarations to exactly the name of its
 component. You should rather create a new CSS-only-component than add
 selectors that have nothing to do with a pattern. Please don’t use <code>&amp;__</code>
 and <code>&amp;--</code> avaible in sass, since this will increase searchability

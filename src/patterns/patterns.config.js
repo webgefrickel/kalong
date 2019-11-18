@@ -12,7 +12,7 @@ module.exports = {
         default: '#000',
         main: '#f00',
       },
-      debug: false,
+      debug: true,
       styleguide: true,
       hash: new Date().getTime(),
     },

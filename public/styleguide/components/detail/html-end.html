@@ -156,33 +156,8 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-9b934c90c426d3f46b0f9492fcfc65ab-panel-html">
     <code class="Code Code--lang-html">
         
-        <pre><span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-    <span class="hljs-keyword">var</span> modern = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
-        <span class="hljs-keyword">var</span> mq = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'modern-browsers'</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-built_in">window</span>.matchMedia &amp;&amp; <span class="hljs-built_in">window</span>.matchMedia(mq.media).matches;
-    };
-    <span class="hljs-keyword">var</span> loadJs = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
-        <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'script'</span>)[<span class="hljs-number">0</span>];
-        <span class="hljs-keyword">var</span> script = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'script'</span>);
-        script.src = src;
-        script.async = <span class="hljs-literal">true</span>;
-        ref.parentNode.insertBefore(script, ref);
-    };
-    <span class="hljs-keyword">var</span> loadCss = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">src</span>) </span>{
-        <span class="hljs-keyword">var</span> ref = <span class="hljs-built_in">document</span>.getElementsByTagName(<span class="hljs-string">'head'</span>)[<span class="hljs-number">0</span>];
-        <span class="hljs-keyword">var</span> style = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'link'</span>);
-        style.href = src;
-        style.rel = <span class="hljs-string">'stylesheet'</span>;
-        head.append(style);
-    };
-    <span class="hljs-keyword">if</span> (modern()) {
-        loadJs(<span class="hljs-string">"../../scripts/main.min.js?v=1564501868565"</span>);
-    } <span class="hljs-keyword">else</span> {
-        loadCSS(<span class="hljs-string">"../../styles/main.legacy.css?v=1564501868565"</span>);
-        loadJs(<span class="hljs-string">"../../scripts/main.legacy.min.js?v=1564501868565"</span>);
-    }
-</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"../../scripts/main.js"</span> <span class="hljs-attr">defer</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 
@@ -198,23 +173,23 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"{{ '/scripts/main.js' | path }}"</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   {% else %}
     <span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
-      var modern = function() { var mq = document.getElementById('modern-browsers'); return window.matchMedia &amp;&amp; window.matchMedia(mq.media).matches; };
-      var loadJs = function(src) { var ref = document.getElementsByTagName('script')[0]; var script = document.createElement('script'); script.src = src; script.async = true; ref.parentNode.insertBefore(script, ref); };
-      var loadCss = function (src) { var ref = document.getElementsByTagName('head')[0]; var style = document.createElement('link'); style.href = src; style.rel = 'stylesheet'; head.append(style); };
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="vbscript">
+      var modern = <span class="hljs-keyword">function</span>() { var mq = document.getElementById(<span class="hljs-comment">'modern-browsers'); return window.matchMedia &amp;&amp; window.matchMedia(mq.media).matches; };</span>
+      var loadJs = <span class="hljs-keyword">function</span>(src) { var ref = document.getElementsByTagName(<span class="hljs-comment">'script')[0]; var script = document.createElement('script'); script.src = src; script.async = true; ref.parentNode.insertBefore(script, ref); };</span>
+      var loadCss = <span class="hljs-keyword">function</span> (src) { var ref = document.getElementsByTagName(<span class="hljs-comment">'head')[0]; var style = document.createElement('link'); style.href = src; style.rel = 'stylesheet'; head.append(style); };</span>
 
-      if (modern()) {
-        loadJs("</span><span class="hljs-template-variable">{{ '/scripts/main.min.js' | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ config.hash }}</span><span class="xml">");
-        {# if you want to use the serviceworker, uncomment this
-        if ('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('/serviceworker.js?v=</span><span class="hljs-template-variable">{{ config.hash }}</span><span class="xml">');
+      <span class="hljs-keyword">if</span> (modern()) {
+        loadJs(<span class="hljs-string">"{{ '/scripts/main.min.js' | path }}?v={{ config.hash }}"</span>);
+        {# <span class="hljs-keyword">if</span> you want <span class="hljs-keyword">to</span> use the serviceworker, uncomment this
+        <span class="hljs-keyword">if</span> (<span class="hljs-comment">'serviceWorker' in navigator) {</span>
+          navigator.serviceWorker.register(<span class="hljs-comment">'/serviceworker.js?v={{ config.hash }}');</span>
         }
         #}
-      } else {
-        loadCSS("</span><span class="hljs-template-variable">{{ '/styles/main.legacy.css' | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ config.hash }}</span><span class="xml">");
-        loadJs("</span><span class="hljs-template-variable">{{ '/scripts/main.legacy.min.js' | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ config.hash }}</span><span class="xml">");
+      } <span class="hljs-keyword">else</span> {
+        loadCSS(<span class="hljs-string">"{{ '/styles/main.legacy.css' | path }}?v={{ config.hash }}"</span>);
+        loadJs(<span class="hljs-string">"{{ '/scripts/main.legacy.min.js' | path }}?v={{ config.hash }}"</span>);
       }
-    </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   {% endif %}
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></pre>
@@ -268,7 +243,7 @@
 <span class="hljs-attr">      fallback:</span> <span class="hljs-string">monospace</span>
 <span class="hljs-attr">      weight:</span> <span class="hljs-number">700</span>
 <span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">false</span>
 <span class="hljs-attr">  mediaqueries:</span>
 <span class="hljs-attr">    s:</span> <span class="hljs-number">48</span>
 <span class="hljs-attr">    m:</span> <span class="hljs-number">72</span>
@@ -282,9 +257,9 @@
 <span class="hljs-attr">  colors:</span>
 <span class="hljs-attr">    default:</span> <span class="hljs-string">'#000'</span>
 <span class="hljs-attr">    main:</span> <span class="hljs-string">'#f00'</span>
-<span class="hljs-attr">  debug:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">  debug:</span> <span class="hljs-literal">true</span>
 <span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1564501868565</span>
+<span class="hljs-attr">  hash:</span> <span class="hljs-number">1574082137061</span>
 <span class="hljs-attr">language:</span>
 <span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
 <span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
@@ -295,7 +270,7 @@
 <span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
 <span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
-<span class="hljs-attr">pageModifiers:</span> <span class="hljs-literal">null</span>
+<span class="hljs-attr">pageModifiers:</span> <span class="hljs-string">''</span>
 </pre>
             
         

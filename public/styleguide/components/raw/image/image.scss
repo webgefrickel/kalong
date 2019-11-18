@@ -1,4 +1,16 @@
 .image {
+  display: block;
   margin: 0;
 }
 
+.image__picture {
+  display: block;
+}
+
+.image__fallback {
+  width: 100%;
+}
+
+.image__caption {
+  @include margin(t 1/2);
+}

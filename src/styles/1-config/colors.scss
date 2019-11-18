@@ -1,6 +1,10 @@
+$color-black: #000;
+$color-white: #fff;
+$color-red: #f00;
+
 $colors: (
-  main: #f00,
-  default: #000,
-  background: #fff,
-  error: #f00,
+  main: $color-red,
+  default: $color-black,
+  background: $color-white,
+  error: $color-red
 );
