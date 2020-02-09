@@ -1,0 +1,15 @@
+status: wip
+
+context:
+  modifiers: ''
+  attributes: 'autoplay muted loop'
+  sources:
+    - src: 'video.hevc.mp4'
+      type: 'video/mp4; codecs=hevc,mp4a.40.2'
+    - src: 'video.av1.mp4'
+      type: 'video/mp4; codecs=av01.0.05M.08,opus'
+    - src: 'video.h264.mp4'
+      type: 'video/mp4; codecs=avc1.4D401E,mp4a.40.2'
+
+
+
