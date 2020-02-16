@@ -1,0 +1,17 @@
+Alt: Alternativ-Text
+
+----
+
+Photographer: Fotografin
+
+----
+
+Caption: Eine kurze Beschreibung
+
+----
+
+Focus: {"x":0.63,"y":0.14}
+
+----
+
+Template: image

@@ -6,6 +6,12 @@ Text: Es funktioniert! Juhu!
 
 ----
 
+Gallery:
+
+- 01.jpg
+
+----
+
 Seotitle: Seitentitel, global
 
 ----

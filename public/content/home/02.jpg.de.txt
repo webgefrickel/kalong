@@ -1,0 +1,17 @@
+Alt: Insekt
+
+----
+
+Photographer: Fotograf
+
+----
+
+Caption: Kurzbeschreibung
+
+----
+
+Focus: {"x":0.36,"y":0.67}
+
+----
+
+Template: image
