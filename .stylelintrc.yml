@@ -1,0 +1,18 @@
+extends: stylelint-config-xo-scss
+ignoreFiles: src/styles/3-vendor/**/*.scss
+
+rules:
+  at-rule-name-newline-after: null
+  block-closing-brace-newline-after:
+    - always
+    - ignoreAtRules:
+        - import
+        - include
+        - if
+        - else
+  declaration-property-value-blacklist: null
+  font-weight-notation: null
+  indentation: 2
+  scss/at-import-partial-extension-blacklist: null
+  scss/no-duplicate-dollar-variables: null
+  scss/operator-no-unspaced: null

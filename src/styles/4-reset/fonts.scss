@@ -8,7 +8,7 @@
         src: url('../fonts/#{$fontfile}.woff2') format('woff2'), url('../fonts/#{$fontfile}.woff') format('woff');
         font-family: map-get($font-definition, family);
         font-weight: map-get($font-definition, weight);
-        font-style: unquote(map-get($font-definition, style));
+        font-style: map-get($font-definition, style);
         font-display: swap;
       }
     }

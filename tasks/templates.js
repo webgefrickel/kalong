@@ -6,15 +6,13 @@ import config from '../kalong.config';
 
 export default async () => {
   const patternFolders = sync(join(config.src, config.patterns, '*'));
-  const templateFolder = patternFolders.filter(folder =>
-    folder.includes(config.templates.replace(/^\/|\/$/g, ''))
-  );
+  const templateFolder = patternFolders.filter(folder => folder.includes(config.templates.replace(/^\/|\/$/g, '')));
   const files = sync(join(templateFolder[0], '**/*.html'));
 
   files.forEach(async file => {
     // regex for replacing extends, for use in kirby/twig
     const contents = await readFile(file);
-    const extendsRegex = /{%\s?extends\s?'(.+)'\s?%}/g;
+    const extendsRegex = /{%\s?extends\s?'(?<all>.+)'\s?%}/g;
     const lines = contents.split('\n');
     let newContents = '';
 
@@ -30,12 +28,7 @@ export default async () => {
       }
     });
 
-    const outFile = join(
-      config.library,
-      '../',
-      config.templates,
-      basename(file).replace('.html', '.twig')
-    );
+    const outFile = join(config.library, '../', config.templates, basename(file).replace('.html', '.twig'));
 
     try {
       await makeDir(dirname(outFile));

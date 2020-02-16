@@ -8,6 +8,7 @@
     font-size: 10rem;
   }
 
+  // stylelint-disable-next-line declaration-empty-line-before
   font-size: map-get($font-sizes, $fontsize-value);
 }
 
@@ -25,7 +26,7 @@
     $fallback: sans-serif;
     $font: sans-serif;
   } @else {
-    $fallback: unquote(map-get(map-get($fonts, $family-value), fallback));
+    $fallback: map-get(map-get($fonts, $family-value), fallback);
     $font: map-get(map-get($fonts, $family-value), family), $fallback;
   }
 
@@ -54,6 +55,7 @@
     $this-font-weight: map-get(map-get($fonts, $family-value), weight);
   }
 
+  // stylelint-disable-next-line declaration-empty-line-before
   font-weight: $this-font-weight;
 }
 
@@ -66,9 +68,10 @@
   } @else if map-has-key($fonts, $family-value) == false {
     @warn 'Index "#{$family-value}" not found in $fonts Sass map using mixin font-style. Defaulting to normal';
   } @else {
-    $this-font-style: unquote(map-get(map-get($fonts, $family-value), style));
+    $this-font-style: map-get(map-get($fonts, $family-value), style);
   }
 
+  // stylelint-disable-next-line declaration-empty-line-before
   font-style: $this-font-style;
 }
 

@@ -13,8 +13,8 @@ export default async () => {
   if (report.results && report.results.length) {
     report.results.forEach(file => {
       if (file.errorCount || file.warningCount) {
-        warn('eslint found errors in the following files:');
-        warn('==============================================');
+        warn('\neslint found errors in the following files:');
+        warn('===========================================\n');
 
         file.messages.forEach(m => {
           warn(`${file.filePath} on line ${m.line}, column ${m.column}:`);

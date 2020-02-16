@@ -4,12 +4,11 @@ import clean from './clean';
 import copy from './copy';
 import eslint from './eslint';
 import fractal from './fractal';
-import htmlhint from './htmlhint';
-import pa11y from './pa11y';
+import htmlValidate from './htmlValidate';
 import postcss from './postcss';
 import rollup from './rollup';
 import sass from './sass';
-import sassLint from './sassLint';
+import stylelint from './stylelint';
 import svgSprite from './svgSprite';
 import templates from './templates';
 import run from './lib/run';
@@ -55,9 +54,9 @@ const styles = async () => {
   ]);
 };
 
-const preBuild = async () => Promise.all([run(clean), run(sassLint), run(eslint)]);
+const preBuild = async () => Promise.all([run(clean), run(stylelint), run(eslint)]);
 const compileAssets = async () => Promise.all([run(styles), run(scripts), run(svgSprite)]);
-const postBuild = async () => Promise.all([run(htmlhint), run(pa11y)]);
+const postBuild = async () => Promise.all([run(htmlValidate)]);
 
 const copyAssets = async () =>
   Promise.all([

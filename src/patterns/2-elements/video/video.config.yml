@@ -2,7 +2,7 @@ status: wip
 
 context:
   modifiers: ''
-  attributes: 'autoplay muted loop'
+  attributes: 'controls'
   sources:
     - src: 'video.hevc.mp4'
       type: 'video/mp4; codecs=hevc,mp4a.40.2'

@@ -1,10 +1,10 @@
 {
   "mediaqueries": {
-    "s": 48,
-    "m": 72,
-    "l": 96,
-    "xl": 110,
-    "xxl": 140,
+    "s": 480,
+    "m": 720,
+    "l": 960,
+    "xl": 1100,
+    "xxl": 1400,
     "portrait": "(orientation: portrait)",
     "landscape": "(orientation: landscape)",
     "print": "print",

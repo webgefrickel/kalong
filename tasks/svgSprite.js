@@ -37,10 +37,7 @@ export default async (opts = {}) => {
   try {
     sprite.compile(async (error, result) => {
       await makeDir(dirname(options.dest));
-      await writeFile(
-        opts.output || join(config.src, config.images, 'sprite.svg'),
-        result.symbol.sprite.contents
-      );
+      await writeFile(opts.output || join(config.src, config.images, 'sprite.svg'), result.symbol.sprite.contents);
     });
   } catch (error) {
     warn(error);

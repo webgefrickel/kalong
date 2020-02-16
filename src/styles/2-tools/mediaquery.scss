@@ -2,7 +2,7 @@
 // mediaqueries in your config as a map and you are ready to go
 // by default we use the mobile-first idea, no mq == mobile
 // and the default mediaqueries can just be numbers (for example:
-// setting a value to 720 will generate @media (min-width 720px)
+// setting a value to 720 will generate @media (min-width: 72rem)
 @mixin mediaquery($key) {
   @if variable-exists(mediaqueries) == false {
     @warn '$breakpoints Sass-map does not exist, please provide one in your config';
@@ -13,7 +13,7 @@
 
     // use min-width if it is just a number, assuming width in rem
     @if is-number($mediaquery) {
-      @media (min-width: #{$mediaquery * 1rem}) {
+      @media (min-width: #{$mediaquery}px) {
         @content;
       }
     } @else {

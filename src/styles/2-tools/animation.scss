@@ -17,6 +17,7 @@
     }
   }
 
+  // stylelint-disable-next-line declaration-empty-line-before
   will-change: #{$will-change};
   transition: #{$transition};
 }

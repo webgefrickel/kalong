@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import config from '../../kalong.config.js';
 
 // Update 'version' if you need to refresh the cache

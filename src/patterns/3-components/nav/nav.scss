@@ -1,0 +1,7 @@
+.nav {
+  @include block;
+}
+
+.nav__heading {
+  @include visuallyhidden;
+}

@@ -3,25 +3,35 @@ extends:
   - 'xo-space'
   - 'xo-space/esnext'
   - 'xo-space/browser'
-  - 'prettier'
+
+ignorePatterns:
+  - 'src/scripts/*-vendor/**/*.js'
 
 parserOptions:
-  ecmaVersion: 2019
   sourceType: module
 
 env:
   browser: true
   commonjs: true
-  es6: true
+  es2020: true
   node: true
   serviceworker: true
   shared-node-browser: true
 
+# Most of the rules are set to play nicely
+# with the prettier-config (but not using
+# eslint-config-prettier, which disables too much)
 rules:
+  capitalized-comments:
+    - off
   comma-dangle:
     - error
     - only-multiline
-  capitalized-comments:
+  indent:
+    - error
+    - 2
+    - SwitchCase: 1
+  no-mixed-operators:
     - off
   object-curly-spacing:
     - error
@@ -29,3 +39,8 @@ rules:
   operator-linebreak:
     - error
     - before
+  space-before-function-paren:
+    - error
+    - anonymous: never
+      named: never
+      asyncArrow: always

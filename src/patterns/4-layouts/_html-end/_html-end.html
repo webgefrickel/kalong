@@ -1,5 +1,5 @@
   {% if config.debug %}
-    <script src="{{ '/scripts/main.js' | path }}" defer></script>
+    <script src="{{ '/scripts/main.js' | path }}?v={{ config.hash }}" defer></script>
   {% else %}
     <!-- load legacy js code for browsers that do not support es2017+ -->
     <script>

@@ -8,7 +8,7 @@ export default shortcode => {
   let mediaquery;
 
   if (Number.isInteger(queryValue)) {
-    mediaquery = `(min-width: ${queryValue}rem)`;
+    mediaquery = `(min-width: ${queryValue}px)`;
   } else {
     mediaquery = queryValue;
   }

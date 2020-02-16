@@ -17,7 +17,7 @@
     <!-- add any og/twitter-card stuff here -->
 
     {%- if config.debug %}
-      <link rel="stylesheet" href="{{ '/styles/main.css' | path }}" />
+      <link rel="stylesheet" href="{{ '/styles/main.css' | path }}?v={{ config.hash }}" />
     {%- else %}
       {# (Edge doesn't apply to print otherwise) Edge, Chrome 39+, Opera 26+, Safari 9+, iOS 9+, Android ~5+, Android UCBrowser ~11.8+ FF 47+ #}
       <link id="modern-browsers" rel="stylesheet" href="{{ '/styles/main.min.css' | path }}?v={{ config.hash }}" media="

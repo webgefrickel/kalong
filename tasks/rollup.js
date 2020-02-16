@@ -2,12 +2,12 @@ import { readdirSync, statSync } from 'fs';
 import { join, resolve } from 'path';
 import { rollup } from 'rollup';
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import config from '../kalong.config';
+import json from '@rollup/plugin-json';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from 'rollup-plugin-terser';
 import warn from './lib/warn';
-import config from '../kalong.config';
 
 const walk = (dir, filter) => {
   const list = readdirSync(dir);
@@ -36,24 +36,15 @@ const customResolve = () => {
       }
 
       if (importee.startsWith('~helper')) {
-        return resolve(
-          config.src,
-          `${importee.replace('~helper', `${config.scripts}1-helpers`)}.js`
-        );
+        return resolve(config.src, `${importee.replace('~helper', `${config.scripts}1-helpers`)}.js`);
       }
 
       if (importee.startsWith('~vendor')) {
-        return resolve(
-          config.src,
-          `${importee.replace('~vendor', `${config.scripts}2-vendor`)}.js`
-        );
+        return resolve(config.src, `${importee.replace('~vendor', `${config.scripts}2-vendor`)}.js`);
       }
 
       if (importee.startsWith('~global')) {
-        return resolve(
-          config.src,
-          `${importee.replace('~global', `${config.scripts}3-global`)}.js`
-        );
+        return resolve(config.src, `${importee.replace('~global', `${config.scripts}3-global`)}.js`);
       }
 
       if (importee.startsWith('~module')) {

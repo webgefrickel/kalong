@@ -7,7 +7,7 @@ import eslint from './eslint';
 import postcss from './postcss';
 import rollup from './rollup';
 import sass from './sass';
-import sassLint from './sassLint';
+import stylelint from './stylelint';
 import svgSprite from './svgSprite';
 import run from './lib/run';
 import warn from './lib/warn';
@@ -39,7 +39,7 @@ const watchSwitch = async file => {
     switch (fileExtension) {
       case 'scss':
         console.log('Linting and Rebuilding scss/postcss...');
-        await run(sassLint);
+        await run(stylelint);
         await run(sass);
         await run(postcss);
         server.reload(`/${config.assets}${config.styles}${config.main}.css`);
@@ -118,7 +118,7 @@ const watchSwitch = async file => {
 
 const watch = async () => {
   const watcher = chokidar.watch(`${config.src.replace('./', '')}**/*`, {
-    ignored: /(^|[/\\])\../,
+    ignored: /(?<empty>^|[/\\])\../,
   });
 
   watcher.on('ready', () => {

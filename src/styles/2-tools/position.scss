@@ -53,3 +53,7 @@
 @mixin static($args...) {
   @include position(static, $args...);
 }
+
+@mixin sticky($args...) {
+  @include position(sticky, $args...);
+}

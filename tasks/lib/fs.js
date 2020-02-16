@@ -1,5 +1,4 @@
 import fs from 'fs';
-import mkdirp from 'mkdirp';
 
 export const readFile = file =>
   new Promise((resolve, reject) => {
@@ -33,9 +32,9 @@ export const copyFile = (src, dest) =>
     read.pipe(write);
   });
 
-export const makeDir = name =>
+export const makeDir = dirName =>
   new Promise((resolve, reject) => {
-    mkdirp(name, error => (error ? reject(error) : resolve()));
+    fs.mkdir(dirName, { recursive: true }, error => (error ? reject(error) : resolve()));
   });
 
 export default {
