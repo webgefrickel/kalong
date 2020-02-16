@@ -1,4 +1,8 @@
-# kalong—a frontend styleguide development toolkit
+# kalong
+
+Kirby, twig and fractal—married into something nice.
+
+## Introduction
 
 Kalong is a collection/combination of different tools, to help you get
 started creating your own frontend styleguide, with easy reusable
