@@ -22,19 +22,17 @@ function kalong($pattern = null, $page = null) {
   $data['pageTitle'] = $page->title() . ' — ' . $home->seotitle();
   $data['pageDescription'] = $page->seodescription();
 
+
   // navigation objects
   $data['nav'] = [];
   $data['nav']['main'] = [];
 
-  // loop through pages, build nav
-  foreach ($site->children()->listed() as $page) {
+  foreach ($site->children()->listed() as $navPage) {
     $data['nav']['main'][] = [
-      'url' => $category->url(),
-      'label' => $category->title(),
+      'href' => $navPage->url(),
+      'label' => $navPage->title(),
     ];
   }
-
-  // AND MORE GLOBAL DATA—Change this file, if you want to!
 
   return $data;
 }

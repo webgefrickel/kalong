@@ -287,7 +287,7 @@ class Environment
         foreach (array_keys(App::instance()->options()) as $key) {
             $p = '/^mgfagency.twig\.(env\.)?([a-z]+)\.(\*?[a-zA-Z][a-zA-Z0-9_\-]*)$/';
             $m = [];
-            if (preg_match($p, $key, $m) === 1 && array_key_exists($m[2], $options)) {
+            if (preg_match($p, $key, $m) === 1 && property_exists($m[2], $options)) {
                 $options[ $m[2] ][ $m[3] ] = option($key);
             }
         }

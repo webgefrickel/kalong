@@ -2,12 +2,14 @@
 
 Kirby::plugin('kalong/image', [
   'fileMethods' => [
+
     'kalongImage' => function($modifiers = '', $sizes = '100vw', $ratio = false, $hideCaption = true, $media = '') {
       $widths = option('thumbs.srcsets.default');
       $quality = option('thumbs.quality');
       $image = $this;
       $alt = ($image->alt()->isEmpty()) ? $image->filename() : $image->alt();
-      $caption = ($image->caption()->isEmpty()) ? '' : $image->caption();
+      $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
+      $title = ($image->photographer()->isEmpty()) ? false : $image->photographer();
       $focus = ($image->focus()->isEmpty())
         ? (object) ['x' => 0.5, 'y' => 0.5]
         : json_decode($image->focus()->value());
@@ -18,6 +20,7 @@ Kirby::plugin('kalong/image', [
       if ($ratio !== false) {
         foreach ($widths as $width) {
           $height = intval($width / $ratio);
+
           if ($image->width() >= $width && $image->height() >= $height) {
             $temporaryImage = $image->focusCrop($width, $height, [
               'focusX' => $focus->x,
@@ -25,39 +28,45 @@ Kirby::plugin('kalong/image', [
               'quality' => $quality,
             ]);
             $srcset .= $temporaryImage->url() . ' ' . $width . 'w, ';
+          } else {
+            // requirements in dimensions for image not met, use the largest
+            // version of the image available. we do this to prevent upscaling
+            // of images beyond their actual size (which focusCrop would do)
+
+            if ($image->width() >= $width) {
+              $h = $image->height();
+              $w = $h * $ratio;
+            }
+            if ($image->height() >= $height) {
+              $w = $image->width();
+              $h = $w / $ratio;
+            }
+
+            $temporaryImage = $image->focusCrop($w, $h, [
+              'focusX' => $focus->x,
+              'focusY' => $focus->y,
+              'quality' => $quality,
+            ]);
+            $srcset .= $temporaryImage->url() . ' ' . $width . 'w, ';
           }
         }
-
-        // FINALLY, largest image variant
-        // if the ratio of the image is higher than the given one, the image
-        // is wider, thus we use the height as determinator of size
-        if ($actualRatio > $ratio) {
-          $w = intval($image->height() * $ratio);
-          $h = $image->height();
-        } else {
-          $w = $image->width();
-          $h = intval($image->width() / $ratio);
-        }
-
-        // final max-size fallback image, add this to srcset as well
-        $image = $image->focusCrop($w, $h, [
-          'focusX' => $focus->x,
-          'focusY' => $focus->y,
-          'quality' => $quality,
-        ]);
-        $srcset .= $image->url() . ' ' . $w . 'w, ';
       } else {
-        // this one is easy: no focus-ratio-cropping?
-        // just use the srcset function from kirby
+        // this one is easy: no focus-ratio-cropping? just use the srcset function from kirby
         $srcset = $image->srcset();
       }
 
-      // get srcset from config
+      // set the fallback-image to be the smallest image from srcset-config
+      $srcsetArray = explode(',', $srcset);
+      $fallbackEntry = explode(' ', $srcsetArray[0]);
+      $fallback = $fallbackEntry[0];
+
       return [
         'modifiers' => $modifiers,
-        'fallback' => $image->url(),
+        'fallback' => $fallback,
         'alt' => $alt,
-        'caption' => ($hideCaption) ? false : $caption,
+        'title' => $title,
+        'caption' => ($hideCaption === true) ? false : $caption,
+        'lazyloading' => true,
         'sources' => [
           [
             'media' => $media,
@@ -66,6 +75,10 @@ Kirby::plugin('kalong/image', [
           ]
         ]
       ];
-    }
-  ]
+    },
+
+    'kalongVideo' => function($modifiers = '', $attributes = 'controls') {
+      // TODO (get av1/hevc versions etc.)
+    },
+  ],
 ]);
