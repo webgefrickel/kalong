@@ -1,3 +1,4 @@
 <a href="/" class="logo" title="{{ label }}">
-  {% render '@icon--logo' %}
+  <span class="logo__label">{{ label }}</span>
+  {% render '@icon--logo', { modifiers: 'logo__icon' }, true %}
 </a>

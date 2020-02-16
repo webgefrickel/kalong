@@ -3,5 +3,7 @@
 {% block main %}
   <h1>Yay, homepage!</h1>
   {{ text | safe }}
+  {% render '@image', mainImage %}
+  {% render '@image', customImage %}
 {% endblock %}
 

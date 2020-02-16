@@ -2,7 +2,7 @@ config:
   kalong:
     title: Your Project
     version: 0.1.0
-    proxy: dev.dev.localhost
+    proxy: yourproject.dev.localhost
     https: true
     port: 3000
     main: main
@@ -36,11 +36,11 @@ config:
       style: normal
       fontface: false
   mediaqueries:
-    s: 48
-    m: 72
-    l: 96
-    xl: 110
-    xxl: 140
+    s: 480
+    m: 720
+    l: 960
+    xl: 1100
+    xxl: 1400
     portrait: '(orientation: portrait)'
     landscape: '(orientation: landscape)'
     print: print
@@ -50,7 +50,7 @@ config:
     main: '#f00'
   debug: true
   styleguide: true
-  hash: 1574082137061
+  hash: 1581862002566
 language:
   code: en
   locale: en_US
@@ -62,5 +62,4 @@ nav:
 pageTitle: Your Project—Styleguide
 pageDescription: A pattern library for Your Project
 pageModifiers: ''
-text: <p>Homepage content and patterns here&hellip;</p>
 

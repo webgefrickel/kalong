@@ -215,18 +215,19 @@
                             <code class="Code Code--lang-SCSS FileBrowser-code">
                                 <pre><span class="hljs-selector-class">.flow</span> {
   --flow-space: <span class="hljs-number">1em</span>;
-}
 
-<span class="hljs-selector-class">.flow</span> &gt; :first-child {
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
-}
+  &gt; <span class="hljs-selector-pseudo">:first-child</span> {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
 
-<span class="hljs-selector-class">.flow</span> &gt; * + * {
-  <span class="hljs-comment">// sass-lint:disable-block no-duplicate-properties</span>
-  <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">1em</span>;
-  <span class="hljs-attribute">margin-top</span>: var(--flow-space);
+  <span class="hljs-comment">// stylelint-disable selector-max-universal, declaration-block-no-duplicate-properties</span>
+  &gt; * + * {
+    <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">margin-top</span>: var(--flow-space);
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">0</span>;
+  }
+  <span class="hljs-comment">// stylelint-enable</span>
 }
 </pre>
                             </code>
@@ -244,7 +245,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">238 Bytes</span>
+                    <span class="Meta-value">302 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -260,66 +261,66 @@
         
             
             <pre><span class="hljs-attr">config:</span>
-<span class="hljs-attr">  kalong:</span>
-<span class="hljs-attr">    title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
-<span class="hljs-attr">    version:</span> <span class="hljs-number">0.1</span><span class="hljs-number">.0</span>
-<span class="hljs-attr">    proxy:</span> <span class="hljs-string">dev.dev.localhost</span>
-<span class="hljs-attr">    https:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">    port:</span> <span class="hljs-number">3000</span>
-<span class="hljs-attr">    main:</span> <span class="hljs-string">main</span>
-<span class="hljs-attr">    root:</span> <span class="hljs-string">./public/</span>
-<span class="hljs-attr">    src:</span> <span class="hljs-string">./src/</span>
-<span class="hljs-attr">    dest:</span> <span class="hljs-string">./public/assets/</span>
-<span class="hljs-attr">    styleguide:</span> <span class="hljs-string">./public/styleguide/</span>
-<span class="hljs-attr">    library:</span> <span class="hljs-string">./public/site/patterns/</span>
-<span class="hljs-attr">    assets:</span> <span class="hljs-string">assets/</span>
-<span class="hljs-attr">    config:</span> <span class="hljs-string">config/</span>
-<span class="hljs-attr">    docs:</span> <span class="hljs-string">docs/</span>
-<span class="hljs-attr">    fonts:</span> <span class="hljs-string">fonts/</span>
-<span class="hljs-attr">    icons:</span> <span class="hljs-string">icons/</span>
-<span class="hljs-attr">    images:</span> <span class="hljs-string">images/</span>
-<span class="hljs-attr">    patterns:</span> <span class="hljs-string">patterns/</span>
-<span class="hljs-attr">    templates:</span> <span class="hljs-string">templates/</span>
-<span class="hljs-attr">    scripts:</span> <span class="hljs-string">scripts/</span>
-<span class="hljs-attr">    styles:</span> <span class="hljs-string">styles/</span>
-<span class="hljs-attr">  fonts:</span>
-<span class="hljs-attr">    default:</span>
-<span class="hljs-attr">      family:</span> <span class="hljs-string">Roboto</span>
-<span class="hljs-attr">      fallback:</span> <span class="hljs-string">sans-serif</span>
-<span class="hljs-attr">      weight:</span> <span class="hljs-number">400</span>
-<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">      file:</span> <span class="hljs-string">roboto-regular</span>
-<span class="hljs-attr">    mono:</span>
-<span class="hljs-attr">      family:</span> <span class="hljs-string">Hack</span>
-<span class="hljs-attr">      fallback:</span> <span class="hljs-string">monospace</span>
-<span class="hljs-attr">      weight:</span> <span class="hljs-number">700</span>
-<span class="hljs-attr">      style:</span> <span class="hljs-string">normal</span>
-<span class="hljs-attr">      fontface:</span> <span class="hljs-literal">false</span>
-<span class="hljs-attr">  mediaqueries:</span>
-<span class="hljs-attr">    s:</span> <span class="hljs-number">48</span>
-<span class="hljs-attr">    m:</span> <span class="hljs-number">72</span>
-<span class="hljs-attr">    l:</span> <span class="hljs-number">96</span>
-<span class="hljs-attr">    xl:</span> <span class="hljs-number">110</span>
-<span class="hljs-attr">    xxl:</span> <span class="hljs-number">140</span>
-<span class="hljs-attr">    portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
-<span class="hljs-attr">    landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
-<span class="hljs-attr">    print:</span> <span class="hljs-string">print</span>
-<span class="hljs-attr">    custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
-<span class="hljs-attr">  colors:</span>
-<span class="hljs-attr">    default:</span> <span class="hljs-string">'#000'</span>
-<span class="hljs-attr">    main:</span> <span class="hljs-string">'#f00'</span>
-<span class="hljs-attr">  debug:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  styleguide:</span> <span class="hljs-literal">true</span>
-<span class="hljs-attr">  hash:</span> <span class="hljs-number">1574082137061</span>
+  <span class="hljs-attr">kalong:</span>
+    <span class="hljs-attr">title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
+    <span class="hljs-attr">version:</span> <span class="hljs-number">0.1</span><span class="hljs-number">.0</span>
+    <span class="hljs-attr">proxy:</span> <span class="hljs-string">yourproject.dev.localhost</span>
+    <span class="hljs-attr">https:</span> <span class="hljs-literal">true</span>
+    <span class="hljs-attr">port:</span> <span class="hljs-number">3000</span>
+    <span class="hljs-attr">main:</span> <span class="hljs-string">main</span>
+    <span class="hljs-attr">root:</span> <span class="hljs-string">./public/</span>
+    <span class="hljs-attr">src:</span> <span class="hljs-string">./src/</span>
+    <span class="hljs-attr">dest:</span> <span class="hljs-string">./public/assets/</span>
+    <span class="hljs-attr">styleguide:</span> <span class="hljs-string">./public/styleguide/</span>
+    <span class="hljs-attr">library:</span> <span class="hljs-string">./public/site/patterns/</span>
+    <span class="hljs-attr">assets:</span> <span class="hljs-string">assets/</span>
+    <span class="hljs-attr">config:</span> <span class="hljs-string">config/</span>
+    <span class="hljs-attr">docs:</span> <span class="hljs-string">docs/</span>
+    <span class="hljs-attr">fonts:</span> <span class="hljs-string">fonts/</span>
+    <span class="hljs-attr">icons:</span> <span class="hljs-string">icons/</span>
+    <span class="hljs-attr">images:</span> <span class="hljs-string">images/</span>
+    <span class="hljs-attr">patterns:</span> <span class="hljs-string">patterns/</span>
+    <span class="hljs-attr">templates:</span> <span class="hljs-string">templates/</span>
+    <span class="hljs-attr">scripts:</span> <span class="hljs-string">scripts/</span>
+    <span class="hljs-attr">styles:</span> <span class="hljs-string">styles/</span>
+  <span class="hljs-attr">fonts:</span>
+    <span class="hljs-attr">default:</span>
+      <span class="hljs-attr">family:</span> <span class="hljs-string">Roboto</span>
+      <span class="hljs-attr">fallback:</span> <span class="hljs-string">sans-serif</span>
+      <span class="hljs-attr">weight:</span> <span class="hljs-number">400</span>
+      <span class="hljs-attr">style:</span> <span class="hljs-string">normal</span>
+      <span class="hljs-attr">fontface:</span> <span class="hljs-literal">true</span>
+      <span class="hljs-attr">file:</span> <span class="hljs-string">roboto-regular</span>
+    <span class="hljs-attr">mono:</span>
+      <span class="hljs-attr">family:</span> <span class="hljs-string">Hack</span>
+      <span class="hljs-attr">fallback:</span> <span class="hljs-string">monospace</span>
+      <span class="hljs-attr">weight:</span> <span class="hljs-number">700</span>
+      <span class="hljs-attr">style:</span> <span class="hljs-string">normal</span>
+      <span class="hljs-attr">fontface:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">mediaqueries:</span>
+    <span class="hljs-attr">s:</span> <span class="hljs-number">480</span>
+    <span class="hljs-attr">m:</span> <span class="hljs-number">720</span>
+    <span class="hljs-attr">l:</span> <span class="hljs-number">960</span>
+    <span class="hljs-attr">xl:</span> <span class="hljs-number">1100</span>
+    <span class="hljs-attr">xxl:</span> <span class="hljs-number">1400</span>
+    <span class="hljs-attr">portrait:</span> <span class="hljs-string">'(orientation: portrait)'</span>
+    <span class="hljs-attr">landscape:</span> <span class="hljs-string">'(orientation: landscape)'</span>
+    <span class="hljs-attr">print:</span> <span class="hljs-string">print</span>
+    <span class="hljs-attr">custom:</span> <span class="hljs-string">'(max-width: 30rem)'</span>
+  <span class="hljs-attr">colors:</span>
+    <span class="hljs-attr">default:</span> <span class="hljs-string">'#000'</span>
+    <span class="hljs-attr">main:</span> <span class="hljs-string">'#f00'</span>
+  <span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">hash:</span> <span class="hljs-number">1581862002566</span>
 <span class="hljs-attr">language:</span>
-<span class="hljs-attr">  code:</span> <span class="hljs-string">en</span>
-<span class="hljs-attr">  locale:</span> <span class="hljs-string">en_US</span>
-<span class="hljs-attr">  direction:</span> <span class="hljs-string">ltr</span>
+  <span class="hljs-attr">code:</span> <span class="hljs-string">en</span>
+  <span class="hljs-attr">locale:</span> <span class="hljs-string">en_US</span>
+  <span class="hljs-attr">direction:</span> <span class="hljs-string">ltr</span>
 <span class="hljs-attr">nav:</span>
-<span class="hljs-attr">  main:</span>
-<span class="hljs-attr">    - href:</span> <span class="hljs-string">'#somepage'</span>
-<span class="hljs-attr">      label:</span> <span class="hljs-string">Somepage</span>
+  <span class="hljs-attr">main:</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">href:</span> <span class="hljs-string">'#somepage'</span>
+      <span class="hljs-attr">label:</span> <span class="hljs-string">Somepage</span>
 <span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
 <span class="hljs-attr">pageModifiers:</span> <span class="hljs-string">''</span>
@@ -863,6 +864,30 @@
         </li>
         
     
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="video.html" data-pjax>
+                <span>Video</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
 
             </ul>
         </li>
@@ -1034,41 +1059,6 @@
         
         
         <li class="Tree-item Tree-entity" data-role="item">
-            <a class="Tree-entityLink" href="home.html" data-pjax>
-                <span>Home</span>
-                
-
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
-        </li>
-        
-    
-        
-        <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-page">
-            <h4 class="Tree-collectionLabel" data-role="toggle">
-                <span>Page</span>
-            </h4>
-            <ul class="Tree-collectionItems" data-role="items">
-            
-            
-            
-            
-    
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
             <a class="Tree-entityLink" href="default.html" data-pjax>
                 <span>Default</span>
                 
@@ -1090,8 +1080,27 @@
         </li>
         
     
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="home.html" data-pjax>
+                <span>Home</span>
+                
 
-            </ul>
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #999999;" title="Prototype"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
         </li>
         
     

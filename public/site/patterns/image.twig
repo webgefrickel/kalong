@@ -7,7 +7,7 @@
         {% if source.sizes %} sizes="{{ source.sizes }}"{% endif %}
       />
     {% endfor %}
-    <img src="{{ fallback }}" alt="{{ alt }}" class="image__fallback" />
+    <img src="{{ fallback }}" alt="{{ alt }}" class="image__fallback"{% if lazyloading %} loading="lazy"{% endif %}{% if title %} title="{{ title }}"{% endif %} />
   </picture>
 
   {% if caption %}

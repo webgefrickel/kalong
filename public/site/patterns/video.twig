@@ -1,0 +1,9 @@
+{% if not attributes %}
+  {% set attributes = 'autoplay muted loop' %}
+{% endif %}
+
+<video class="video  {% if modifiers %}  {{ modifiers }}{% endif %}" {{ attributes | safe }}>
+  {% for source in sources %}
+    <source src="{{ source.src }}" type="{{ source.type }}" />
+  {% endfor %}
+</video>

@@ -1,0 +1,74 @@
+config:
+  kalong:
+    title: Your Project
+    version: 0.1.0
+    proxy: yourproject.dev.localhost
+    https: true
+    port: 3000
+    main: main
+    root: ./public/
+    src: ./src/
+    dest: ./public/assets/
+    styleguide: ./public/styleguide/
+    library: ./public/site/patterns/
+    assets: assets/
+    config: config/
+    docs: docs/
+    fonts: fonts/
+    icons: icons/
+    images: images/
+    patterns: patterns/
+    templates: templates/
+    scripts: scripts/
+    styles: styles/
+  fonts:
+    default:
+      family: Roboto
+      fallback: sans-serif
+      weight: 400
+      style: normal
+      fontface: true
+      file: roboto-regular
+    mono:
+      family: Hack
+      fallback: monospace
+      weight: 700
+      style: normal
+      fontface: false
+  mediaqueries:
+    s: 480
+    m: 720
+    l: 960
+    xl: 1100
+    xxl: 1400
+    portrait: '(orientation: portrait)'
+    landscape: '(orientation: landscape)'
+    print: print
+    custom: '(max-width: 30rem)'
+  colors:
+    default: '#000'
+    main: '#f00'
+  debug: true
+  styleguide: true
+  hash: 1581862002566
+language:
+  code: en
+  locale: en_US
+  direction: ltr
+nav:
+  main:
+    - href: '#somepage'
+      label: Somepage
+pageTitle: Your Project—Styleguide
+pageDescription: A pattern library for Your Project
+pageModifiers: ''
+modifiers: ''
+attributes: controls
+sources:
+  - src: video.hevc.mp4
+    type: 'video/mp4; codecs=hevc,mp4a.40.2'
+  - src: video.av1.mp4
+    type: 'video/mp4; codecs=av01.0.05M.08,opus'
+  - src: video.h264.mp4
+    type: 'video/mp4; codecs=avc1.4D401E,mp4a.40.2'
+

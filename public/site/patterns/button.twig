@@ -1,11 +1,11 @@
 {% if type == 'link' %}
-  <a href="{{ href }}" role="button" class="button{% if modifiers %}  {{ modifiers }}{% endif %}" title="{{ title }}">
+  <a href="{{ href }}" role="button" class="button{% if modifiers %}  {{ modifiers }}{% endif %}"{% if title %} title="{{ title }}"{% endif %}>
     <span class="button__text">
       {{ label }}
     </span>
   </a>
 {% else %}
-  <button type="{{ type }}" class="button{% if modifiers %}  {{ modifiers }}{% endif %}">
+  <button type="{{ type }}" class="button{% if modifiers %}  {{ modifiers }}{% endif %}"{% if title %} title="{{ title }}"{% endif %}>
     <span class="button__text">
       {{ label }}
     </span>
