@@ -37,9 +37,7 @@ class Api extends BaseApi
         $this->setRequestMethod($method);
         $this->setRequestData($requestData);
 
-        if ($languageCode = $this->language()) {
-            $this->kirby->setCurrentLanguage($languageCode);
-        }
+        $this->kirby->setCurrentLanguage($this->language());
 
         if ($user = $this->kirby->user()) {
             $this->kirby->setCurrentTranslation($user->language());
@@ -92,7 +90,7 @@ class Api extends BaseApi
      *
      * @param string $path Path to file's parent model
      * @param string $filename Filename
-     * @return Kirby\Cms\File|null
+     * @return \Kirby\Cms\File|null
      */
     public function file(string $path = null, string $filename)
     {
@@ -114,39 +112,47 @@ class Api extends BaseApi
      * Returns the model's object for the given path
      *
      * @param string $path Path to parent model
-     * @return Kirby\Cms\Model|null
+     * @return \Kirby\Cms\Model|null
      */
     public function parent(string $path)
     {
-        $modelType  = $path === 'site' ? 'site' : trim(dirname($path), '/');
-        $modelTypes = ['site' => 'site', 'users' => 'user', 'pages' => 'page'];
-        $modelName  = $modelTypes[$modelType] ?? null;
+        $modelType  = in_array($path, ['site', 'account']) ? $path : trim(dirname($path), '/');
+        $modelTypes = [
+            'site'    => 'site',
+            'users'   => 'user',
+            'pages'   => 'page',
+            'account' => 'account'
+        ];
+        $modelName = $modelTypes[$modelType] ?? null;
 
         if (Str::endsWith($modelType, '/files') === true) {
             $modelName = 'file';
         }
 
-        if ($modelName === null) {
-            throw new InvalidArgumentException('Invalid file model type');
+        $kirby = $this->kirby();
+
+        switch ($modelName) {
+            case 'site':
+                $model = $kirby->site();
+                break;
+            case 'account':
+                $model = $kirby->user();
+                break;
+            case 'page':
+                $id    = str_replace(['+', ' '], '/', basename($path));
+                $model = $kirby->page($id);
+                break;
+            case 'file':
+                $model = $this->file(...explode('/files/', $path));
+                break;
+            case 'user':
+                $model = $kirby->user(basename($path));
+                break;
+            default:
+                throw new InvalidArgumentException('Invalid file model type: ' . $modelType);
         }
 
-        if ($modelName === 'site') {
-            $modelId = null;
-        } else {
-            $modelId = basename($path);
-
-            if ($modelName === 'page') {
-                $modelId = str_replace(['+', ' '], '/', $modelId);
-            }
-
-            if ($modelName === 'file') {
-                if ($model = $this->file(...explode('/files/', $path))) {
-                    return $model;
-                }
-            }
-        }
-
-        if ($model = $this->kirby()->$modelName($modelId)) {
+        if ($model) {
             return $model;
         }
 
@@ -158,7 +164,7 @@ class Api extends BaseApi
     /**
      * Returns the Kirby instance
      *
-     * @return Kirby\Cms\App
+     * @return \Kirby\Cms\App
      */
     public function kirby()
     {
@@ -176,11 +182,11 @@ class Api extends BaseApi
     }
 
     /**
-    * Returns the page object for the given id
-    *
-    * @param string $id Page's id
-    * @return Kirby\Cms\Page|null
-    */
+     * Returns the page object for the given id
+     *
+     * @param string $id Page's id
+     * @return \Kirby\Cms\Page|null
+     */
     public function page(string $id)
     {
         $id   = str_replace('+', '/', $id);
@@ -206,7 +212,7 @@ class Api extends BaseApi
     }
 
     /**
-     * @param Kirby\Cms\App $kirby
+     * @param \Kirby\Cms\App $kirby
      */
     protected function setKirby(App $kirby)
     {
@@ -217,7 +223,7 @@ class Api extends BaseApi
     /**
      * Returns the site object
      *
-     * @return Kirby\Cms\Site
+     * @return \Kirby\Cms\Site
      */
     public function site()
     {
@@ -230,7 +236,7 @@ class Api extends BaseApi
      * id is passed
      *
      * @param string $id User's id
-     * @return Kirby\Cms\User|null
+     * @return \Kirby\Cms\User|null
      */
     public function user(string $id = null)
     {
@@ -255,7 +261,7 @@ class Api extends BaseApi
     /**
      * Returns the users collection
      *
-     * @return Kirby\Cms\Users
+     * @return \Kirby\Cms\Users
      */
     public function users()
     {

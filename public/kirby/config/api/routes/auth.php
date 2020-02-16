@@ -1,8 +1,7 @@
 <?php
 
-use Kirby\Exception\NotFoundException;
 use Kirby\Exception\InvalidArgumentException;
-use Kirby\Exception\PermissionException;
+use Kirby\Exception\NotFoundException;
 
 /**
  * Authentication
@@ -35,25 +34,13 @@ return [
             $long     = $this->requestBody('long');
             $password = $this->requestBody('password');
 
-            try {
-                if ($user = $this->kirby()->auth()->login($email, $password, $long)) {
-                    return [
-                        'code'   => 200,
-                        'status' => 'ok',
-                        'user'   => $this->resolve($user)->view('auth')->toArray()
-                    ];
-                }
+            $user = $this->kirby()->auth()->login($email, $password, $long);
 
-                throw new NotFoundException(['key' => 'user.undefined']);
-            } catch (Throwable $e) {
-                if ($this->kirby()->option('debug') === true) {
-                    throw $e;
-                } else {
-                    // catch any kind of login error
-                }
-            }
-
-            throw new InvalidArgumentException('Invalid email or password');
+            return [
+                'code'   => 200,
+                'status' => 'ok',
+                'user'   => $this->resolve($user)->view('auth')->toArray()
+            ];
         }
     ],
     [

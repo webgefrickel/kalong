@@ -11,6 +11,9 @@ return [
         'ascii' => function () {
             return Str::$ascii;
         },
+        'defaultLanguage' => function () {
+            return $this->kirby()->option('panel.language', 'en');
+        },
         'isOk' => function (System $system) {
             return $system->isOk();
         },
@@ -35,7 +38,7 @@ return [
         'requirements' => function (System $system) {
             return $system->toArray();
         },
-        'breadcrumbTitle' => function () {
+        'site' => function () {
             try {
                 return $this->site()->blueprint()->title();
             } catch (Throwable $e) {
@@ -62,7 +65,7 @@ return [
             }
         },
         'kirbytext' => function () {
-            return $this->kirby()->option('panel')['kirbytext'] ?? true;
+            return $this->kirby()->option('panel.kirbytext') ?? true;
         },
         'user' => function () {
             return $this->user();
@@ -71,7 +74,7 @@ return [
             return $this->kirby()->version();
         }
     ],
-    'type'   => System::class,
+    'type'   => 'Kirby\Cms\System',
     'views'  => [
         'login' => [
             'isOk',
@@ -90,15 +93,16 @@ return [
         ],
         'panel' => [
             'ascii',
-            'breadcrumbTitle',
+            'defaultLanguage',
             'isOk',
             'isInstalled',
             'isLocal',
             'kirbytext',
-            'languages' => 'compact',
+            'languages',
             'license',
             'multilang',
             'requirements',
+            'site',
             'slugs',
             'title',
             'translation',
