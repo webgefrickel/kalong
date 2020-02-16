@@ -13,10 +13,10 @@ return [
 
   // thumbnail configuration
   'thumbs' => [
+    'quality' => 70,
     'driver' => 'im',
-    'quality' => '75',
     'srcsets' => [
-      'default' => [480, 720, 960, 1440, 1920, 2400],
+      'default' => [640, 750, 1080, 1536, 1920, 2224, 3072],
     ]
   ],
 
