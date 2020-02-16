@@ -1,0 +1,10 @@
+label: Bildergalerie
+help: (Das erste Element wird als Projekt-Cover für die Startseite verwendet)
+type: files
+uploads: false
+min: 1
+multiple: true
+required: true
+size: tiny
+layout: cards
+info: '{{ file.alt }}'

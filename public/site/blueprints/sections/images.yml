@@ -1,4 +1,5 @@
 type: files
-headline: Bilder
+sortable: false
+headline: Hochgeladene Bilder
 template: image
-info: "{{ file.dimensions }}"
+info: "{{ file.alt }}"

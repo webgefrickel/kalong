@@ -1,0 +1,22 @@
+title: Video
+
+accept:
+  mime: video/mp4
+
+columns:
+  - width: 1/2
+    sections:
+      left:
+        type: fields
+        fields:
+          hevc:
+            label: Video (HEVC-Codec)
+            help: (falls ein Video im HEVC-Codec verfügbar ist, bitte dieses hier mit dem Standard-MP4-Video verküpfen)
+  - width: 1/2
+    sections:
+      right:
+        type: fields
+        fields:
+          av1:
+            label: Video (HEVC-Codec)
+            help: (falls ein Video im HEVC-Codec verfügbar ist, bitte dieses hier mit dem Standard-MP4-Video verküpfen)

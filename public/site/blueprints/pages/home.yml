@@ -1,16 +1,31 @@
 title: Home
-icon: 🏠
+icon: home
 
 options:
-  status: false
+  status:
+    admin: true
+    editor: false
+  delete:
+    admin: true
+    editor: false
+  changeSlug:
+    admin: true
+    editor: false
 
 columns:
   left:
+    width: 3/4
     sections:
       content:
         type: fields
         fields:
           text: fields/text
+          gallery: fields/gallery
+  right:
+    width: 1/4
+    sections:
+      images: sections/images
+      videos: sections/videos
   bottom:
     sections:
       seo: sections/seo

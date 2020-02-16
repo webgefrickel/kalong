@@ -1,4 +1,21 @@
-title: Error
+title: Fehlerseite
+icon: alert
 
 options:
-  read: false
+  delete:
+    admin: true
+    editor: false
+  changeSlug:
+    admin: true
+    editor:false
+  status:
+    admin: true
+    editor: false
+
+columns:
+  left:
+    sections:
+      content:
+        type: fields
+        fields:
+          text: fields/text

@@ -1,8 +1,7 @@
-title: Benutzer
+title: Standard
 
 columns:
-  - width: 1/1
-    fields:
+  - fields:
       firstname:
         label: Vorname
         type: text

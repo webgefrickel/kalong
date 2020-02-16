@@ -1,7 +1,12 @@
 title: Dashboard
 
 columns:
-  - sections:
+  left:
+    width: 1/1
+    sections:
       pages:
-        headline: Seiten
+        headline: Alle Seiten
         type: pages
+        create: false
+        sortable: false
+        image: false

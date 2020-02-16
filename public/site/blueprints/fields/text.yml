@@ -3,7 +3,7 @@ type: textarea
 size: large
 buttons:
   - headlines
-  - italic
   - bold
+  - ul
   - link
-  - file
+  - email

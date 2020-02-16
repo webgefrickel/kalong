@@ -1,29 +1,21 @@
 title: Standard
 icon: page
-
-status:
-  draft:
-    label: Entwurf
-    text: Diese Seite ist noch nicht veröffentlicht
-  unlisted:
-    label: Versteckte Seite
-    text: Die Seite taucht nicht in der Navigation auf, ist aber aufrufbar
-  listed:
-    label: Öffentliche Seite
-    text: Die Seite ist veröffentlicht und in der Navigation sichtbar
+options:
+  delete:
+    admin: true
+    editor: false
+  status:
+    admin: true
+    editor: false
 
 columns:
   left:
-    width: 2/3
+    width: 1/1
     sections:
       content:
         type: fields
         fields:
           text: fields/text
-  right:
-    width: 1/3
-    sections:
-      images: sections/images
   bottom:
     sections:
       seo: sections/seo

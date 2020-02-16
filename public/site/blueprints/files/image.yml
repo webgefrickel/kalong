@@ -1,5 +1,8 @@
 title: Bild
 
+accept:
+  mime: image/*
+
 columns:
   - width: 1/2
     sections:
@@ -9,17 +12,20 @@ columns:
           alt:
             label: Alternativ-Text
             type: text
-            required: true
           photographer:
             label: Fotografin / Credits
             type: text
-  - width: 1/2
-    sections:
-      content:
-        type: fields
-        fields:
           caption:
             label: Kurzbeschreibung
             type: textarea
             size: small
             buttons: false
+  - width: 1/2
+    sections:
+      content:
+        type: fields
+        fields:
+          focus:
+            label: Fokuspunkt
+            type: focus
+            help: (Wird verwendet, wenn das Bild beschnitten wird)
