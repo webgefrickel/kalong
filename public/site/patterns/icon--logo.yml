@@ -50,7 +50,7 @@ config:
     main: '#f00'
   debug: true
   styleguide: true
-  hash: 1581862002566
+  hash: 1582562824304
 language:
   code: en
   locale: en_US
