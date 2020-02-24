@@ -5,6 +5,6 @@
   "rules": {
     "no-trailing-whitespace": "off",
     "svg-focusable": "off",
-    "void": ["error", { "style": "selfclose" }]
+    "void-style": ["error", { "style": "selfclosing" }]
   }
 }
