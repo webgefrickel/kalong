@@ -29,7 +29,7 @@ export default async (opts = {}) => {
   icons.forEach(icon => {
     sprite.add(
       resolve(icon),
-      icon.replace(/^.*[\\/]/, ''), // filename only
+      icon.replace(/^.*[\\/]/, ''), // Filename only
       readFileSync(icon, { encoding: 'utf-8' })
     );
   });

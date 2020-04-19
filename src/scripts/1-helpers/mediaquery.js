@@ -1,6 +1,6 @@
 import { mediaqueries } from '~config/mediaqueries';
 
-// same usage as the mediaquery-scss-mixin, just provide the
+// Same usage as the mediaquery-scss-mixin, just provide the
 // shortcode used in the scss-file. this module will return true
 // if the given mediaquery matches
 export default shortcode => {

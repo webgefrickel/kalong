@@ -7,7 +7,7 @@ import warn from './lib/warn';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
-  // set some sane defaults for development
+  // Set some sane defaults for development
   const options = {
     file: opts.input || join(config.src, config.styles, `${config.main}.scss`),
     outFile: opts.output || join(config.dest, config.styles, `${config.main}.css`),

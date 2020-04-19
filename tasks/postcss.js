@@ -15,12 +15,12 @@ export default async (opts = {}) => {
     plugins: [cssImport(), autoprefixer(prefixerOptions)],
   };
 
-  // add cssnano if the sourceMap option is set to false
+  // Add cssnano if the sourceMap option is set to false
   if (opts.sourceMap === false) {
     options.plugins.push(cssnano({ preset: 'default' }));
   }
 
-  // if no output file is specified, use the input, overwriting same file
+  // If no output file is specified, use the input, overwriting same file
   options.output = opts.output || options.input;
 
   try {

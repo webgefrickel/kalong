@@ -66,7 +66,7 @@ const fractalInstance = () => {
   return frctl;
 };
 
-export { fractalInstance }; // for develop task
+export { fractalInstance };
 
 export default async () => {
   const frctl = fractalInstance();

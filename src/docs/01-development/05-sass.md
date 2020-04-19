@@ -62,7 +62,7 @@ throughout the project.
 
 ### Linting
 
-The pre-bundled sass-lint task comes with pretty strict settings,
+The pre-bundled stylelint task comes with pretty strict settings,
 regarding naming of things, sort-order of properties and various other
 possible problems. Please just try to stick to it, to keep things
 consistent.
@@ -72,8 +72,8 @@ consistent.
 Just don't write any, unless you are absolutely sure and want to target
 that specific browser. Vendor prefixes are added as needed by
 [autoprefixer](https://github.com/postcss/autoprefixer). To change
-supported browsers have a look at _config.js_ in the root folder and
-change browsersupport-array accordingly.
+supported browsers have a look at _.browserslistrc_ in the root folder
+and change browsersupport-array accordingly.
 
 ## Defaults
 

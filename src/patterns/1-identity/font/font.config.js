@@ -1,4 +1,4 @@
-// include the color config and generate color patches from the map
+// Include the color config and generate color patches from the map
 const fonts = require('../../../config/fonts');
 
 module.exports = {

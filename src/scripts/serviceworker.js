@@ -1,5 +1,6 @@
-/* eslint-disable no-restricted-globals */
 import config from '../../kalong.config.js';
+
+/* eslint-disable no-restricted-globals */
 
 // Update 'version' if you need to refresh the cache
 const cacheVersion = config.version;
@@ -23,11 +24,7 @@ self.addEventListener('activate', e => {
   e.waitUntil(
     caches
       .keys()
-      .then(keys =>
-        Promise.all(
-          keys.filter(key => key.indexOf(cacheVersion) !== 0).map(key => caches.delete(key))
-        )
-      )
+      .then(keys => Promise.all(keys.filter(key => key.indexOf(cacheVersion) !== 0).map(key => caches.delete(key))))
   );
 });
 
@@ -87,7 +84,7 @@ self.addEventListener('fetch', e => {
             </svg>
           `;
 
-          // if the request is for an image, show an offline placeholder
+          // If the request is for an image, show an offline placeholder
           if (request.headers.get('accept').indexof('image') !== -1) {
             return new Response(placeholderimage, {
               headers: {

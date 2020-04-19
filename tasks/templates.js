@@ -10,7 +10,7 @@ export default async () => {
   const files = sync(join(templateFolder[0], '**/*.html'));
 
   files.forEach(async file => {
-    // regex for replacing extends, for use in kirby/twig
+    // Regex for replacing extends, for use in kirby/twig
     const contents = await readFile(file);
     const extendsRegex = /{%\s?extends\s?'(?<all>.+)'\s?%}/g;
     const lines = contents.split('\n');
@@ -21,7 +21,7 @@ export default async () => {
       if (match === null) {
         newContents += `${line}\n`;
       } else {
-        // replace html with twig for usage in kirby
+        // Replace html with twig for usage in kirby
         const pattern = match[1].slice(1);
         const newLine = line.replace(`@${pattern}`, `@pattern/${pattern}.twig`);
         newContents += `${newLine}\n`;

@@ -17,7 +17,7 @@ export default async (opts = {}) => {
     renamers.push(func);
   });
 
-  // create the target first
+  // Create the target first
   files.forEach(file => {
     let filename = file;
     renamers.forEach(func => {

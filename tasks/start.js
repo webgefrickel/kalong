@@ -19,8 +19,8 @@ const server = browserSync({
     target: `${config.https ? 'https' : 'http'}://${config.proxy}`,
   },
   port: config.port,
-  open: false, // dont open the browser on start
-  notify: false, // hide that info-popup from browsersync
+  open: false, // Dont open the browser on start
+  notify: false, // Hide that info-popup from browsersync
 });
 
 const fractalServer = fractalInstance().web.server({ sync: true });
@@ -64,7 +64,6 @@ const watchSwitch = async file => {
       case 'woff2':
         console.log('Copying fonts...');
         await run(copy, {
-          // copy fonts
           input: join(config.src, config.fonts, '*.{woff,woff2}'),
           output: join(config.dest, config.fonts),
         });
@@ -97,7 +96,7 @@ const watchSwitch = async file => {
     }
   }
 
-  // two special cases: legacy script and serviceworker
+  // Two special cases: legacy script and serviceworker
   if (isServiceworker) {
     await run(rollup, {
       input: join(config.src, config.scripts, 'serviceworker.js'),

@@ -60,24 +60,24 @@ const postBuild = async () => Promise.all([run(htmlValidate)]);
 
 const copyAssets = async () =>
   Promise.all([
-    run(copy), // no options: copy images,
+    run(copy), // No options: copy images,
     run(copy, {
-      // copy fonts
+      // Copy fonts
       input: join(config.src, config.fonts, '*.{woff,woff2}'),
       output: join(config.dest, config.fonts),
     }),
   ]);
 
 const copyStyleguide = async () =>
-  // copy all styleguide files to the pattern library
+  // Copy all styleguide files to the pattern library
   Promise.all([
-    // styleguide HTML pattern files
+    // Styleguide HTML pattern files
     run(copy, {
       input: join(config.src, config.patterns, '**/*.html'),
       output: join(config.library),
       rename: [file => file.replace('_', '').replace('.html', '.twig')],
     }),
-    // styleguide data pattern files
+    // Styleguide data pattern files
     run(copy, {
       input: join(config.styleguide, 'components/data/**/*.html'),
       output: join(config.library),

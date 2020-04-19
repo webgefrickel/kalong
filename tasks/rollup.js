@@ -26,7 +26,7 @@ const walk = (dir, filter) => {
   return results;
 };
 
-// prepare everything needed for the custom pattern/module resolver
+// Prepare everything needed for the custom pattern/module resolver
 const customResolve = () => {
   return {
     name: 'kalong-resolve',

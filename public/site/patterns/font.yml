@@ -36,11 +36,12 @@ config:
       style: normal
       fontface: false
   mediaqueries:
+    xs: 375
     s: 480
     m: 720
     l: 960
     xl: 1100
-    xxl: 1400
+    xxl: 1280
     portrait: '(orientation: portrait)'
     landscape: '(orientation: landscape)'
     print: print
@@ -50,7 +51,7 @@ config:
     main: '#f00'
   debug: true
   styleguide: true
-  hash: 1582562824304
+  hash: 1587317047685
 language:
   code: en
   locale: en_US

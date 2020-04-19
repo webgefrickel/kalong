@@ -11,9 +11,9 @@
     <script>var cl = document.querySelector('html').classList; cl.remove('no-js'); cl.add('has-js');</script>
     <link rel="shortcut icon" href="../../subtheme/favicon.ico" type="image/ico">
 
-<link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.2.1" type="text/css">
+<link rel="stylesheet" href="../../themes/mandelbrot/css/black.css?cachebust=1.3.0" type="text/css">
 
-<link rel="stylesheet" href="../../subtheme/styleguide.css?cachebust=1.2.1" type="text/css">
+<link rel="stylesheet" href="../../subtheme/styleguide.css?cachebust=1.3.0" type="text/css">
 
 
 <title>Linting | Your Project—Styleguide</title>
@@ -81,48 +81,39 @@
     <p>This project provides four different linters: one for HTML, one for
 accessibility issues, one for Sass (.scss-files to be specific) and one
 for JavaScript.</p>
+<h2 id="todo-note-on-prettier">TODO note on prettier</h2>
+<h2 id="todo-editorconfig">TODO EDITORCONFIG</h2>
 <h2 id="javascript-eslint">JavaScript: eslint</h2>
 <p>The linter used for JavaScript is <a href="http://eslint.org">eslint</a>, and this
-project comes with a pre-configured (kinda restrictive) set of rules, to
-enforce a consistent and sane code style base on
-<a href="https://github.com/xojs/xo">XO</a> and recommendations from eslint. You
-can find all current rules and the settings for them in the file
-<em>.eslintrc.yml</em>.</p>
-<p>Eslint is very customizable, you can write your own plugins, but for
-starters the default built-in rules should be more than enough.</p>
-<h3 id="es6--es2015">ES6 / ES2015</h3>
-<p>Since we use ES6 in this project, eslint is configured to warn you on
-some things, that can be written better/easier with ES6 (such as
-arrow-functions, let vs. var or destructuring). Please make use of those
-new awesome language features where applicable.</p>
-<h2 id="sass-sass-lint">Sass: sass-lint</h2>
-<p>For linting our Sass we use
-<a href="https://github.com/sasstools/sass-lint">sass-lint</a>. Configuration for
-sass-lint can be found in <em>.sass-lint.yaml</em>, and is pre-configured to be
-quite strict.
-<a href="https://github.com/sasstools/sass-lint/tree/master/docs/rules">All avaiable rules for sass-lint can be found here</a>.
-By default anything in the folder <em>./src/scss/vendor</em> will <strong>not</strong> be
-linted, so you can add third-party stylesheets easily.</p>
+project comes with a pre-configured set of rules, to enforce a
+consistent and sane code style (based on
+<a href="https://github.com/xojs/xo">XO</a>). You can find all current rules and
+the settings for them in the file <em>.eslintrc.yml</em>.</p>
+<h3 id="ecmascript-next--es2020">EcmaScript Next / ES2020</h3>
+<p>Since we use the most current version of EcmaScript in this project,
+eslint is configured to warn you on some things, that can be written
+better/easier with new language features (such as arrow-functions, let
+vs. var or destructuring). Please make use of those new awesome language
+features where applicable.</p>
+<p>TODO vendor not linted NOTE</p>
+<h2 id="sass-stylelint">Sass: stylelint</h2>
+<p>For linting our Sass we use <a href="https://stylelint.io">stylelint</a>.
+Configuration for stylelint can be found in <em>.stylelintrc.yml</em>, and is
+pre-configured to be quite strict. By default anything in the folder
+<em>./src/styles/3-vendor/</em> will <strong>not</strong> be linted, so you can add
+third-party stylesheets easily.</p>
 <p>As always: try to keep to the strict defaults and only in edge-cases
 change the default rules and allow exceptions (such as <code>!important</code>).</p>
-<h2 id="html-htmlhint">HTML: htmlhint</h2>
-<p>The linter used for HTML-Code is <a href="http://htmlhint.com">htmlhint</a>. The
-pre-defined rules can be found and changed in <em>.htmlhintrc</em>, description
-for the rules
-<a href="https://github.com/yaniswang/HTMLHint/wiki/Rules">can be found on github</a>.</p>
+<h2 id="html-html-validate">HTML: html-validate</h2>
+<p>The linter used for HTML-Code is
+<a href="https://html-validate.org/">html-validate</a>. The pre-defined rules can
+be found and changed in <em>.htmlvalidate.json</em>.</p>
 <p>If you use a CMS or any other tool that creates your HTML-Output, it
 sometimes makes more sense to change some of the default rules. But
 please always check your code for errors with tools such as the
-<a href="https://validator.w3.org/">W3C Validator</a> to keep yourself sane. Valid
-HTML (at least regarding nesting and quotes) can save you a lot of
-headaches when styling your website.</p>
-<h2 id="accessibility-pa11y">Accessibility: pa11y</h2>
-<p>All layouts (e.g. patterns residing in src/patterns/5-layouts) will be
-checked for accessibility issues with
-<a href="https://github.com/pa11y/pa11y">pa11y</a> and its default ruleset. Please
-try to fix any errors, since this will enhance accessibility of your
-components and the site.</p>
-<p>Note: HTML and accessibility will only be checked during a full build.
+<a href="https://validator.w3.org/">W3C Validator</a> to keep everything valid.</p>
+<hr>
+<p>Note: HTML will only be checked after a full build, only for templates.
 Sass and JavaScript will also be linted during development.</p>
 
     
@@ -141,11 +132,11 @@ Sass and JavaScript will also be linted during development.</p>
         </div>
 
         <div class="Frame-handle" data-role="frame-resize-handle"></div>
-        
+
         <div class="Frame-panel Frame-panel--sidebar" data-role="sidebar">
             <nav class="Navigation">
-
     
+        
 <div class="Navigation-group">
 
 <div class="Tree" data-behaviour="tree" id="tree-docs">
@@ -392,8 +383,8 @@ Sass and JavaScript will also be linted during development.</p>
 </div>
 
 
-
     
+        
 <div class="Navigation-group">
 
 <div class="Tree" data-behaviour="tree" id="tree-components">
@@ -864,7 +855,7 @@ Sass and JavaScript will also be linted during development.</p>
 </div>
 
 
-
+    
 </nav>
 
         </div>
@@ -874,7 +865,7 @@ Sass and JavaScript will also be linted during development.</p>
 
 
 
-<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.2.1"></script>
+<script src="../../themes/mandelbrot/js/mandelbrot.js?cachebust=1.3.0"></script>
 
 
 

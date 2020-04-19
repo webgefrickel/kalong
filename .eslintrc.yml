@@ -22,8 +22,6 @@ env:
 # with the prettier-config (but not using
 # eslint-config-prettier, which disables too much)
 rules:
-  capitalized-comments:
-    - off
   comma-dangle:
     - error
     - only-multiline
@@ -31,16 +29,9 @@ rules:
     - error
     - 2
     - SwitchCase: 1
-  no-mixed-operators:
-    - off
   object-curly-spacing:
     - error
     - always
   operator-linebreak:
     - error
     - before
-  space-before-function-paren:
-    - error
-    - anonymous: never
-      named: never
-      asyncArrow: always
