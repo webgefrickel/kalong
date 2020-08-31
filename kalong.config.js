@@ -1,4 +1,4 @@
-// using module.exports here, so that this file can be consumed by fractal as well
+// Using module.exports here, so that this file can be consumed by fractal as well
 module.exports = {
   title: 'Your Project',
 
@@ -6,23 +6,23 @@ module.exports = {
   // since this describes the version number of kalong, and not the resulting styleguide
   version: '0.1.0',
 
-  // configure your localhost environment here, the host/proxy
+  // Configure your localhost environment here, the host/proxy
   // should point to the root-folder configured below (default: ./public/)
   proxy: 'yourproject.dev.localhost',
   https: true,
   port: 3000,
 
-  // main file name (for styles and scripts)
+  // Main file name (for styles and scripts)
   main: 'main',
 
-  // default entry points
+  // Default entry points
   root: './public/',
   src: './src/',
   dest: './public/assets/',
   styleguide: './public/styleguide/',
   library: './public/site/patterns/',
 
-  // paths to all asset-directories, for src + dest
+  // Paths to all asset-directories, for src + dest
   assets: 'assets/',
   config: 'config/',
   docs: 'docs/',
