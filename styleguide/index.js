@@ -1,5 +1,7 @@
 const mandelbrot = require('@frctl/mandelbrot');
 const path = require('path');
+const kalong = require('../kalong.config');
+
 let handles = null;
 
 // for additional data-route
@@ -23,14 +25,26 @@ function getHandles(app) {
 }
 
 const subTheme = mandelbrot({
-  rtl: false,
-  lang: 'en',
-  skin: 'black',
   favicon: '/subtheme/favicon.ico',
-  styles: ['default', '/subtheme/styleguide.css'],
   format: 'yaml',
-  nav: ['docs', 'components'],
+  lang: 'en',
+  nav: ['docs', 'components', 'information'],
   panels: ['html', 'view', 'resources', 'context', 'notes', 'info'],
+  rtl: false,
+  skin: 'black',
+  styles: ['default', '/subtheme/styleguide.css'],
+  information: [
+    {
+      label: 'Version',
+      value: kalong.version,
+    },
+    {
+      label: 'Last build',
+      value: new Date(),
+      type: 'time',
+      format: value => value.toLocaleDateString('de-DE'),
+    },
+  ],
 });
 
 subTheme.addLoadPath(path.join(__dirname, '/views'));
@@ -42,7 +56,7 @@ subTheme.addRoute(
     handle: 'data',
     view: 'pages/components/data.nunj',
   },
-  getHandles
+  getHandles,
 );
 
 module.exports = subTheme;

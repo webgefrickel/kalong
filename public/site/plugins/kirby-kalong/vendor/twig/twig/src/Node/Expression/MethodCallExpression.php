@@ -24,7 +24,7 @@ class MethodCallExpression extends AbstractExpression
         }
     }
 
-    public function compile(Compiler $compiler)
+    public function compile(Compiler $compiler): void
     {
         if ($this->getAttribute('is_defined_test')) {
             $compiler
@@ -57,8 +57,6 @@ class MethodCallExpression extends AbstractExpression
         $compiler
             ->raw('], ')
             ->repr($this->getTemplateLine())
-            ->raw(', $this->getSourceContext())');
+            ->raw(', $context, $this->getSourceContext())');
     }
 }
-
-class_alias('Twig\Node\Expression\MethodCallExpression', 'Twig_Node_Expression_MethodCall');

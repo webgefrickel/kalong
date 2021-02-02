@@ -17,7 +17,7 @@ namespace Kirby\Cms;
 class Search
 {
     /**
-     * @param string $query
+     * @param string|null $query
      * @param array $params
      * @return \Kirby\Cms\Files
      */
@@ -30,18 +30,18 @@ class Search
      * Native search method to search for anything within the collection
      *
      * @param \Kirby\Cms\Collection $collection
-     * @param string $query
+     * @param string|null $query
      * @param mixed $params
      * @return \Kirby\Cms\Collection|bool
      */
     public static function collection(Collection $collection, string $query = null, $params = [])
     {
         $kirby = App::instance();
-        return $kirby->component('search')($kirby, $collection, $query, $params);
+        return ($kirby->component('search'))($kirby, $collection, $query, $params);
     }
 
     /**
-     * @param string $query
+     * @param string|null $query
      * @param array $params
      * @return \Kirby\Cms\Pages
      */
@@ -51,7 +51,7 @@ class Search
     }
 
     /**
-     * @param string $query
+     * @param string|null $query
      * @param array $params
      * @return \Kirby\Cms\Users
      */

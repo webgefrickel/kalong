@@ -32,8 +32,8 @@ export default async (opts = {}) => {
     });
 
     if (result.warnings().length) {
-      result.warnings().forEach(warn => {
-        warn(warn.toString());
+      result.warnings().forEach(warning => {
+        warn(warning.toString());
       });
     }
 

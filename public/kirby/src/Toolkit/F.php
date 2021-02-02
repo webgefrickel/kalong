@@ -71,10 +71,13 @@ class F
         ],
         'image' => [
             'ai',
+            'avif',
             'bmp',
             'gif',
             'eps',
             'ico',
+            'j2k',
+            'jp2',
             'jpeg',
             'jpg',
             'jpe',
@@ -544,13 +547,22 @@ class F
     }
 
     /**
-     * Reads the content of a file
+     * Reads the content of a file or requests the
+     * contents of a remote HTTP or HTTPS URL
      *
-     * @param string $file The path for the file
+     * @param string $file The path for the file or an absolute URL
      * @return string|false
      */
     public static function read(string $file)
     {
+        if (
+            is_file($file) !== true &&
+            Str::startsWith($file, 'https://') !== true &&
+            Str::startsWith($file, 'http://') !== true
+        ) {
+            return false;
+        }
+
         return @file_get_contents($file);
     }
 
@@ -576,7 +588,7 @@ class F
             return $newRoot;
         }
 
-        if (F::move($file, $newRoot) !== true) {
+        if (F::move($file, $newRoot, $overwrite) !== true) {
             return false;
         }
 
@@ -759,6 +771,18 @@ class F
         }
 
         return null;
+    }
+
+    /**
+     * Returns all extensions of a given file type
+     * or `null` if the file type is unknown
+     *
+     * @param string $type
+     * @return array|null
+     */
+    public static function typeToExtensions(string $type): ?array
+    {
+        return static::$types[$type] ?? null;
     }
 
     /**

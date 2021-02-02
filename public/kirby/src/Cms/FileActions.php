@@ -26,6 +26,7 @@ trait FileActions
      * @param string $name
      * @param bool $sanitize
      * @return self
+     * @throws \Kirby\Exception\LogicException
      */
     public function changeName(string $name, bool $sanitize = true)
     {
@@ -161,6 +162,8 @@ trait FileActions
      *
      * @param array $props
      * @return self
+     * @throws \Kirby\Exception\InvalidArgumentException
+     * @throws \Kirby\Exception\LogicException
      */
     public static function create(array $props)
     {
@@ -242,6 +245,9 @@ trait FileActions
 
             F::remove($file->root());
 
+            // remove the file from the sibling collection
+            $file->parent()->files()->remove($file);
+
             return true;
         });
     }
@@ -259,20 +265,6 @@ trait FileActions
     }
 
     /**
-     * @deprecated 3.0.0 Use `File::changeName()` instead
-     *
-     * @param string $name
-     * @param bool $sanitize
-     * @return self
-     */
-    public function rename(string $name, bool $sanitize = true)
-    {
-        deprecated('$file->rename() is deprecated, use $file->changeName() instead. $file->rename() will be removed in Kirby 3.5.0.');
-
-        return $this->changeName($name, $sanitize);
-    }
-
-    /**
      * Replaces the file. The source must
      * be an absolute path to a file or a Url.
      * The store handles the replacement so it
@@ -281,6 +273,7 @@ trait FileActions
      *
      * @param string $source
      * @return self
+     * @throws \Kirby\Exception\LogicException
      */
     public function replace(string $source)
     {

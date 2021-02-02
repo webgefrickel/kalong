@@ -14,23 +14,22 @@ import templates from './templates';
 import run from './lib/run';
 import config from '../kalong.config';
 
-const scripts = async () =>
-  Promise.all([
-    run(rollup),
-    run(rollup, {
-      output: join(config.dest, config.scripts, `${config.main}.min.js`),
-      sourceMap: false,
-    }),
-    run(rollup, {
-      input: join(config.src, config.scripts, 'serviceworker.js'),
-      output: join(config.root, '.well-known/', 'serviceworker.js'),
-      sourceMap: false,
-    }),
-    run(copy, {
-      input: join(config.src, config.scripts, `${config.main}.legacy.js`),
-      output: join(config.dest, config.scripts),
-    }),
-  ]);
+const scripts = async () => Promise.all([
+  run(rollup),
+  run(rollup, {
+    output: join(config.dest, config.scripts, `${config.main}.min.js`),
+    sourceMap: false,
+  }),
+  run(rollup, {
+    input: join(config.src, config.scripts, 'serviceworker.js'),
+    output: join(config.root, '.well-known/', 'serviceworker.js'),
+    sourceMap: false,
+  }),
+  run(copy, {
+    input: join(config.src, config.scripts, `${config.main}.legacy.js`),
+    output: join(config.dest, config.scripts),
+  }),
+]);
 
 const styles = async () => {
   await Promise.all([
@@ -58,33 +57,31 @@ const preBuild = async () => Promise.all([run(clean), run(stylelint), run(eslint
 const compileAssets = async () => Promise.all([run(styles), run(scripts), run(svgSprite)]);
 const postBuild = async () => Promise.all([run(htmlValidate)]);
 
-const copyAssets = async () =>
-  Promise.all([
-    run(copy), // No options: copy images,
-    run(copy, {
-      // Copy fonts
-      input: join(config.src, config.fonts, '*.{woff,woff2}'),
-      output: join(config.dest, config.fonts),
-    }),
-  ]);
+const copyAssets = async () => Promise.all([
+  run(copy), // No options: copy images,
+  run(copy, {
+    // Copy fonts
+    input: join(config.src, config.fonts, '*.{woff,woff2}'),
+    output: join(config.dest, config.fonts),
+  }),
+]);
 
-const copyStyleguide = async () =>
-  // Copy all styleguide files to the pattern library
-  Promise.all([
-    // Styleguide HTML pattern files
-    run(copy, {
-      input: join(config.src, config.patterns, '**/*.html'),
-      output: join(config.library),
-      rename: [file => file.replace('_', '').replace('.html', '.twig')],
-    }),
-    // Styleguide data pattern files
-    run(copy, {
-      input: join(config.styleguide, 'components/data/**/*.html'),
-      output: join(config.library),
-      rename: [file => file.replace('_', ''), file => file.replace('.html', '.yml')],
-    }),
-    run(templates),
-  ]);
+// Copy all styleguide files to the pattern library
+const copyStyleguide = async () => Promise.all([
+  // Styleguide HTML pattern files
+  run(copy, {
+    input: join(config.src, config.patterns, '**/*.html'),
+    output: join(config.library),
+    rename: [file => file.replace('_', '').replace('.html', '.twig')],
+  }),
+  // Styleguide data pattern files
+  run(copy, {
+    input: join(config.styleguide, 'components/data/**/*.html'),
+    output: join(config.library),
+    rename: [file => file.replace('_', ''), file => file.replace('.html', '.yml')],
+  }),
+  run(templates),
+]);
 
 (async () => {
   const spinner = new Ora({

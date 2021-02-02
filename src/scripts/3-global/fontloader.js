@@ -1,5 +1,5 @@
 import FontFaceObserver from 'fontfaceobserver';
-import { fonts } from '~config/fonts';
+import { fonts } from '../../config/fonts.json';
 
 export default () => {
   const fontObservers = [];
@@ -17,7 +17,7 @@ export default () => {
         new FontFaceObserver(f.family.replace(/'/g, ''), {
           weight: f.weight,
           style: f.style,
-        })
+        }),
       );
     }
   });

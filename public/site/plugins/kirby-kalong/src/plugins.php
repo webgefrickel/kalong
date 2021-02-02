@@ -16,6 +16,12 @@ Kirby::plugin('kalong/image', [
       $actualRatio = $image->width() / $image->height();
       $srcset = '';
 
+      if ($actualRatio >= 1) {
+        $modifiers .= '  image--landscape';
+      } else {
+        $modifiers .= '  image--portrait';
+      }
+
       // we need to manually create a srcset by hand, since focusCrop AND srcset don't work together
       if ($ratio !== false) {
         foreach ($widths as $width) {
@@ -55,18 +61,12 @@ Kirby::plugin('kalong/image', [
         $srcset = $image->srcset();
       }
 
-      // set the fallback-image to be the smallest image from srcset-config
-      $srcsetArray = explode(',', $srcset);
-      $fallbackEntry = explode(' ', $srcsetArray[0]);
-      $fallback = $fallbackEntry[0];
-
       return [
         'modifiers' => $modifiers,
-        'fallback' => $fallback,
+        'fallback' => $image->placeholderUri(),
         'alt' => $alt,
         'title' => $title,
         'caption' => ($hideCaption === true) ? false : $caption,
-        'lazyloading' => true,
         'sources' => [
           [
             'media' => $media,
@@ -76,9 +76,44 @@ Kirby::plugin('kalong/image', [
         ]
       ];
     },
-
-    'kalongVideo' => function($modifiers = '', $attributes = 'controls') {
-      // TODO (get av1/hevc versions etc.)
-    },
   ],
+]);
+
+Kirby::plugin('kalong/seo', [
+  'pageMethods' => [
+    'kalongPageTitle' => function() {
+      $site = kirby()->site();
+      $page = $this;
+      $isHome = $page->isHomeOrErrorPage();
+      $title = ($page->seotitle()->isEmpty())
+        ? $page->title() . ' | ' . $site->seotitle()
+        : $page->seotitle();
+
+      if ($page->isDescendantOf('archiv')) {
+        $title = ($page->seotitle()->isEmpty())
+          ? '[' . $page->title() . '] ' . $page->subtitle() . ' | ' . $site->seotitle()
+          : $page->seotitle();
+      }
+
+      if ($isHome) {
+        $title = $site->seotitle();
+      }
+
+      return $title;
+    },
+    'kalongPageDescription' => function() {
+      $site = kirby()->site();
+      $page = $this;
+      $isHome = $page->isHomeOrErrorPage();
+      $desc = ($page->seodescription()->isEmpty())
+        ? Str::excerpt($page->text()->kirbytext(), 150)
+        : $page->seodescription();
+
+      if ($isHome) {
+        $desc = $site->seotitle() . '—' . $site->seodescription();
+      }
+
+      return $desc;
+    }
+  ]
 ]);

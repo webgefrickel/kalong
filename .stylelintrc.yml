@@ -1,18 +1,18 @@
-extends: stylelint-config-xo-scss
+extends: stylelint-config-sass-guidelines
 ignoreFiles: src/styles/3-vendor/**/*.scss
 
 rules:
-  at-rule-name-newline-after: null
-  block-closing-brace-newline-after:
-    - always
-    - ignoreAtRules:
-        - import
-        - include
-        - if
-        - else
-  declaration-property-value-blacklist: null
-  font-weight-notation: null
-  indentation: 2
-  scss/at-import-partial-extension-blacklist: null
-  scss/no-duplicate-dollar-variables: null
-  scss/operator-no-unspaced: null
+  max-nesting-depth: 3
+  order/order:
+    - custom-properties
+    - dollar-variables
+    - type: at-rule
+      hasBlock: false
+      name: extend
+    - type: at-rule
+      hasBlock: false
+      name: include
+    - declarations
+    - rules
+  order/properties-alphabetical-order: null
+  selector-class-pattern: "^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$"

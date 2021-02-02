@@ -1,8 +1,6 @@
 extends:
   - 'eslint:recommended'
-  - 'xo-space'
-  - 'xo-space/esnext'
-  - 'xo-space/browser'
+  - 'airbnb-base'
 
 ignorePatterns:
   - 'src/scripts/*-vendor/**/*.js'
@@ -13,7 +11,7 @@ parserOptions:
 env:
   browser: true
   commonjs: true
-  es2020: true
+  es2021: true
   node: true
   serviceworker: true
   shared-node-browser: true
@@ -22,16 +20,6 @@ env:
 # with the prettier-config (but not using
 # eslint-config-prettier, which disables too much)
 rules:
-  comma-dangle:
+  arrow-parens:
     - error
-    - only-multiline
-  indent:
-    - error
-    - 2
-    - SwitchCase: 1
-  object-curly-spacing:
-    - error
-    - always
-  operator-linebreak:
-    - error
-    - before
+    - as-needed

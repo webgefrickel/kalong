@@ -22,13 +22,6 @@ this project provides an .editorconfig-file that sets all conventions.
 If not: s Spaces for everything, UTF-8, unixsStyle linebreaks, no
 trailing spaces except for Markdown and text-files.
 
-## Prettier code
-
-This repository also includes a [prettier](https://prettier.io) config
-file. If your text-editor/IDE of choice supports prettier, just activate
-it an never think about code-styling again. Highly recommended, but not
-included in the build-chain.
-
 ## Linting
 
 The JavaScript-, HTML/a11y- and Sass-linters will be enabled by default

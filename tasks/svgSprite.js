@@ -30,7 +30,7 @@ export default async (opts = {}) => {
     sprite.add(
       resolve(icon),
       icon.replace(/^.*[\\/]/, ''), // Filename only
-      readFileSync(icon, { encoding: 'utf-8' })
+      readFileSync(icon, { encoding: 'utf-8' }),
     );
   });
 

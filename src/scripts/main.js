@@ -1,3 +1,4 @@
+/* eslint-disable */
 import * as globals from './3-global/!(*.test|*.config).js';
 import * as patterns from '../patterns/**/!(*.test|*.config).js';
 

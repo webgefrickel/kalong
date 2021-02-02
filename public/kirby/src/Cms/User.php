@@ -28,11 +28,6 @@ class User extends ModelWithContent
     use UserActions;
 
     /**
-     * @var File
-     */
-    protected $avatar;
-
-    /**
      * @var UserBlueprint
      */
     protected $blueprint;
@@ -82,7 +77,7 @@ class User extends ModelWithContent
     public static $models = [];
 
     /**
-     * @var string
+     * @var \Kirby\Cms\Field
      */
     protected $name;
 
@@ -176,7 +171,7 @@ class User extends ModelWithContent
     /**
      * Returns the UserBlueprint object
      *
-     * @return \Kirby\Cms\UserBlueprint
+     * @return \Kirby\Cms\Blueprint
      */
     public function blueprint()
     {
@@ -200,7 +195,7 @@ class User extends ModelWithContent
      *
      * @internal
      * @param array $data
-     * @param string $languageCode Not used so far
+     * @param string $languageCode|null Not used so far
      * @return array
      */
     public function contentFileData(array $data, string $languageCode = null): array
@@ -373,7 +368,8 @@ class User extends ModelWithContent
      */
     public function isLastAdmin(): bool
     {
-        return $this->role()->isAdmin() === true && $this->kirby()->users()->filterBy('role', 'admin')->count() <= 1;
+        return $this->role()->isAdmin() === true &&
+               $this->kirby()->users()->filter('role', 'admin')->count() <= 1;
     }
 
     /**
@@ -387,23 +383,32 @@ class User extends ModelWithContent
     }
 
     /**
+     * Checks if the current user is the virtual
+     * Nobody user
+     *
+     * @return bool
+     */
+    public function isNobody(): bool
+    {
+        return $this->email() === 'nobody@getkirby.com';
+    }
+
+    /**
      * Returns the user language
      *
      * @return string
      */
     public function language(): string
     {
-        return $this->language ?? $this->language = $this->credentials()['language'] ?? $this->kirby()->option('panel.language', 'en');
+        return $this->language ?? $this->language = $this->credentials()['language'] ?? $this->kirby()->panelLanguage();
     }
 
     /**
      * Logs the user in
      *
      * @param string $password
-     * @param \Kirby\Session\Session|array $session Session options or session object to set the user in
+     * @param \Kirby\Session\Session|array|null $session Session options or session object to set the user in
      * @return bool
-     *
-     * @throws \Kirby\Exception\PermissionException If the password is not valid
      */
     public function login(string $password, $session = null): bool
     {
@@ -416,7 +421,7 @@ class User extends ModelWithContent
     /**
      * Logs the user in without checking the password
      *
-     * @param \Kirby\Session\Session|array $session Session options or session object to set the user in
+     * @param \Kirby\Session\Session|array|null $session Session options or session object to set the user in
      * @return void
      */
     public function loginPasswordless($session = null): void
@@ -428,7 +433,7 @@ class User extends ModelWithContent
         $kirby->trigger('user.login:before', ['user' => $this, 'session' => $session]);
 
         $session->regenerateToken(); // privilege change
-        $session->data()->set('user.id', $this->id());
+        $session->data()->set('kirby.userId', $this->id());
         $this->kirby()->auth()->setUser($this);
 
         $kirby->trigger('user.login:after', ['user' => $this, 'session' => $session]);
@@ -437,7 +442,7 @@ class User extends ModelWithContent
     /**
      * Logs the user out
      *
-     * @param \Kirby\Session\Session|array $session Session options or session object to unset the user in
+     * @param \Kirby\Session\Session|array|null $session Session options or session object to unset the user in
      * @return void
      */
     public function logout($session = null): void
@@ -448,7 +453,7 @@ class User extends ModelWithContent
         $kirby->trigger('user.logout:before', ['user' => $this, 'session' => $session]);
 
         // remove the user from the session for future requests
-        $session->data()->remove('user.id');
+        $session->data()->remove('kirby.userId');
 
         // clear the cached user object from the app state of the current request
         $this->kirby()->auth()->flush();
@@ -543,6 +548,18 @@ class User extends ModelWithContent
         }
 
         return $this->name = new Field($this, 'name', $this->credentials()['name'] ?? null);
+    }
+
+    /**
+     * Returns the user's name or,
+     * if empty, the email address
+     *
+     * @return \Kirby\Cms\Field
+     */
+    public function nameOrEmail()
+    {
+        $name = $this->name();
+        return $name->isNotEmpty() ? $name : new Field($this, 'email', $this->email());
     }
 
     /**
@@ -695,7 +712,7 @@ class User extends ModelWithContent
         $roles = $kirby->roles();
 
         // a collection with just the one role of the user
-        $myRole = $roles->filterBy('id', $this->role()->id());
+        $myRole = $roles->filter('id', $this->role()->id());
 
         // if there's an authenticated user …
         if ($user = $kirby->user()) {
@@ -757,7 +774,7 @@ class User extends ModelWithContent
     /**
      * Sets the user email
      *
-     * @param string $email
+     * @param string $email|null
      * @return self
      */
     protected function setEmail(string $email = null)
@@ -771,7 +788,7 @@ class User extends ModelWithContent
     /**
      * Sets the user id
      *
-     * @param string $id
+     * @param string $id|null
      * @return self
      */
     protected function setId(string $id = null)
@@ -783,7 +800,7 @@ class User extends ModelWithContent
     /**
      * Sets the user language
      *
-     * @param string $language
+     * @param string $language|null
      * @return self
      */
     protected function setLanguage(string $language = null)
@@ -795,19 +812,19 @@ class User extends ModelWithContent
     /**
      * Sets the user name
      *
-     * @param string $name
+     * @param string $name|null
      * @return self
      */
     protected function setName(string $name = null)
     {
-        $this->name = $name !== null ? trim($name) : null;
+        $this->name = $name !== null ? trim(strip_tags($name)) : null;
         return $this;
     }
 
     /**
      * Sets the user's password hash
      *
-     * @param string $password
+     * @param string $password|null
      * @return self
      */
     protected function setPassword(string $password = null)
@@ -819,7 +836,7 @@ class User extends ModelWithContent
     /**
      * Sets the user role
      *
-     * @param string $role
+     * @param string $role|null
      * @return self
      */
     protected function setRole(string $role = null)
@@ -907,12 +924,12 @@ class User extends ModelWithContent
     /**
      * Compares the given password with the stored one
      *
-     * @param string $password
+     * @param string $password|null
      * @return bool
      *
      * @throws \Kirby\Exception\NotFoundException If the user has no password
      * @throws \Kirby\Exception\InvalidArgumentException If the entered password is not valid
-     * @throws \Kirby\Exception\InvalidArgumentException If the entered password does not match the user password
+     *                                                   or does not match the user password
      */
     public function validatePassword(string $password = null): bool
     {

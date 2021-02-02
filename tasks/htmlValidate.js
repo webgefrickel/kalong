@@ -12,7 +12,7 @@ export default async () => {
 
   pages.forEach(async page => {
     const fileId = page.replace(pagePath, '');
-    const file = sync(join(config.styleguide, 'components/preview/', fileId) + '.html')[0];
+    const file = sync(`${join(config.styleguide, `components/preview/${fileId}`)}.html`)[0];
 
     // ignore files that end with -start.html or -end.html
     if (file.indexOf('-start.html') === -1 && file.indexOf('-end.html') === -1) {

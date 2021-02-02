@@ -6,8 +6,6 @@ This project provides four different linters: one for HTML, one for
 accessibility issues, one for Sass (.scss-files to be specific) and one
 for JavaScript.
 
-## TODO note on prettier
-
 ## TODO EDITORCONFIG
 
 ## JavaScript: eslint
@@ -18,7 +16,7 @@ consistent and sane code style (based on
 [XO](https://github.com/xojs/xo)). You can find all current rules and
 the settings for them in the file _.eslintrc.yml_.
 
-### EcmaScript Next / ES2020
+### EcmaScript Next / ES2021
 
 Since we use the most current version of EcmaScript in this project,
 eslint is configured to warn you on some things, that can be written

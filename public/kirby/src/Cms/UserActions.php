@@ -136,10 +136,11 @@ trait UserActions
      *
      * @param string $action
      * @param array $arguments
-     * @param Closure $callback
+     * @param \Closure $callback
      * @return mixed
+     * @throws \Kirby\Exception\PermissionException
      */
-    protected function commit(string $action, array $arguments = [], Closure $callback)
+    protected function commit(string $action, array $arguments, Closure $callback)
     {
         if ($this->isKirby() === true) {
             throw new PermissionException('The Kirby user cannot be changed');
@@ -170,7 +171,7 @@ trait UserActions
     /**
      * Creates a new User from the given props and returns a new User object
      *
-     * @param array $props
+     * @param array|null $props
      * @return self
      */
     public static function create(array $props = null)
@@ -245,6 +246,7 @@ trait UserActions
      * Deletes the user
      *
      * @return bool
+     * @throws \Kirby\Exception\LogicException
      */
     public function delete(): bool
     {
@@ -289,9 +291,9 @@ trait UserActions
     /**
      * Reads the user password from disk
      *
-     * @return string|null
+     * @return string|false
      */
-    protected function readPassword(): ?string
+    protected function readPassword()
     {
         return F::read($this->root() . '/.htpasswd');
     }
@@ -299,14 +301,14 @@ trait UserActions
     /**
      * Updates the user data
      *
-     * @param array $input
-     * @param string $language
+     * @param array|null $input
+     * @param string|null $languageCode
      * @param bool $validate
      * @return self
      */
-    public function update(array $input = null, string $language = null, bool $validate = false)
+    public function update(array $input = null, string $languageCode = null, bool $validate = false)
     {
-        $user = parent::update($input, $language, $validate);
+        $user = parent::update($input, $languageCode, $validate);
 
         // set auth user data only if the current user is this user
         if ($user->isLoggedIn() === true) {
@@ -342,7 +344,7 @@ trait UserActions
     /**
      * Writes the password to disk
      *
-     * @param string $password
+     * @param string|null $password
      * @return bool
      */
     protected function writePassword(string $password = null): bool

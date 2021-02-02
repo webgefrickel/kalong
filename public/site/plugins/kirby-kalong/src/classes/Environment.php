@@ -7,21 +7,24 @@ use Response;
 use Kirby\Cms\App;
 use Kirby\Toolkit\Html;
 use Kirby\Toolkit\Tpl;
-use Kirby\Data\YAML;
 
-use Twig_Compiler;
-use Twig_Environment;
-use Twig_Error;
-use Twig_Extension_Debug;
-use Twig_Loader_Filesystem;
-use Twig_Node;
-use Twig_NodeOutputInterface;
-use Twig_Node_Expression;
-use Twig_SimpleFilter;
-use Twig_SimpleFunction;
-use Twig_SimpleTest;
-use Twig_Token;
-use Twig_TokenParser;
+use \Twig\Environment as Twig_Environment;
+use \Twig\TwigFunction as Twig_Function;
+use \Twig\TwigFilter as Twig_Filter;
+use \Twig\TwigTest as Twig_Test;
+use \Twig\Extension\DebugExtension as Twig_Extension_Debug;
+use \Twig\Error\Error as Twig_Error;
+use \Twig\Loader\FilesystemLoader as Twig_Loader_Filesystem;
+
+// extra stuff needed for kalong
+use Kirby\Data\YAML;
+use \Twig\Compiler as Twig_Compiler;
+use \Twig\Node\Node as Twig_Node;
+use \Twig\Node\NodeOutputInterface as Twig_NodeOutputInterface;
+use \Twig\Node\Expression\ConstantExpression as Twig_Node_ConstantExpression;
+use \Twig\Node\Expression\AbstractExpression as Twig_Node_AbstractExpression;
+use \Twig\Token as Twig_Token;
+use \Twig\TokenParser\AbstractTokenParser as Twig_TokenParser;
 
 
 /**
@@ -32,8 +35,7 @@ use Twig_TokenParser;
  */
 class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface
 {
-
-    public function __construct(Twig_Node_Expression $expr, Twig_Node_Expression $variables = null, $merge = null, $lineno, $tag = null)
+    public function __construct(Twig_Node_ConstantExpression $expr, Twig_Node_AbstractExpression $variables = null, $merge = null, $lineno, $tag = null)
     {
         $nodes = array('expr' => $expr);
         if ($variables !== null) {
@@ -128,7 +130,6 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface
     }
 }
 
-
 class RenderPattern_TokenParser extends Twig_TokenParser
 {
 
@@ -196,50 +197,66 @@ class Environment
      * @var array
      */
     private $defaultFunctions = [
-        '*attr',
-        'asset',
-        'collection',
-        '*csrf',
-        '*csrf_field',
-        '*honeypot_field',
-        '*css',
+        '*attr' => 'attr',
+        'asset' => 'asset',
+        'collection' => 'collection',
+        '*csrf' => 'csrf',
+        '*csrf_field' => 'csrf_field',
+        '*honeypot_field' => 'honeypot_field',
+        '*css' => 'css',
         // Skipping: e - Twig syntax is simple: {{ condition ? 'a' : 'b' }}
-        '*esc',
-        'get',
-        '*gist',
-        'go',
-        'gravatar',
-        '*h', '*html',
-        '*image',
-        'invalid',
-        '*js',
-        'kirby',
-        '*kirbytag',
-        '*kirbytags',
-        '*kirbytext',
-        '*markdown',
-        'option',   // Get config value
-        'memory',
-        '*multiline',
-        'page',
-        'pages',
-        'param',
-        'params',
+        '*esc' => 'esc',
+        'error' => 'mgfagency\Twig\Functions::error',
+        'get' => 'get',
+        '*gist' => 'gist',
+        'go' => 'go',
+        'gravatar' => 'gravatar',
+        '*h' => 'h',
+        '*html' => 'html',
+        '*image' => 'image',
+        'invalid' => 'invalid',
+        '*js' => 'js',
+        'kirby' => 'kirby',
+        '*kirbytag' => 'kirbytag',
+        '*kirbytags' => 'kirbytags',
+        '*kirbytext' => 'kirbytext',
+        '*markdown' => 'markdown',
+        'option' => 'option',   // Get config value => 'option'
+        'memory' => 'memory',
+        '*multiline' => 'multiline',
+        'page' => 'page',
+        'pages' => 'pages',
+        'param' => 'param',
+        'params' => 'params',
+        '*pattern' => 'pattern',
         // Skipping: r - Same reason as for ecco/e
-        'timestamp',
-        'site',
-        'size',
-        '*smartypants',
-        '*snippet',
-        '*svg',
-        't',
-        'tc',
-        '*twitter',
-        'u', 'url',
-        '*video',
-        '*vimeo',
-        '*widont',
-        '*youtube',
+        'timestamp' => 'timestamp',
+        'site' => 'site',
+        'size' => 'size',
+        'slug' => 'Str::slug',
+        '*smartypants' => 'smartypants',
+        '*snippet' => 'snippet',
+        '*strftime' => 'strftime',
+        '*svg' => 'svg',
+        't' => 't',
+        'tc' => 'tc',
+        '*twitter' => 'twitter',
+        'u' => 'u',
+        'url' => 'url',
+        'url_build' => 'Url::build',
+        '*video' => 'video',
+        '*vimeo' => 'vimeo',
+        '*widont' => 'widont',
+        '*youtube' => 'youtube',
+    ];
+
+    /**
+     * Default twig tests
+     *
+     * @var array
+     */
+    private $defaultTests = [
+        'of_type' => 'mgfagency\Twig\Tests::of_type',
     ];
 
     private $templateDir = null;
@@ -270,26 +287,21 @@ class Environment
                 'pattern' => kirby()->option('kalong'),
             ],
             'paths' => [],
-            'function' => $this->cleanNames(array_merge(
+            'function' => array_merge(
                 $this->defaultFunctions,
                 option('mgfagency.twig.env.functions', [])
-            )),
-            'filter' => $this->cleanNames(option('mgfagency.twig.env.filters', [])),
-            'test' => $this->cleanNames(option('mgfagency.twig.env.tests', [])),
+            ),
+            'extension' => option('mgfagency.twig.env.extensions', []),
+            'filter' => option('mgfagency.twig.env.filters', []),
+            'test' => array_merge(
+                $this->defaultTests,
+                option('mgfagency.twig.env.tests', [])
+            ),
         ];
 
         // Set cache directory
         if (option('mgfagency.twig.cache')) {
             $options['core']['cache'] = kirby()->roots()->cache() . '/twig';
-        }
-
-        // Look at 'twig.abc.xYz' options to find namespaces, functions & filters
-        foreach (array_keys(App::instance()->options()) as $key) {
-            $p = '/^mgfagency.twig\.(env\.)?([a-z]+)\.(\*?[a-zA-Z][a-zA-Z0-9_\-]*)$/';
-            $m = [];
-            if (preg_match($p, $key, $m) === 1 && property_exists($m[2], $options)) {
-                $options[ $m[2] ][ $m[3] ] = option($key);
-            }
         }
 
         // Set up the template loader
@@ -304,6 +316,11 @@ class Environment
         if ($viewPath != $this->templateDir) {
             $loader->addPath($viewPath);
         }
+
+        $options['namespace'] = array_merge(
+            $options['namespace'],
+            option('mgfagency.twig.namespaces', [])
+        );
 
         $canSkip = ['snippets', 'plugins', 'assets'];
         foreach ($options['namespace'] as $key=>$path) {
@@ -321,7 +338,11 @@ class Environment
         foreach ($kirby->plugins() as $id => $plugin) {
             if (isset($plugin->extends()['twigcomponents']))
             {
-                $loader->addPath($plugin->extends()['twigcomponents']);
+                $twigcomponents = $plugin->extends()['twigcomponents'];
+                if (is_callable($twigcomponents)) {
+                    $twigcomponents = $twigcomponents();
+                }
+                $loader->addPath($twigcomponents);
             }
         }
 
@@ -332,6 +353,9 @@ class Environment
         $this->twig->addExtension(new Twig_Extension_Debug());
 
         // Plug in functions and filters
+        foreach ($options['extension'] as $className) {
+            $this->twig->addExtension(new $className());
+        }
         foreach ($options['function'] as $name => $func) {
             $this->addCallable('function', $name, $func);
         }
@@ -346,8 +370,8 @@ class Environment
         $this->twig->addTokenParser(new RenderPattern_TokenParser());
 
         // add the path filter and raw/safe-filter
-        $this->twig->addFilter(new Twig_SimpleFilter('safe', 'twig_raw_filter', array('is_safe' => array('html'))));
-        $this->twig->addFilter(new Twig_SimpleFilter('path', function($path) {
+        $this->twig->addFilter(new Twig_Filter('safe', 'twig_raw_filter', array('is_safe' => array('html'))));
+        $this->twig->addFilter(new Twig_Filter('path', function($path) {
             return '/assets/' . trim($path, '/');
         }));
 
@@ -453,7 +477,7 @@ class Environment
 
         // Gather information
         $sourceContext = $err->getSourceContext();
-        $name = $sourceContext->getName();
+        $name = $sourceContext != null ? $sourceContext->getName() : '';
         $line = $err->getTemplateLine();
         $msg  = $err->getRawMessage();
         $path = null;
@@ -524,29 +548,12 @@ class Environment
     }
 
     /**
-     * Clean up function names for use in Twig templates
-     * Returns ['twig name' => 'callable name']
-     * @param  array $source
-     * @return array
-     */
-    private function cleanNames($source)
-    {
-        $names = [];
-        foreach ($source as $name) {
-            if (!is_string($name)) continue;
-            $key = str_replace('::', '__', $name);
-            $names[$key] = trim($name, '*');
-        }
-        return $names;
-    }
-
-    /**
      * Expose a function to the Twig environment as a function or filter
      * @param string $type
      * @param string $name
      * @param string|Closure $func
      */
-    private function addCallable($type='function', $name, $func)
+    private function addCallable($type, $name, $func)
     {
         if (!is_string($name) || !is_callable($func)) {
             return;
@@ -557,13 +564,13 @@ class Environment
             $params['is_safe'] = ['html'];
         }
         if ($type === 'function') {
-            $this->twig->addFunction(new Twig_SimpleFunction($twname, $func, $params));
+            $this->twig->addFunction(new Twig_Function($twname, $func, $params));
         }
         if ($type === 'filter') {
-            $this->twig->addFilter(new Twig_SimpleFilter($twname, $func, $params));
+            $this->twig->addFilter(new Twig_Filter($twname, $func, $params));
         }
         if ($type === 'test') {
-            $this->twig->addTest(new Twig_SimpleTest($twname, $func));
+            $this->twig->addTest(new Twig_Test($twname, $func));
         }
     }
 }

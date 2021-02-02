@@ -5,6 +5,4 @@ document.documentElement.classList.remove('no-js');
 document.documentElement.classList.add('fonts-loaded');
 
 /* eslint-disable no-alert */
-window.alert(
-  'You are using an outdated browser. Consider upgrading your browser or switching to something more modern for the best experience.\nSie verwenden einen veralteten Browser. Ein Upgrade oder Wechsel zu einem moderneren Browser sollte mit Darstellungs- oder Funktionalitätsproblemen helfen.'
-);
+window.alert('You are using an outdated browser. Consider upgrading your browser or switching to something more modern for the best experience.\nSie verwenden einen veralteten Browser. Ein Upgrade oder Wechsel zu einem moderneren Browser sollte mit Darstellungs- oder Funktionalitätsproblemen helfen.');

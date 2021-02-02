@@ -157,7 +157,7 @@ class Event
      * @param \Closure $hook
      * @return mixed
      */
-    public function call($bind = null, Closure $hook)
+    public function call(?object $bind, Closure $hook)
     {
         // collect the list of possible hook arguments
         $data = $this->arguments();
@@ -276,6 +276,7 @@ class Event
      * @param string $name
      * @param mixed $value
      * @return void
+     * @throws \Kirby\Exception\InvalidArgumentException
      */
     public function updateArgument(string $name, $value): void
     {

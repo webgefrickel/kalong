@@ -5,9 +5,7 @@ export default async (fn, options) => {
 
   // Catch errors for all tasks and output any warnings
   return task(options)
-    .then(resolution => {
-      return resolution;
-    })
+    .then(resolution => resolution)
     .catch(error => {
       warn(error);
     });

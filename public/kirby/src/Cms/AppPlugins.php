@@ -48,6 +48,7 @@ trait AppPlugins
 
         // other plugin types
         'api' => [],
+        'authChallenges' => [],
         'blueprints' => [],
         'cacheTypes' => [],
         'collections' => [],
@@ -92,7 +93,7 @@ trait AppPlugins
      *
      * @internal
      * @param array $extensions
-     * @param \Kirby\Cms\Plugin $plugin The plugin which defined those extensions
+     * @param \Kirby\Cms\Plugin $plugin|null The plugin which defined those extensions
      * @return array
      */
     public function extend(array $extensions, Plugin $plugin = null): array
@@ -123,6 +124,17 @@ trait AppPlugins
         } else {
             return $this->extensions['api'];
         }
+    }
+
+    /**
+     * Registers additional authentication challenges
+     *
+     * @param array $challenges
+     * @return array
+     */
+    protected function extendAuthChallenges(array $challenges): array
+    {
+        return $this->extensions['authChallenges'] = Auth::$challenges = array_merge(Auth::$challenges, $challenges);
     }
 
     /**
@@ -361,7 +373,7 @@ trait AppPlugins
     /**
      * Registers additional routes
      *
-     * @param array|Closure $routes
+     * @param array|\Closure $routes
      * @return array
      */
     protected function extendRoutes($routes): array
@@ -398,8 +410,8 @@ trait AppPlugins
     /**
      * Registers SmartyPants component
      *
-     * @param Closure $smartypants
-     * @return Closure
+     * @param \Closure $smartypants
+     * @return \Closure
      */
     protected function extendSmartypants(Closure $smartypants)
     {
@@ -455,7 +467,6 @@ trait AppPlugins
      * so they can be used as plugins for plugins
      * for example.
      *
-     * @param string $type
      * @param array $extensions
      * @return array
      */
@@ -567,7 +578,7 @@ trait AppPlugins
      * the options array. I.e. hooks and routes can be
      * setup from the config.
      *
-     * @return array
+     * @return void
      */
     protected function extensionsFromOptions()
     {
@@ -582,7 +593,6 @@ trait AppPlugins
     /**
      * Apply all plugin extensions
      *
-     * @param array $plugins
      * @return void
      */
     protected function extensionsFromPlugins()
@@ -620,6 +630,7 @@ trait AppPlugins
         // load static extensions only once
         if (static::$systemExtensions === null) {
             // Form Field Mixins
+            FormField::$mixins['datetime']   = include $root . '/config/fields/mixins/datetime.php';
             FormField::$mixins['filepicker'] = include $root . '/config/fields/mixins/filepicker.php';
             FormField::$mixins['min']        = include $root . '/config/fields/mixins/min.php';
             FormField::$mixins['options']    = include $root . '/config/fields/mixins/options.php';
@@ -677,9 +688,16 @@ trait AppPlugins
                 'blueprints'   => include $root . '/config/blueprints.php',
                 'fields'       => include $root . '/config/fields.php',
                 'fieldMethods' => include $root . '/config/methods.php',
-                'tags'         => include $root . '/config/tags.php'
+                'snippets'     => include $root . '/config/snippets.php',
+                'tags'         => include $root . '/config/tags.php',
+                'templates'    => include $root . '/config/templates.php'
             ];
         }
+
+        // default auth challenges
+        $this->extendAuthChallenges([
+            'email' => 'Kirby\Cms\Auth\EmailChallenge'
+        ]);
 
         // default cache types
         $this->extendCacheTypes([
@@ -693,7 +711,9 @@ trait AppPlugins
         $this->extendBlueprints(static::$systemExtensions['blueprints']);
         $this->extendFields(static::$systemExtensions['fields']);
         $this->extendFieldMethods((static::$systemExtensions['fieldMethods'])($this));
+        $this->extendSnippets(static::$systemExtensions['snippets']);
         $this->extendTags(static::$systemExtensions['tags']);
+        $this->extendTemplates(static::$systemExtensions['templates']);
     }
 
     /**
@@ -701,7 +721,7 @@ trait AppPlugins
      * of a core component
      *
      * @param string $component
-     * @return \Closure | false
+     * @return \Closure|false
      */
     public function nativeComponent(string $component)
     {
@@ -714,6 +734,7 @@ trait AppPlugins
      * @param string $name
      * @param array|null $extends If null is passed it will be used as getter. Otherwise as factory.
      * @return \Kirby\Cms\Plugin|null
+     * @throws \Kirby\Exception\DuplicateException
      */
     public static function plugin(string $name, array $extends = null)
     {
@@ -739,7 +760,7 @@ trait AppPlugins
      * Loading only happens on the first call.
      *
      * @internal
-     * @param array $plugins Can be used to overwrite the plugins registry
+     * @param array|null $plugins Can be used to overwrite the plugins registry
      * @return array
      */
     public function plugins(array $plugins = null): array

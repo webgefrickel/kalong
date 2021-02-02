@@ -2,12 +2,13 @@
   <picture class="image__picture">
     {% for source in sources %}
       <source class="image__source"
-        srcset="{{ source.srcset }}"
+        data-lazyload
+        data-srcset="{{ source.srcset }}"
         {% if source.media %} media="{{ source.media }}"{% endif %}
         {% if source.sizes %} sizes="{{ source.sizes }}"{% endif %}
       />
     {% endfor %}
-    <img src="{{ fallback }}" alt="{{ alt }}" class="image__fallback"{% if lazyloading %} loading="lazy"{% endif %}{% if title %} title="{{ title }}"{% endif %} />
+    <img src="{{ fallback }}" alt="{{ alt }}" class="image__fallback"{% if title %} title="{{ title }}"{% endif %} />
   </picture>
 
   {% if caption %}
