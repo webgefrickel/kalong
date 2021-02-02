@@ -2,7 +2,6 @@
 
 Kirby::plugin('kalong/image', [
   'fileMethods' => [
-
     'kalongImage' => function($modifiers = '', $sizes = '100vw', $ratio = false, $hideCaption = true, $media = '') {
       $widths = option('thumbs.srcsets.default');
       $quality = option('thumbs.quality');
@@ -76,6 +75,9 @@ Kirby::plugin('kalong/image', [
         ]
       ];
     },
+    'kalongVideo' => function() {
+      // TODO
+    },
   ],
 ]);
 
@@ -88,12 +90,6 @@ Kirby::plugin('kalong/seo', [
       $title = ($page->seotitle()->isEmpty())
         ? $page->title() . ' | ' . $site->seotitle()
         : $page->seotitle();
-
-      if ($page->isDescendantOf('archiv')) {
-        $title = ($page->seotitle()->isEmpty())
-          ? '[' . $page->title() . '] ' . $page->subtitle() . ' | ' . $site->seotitle()
-          : $page->seotitle();
-      }
 
       if ($isHome) {
         $title = $site->seotitle();

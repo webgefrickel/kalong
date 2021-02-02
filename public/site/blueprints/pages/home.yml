@@ -26,6 +26,3 @@ columns:
     sections:
       images: sections/images
       videos: sections/videos
-  bottom:
-    sections:
-      seo: sections/seo

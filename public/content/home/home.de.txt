@@ -12,8 +12,8 @@ Gallery:
 
 ----
 
-Seotitle: Seitentitel, global
+Seotitle: 
 
 ----
 
-Seodescription: Kurzbeschreibung der Seite, global
+Seodescription: 

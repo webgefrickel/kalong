@@ -1,12 +1,17 @@
 <?php
 
 return function($page) {
-  $data = kalong();
+  $__ = kalong(null, $page);
+
+  // global page data
+  $__['pageModifiers'] = 'template--default';
+  $__['pageTitle'] = $page->kalongPageTitle();
+  $__['pageDescription'] = $page->kalongPageDescription();
 
   // now, get your data from the page, pages, site or whatever
   // and add it to the data-array. that is all you have to do.
-  $data['text'] = $page->text()->kirbytext();
+  $__['text'] = $page->text()->kirbytext();
 
-  return $data;
+  return $__;
 };
 

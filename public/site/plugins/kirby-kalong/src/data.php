@@ -27,47 +27,16 @@ function kalong($pattern = null, $page = null) {
     ];
   }
 
-  // global page data
-  $__['modifiers'] = '';
-  $__['pageTitle'] = $page->kalongPageTitle();
-  $__['pageDescription'] = $page->kalongPageDescription();
-
-  // navigation objects
+  // Navigation objects
   $__['nav'] = [];
-  $__['archiveLabel'] = $home->title();
-  $__['worksLabel'] = (kirby()->language()->code() === 'de') ? 'Werke' : 'Works';
-  $__['titleLabel'] = (kirby()->language()->code() === 'de') ? 'Titel' : 'Captions';
-
-  $firstArchive = true;
-  $archives = $home->children()->listed();
-
-  foreach ($archives as $archive) {
-    $current;
-    $works = $archive->children()->listed();
-
-    $years = [];
-    foreach ($works as $work) {
-      $years[] = $work->year()->value();
-    }
-    $years = array_unique($years);
-    rsort($years, SORT_NUMERIC);
-
-    if ($firstArchive && count($years) > 0) {
-      $current = true;
-      $firstArchive = false;
-    } else {
-      $current = false;
-    }
-
-    if (!empty($years)) {
-      $__['nav'][] = [
-        'id' => $archive->slug(),
-        'label' => $archive->title(),
-        'current' => $current,
-        'years' => $years,
-      ];
-    }
+  $__['nav']['main'] = [];
+  foreach ($site->children()->listed() as $p) {
+    $__['nav']['main'][] = [
+      'href' => $p->url(),
+      'label' => $p->title(),
+    ];
   }
+
 
   return $__;
 }

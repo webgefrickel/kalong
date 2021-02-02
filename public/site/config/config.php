@@ -8,6 +8,7 @@ return [
 
   // we use languages by default
   'languages' => true,
+  'languages.detect' => false,
   'date.handler' => 'strftime',
   'slugs' => 'de',
 

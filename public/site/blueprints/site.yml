@@ -2,7 +2,14 @@ title: Dashboard
 
 columns:
   left:
-    width: 1/1
+    width: 3/4
+    sections:
+      home:
+        headline: Welcome
+        type: info
+        text: You can now start coding and building...
+  right:
+    width: 1/4
     sections:
       pages:
         headline: Alle Seiten
@@ -10,3 +17,6 @@ columns:
         create: false
         sortable: false
         image: false
+  bottom:
+    sections:
+      seo: sections/seo

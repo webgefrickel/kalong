@@ -51,7 +51,7 @@ config:
     main: '#f00'
   debug: true
   styleguide: true
-  hash: 1612285609723
+  hash: 1612301068851
 language:
   code: en
   locale: en_US
@@ -63,4 +63,17 @@ nav:
 pageTitle: Your Project—Styleguide
 pageDescription: A pattern library for Your Project
 pageModifiers: ''
+text: <p>Homepage content and patterns here&hellip;</p>
+mainImage:
+  modifiers: ''
+  fallback: //picsum.photos/240/160
+  alt: Alternativtext für das Bild
+  title: Titel des Bildes / Copyrightinfos
+  caption: Bildunterschrift
+  sources:
+    - media: ''
+      sizes: 100vw
+      srcset: >-
+        //picsum.photos/480/320 480w, //picsum.photos/960/640 960w,
+        //picsum.photos/1440/960 1440w
 

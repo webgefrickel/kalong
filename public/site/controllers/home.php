@@ -10,22 +10,13 @@
     ->toFile()
     ->kalongImage();
 
-  $customImage = $page
-    ->gallery()
-    ->first()
-    ->toFile()
-    ->kalongImage(
-      'custom-image-class',
-      '(min-width: 960px) 67vw, 100vw',
-      9/16,
-      false
-    );
-
+  // global page data
   $__['pageModifiers'] = 'template--home';
-  $__['pageDescription'] = kirby()->site()->seodescription();
+  $__['pageTitle'] = $page->kalongPageTitle();
+  $__['pageDescription'] = $page->kalongPageDescription();
+
   $__['text'] = $page->text()->kirbytext();
   $__['mainImage'] = $mainImage;
-  $__['customImage'] = $customImage;
 
   return $__;
 };
