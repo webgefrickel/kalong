@@ -1,8 +1,8 @@
 {
     "name": "webgefrickel/kirby-kalong",
-    "description": "Twig templating support for Kirby CMS with added support for fractal pattern usage as a companion to webgefrickel/kalong",
+    "description": "Twig templating support for Kirby CMS",
     "type": "kirby-plugin",
-    "version": "1.0.14",
+    "version": "3.0.2",
     "license": "MIT",
     "authors": [
         {
@@ -20,7 +20,7 @@
     ],
     "require": {
         "getkirby/composer-installer": "^1.1",
-        "twig/twig": "2.11.*"
+        "twig/twig": "3.1.*"
     },
     "autoload": {
         "psr-4": {
