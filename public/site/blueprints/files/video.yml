@@ -9,14 +9,33 @@ columns:
       left:
         type: fields
         fields:
-          hevc:
-            label: Video (HEVC-Codec)
-            help: (falls ein Video im HEVC-Codec verfügbar ist, bitte dieses hier mit dem Standard-MP4-Video verküpfen)
+          poster:
+            type: files
+            label: Ersatzbild
+            layout: cards
+            multiple: false
+            required: true
+            size: huge
+            empty: Dieses Bild wird als »Plan B« dargestellt, wenn das Video nicht geladen werden kann
+            query: page.images
+
   - width: 1/2
     sections:
       right:
         type: fields
         fields:
-          av1:
-            label: Video (HEVC-Codec)
-            help: (falls ein Video im HEVC-Codec verfügbar ist, bitte dieses hier mit dem Standard-MP4-Video verküpfen)
+          attributes:
+            label: Video-Einstellungen
+            type: checkboxes
+            default:
+              - muted
+              - loop
+              - autoplay
+              - playsinline
+            options:
+              muted: Stummgeschaltet
+              loop: Dauerschleife
+              autoplay: Automatisch abspielen
+              playsinline: Inline-Video
+              controls: Abspielen-Buttons etc. anzeigen
+            help: 'Wenn nichts ausgewählt wird, wird das Video wie ein animiertes Bild behandelt, mit den folgenden Standard-Einstellungen: Stummgeschaltet, Dauerschleife, Automatisch abspielen und Inline-Video"

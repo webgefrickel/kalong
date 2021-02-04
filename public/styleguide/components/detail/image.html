@@ -184,12 +184,10 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-f1ddf5821f59df07aff1e6c5f60c8922-panel-html">
     <code class="Code Code--lang-html hljs">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image&quot;</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image  image--landscape&quot;</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">picture</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__picture&quot;</span>&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__source&quot;</span> <span class="hljs-attr">data-lazyload</span> <span class="hljs-attr">data-srcset</span>=<span class="hljs-string">&quot;//picsum.photos/480/320 480w, //picsum.photos/960/640 960w, //picsum.photos/1440/960 1440w&quot;</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;100vw&quot;</span> /&gt;</span>
-
-        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;//picsum.photos/240/160&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Alternativtext für das Bild&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__fallback&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Titel des Bildes / Copyrightinfos&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__picture-source&quot;</span> <span class="hljs-attr">data-lazyload</span> <span class="hljs-attr">data-srcset</span>=<span class="hljs-string">&quot;//localhost/__mock/landscape-640.jpg 640w, //localhost/__mock/landscape-960.jpg 960w, //localhost/__mock/landscape-1200.jpg 1200w, //localhost/__mock/landscape-1440.jpg 1440w, //localhost/__mock/landscape-1600.jpg 1600w, //localhost/__mock/landscape-1920.jpg 1920w&quot;</span> <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;100vw&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;//localhost/__mock/landscape-640.jpg&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;Alternativtext für das Bild&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__src&quot;</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Titel des Bildes / Copyrightinfos&quot;</span> /&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">picture</span>&gt;</span>
 
 <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></pre>
@@ -202,19 +200,16 @@
     <code class="Code Code--lang-html hljs">
         <pre><span class="hljs-tag">&lt;<span class="hljs-name">figure</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image{% if modifiers %}  {{ modifiers }}{% endif %}&quot;</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">picture</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__picture&quot;</span>&gt;</span>
-    {% for source in sources %}
-      <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__source&quot;</span>
-        <span class="hljs-attr">data-lazyload</span>
-        <span class="hljs-attr">data-srcset</span>=<span class="hljs-string">&quot;{{ source.srcset }}&quot;</span>
-        {% <span class="hljs-attr">if</span> <span class="hljs-attr">source.media</span> %} <span class="hljs-attr">media</span>=<span class="hljs-string">&quot;{{ source.media }}&quot;</span>{% <span class="hljs-attr">endif</span> %}
-        {% <span class="hljs-attr">if</span> <span class="hljs-attr">source.sizes</span> %} <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;{{ source.sizes }}&quot;</span>{% <span class="hljs-attr">endif</span> %}
-      /&gt;</span>
-    {% endfor %}
-    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ fallback }}&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;{{ alt }}&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__fallback&quot;</span>{% <span class="hljs-attr">if</span> <span class="hljs-attr">title</span> %} <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;{{ title }}&quot;</span>{% <span class="hljs-attr">endif</span> %} /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">source</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__picture-source&quot;</span>
+      <span class="hljs-attr">data-lazyload</span>
+      <span class="hljs-attr">data-srcset</span>=<span class="hljs-string">&quot;{{ srcset }}&quot;</span>
+      {% <span class="hljs-attr">if</span> <span class="hljs-attr">sizes</span> %} <span class="hljs-attr">sizes</span>=<span class="hljs-string">&quot;{{ sizes }}&quot;</span>{% <span class="hljs-attr">endif</span> %}
+    /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ src }}&quot;</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">&quot;{{ alt }}&quot;</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__src&quot;</span>{% <span class="hljs-attr">if</span> <span class="hljs-attr">title</span> %} <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;{{ title }}&quot;</span>{% <span class="hljs-attr">endif</span> %} /&gt;</span>
   <span class="hljs-tag">&lt;/<span class="hljs-name">picture</span>&gt;</span>
 
   {% if caption %}
-    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__caption&quot;</span>&gt;</span>{{ caption | safe }}<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">figcaption</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;image__caption&quot;</span>&gt;</span>{{ caption | raw }}<span class="hljs-tag">&lt;/<span class="hljs-name">figcaption</span>&gt;</span>
   {% endif %}
 <span class="hljs-tag">&lt;/<span class="hljs-name">figure</span>&gt;</span></pre>
     </code>
@@ -231,50 +226,13 @@
             <label class="FileBrowser-select-label" for="filebrowser-select">File:</label>
             <select class="FileBrowser-select" id="filebrowser-select">
                 
-                <option value="file-5a07f336f313440abc41cb0404c3fbca">image.js</option>
-                
                 <option value="file-64e9b5426c3bc9e7ef6b70c93044e687">image.scss</option>
                 
             </select>
         </div>
 
         
-        <div class="FileBrowser-item is-active" id="file-5a07f336f313440abc41cb0404c3fbca" data-role="resource-preview">
-            <ul class="Meta">
-                <li class="Meta-item">
-                    <strong class="Meta-key">Content:</strong>
-                    <span class="Meta-value">
-                        <div class="FileBrowser-itemPreview">
-                            
-                            <code class="Code Code--lang-JavaScript FileBrowser-code hljs">
-                                <pre><span class="hljs-keyword">import</span> load <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;../../../scripts/2-vendor/useLazyload&#x27;</span>;
-
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> () =&gt; {
-  <span class="hljs-keyword">const</span> observer = load();
-  observer.observe();
-};
-</pre>
-                            </code>
-                            
-                        </div>
-                    </span>
-                </li>
-                <li class="Meta-item">
-                    <strong class="Meta-key">URL:</strong>
-                    <span class="Meta-value"><a data-no-pjax href="../raw/image/image.js"><span>/components/raw/image/image.js</span></a></span>
-                </li>
-                <li class="Meta-item">
-                    <strong class="Meta-key">Filesystem Path:</strong>
-                    <span class="Meta-value">src/patterns/2-elements/image/image.js</span>
-                </li>
-                <li class="Meta-item">
-                    <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">134 Bytes</span>
-                </li>
-            </ul>
-        </div>
-        
-        <div class="FileBrowser-item" id="file-64e9b5426c3bc9e7ef6b70c93044e687" data-role="resource-preview">
+        <div class="FileBrowser-item is-active" id="file-64e9b5426c3bc9e7ef6b70c93044e687" data-role="resource-preview">
             <ul class="Meta">
                 <li class="Meta-item">
                     <strong class="Meta-key">Content:</strong>
@@ -289,31 +247,11 @@
 
 <span class="hljs-selector-class">.image__picture</span> {
   <span class="hljs-keyword">@include</span> block;
-
-  <span class="hljs-keyword">@include</span> mediaquery(m) {
-    <span class="hljs-selector-class">.works--condensed</span> &amp;,
-    <span class="hljs-selector-class">.image--portrait</span> &amp; {
-      <span class="hljs-attribute">display</span>: flex;
-      <span class="hljs-attribute">justify-content</span>: center;
-      <span class="hljs-attribute">width</span>: auto;
-      <span class="hljs-attribute">max-width</span>: none;
-      <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-    }
-  }
 }
 
-<span class="hljs-selector-class">.image__fallback</span> {
+<span class="hljs-selector-class">.image__src</span> {
   <span class="hljs-attribute">display</span>: inline-block;
   <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
-
-  <span class="hljs-keyword">@include</span> mediaquery(m) {
-    <span class="hljs-selector-class">.works--condensed</span> &amp;,
-    <span class="hljs-selector-class">.image--portrait</span> &amp; {
-      <span class="hljs-attribute">width</span>: auto;
-      <span class="hljs-attribute">max-width</span>: none;
-      <span class="hljs-attribute">height</span>: <span class="hljs-number">100%</span>;
-    }
-  }
 }
 
 <span class="hljs-selector-class">.image__caption</span> {
@@ -335,7 +273,7 @@
                 </li>
                 <li class="Meta-item">
                     <strong class="Meta-key">Size:</strong>
-                    <span class="Meta-value">542 Bytes</span>
+                    <span class="Meta-value">185 Bytes</span>
                 </li>
             </ul>
         </div>
@@ -399,11 +337,12 @@
     <span class="hljs-attr">print:</span> <span class="hljs-string">print</span>
     <span class="hljs-attr">custom:</span> <span class="hljs-string">&#x27;(max-width: 30rem)&#x27;</span>
   <span class="hljs-attr">colors:</span>
-    <span class="hljs-attr">default:</span> <span class="hljs-string">&#x27;#000&#x27;</span>
-    <span class="hljs-attr">main:</span> <span class="hljs-string">&#x27;#f00&#x27;</span>
+    <span class="hljs-attr">icon:</span> <span class="hljs-string">&#x27;#000&#x27;</span>
+    <span class="hljs-attr">theme:</span> <span class="hljs-string">&#x27;#f00&#x27;</span>
+    <span class="hljs-attr">tile:</span> <span class="hljs-string">&#x27;#f00&#x27;</span>
   <span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
   <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-  <span class="hljs-attr">hash:</span> <span class="hljs-number">1612301068851</span>
+  <span class="hljs-attr">hash:</span> <span class="hljs-number">1612462777659</span>
 <span class="hljs-attr">language:</span>
   <span class="hljs-attr">code:</span> <span class="hljs-string">en</span>
   <span class="hljs-attr">locale:</span> <span class="hljs-string">en_US</span>
@@ -415,17 +354,19 @@
 <span class="hljs-attr">pageTitle:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project—Styleguide</span>
 <span class="hljs-attr">pageDescription:</span> <span class="hljs-string">A</span> <span class="hljs-string">pattern</span> <span class="hljs-string">library</span> <span class="hljs-string">for</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
 <span class="hljs-attr">pageModifiers:</span> <span class="hljs-string">&#x27;&#x27;</span>
-<span class="hljs-attr">modifiers:</span> <span class="hljs-string">&#x27;&#x27;</span>
-<span class="hljs-attr">fallback:</span> <span class="hljs-string">//picsum.photos/240/160</span>
+<span class="hljs-attr">modifiers:</span> <span class="hljs-string">image--landscape</span>
+<span class="hljs-attr">src:</span> <span class="hljs-string">//localhost/__mock/landscape-640.jpg</span>
 <span class="hljs-attr">alt:</span> <span class="hljs-string">Alternativtext</span> <span class="hljs-string">für</span> <span class="hljs-string">das</span> <span class="hljs-string">Bild</span>
 <span class="hljs-attr">title:</span> <span class="hljs-string">Titel</span> <span class="hljs-string">des</span> <span class="hljs-string">Bildes</span> <span class="hljs-string">/</span> <span class="hljs-string">Copyrightinfos</span>
 <span class="hljs-attr">caption:</span> <span class="hljs-literal">null</span>
-<span class="hljs-attr">sources:</span>
-  <span class="hljs-bullet">-</span> <span class="hljs-attr">media:</span> <span class="hljs-string">&#x27;&#x27;</span>
-    <span class="hljs-attr">sizes:</span> <span class="hljs-string">100vw</span>
-    <span class="hljs-attr">srcset:</span> <span class="hljs-string">&gt;-
-      //picsum.photos/480/320 480w, //picsum.photos/960/640 960w,
-      //picsum.photos/1440/960 1440w
+<span class="hljs-attr">sizes:</span> <span class="hljs-string">100vw</span>
+<span class="hljs-attr">srcset:</span> <span class="hljs-string">&gt;-
+  //localhost/__mock/landscape-640.jpg 640w,
+  //localhost/__mock/landscape-960.jpg 960w,
+  //localhost/__mock/landscape-1200.jpg 1200w,
+  //localhost/__mock/landscape-1440.jpg 1440w,
+  //localhost/__mock/landscape-1600.jpg 1600w,
+  //localhost/__mock/landscape-1920.jpg 1920w
 </span></pre>
             
         
@@ -452,6 +393,21 @@
         
         
         
+        
+        <li class="Meta-item">
+            <strong class="Meta-key">Variants <em class="Meta-count">(2)</em>:</strong>
+            <span class="Meta-value Meta-value--linkList">
+            
+                <a href="image--default.html">
+                    <span>Default</span>
+                </a>, 
+            
+                <a href="image--portrait.html">
+                    <span>Portrait</span>
+                </a>
+            
+            </span>
+        </li>
         
         <li class="Meta-item">
             <strong class="Meta-key">Preview:</strong>
@@ -980,10 +936,23 @@
         
     
         
+            
+            
+            <li class="Tree-item Tree-collection Tree-depth-3" data-behaviour="collection" id="tree-components-collection-image">
+                <button class="Tree-collectionLabel" data-role="toggle" aria-expanded="true" aria-controls="tree-components-collection-image-items">
+                    Image
+                </button>
+                <ul class="Tree-collectionItems" data-role="items" id="tree-components-collection-image-items">
+                
+                
+                
+                
+    
         
-        <li class="Tree-item Tree-entity is-current" data-state="current" data-role="item">
-            <a class="Tree-entityLink" href="" data-pjax>
-                <span>Image</span>
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="image--default.html" data-pjax>
+                <span>Default</span>
                 
 
 <div class="Status Status--unlabelled">
@@ -1001,6 +970,36 @@
 
             </a>
         </li>
+        
+    
+        
+        
+        <li class="Tree-item Tree-entity" data-role="item">
+            <a class="Tree-entityLink" href="image--portrait.html" data-pjax>
+                <span>Portrait</span>
+                
+
+<div class="Status Status--unlabelled">
+
+<div class="Status-dots">
+
+
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
+
+
+</div>
+
+</div>
+
+
+            </a>
+        </li>
+        
+    
+
+                </ul>
+            </li>
+            
         
     
         
@@ -1314,8 +1313,8 @@
                     <dt class="Tree-asideTerm">Last build:</dt>
                     <dd class="Tree-asideDescription">
                         
-                            <time datetime="2021-02-02T21:24:18.075Z">
-                                2.2.2021
+                            <time datetime="2021-02-04T18:19:31.656Z">
+                                4.2.2021
                             </time>
                         
                     </dd>

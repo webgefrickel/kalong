@@ -1,10 +1,9 @@
 <?php
 
 function kalong($pattern = null, $page = null) {
-  $path = kirby()->option('kalong');
   $site = kirby()->site();
-  $home = $site->homepage();
-  $page = ($page !== null) ? $page : $home;
+  $page = ($page === null) ? $site->page() : $page;
+  $path = kirby()->option('kalong');
 
   // load the default page data, and override anything in need of override
   $globalData = YAML::decode(file_get_contents($path . 'default.yml'));
@@ -14,6 +13,9 @@ function kalong($pattern = null, $page = null) {
   // debugging and deactivating styleguide
   $__['config']['debug'] = kirby()->option('debug');
   $__['config']['styleguide'] = false;
+
+  // YOU CAN EDIT / ADD DATA BELOW THIS LINE
+  //========================================
 
   // global data
   $__['language'] = kirby()->language();
@@ -27,7 +29,6 @@ function kalong($pattern = null, $page = null) {
     ];
   }
 
-  // Navigation objects
   $__['nav'] = [];
   $__['nav']['main'] = [];
   foreach ($site->children()->listed() as $p) {
@@ -37,6 +38,6 @@ function kalong($pattern = null, $page = null) {
     ];
   }
 
-
+  //========================================
   return $__;
 }

@@ -2,81 +2,58 @@
 
 Kirby::plugin('kalong/image', [
   'fileMethods' => [
-    'kalongImage' => function($modifiers = '', $sizes = '100vw', $ratio = false, $hideCaption = true, $media = '') {
-      $widths = option('thumbs.srcsets.default');
-      $quality = option('thumbs.quality');
+    'kalongImage' => function($modifiers = '', $ratio = false, $sizes = '100vw', $media = '', $hideCaption = true) {
       $image = $this;
+      $widths = option('thumbs.srcsets.default');
+
+      $modifiers .= ($image->isLandscape()) ? ' image--landscape ' : ' image--portrait ';
       $alt = ($image->alt()->isEmpty()) ? $image->filename() : $image->alt();
-      $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
       $title = ($image->photographer()->isEmpty()) ? false : $image->photographer();
-      $focus = ($image->focus()->isEmpty())
-        ? (object) ['x' => 0.5, 'y' => 0.5]
-        : json_decode($image->focus()->value());
-      $actualRatio = $image->width() / $image->height();
-      $srcset = '';
+      $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
+      $src = $image->placeholderUri();
+      $srcset = $image->srcset();
 
-      if ($actualRatio >= 1) {
-        $modifiers .= '  image--landscape';
-      } else {
-        $modifiers .= '  image--portrait';
-      }
-
-      // we need to manually create a srcset by hand, since focusCrop AND srcset don't work together
+      // if a ratio is set, we have to built the focusCrop srcset
       if ($ratio !== false) {
+        $focusSrcsetConfig = [];
         foreach ($widths as $width) {
           $height = intval($width / $ratio);
-
-          if ($image->width() >= $width && $image->height() >= $height) {
-            $temporaryImage = $image->focusCrop($width, $height, [
-              'focusX' => $focus->x,
-              'focusY' => $focus->y,
-              'quality' => $quality,
-            ]);
-            $srcset .= $temporaryImage->url() . ' ' . $width . 'w, ';
-          } else {
-            // requirements in dimensions for image not met, use the largest
-            // version of the image available. we do this to prevent upscaling
-            // of images beyond their actual size (which focusCrop would do)
-
-            if ($image->width() >= $width) {
-              $h = $image->height();
-              $w = $h * $ratio;
-            }
-            if ($image->height() >= $height) {
-              $w = $image->width();
-              $h = $w / $ratio;
-            }
-
-            $temporaryImage = $image->focusCrop($w, $h, [
-              'focusX' => $focus->x,
-              'focusY' => $focus->y,
-              'quality' => $quality,
-            ]);
-            $srcset .= $temporaryImage->url() . ' ' . $width . 'w, ';
-          }
+          $focusSrcsetConfig[$width . 'w'] = compact('width', 'height');
         }
-      } else {
-        // this one is easy: no focus-ratio-cropping? just use the srcset function from kirby
-        $srcset = $image->srcset();
+
+        $minSize = array_values($focusSrcsetConfig)[0];
+        // TODO create a nice combination plugin of blurry + focusCrop
+        // blurryimage will not work for preview for now
+        // for the preview-image, nicely blurred is not that important, but cropped size is
+        $tmpImage = $image->focusCrop(round($minSize['width']/10), round($minSize['height']/10));
+        $src = $tmpImage->url();
+        $srcset = $image->focusSrcset($focusSrcsetConfig);
       }
 
       return [
         'modifiers' => $modifiers,
-        'fallback' => $image->placeholderUri(),
+        'src' => $src,
         'alt' => $alt,
         'title' => $title,
         'caption' => ($hideCaption === true) ? false : $caption,
-        'sources' => [
-          [
-            'media' => $media,
-            'sizes' => $sizes,
-            'srcset' => trim($srcset, ' ,'),
-          ]
-        ]
+        'sizes' => $sizes,
+        'srcset' => $srcset,
       ];
     },
-    'kalongVideo' => function() {
-      // TODO
+
+    'kalongVideo' => function($modifiers) {
+      $video = $this;
+      $poster = ($video->poster()->isNotEmpty())
+        ? $video->poster()->toFile()->resize(1920) : null;
+      $attributes = ($video->attributes()->isNotEmpty())
+        ? implode(' ', $video->attributes()->split()) : null;
+
+      return [
+        'modifiers' => $modifiers,
+        'src' => $video->url(),
+        'poster' => $poster->url(),
+        'attributes' => $attributes,
+      ];
     },
   ],
 ]);

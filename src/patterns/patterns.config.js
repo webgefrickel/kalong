@@ -9,8 +9,9 @@ module.exports = {
       fonts,
       mediaqueries,
       colors: {
-        default: '#000',
-        main: '#f00',
+        icon: '#000',
+        theme: '#f00',
+        tile: '#f00',
       },
       debug: true,
       styleguide: true,

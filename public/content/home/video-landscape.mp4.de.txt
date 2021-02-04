@@ -1,1 +1,11 @@
+Poster:
+
+- home/video-landscape.jpg
+
+----
+
+Attributes: 
+
+----
+
 Template: video

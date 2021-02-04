@@ -1,13 +1,14 @@
 {% if not attributes %}
-  {% set attributes = 'autoplay muted loop' %}
+  {% set attributes = 'autoplay muted loop playsinline' %}
 {% endif %}
 
 <div class="video{% if modifiers %}  {{ modifiers }}{% endif %}">
   <video
+    data-lazyload
     class="video__element"
-    {{ attributes | safe }}
+    {{ attributes | raw }}
     {% if poster %} poster="{{ poster }}"{% endif %}
   >
-    <source src="{{ source }}" type="video/mp4" />
+    <source data-src="{{ source }}" type="video/mp4" />
   </video>
 </div>

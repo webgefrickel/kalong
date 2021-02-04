@@ -1,7 +1,7 @@
 <?php
 
 return function($page) {
-  $__ = kalong(null, $page);
+  $__ = kalong();
 
   // global page data
   $__['pageModifiers'] = 'template--default';

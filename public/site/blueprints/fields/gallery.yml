@@ -7,4 +7,5 @@ multiple: true
 required: true
 size: tiny
 layout: cards
+empty: Bitte zuerst im rechten Bereich BIlder hochladen, dann hier auswählen/hinzufügen
 info: '{{ file.alt }}'

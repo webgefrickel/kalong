@@ -47,11 +47,12 @@ config:
     print: print
     custom: '(max-width: 30rem)'
   colors:
-    default: '#000'
-    main: '#f00'
+    icon: '#000'
+    theme: '#f00'
+    tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1612301068851
+  hash: 1612462777659
 language:
   code: en
   locale: en_US
@@ -63,15 +64,17 @@ nav:
 pageTitle: Your Project—Styleguide
 pageDescription: A pattern library for Your Project
 pageModifiers: ''
-modifiers: ''
-fallback: //picsum.photos/240/160
+modifiers: image--landscape
+src: //localhost/__mock/landscape-640.jpg
 alt: Alternativtext für das Bild
 title: Titel des Bildes / Copyrightinfos
 caption: null
-sources:
-  - media: ''
-    sizes: 100vw
-    srcset: >-
-      //picsum.photos/480/320 480w, //picsum.photos/960/640 960w,
-      //picsum.photos/1440/960 1440w
+sizes: 100vw
+srcset: >-
+  //localhost/__mock/landscape-640.jpg 640w,
+  //localhost/__mock/landscape-960.jpg 960w,
+  //localhost/__mock/landscape-1200.jpg 1200w,
+  //localhost/__mock/landscape-1440.jpg 1440w,
+  //localhost/__mock/landscape-1600.jpg 1600w,
+  //localhost/__mock/landscape-1920.jpg 1920w
 

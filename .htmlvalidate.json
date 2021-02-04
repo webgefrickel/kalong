@@ -5,6 +5,22 @@
   "rules": {
     "no-trailing-whitespace": "off",
     "svg-focusable": "off",
-    "void-style": ["error", { "style": "selfclosing" }]
+    "void-style": [
+      "error",
+      {
+        "style": "selfclosing"
+      }
+    ],
+    "no-autoplay": [
+      "error",
+      {
+        "include": [
+          "audio"
+        ],
+        "exclude": [
+          "video"
+        ]
+      }
+    ]
   }
 }

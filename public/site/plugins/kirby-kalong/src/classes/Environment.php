@@ -98,34 +98,19 @@ class RenderPattern_Node extends Twig_Node implements Twig_NodeOutputInterface
 
         $defaultData = kalong($patternName);
 
-        // we always merge context over default data, if merge is false,
-        // we just ignore the default data and merge context + variables
-        if (!$this->getAttribute('merge')) {
-            if (!$this->hasNode('variables')) {
-                $compiler
-                    ->raw('array_merge(')
-                    ->repr($defaultData)
-                    ->raw(', $context)');
-            } else {
-                $compiler
-                    ->raw('array_merge($context, ')
-                    ->subcompile($this->getNode('variables'))
-                    ->raw(')');
-            }
+        // we always merge context over default data
+        if (!$this->hasNode('variables')) {
+            $compiler
+                ->raw('array_merge(')
+                ->repr($defaultData)
+                ->raw(', $context)');
         } else {
-            if (!$this->hasNode('variables')) {
-                $compiler
-                    ->raw('array_merge(')
-                    ->repr($defaultData)
-                    ->raw(', $context)');
-            } else {
-                $compiler
-                    ->raw('array_merge(')
-                    ->repr($defaultData)
-                    ->raw(', $context, ')
-                    ->subcompile($this->getNode('variables'))
-                    ->raw(')');
-            }
+            $compiler
+                ->raw('array_merge(')
+                ->repr($defaultData)
+                ->raw(', $context, ')
+                ->subcompile($this->getNode('variables'))
+                ->raw(')');
         }
     }
 }
@@ -144,15 +129,10 @@ class RenderPattern_TokenParser extends Twig_TokenParser
     {
         $stream = $this->parser->getStream();
         $variables = null;
-        $merge = false;
+        $merge = true;
 
-        if ($stream->nextIf(Twig_Token::PUNCTUATION_TYPE, ',')) {
+        if ($stream->nextIf(Twig_Token::NAME_TYPE, 'with')) {
             $variables = $this->parser->getExpressionParser()->parseExpression();
-        }
-
-        if ($stream->nextIf(Twig_Token::PUNCTUATION_TYPE, ',')) {
-            $stream->expect(Twig_Token::NAME_TYPE, 'true');
-            $merge = true;
         }
 
         $stream->expect(Twig_Token::BLOCK_END_TYPE);
@@ -369,8 +349,7 @@ class Environment
         // add the render node needed for kalong/fractal
         $this->twig->addTokenParser(new RenderPattern_TokenParser());
 
-        // add the path filter and raw/safe-filter
-        $this->twig->addFilter(new Twig_Filter('safe', 'twig_raw_filter', array('is_safe' => array('html'))));
+        // add the path
         $this->twig->addFilter(new Twig_Filter('path', function($path) {
             return '/assets/' . trim($path, '/');
         }));

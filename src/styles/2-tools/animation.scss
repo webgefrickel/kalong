@@ -20,10 +20,15 @@
   // stylelint-disable-next-line declaration-empty-line-before
   will-change: #{$will-change};
   transition: #{$transition};
+
+  @media (prefers-reduced-motion: reduce) {
+    will-change: auto;
+    transition: none;
+  }
 }
 
 @mixin animation(
-  $name: $animation-name,
+  $name,
   $duration: $animation-duration-default,
   $ease: $animation-ease-default,
   $delay: 0s,

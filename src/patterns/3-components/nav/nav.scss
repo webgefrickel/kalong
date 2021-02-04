@@ -1,5 +1,6 @@
 .nav {
   @include block;
+  @include absolute(t 1, r 1);
 }
 
 .nav__heading {

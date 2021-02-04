@@ -2,6 +2,6 @@ status: wip
 
 context:
   modifiers: ''
-  attributes: false
-  poster: false
+  attributes: 'autoplay muted loop playsinline'
+  poster: //localhost/__mock/video-landscape.jpg
   source: '//localhost/__mock/video-landscape.mp4'

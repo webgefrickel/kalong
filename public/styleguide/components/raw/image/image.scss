@@ -5,31 +5,11 @@
 
 .image__picture {
   @include block;
-
-  @include mediaquery(m) {
-    .works--condensed &,
-    .image--portrait & {
-      display: flex;
-      justify-content: center;
-      width: auto;
-      max-width: none;
-      height: 100%;
-    }
-  }
 }
 
-.image__fallback {
+.image__src {
   display: inline-block;
   width: 100%;
-
-  @include mediaquery(m) {
-    .works--condensed &,
-    .image--portrait & {
-      width: auto;
-      max-width: none;
-      height: 100%;
-    }
-  }
 }
 
 .image__caption {

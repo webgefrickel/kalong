@@ -27,12 +27,12 @@
     "build": "babel-node tasks/build"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/node": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
+    "@babel/core": "^7.12.13",
+    "@babel/node": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
     "@frctl/fractal": "^1.5.2",
     "@frctl/mandelbrot": "^1.7.0",
-    "@frctl/nunjucks": "^2.0.6",
+    "@frctl/twig": "^1.2.4",
     "@rollup/plugin-babel": "^5.2.3",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-json": "^4.1.0",
@@ -65,6 +65,7 @@
   "dependencies": {
     "fontfaceobserver": "2.1.0",
     "lodash-es": "4.17.20",
+    "lozad": "1.16.0",
     "normalize.css": "8.0.1"
   }
 }

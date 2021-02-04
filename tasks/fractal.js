@@ -1,13 +1,13 @@
 import { join } from 'path';
 import fractal from '@frctl/fractal';
-import nunjucks from '@frctl/nunjucks';
+import twig from '@frctl/twig';
 import warn from './lib/warn';
 import styleguide from '../styleguide';
 import config from '../kalong.config';
 
 const fractalInstance = () => {
   const frctl = fractal.create();
-  const engine = nunjucks({ paths: [`.${config.src}${config.patterns}`] });
+  const engine = twig();
 
   frctl.set('project.title', `${config.title}—Styleguide`);
   frctl.set('project.version', `v${config.version}`);
