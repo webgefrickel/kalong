@@ -2,15 +2,49 @@
 
 Kirby::plugin('kalong/image', [
   'fileMethods' => [
+    'blurryInlinePlaceholder' => function($ratio = false) {
+      $image = $this;
+      // This is copied and modified from https://github.com/johannschopplich/kirby-blurry-placeholder
+      // Copyright (c) 2020 Johann Schopplich
+      // I just modified/combined the functions to also include/support focusCrop
+      $pixelTarget = 60;
+      $ratio = ($ratio !== false) ? $ratio : $image->ratio();
+      $placeholderHeight = sqrt($pixelTarget / $ratio);
+      $placeholderWidth = $pixelTarget / $placeholderHeight;
+      $placeholderImage = $image->focusCrop($placeholderWidth, $placeholderHeight, ['quality' => 60]);
+      $svgHeight = number_format($placeholderHeight, 2, '.', '');
+      $svgWidth = number_format($placeholderWidth, 2, '.', '');
+
+      // Wrap the blurred image in a SVG to avoid rasterizing the filter
+      $svg = <<<EOD
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {$svgWidth} {$svgHeight}">
+            <filter id="b" color-interpolation-filters="sRGB">
+              <feGaussianBlur stdDeviation=".5"></feGaussianBlur>
+              <feComponentTransfer>
+                <feFuncA type="discrete" tableValues="1 1"></feFuncA>
+              </feComponentTransfer>
+            </filter>
+            <image filter="url(#b)" x="0" y="0" width="100%" height="100%" href="{$placeholderImage->dataUri()}"></image>
+          </svg>
+          EOD;
+
+      // safely URL-encode
+      $data = preg_replace('/\s+/', ' ', $svg);
+      $data = preg_replace('/> </', '><', $data);
+      $data = rawurlencode($data);
+      $data = str_replace(['%20', '%2F', '%3A', '%3D'], [' ', '/', ':', '='], $data);
+
+      return 'data:image/svg+xml;charset=utf-8,' . $data;
+    },
+
     'kalongImage' => function($modifiers = '', $ratio = false, $sizes = '100vw', $media = '', $hideCaption = true) {
       $image = $this;
       $widths = option('thumbs.srcsets.default');
-
       $modifiers .= ($image->isLandscape()) ? ' image--landscape ' : ' image--portrait ';
       $alt = ($image->alt()->isEmpty()) ? $image->filename() : $image->alt();
       $title = ($image->photographer()->isEmpty()) ? false : $image->photographer();
       $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
-      $src = $image->placeholderUri();
+      $src = $image->blurryInlinePlaceholder($ratio);
       $srcset = $image->srcset();
 
       // if a ratio is set, we have to built the focusCrop srcset
@@ -20,13 +54,6 @@ Kirby::plugin('kalong/image', [
           $height = intval($width / $ratio);
           $focusSrcsetConfig[$width . 'w'] = compact('width', 'height');
         }
-
-        $minSize = array_values($focusSrcsetConfig)[0];
-        // TODO create a nice combination plugin of blurry + focusCrop
-        // blurryimage will not work for preview for now
-        // for the preview-image, nicely blurred is not that important, but cropped size is
-        $tmpImage = $image->focusCrop(round($minSize['width']/10), round($minSize['height']/10));
-        $src = $tmpImage->url();
         $srcset = $image->focusSrcset($focusSrcsetConfig);
       }
 

@@ -10,7 +10,7 @@ Caption: Eine kurze Beschreibung
 
 ----
 
-Focus: {"x":0.26,"y":0.93}
+Focus: {"x":0.5,"y":0.53}
 
 ----
 
