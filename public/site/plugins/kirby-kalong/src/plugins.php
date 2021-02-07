@@ -2,7 +2,7 @@
 
 Kirby::plugin('kalong/image', [
   'fileMethods' => [
-    'blurryInlinePlaceholder' => function($ratio = false) {
+    'kalongBlurryInlinePlaceholder' => function($ratio = false) {
       $image = $this;
       // This is copied and modified from https://github.com/johannschopplich/kirby-blurry-placeholder
       // Copyright (c) 2020 Johann Schopplich
@@ -44,7 +44,7 @@ Kirby::plugin('kalong/image', [
       $alt = ($image->alt()->isEmpty()) ? $image->filename() : $image->alt();
       $title = ($image->photographer()->isEmpty()) ? false : $image->photographer();
       $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
-      $src = $image->blurryInlinePlaceholder($ratio);
+      $src = $image->kalongBlurryInlinePlaceholder($ratio);
       $srcset = $image->srcset();
 
       // if a ratio is set, we have to built the focusCrop srcset
