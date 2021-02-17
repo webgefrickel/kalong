@@ -32,6 +32,7 @@ const fractalInstance = () => {
   frctl.web.theme(styleguide);
   frctl.web.set('static.path', join(config.dest));
   frctl.web.set('builder.dest', join(config.styleguide));
+  frctl.web.set('server.port', 4000);
 
   frctl.components.engine(engine);
   frctl.components.set('default.preview', '@preview');
