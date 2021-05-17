@@ -8,7 +8,7 @@
     "doctype-style": [
       "error",
       {
-        "style": "lovercase"
+        "style": "lowercase"
       }
     ],
     "void-style": [
