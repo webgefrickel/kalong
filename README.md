@@ -34,16 +34,13 @@ step is optional, but highly recommended.
 
 Open up a terminal and run `npm start` and the development-server will
 fire up, and you can start creating new components, templates and
-whatever you want.
-
-## Where should I put my stuff?
-
-Have a look at the folder `src`, there you will find a fully working
-basic setup. 
+whatever you want. Have a look at the folder `src`, there you will find
+a fully working basic setup. There is more documentation available in
+the styleguide itself, have a look at the running fractal-instance!
 
 ## Create a build
 
-You have a new release of your styleguide ready? First, bump up the 
+You have a new release of your styleguide ready? First, bump up the
 version number in `kalong.config.js`. Then run `npm run build` to
 create a production-ready version of the styleguide, with minified
 JavaScript and CSS and everything you need.
