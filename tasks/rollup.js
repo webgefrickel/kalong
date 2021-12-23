@@ -6,7 +6,6 @@ import json from '@rollup/plugin-json';
 import nodeResolve from '@rollup/plugin-node-resolve';
 import terser from 'rollup-plugin-terser';
 import config from '../kalong.config';
-import warn from './lib/warn';
 
 export default async (opts = {}) => {
   const options = {
@@ -19,7 +18,7 @@ export default async (opts = {}) => {
         babelHelpers: 'bundled',
         babelrc: false,
         presets: [['@babel/preset-env', { modules: false }]],
-        plugins: ['import-glob', 'lodash'],
+        plugins: ['import-glob'],
       }),
       opts.sourceMap === undefined ? null : terser.terser(),
     ],
@@ -33,6 +32,6 @@ export default async (opts = {}) => {
       file: opts.output || join(config.dest, config.scripts, 'main.js'),
     });
   } catch (error) {
-    warn(error);
+    throw new Error(error);
   }
 };

@@ -1,7 +1,6 @@
 import { join } from 'path';
 import fractal from '@frctl/fractal';
 import twig from '@frctl/twig';
-import warn from './lib/warn';
 import styleguide from '../styleguide';
 import config from '../kalong.config';
 
@@ -74,7 +73,7 @@ export default async () => {
   const builder = frctl.web.builder();
 
   builder.on('error', err => {
-    warn(err.message);
+    throw new Error(err.message);
   });
   return builder.build();
 };

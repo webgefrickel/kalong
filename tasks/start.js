@@ -1,17 +1,22 @@
+import process from 'process';
 import { join } from 'path';
 import browserSync from 'browser-sync';
 import chokidar from 'chokidar';
-import { fractalInstance } from './fractal';
 import copy from './copy';
 import eslint from './eslint';
+import { fractalInstance } from './fractal';
 import postcss from './postcss';
 import rollup from './rollup';
 import sass from './sass';
+import sprite from './sprite';
 import stylelint from './stylelint';
-import svgSprite from './svgSprite';
-import run from './lib/run';
-import warn from './lib/warn';
 import config from '../kalong.config';
+
+process.on('uncaughtException', error => {
+  // if we find an error, we output it in the terminal in red
+  // and do not exit with exit-code 1, keep the watcher running
+  console.log('\x1b[31m%s\x1b[0m', error);
+});
 
 const server = browserSync({
   https: config.https,
@@ -24,7 +29,7 @@ const server = browserSync({
 });
 
 const fractalServer = fractalInstance().web.server({ sync: true });
-fractalServer.on('error', err => warn(err.message));
+fractalServer.on('error', error => { throw new Error(error); });
 fractalServer.start().then(() => {
   console.log(`Fractal styleguide server is now running at ${fractalServer.url}`);
 });
@@ -32,38 +37,37 @@ fractalServer.start().then(() => {
 const watchSwitch = async file => {
   const fileExtension = file.substr(file.lastIndexOf('.') + 1);
   const isServiceworker = file.indexOf('serviceworker') > -1;
-  const isLegacy = file.indexOf(`${config.main}.legacy`) > -1;
   const isSprite = file.indexOf('sprite.svg') > -1;
 
-  if (!isLegacy && !isServiceworker) {
+  if (!isServiceworker) {
     switch (fileExtension) {
       case 'scss':
         console.log('Linting and Rebuilding scss/postcss...');
-        await run(stylelint);
-        await run(sass);
-        await run(postcss);
+        await stylelint();
+        await sass();
+        await postcss();
         server.reload(`/${config.assets}${config.styles}${config.main}.css`);
         break;
 
       case 'js':
         console.log('Linting and Rebuilding js...');
-        await run(eslint);
-        await run(rollup);
+        await eslint();
+        await rollup();
         server.reload(`/${config.assets}${config.scripts}${config.main}.js`);
         break;
 
       case 'json':
         console.log('JSON change detected: Rebuilding sass and js...');
-        await run(rollup);
-        await run(sass);
-        await run(postcss);
+        await rollup();
+        await sass();
+        await postcss();
         server.reload();
         break;
 
       case 'woff':
       case 'woff2':
         console.log('Copying fonts...');
-        await run(copy, {
+        await copy({
           input: join(config.src, config.fonts, '*.{woff,woff2}'),
           output: join(config.dest, config.fonts),
         });
@@ -73,8 +77,8 @@ const watchSwitch = async file => {
       case 'svg':
         if (!isSprite) {
           console.log('Rebuilding sprite...');
-          await run(svgSprite);
-          await run(copy);
+          await sprite();
+          await copy();
           server.reload();
         }
 
@@ -85,7 +89,7 @@ const watchSwitch = async file => {
       case 'jpg':
       case 'webp':
         console.log('Copying images...');
-        await run(copy);
+        await copy();
         server.reload();
         break;
 
@@ -96,20 +100,12 @@ const watchSwitch = async file => {
     }
   }
 
-  // Two special cases: legacy script and serviceworker
+  // Special case: serviceworker
   if (isServiceworker) {
-    await run(rollup, {
+    await rollup({
       input: join(config.src, config.scripts, 'serviceworker.js'),
       output: join(config.root, '.well-known/', 'serviceworker.js'),
       sourceMap: false,
-    });
-    server.reload();
-  }
-
-  if (isLegacy) {
-    await run(copy, {
-      input: join(config.src, config.scripts, `${config.main}.legacy.js`),
-      output: join(config.dest, config.scripts),
     });
     server.reload();
   }

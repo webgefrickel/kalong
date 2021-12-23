@@ -1,9 +1,7 @@
-import { join, resolve, dirname } from 'path';
-import { readFileSync } from 'fs';
+import { join, resolve } from 'path';
+import { writeFile, readFile } from 'fs/promises';
 import { sync } from 'glob';
 import SvgSprite from 'svg-sprite';
-import { writeFile, makeDir } from './lib/fs';
-import warn from './lib/warn';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
@@ -26,20 +24,20 @@ export default async (opts = {}) => {
   const sprite = new SvgSprite(options);
   const icons = sync(opts.input || join(config.src, config.icons, '*.svg'));
 
-  icons.forEach(icon => {
+  await Promise.all(icons.map(async icon => {
+    const iconContent = await readFile(icon, 'utf8');
     sprite.add(
       resolve(icon),
       icon.replace(/^.*[\\/]/, ''), // Filename only
-      readFileSync(icon, { encoding: 'utf-8' }),
+      iconContent,
     );
-  });
+  }));
 
   try {
     sprite.compile(async (error, result) => {
-      await makeDir(dirname(options.dest));
       await writeFile(opts.output || join(config.src, config.images, 'sprite.svg'), result.symbol.sprite.contents);
     });
   } catch (error) {
-    warn(error);
+    throw new Error(error);
   }
 };

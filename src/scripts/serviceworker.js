@@ -1,4 +1,4 @@
-import config from '../../kalong.config.js';
+import config from '../../kalong.config';
 
 /* eslint-disable no-restricted-globals */
 
@@ -24,7 +24,9 @@ self.addEventListener('activate', e => {
   e.waitUntil(
     caches
       .keys()
-      .then(keys => Promise.all(keys.filter(key => key.indexOf(cacheVersion) !== 0).map(key => caches.delete(key))))
+      .then(keys => Promise.all(keys
+        .filter(key => key.indexOf(cacheVersion) !== 0)
+        .map(key => caches.delete(key)))),
   );
 });
 
@@ -61,7 +63,7 @@ self.addEventListener('fetch', e => {
           return response;
         })
 
-        .catch(() => caches.match(request).then(response => response || caches.match('/offline')))
+        .catch(() => caches.match(request).then(response => response || caches.match('/offline'))),
     );
     return;
   }
@@ -98,6 +100,6 @@ self.addEventListener('fetch', e => {
       }
 
       return response;
-    })
+    }),
   );
 });

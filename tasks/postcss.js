@@ -1,18 +1,16 @@
 import { join } from 'path';
+import { readFile, writeFile } from 'fs/promises';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
 import cssImport from 'postcss-import';
-import { readFile, writeFile } from './lib/fs';
-import warn from './lib/warn';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
-  const prefixerOptions = opts.legacy ? { overrideBrowserslist: '> 0.1% in DE' } : {};
   const options = {
     input: opts.input || join(config.dest, config.styles, `${config.main}.css`),
     sourceMap: opts.sourceMap === undefined,
-    plugins: [cssImport(), autoprefixer(prefixerOptions)],
+    plugins: [cssImport(), autoprefixer()],
   };
 
   // Add cssnano if the sourceMap option is set to false
@@ -32,13 +30,18 @@ export default async (opts = {}) => {
     });
 
     if (result.warnings().length) {
+      let messages = '';
       result.warnings().forEach(warning => {
-        warn(warning.toString());
+        messages += `${warning.toString()}\n\n`;
       });
+
+      if (messages !== '') {
+        throw new Error(messages);
+      }
     }
 
     await writeFile(options.output, result.css);
   } catch (error) {
-    warn(error);
+    throw new Error(error);
   }
 };

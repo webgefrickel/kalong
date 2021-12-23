@@ -1,7 +1,6 @@
-import { basename, join, dirname } from 'path';
+import { basename, join } from 'path';
 import { sync } from 'glob';
-import { readFile, writeFile, makeDir } from './lib/fs';
-import warn from './lib/warn';
+import { readFile, writeFile } from 'fs/promises';
 import config from '../kalong.config';
 
 export default async () => {
@@ -11,9 +10,9 @@ export default async () => {
 
   files.forEach(async file => {
     // Regex for replacing extends, for use in kirby/twig
-    const contents = await readFile(file);
     const extendsRegex = /{%\s?extends\s?'(?<all>.+)'\s?%}/g;
-    const lines = contents.split('\n');
+    const contents = await readFile(file);
+    const lines = contents.toString().split('\n');
     let newContents = '';
 
     lines.forEach(line => {
@@ -31,10 +30,9 @@ export default async () => {
     const outFile = join(config.library, '../', config.templates, basename(file).replace('.html', '.twig'));
 
     try {
-      await makeDir(dirname(outFile));
       await writeFile(outFile, newContents);
     } catch (error) {
-      warn(error);
+      throw new Error(error);
     }
   });
 };

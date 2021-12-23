@@ -1,6 +1,6 @@
 import { join } from 'path';
 import { sync } from 'glob';
-import { makeDir, copyFile } from './lib/fs';
+import { copyFile } from 'fs/promises';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
@@ -11,7 +11,7 @@ export default async (opts = {}) => {
   };
 
   const files = sync(options.input);
-  const copies = [makeDir(options.output)];
+  const copies = [];
   const renamers = [file => file.replace(/^.*[\\/]/, '')];
   options.rename.forEach(func => {
     renamers.push(func);

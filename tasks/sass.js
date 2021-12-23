@@ -1,9 +1,8 @@
-import { join, dirname } from 'path';
+import { join } from 'path';
+import { writeFile } from 'fs/promises';
 import sass from 'node-sass';
 import magic from 'node-sass-magic-importer';
 import json from 'node-sass-json-importer';
-import { writeFile, makeDir } from './lib/fs';
-import warn from './lib/warn';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
@@ -18,9 +17,8 @@ export default async (opts = {}) => {
 
   try {
     const result = sass.renderSync(options);
-    await makeDir(dirname(options.outFile));
     await writeFile(options.outFile, result.css);
   } catch (error) {
-    warn(error);
+    throw new Error(error);
   }
 };

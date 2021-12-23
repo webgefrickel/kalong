@@ -36,7 +36,6 @@
     @return map-get($short-map, $short);
   } @else {
     @warn 'Short key "#{$short}" not avaiable. Avaiable keys are: t, r, b and l';
-
     @return false;
   }
 }

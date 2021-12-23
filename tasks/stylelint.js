@@ -1,32 +1,34 @@
 import { join } from 'path';
 import stylelint from 'stylelint';
-import warn from './lib/warn';
 import config from '../kalong.config';
 
 export default async () => {
   const files = [join(config.src, config.styles, '**/*.scss'), join(config.src, config.patterns, '**/*.scss')];
 
   stylelint
-    .lint({ configFile: '.stylelintrc.yml', files, syntax: 'scss' })
+    .lint({ configFile: '.stylelintrc.yml', files })
     .then(result => {
       if (result.errored) {
-        warn('\nstylelint found errors in the following files:');
-        warn('==============================================\n');
-
         const errors = result.results.filter(r => r.errored);
+        let messages = '';
+
         errors.forEach(err => {
           err.warnings.forEach(w => {
-            warn(`${err.source.replace(process.cwd(), '')} on line ${w.line}, column ${w.column}:`);
-            warn(`${w.text}\n`);
+            messages += `${err.source.replace(process.cwd(), '')} on line ${w.line}, column ${w.column}:\n`;
+            messages += `${w.text}\n\n`;
           });
           err.invalidOptionWarnings.forEach(w => {
-            warn(`${err.source.replace(process.cwd(), '')} on line ${w.line}, column ${w.column}:`);
-            warn(`${w.text}\n`);
+            messages += `${err.source.replace(process.cwd(), '')} on line ${w.line}, column ${w.column}:\n`;
+            messages += `${w.text}\n\n`;
           });
         });
+
+        if (messages !== '') {
+          throw new Error(messages);
+        }
       }
     })
     .catch(err => {
-      console.error(err.stack);
+      throw new Error(err.stack);
     });
 };

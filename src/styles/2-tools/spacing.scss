@@ -1,7 +1,7 @@
 // creates margins, by default (without any parameters) only margin-bottom
 // with $base-unit -- default rhythm, or for every side/value-pair with
 // their short variants:
-//
+// .
 // usage examples:
 // @include margin; ==> margin-bottom: $base-unit;
 // @include margin(2) ==> warning!, this is not gonna work

@@ -52,7 +52,7 @@ config:
     tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1612729463170
+  hash: 1640268609907
 language:
   code: en
   locale: en_US
@@ -65,7 +65,7 @@ pageTitle: Your Project—Styleguide
 pageDescription: A pattern library for Your Project
 pageModifiers: ''
 modifiers: ''
-attributes: autoplay muted loop playsinline
+attributes: muted loop playsinline
 poster: //localhost/__mock/video-landscape.jpg
 source: //localhost/__mock/video-landscape.mp4
 

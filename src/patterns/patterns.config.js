@@ -1,6 +1,6 @@
 const kalong = require('../../kalong.config');
-const { fonts } = require('../config/fonts');
-const { mediaqueries } = require('../config/mediaqueries');
+const { fonts } = require('../config/fonts.json');
+const { mediaqueries } = require('../config/mediaqueries.json');
 
 module.exports = {
   context: {

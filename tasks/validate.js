@@ -1,11 +1,11 @@
 import { join } from 'path';
 import { sync } from 'glob';
-import { HtmlValidate, Reporter } from 'html-validate';
-import warn from './lib/warn';
+import { HtmlValidate, FileSystemConfigLoader, Reporter } from 'html-validate';
 import config from '../kalong.config';
 
 export default async () => {
-  const htmlvalidate = new HtmlValidate();
+  const loader = new FileSystemConfigLoader();
+  const htmlvalidate = new HtmlValidate(loader);
   const pagePath = join(config.src, config.patterns, '5-templates');
   const pages = sync(join(pagePath, '*'));
   const reports = [];
@@ -22,15 +22,19 @@ export default async () => {
 
   const merged = Reporter.merge(reports);
   if (!merged.valid) {
-    warn('\nhtml-validate found errors in the following files:');
-    warn('==================================================\n');
+    let messages = '';
 
     merged.results.forEach(r => {
-      warn(`${r.filePath}, ${r.errorCount} errors and ${r.warningCount} warnings:\n`);
+      messages += `${r.filePath}, ${r.errorCount} errors and ${r.warningCount} warnings:\n`;
+
       r.messages.forEach(m => {
-        warn(`On line ${m.line}, column ${m.column}:`);
-        warn(`${m.message}\n${m.selector}\n`);
+        messages += `On line ${m.line}, column ${m.column}:\n`;
+        messages += `${m.message}\n${m.selector}\n`;
       });
     });
+
+    if (messages !== '') {
+      throw new Error(messages);
+    }
   }
 };

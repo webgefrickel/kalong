@@ -16,9 +16,7 @@ env:
   serviceworker: true
   shared-node-browser: true
 
-# Most of the rules are set to play nicely
-# with the prettier-config (but not using
-# eslint-config-prettier, which disables too much)
+# Your own custom overrides, we allow simpler arrow-functions
 rules:
   arrow-parens:
     - error

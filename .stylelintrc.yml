@@ -1,8 +1,10 @@
-extends: stylelint-config-sass-guidelines
+extends:
+  - stylelint-config-standard-scss
+  - stylelint-config-sass-guidelines
 ignoreFiles: src/styles/3-vendor/**/*.scss
 
 rules:
-  max-nesting-depth: 3
+  max-nesting-depth: 4
   order/order:
     - custom-properties
     - dollar-variables
@@ -16,3 +18,14 @@ rules:
     - rules
   order/properties-alphabetical-order: null
   selector-class-pattern: "^[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*(?:__[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:--[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*)?(?:\\[.+\\])?$"
+  # those rules maybe will become obsolete once we update to native sass
+  color-function-notation: 'legacy'
+  scss/no-global-function-names: null
+  scss/operator-no-unspaced: null
+  declaration-empty-line-before: null
+  no-descending-specificity: null
+  scss/dollar-variable-empty-line-before: null
+  alpha-value-notation: null
+  max-line-length: 200
+  max-empty-lines: 2
+

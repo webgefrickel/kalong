@@ -1,5 +1,5 @@
 // Include the color config and generate color patches from the map
-const fonts = require('../../../config/fonts');
+const fonts = require('../../../config/fonts.json');
 
 module.exports = {
   label: 'Fonts & Typefaces',
