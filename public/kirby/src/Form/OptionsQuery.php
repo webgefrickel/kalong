@@ -102,7 +102,7 @@ class OptionsQuery
             $value = $value[$object];
         }
 
-        return Str::template($value, $data);
+        return Str::safeTemplate($value, $data);
     }
 
     /**

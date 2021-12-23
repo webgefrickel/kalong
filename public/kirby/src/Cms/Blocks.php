@@ -13,6 +13,7 @@ use Throwable;
 
 /**
  * A collection of blocks
+ * @since 3.5.0
  *
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
@@ -96,6 +97,18 @@ class Blocks extends Items
         }
 
         return $blocks;
+    }
+
+    /**
+     * Checks if a given block type exists in the collection
+     * @since 3.6.0
+     *
+     * @param string $type
+     * @return bool
+     */
+    public function hasType(string $type): bool
+    {
+        return $this->filterBy('type', $type)->count() > 0;
     }
 
     /**

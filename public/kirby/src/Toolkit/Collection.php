@@ -287,12 +287,7 @@ class Collection extends Iterator implements Countable
         }
 
         // get the filter from the filters array
-        $filter = static::$filters[$operator] ?? null;
-
-        // return an unfiltered list if the filter does not exist
-        if ($filter === null) {
-            return $this;
-        }
+        $filter = static::$filters[$operator];
 
         if (is_array($filter) === true) {
             $collection = clone $this;
@@ -321,8 +316,8 @@ class Collection extends Iterator implements Countable
     /**
      * Alias for `Kirby\Toolkit\Collection::filter`
      *
-     * @param string|Closure $field
-     * @param array ...$args
+     * @param string|array|\Closure $field
+     * @param mixed ...$args
      * @return static
      */
     public function filterBy(...$args)
@@ -1135,14 +1130,17 @@ class Collection extends Iterator implements Countable
     }
 
     /**
-     * Returns an non-associative array
-     * with all values
+     * Returns a non-associative array
+     * with all values. If a mapping Closure is passed,
+     * all values are processed by the Closure.
      *
+     * @param Closure|null $map
      * @return array
      */
-    public function values(): array
+    public function values(Closure $map = null): array
     {
-        return array_values($this->data);
+        $data = $map === null ? $this->data : array_map($map, $this->data);
+        return array_values($data);
     }
 
     /**

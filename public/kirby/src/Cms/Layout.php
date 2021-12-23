@@ -5,6 +5,7 @@ namespace Kirby\Cms;
 /**
  * Represents a single Layout with
  * multiple columns
+ * @since 3.5.0
  *
  * @package   Kirby Cms
  * @author    Bastian Allgeier <bastian@getkirby.com>
@@ -15,6 +16,8 @@ namespace Kirby\Cms;
 class Layout extends Item
 {
     const ITEMS_CLASS = '\Kirby\Cms\Layouts';
+
+    use HasMethods;
 
     /**
      * @var \Kirby\Cms\Content
@@ -35,6 +38,11 @@ class Layout extends Item
      */
     public function __call(string $method, array $args = [])
     {
+        // layout methods
+        if ($this->hasMethod($method) === true) {
+            return $this->callMethod($method, $args);
+        }
+
         return $this->attrs()->get($method);
     }
 
@@ -77,6 +85,7 @@ class Layout extends Item
 
     /**
      * Checks if the layout is empty
+     * @since 3.5.2
      *
      * @return bool
      */
@@ -92,6 +101,7 @@ class Layout extends Item
 
     /**
      * Checks if the layout is not empty
+     * @since 3.5.2
      *
      * @return bool
      */
