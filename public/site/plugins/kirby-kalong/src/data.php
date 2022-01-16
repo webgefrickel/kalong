@@ -41,3 +41,4 @@ function kalong($pattern = null, $page = null) {
   //========================================
   return $__;
 }
+

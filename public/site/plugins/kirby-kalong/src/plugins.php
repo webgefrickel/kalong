@@ -17,16 +17,16 @@ Kirby::plugin('kalong/image', [
 
       // Wrap the blurred image in a SVG to avoid rasterizing the filter
       $svg = <<<EOD
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {$svgWidth} {$svgHeight}">
-            <filter id="b" color-interpolation-filters="sRGB">
-              <feGaussianBlur stdDeviation=".5"></feGaussianBlur>
-              <feComponentTransfer>
-                <feFuncA type="discrete" tableValues="1 1"></feFuncA>
-              </feComponentTransfer>
-            </filter>
-            <image filter="url(#b)" x="0" y="0" width="100%" height="100%" href="{$placeholderImage->dataUri()}"></image>
-          </svg>
-          EOD;
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {$svgWidth} {$svgHeight}">
+          <filter id="b" color-interpolation-filters="sRGB">
+            <feGaussianBlur stdDeviation=".5"></feGaussianBlur>
+            <feComponentTransfer>
+              <feFuncA type="discrete" tableValues="1 1"></feFuncA>
+            </feComponentTransfer>
+          </filter>
+          <image filter="url(#b)" x="0" y="0" width="100%" height="100%" href="{$placeholderImage->dataUri()}"></image>
+        </svg>
+        EOD;
 
       // safely URL-encode
       $data = preg_replace('/\s+/', ' ', $svg);
@@ -37,7 +37,7 @@ Kirby::plugin('kalong/image', [
       return 'data:image/svg+xml;charset=utf-8,' . $data;
     },
 
-    'kalongImage' => function($modifiers = '', $ratio = false, $sizes = '100vw', $media = '', $hideCaption = true) {
+    'kalongImage' => function($modifiers = '', $ratio = false, $sizes = '100vw', $media = '', $hideCaption = false) {
       $image = $this;
       $widths = option('thumbs.srcsets.default');
       $modifiers .= ($image->isLandscape()) ? ' image--landscape ' : ' image--portrait ';
@@ -57,12 +57,15 @@ Kirby::plugin('kalong/image', [
         $srcset = $image->focusSrcset($focusSrcsetConfig);
       }
 
+      $finalCaption = ($caption !== false) ? '<span class="image__description">' . $caption  . '</span>': '';
+      $finalCaption .= ($title !== false) ? '<span class="image__credits">' . $title . '</span>' : '';
+
       return [
         'modifiers' => $modifiers,
         'src' => $src,
         'alt' => $alt,
         'title' => $title,
-        'caption' => ($hideCaption === true) ? false : $caption,
+        'caption' => ($hideCaption === true) ? false : $finalCaption,
         'sizes' => $sizes,
         'srcset' => $srcset,
       ];

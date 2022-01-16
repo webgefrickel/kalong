@@ -1,6 +1,6 @@
 <?php
 
-namespace mgfagency\Twig;
+namespace amteich\Twig;
 
 use \Kirby\Toolkit\Str;
 use \Kirby\Cms\Template;
@@ -20,9 +20,8 @@ class Plugin
      *
      *  * Example usage:
      *
-     *     <?php echo twig('Hello {{ who }}', ['who' => 'World']) ?>
-     *     <?php echo twig('@snippets/header.twig', ['title' => 'Home page']) ?>
-     *     <?php echo twig('@heading', ['text' => 'Hello World']) ?>
+     *     <?php echo twig('Hello {{ who }}', ['who'=>'World']) ?>
+     *     <?php echo twig('@snippets/header.twig', ['title'=>'Home page']) ?>
      *
      * Note: in Twig templates, you should use the `include` tag or function instead.
      *

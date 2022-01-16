@@ -1,12 +1,13 @@
 <?php
 
-namespace mgfagency\Twig;
+namespace amteich\Twig;
 
 use Kirby;
 use Response;
 use Kirby\Cms\App;
 use Kirby\Toolkit\Html;
 use Kirby\Toolkit\Tpl;
+use Kirby\Toolkit\Str;
 
 use \Twig\Environment as Twig_Environment;
 use \Twig\TwigFunction as Twig_Function;
@@ -177,57 +178,58 @@ class Environment
      * @var array
      */
     private $defaultFunctions = [
-        '*attr' => 'attr',
-        'asset' => 'asset',
-        'collection' => 'collection',
-        '*csrf' => 'csrf',
-        '*csrf_field' => 'csrf_field',
-        '*honeypot_field' => 'honeypot_field',
-        '*css' => 'css',
-        // Skipping: e - Twig syntax is simple: {{ condition ? 'a' : 'b' }}
-        '*esc' => 'esc',
-        'error' => 'mgfagency\Twig\Functions::error',
-        'get' => 'get',
-        '*gist' => 'gist',
-        'go' => 'go',
-        'gravatar' => 'gravatar',
-        '*h' => 'h',
-        '*html' => 'html',
-        '*image' => 'image',
-        'invalid' => 'invalid',
-        '*js' => 'js',
-        'kirby' => 'kirby',
-        '*kirbytag' => 'kirbytag',
-        '*kirbytags' => 'kirbytags',
-        '*kirbytext' => 'kirbytext',
-        '*markdown' => 'markdown',
-        'option' => 'option',   // Get config value => 'option'
-        'memory' => 'memory',
-        '*multiline' => 'multiline',
-        'page' => 'page',
-        'pages' => 'pages',
-        'param' => 'param',
-        'params' => 'params',
-        '*pattern' => 'pattern',
-        // Skipping: r - Same reason as for ecco/e
-        'timestamp' => 'timestamp',
-        'site' => 'site',
-        'size' => 'size',
-        'slug' => 'Str::slug',
-        '*smartypants' => 'smartypants',
-        '*snippet' => 'snippet',
-        '*strftime' => 'strftime',
-        '*svg' => 'svg',
-        't' => 't',
-        'tc' => 'tc',
-        '*twitter' => 'twitter',
-        'u' => 'u',
-        'url' => 'url',
-        'url_build' => 'Url::build',
-        '*video' => 'video',
-        '*vimeo' => 'vimeo',
-        '*widont' => 'widont',
-        '*youtube' => 'youtube',
+      '*attr' => 'attr',
+      'asset' => 'asset',
+      'collection' => 'collection',
+      '*csrf' => 'csrf',
+      '*csrf_field' => 'csrf_field',
+      '*honeypot_field' => 'honeypot_field',
+      '*css' => 'css',
+      // Skipping: e - Twig syntax is simple: {{ condition ? 'a' : 'b' }}
+      '*esc' => 'esc',
+      'error' => 'amteich\Twig\Functions::error',
+      'get' => 'get',
+      '*gist' => 'gist',
+      'go' => 'go',
+      'gravatar' => 'gravatar',
+      '*h' => 'h',
+      '*html' => 'html',
+      '*image' => 'image',
+      'invalid' => 'invalid',
+      '*js' => 'js',
+      'kirby' => 'kirby',
+      '*kirbytag' => 'kirbytag',
+      '*kirbytags' => 'kirbytags',
+      '*kirbytext' => 'kirbytext',
+      '*markdown' => 'markdown',
+      'option' => 'option',   // Get config value => 'option'
+      'memory' => 'memory',
+      '*multiline' => 'multiline',
+      'page' => 'page',
+      'pages' => 'pages',
+      'param' => 'param',
+      'params' => 'params',
+      '*pattern' => 'pattern',
+      // Skipping: r - Same reason as for ecco/e
+      'timestamp' => 'timestamp',
+      'site' => 'site',
+      'size' => 'size',
+      'slug' => 'Str::slug',
+      '*smartypants' => 'smartypants',
+      '*snippet' => 'snippet',
+      '*strftime' => 'strftime',
+      '*svg' => 'svg',
+      't' => 't',
+      'tc' => 'tc',
+      'tt' => 'tt',
+      '*twitter' => 'twitter',
+      'u' => 'u',
+      'url' => 'url',
+      'url_build' => 'Url::build',
+      '*video' => 'video',
+      '*vimeo' => 'vimeo',
+      '*widont' => 'widont',
+      '*youtube' => 'youtube',
     ];
 
     /**
@@ -236,7 +238,7 @@ class Environment
      * @var array
      */
     private $defaultTests = [
-        'of_type' => 'mgfagency\Twig\Tests::of_type',
+      'of_type' => 'amteich\Twig\Tests::of_type',
     ];
 
     private $templateDir = null;
@@ -255,8 +257,8 @@ class Environment
         $options = [
             'core' => [
                 'debug' => $this->debug,
-                'strict_variables' => option('mgfagency.twig.strict', $this->debug),
-                'autoescape' => option('mgfagency.twig.autoescape', 'html'),
+                'strict_variables' => option('amteich.twig.strict', $this->debug),
+                'autoescape' => option('amteich.twig.autoescape', 'html'),
                 'cache' => false
             ],
             'namespace' => [
@@ -269,18 +271,18 @@ class Environment
             'paths' => [],
             'function' => array_merge(
                 $this->defaultFunctions,
-                option('mgfagency.twig.env.functions', [])
+                option('amteich.twig.env.functions', [])
             ),
-            'extension' => option('mgfagency.twig.env.extensions', []),
-            'filter' => option('mgfagency.twig.env.filters', []),
+            'extension' => option('amteich.twig.env.extensions', []),
+            'filter' => option('amteich.twig.env.filters', []),
             'test' => array_merge(
-                $this->defaultTests,
-                option('mgfagency.twig.env.tests', [])
-            ),
+              $this->defaultTests,
+              option('amteich.twig.env.tests', [])
+          ),
         ];
 
         // Set cache directory
-        if (option('mgfagency.twig.cache')) {
+        if (option('amteich.twig.cache')) {
             $options['core']['cache'] = kirby()->roots()->cache() . '/twig';
         }
 
@@ -292,6 +294,13 @@ class Environment
             $loader->addPath($kirby->root('templates'));
         }
 
+        // add plugin snippet paths
+        foreach ($kirby->extensions('snippets') as $snippetpath => $root) {
+            if (Str::endsWith(strtolower($root), '.twig')) {
+                $loader->addPath(str_replace($snippetpath . '.twig', '', $root));
+            }
+        }
+
         // is viewpath in a plugin, add the pluginpath
         if ($viewPath != $this->templateDir) {
             $loader->addPath($viewPath);
@@ -299,7 +308,7 @@ class Environment
 
         $options['namespace'] = array_merge(
             $options['namespace'],
-            option('mgfagency.twig.namespaces', [])
+            option('amteich.twig.namespaces', [])
         );
 
         $canSkip = ['snippets', 'plugins', 'assets'];
@@ -309,7 +318,7 @@ class Environment
             $loader->addPath($path, $key);
         }
 
-        $options['paths'] = option('mgfagency.twig.paths', []);
+        $options['paths'] = option('amteich.twig.paths', []);
         foreach ($options['paths'] as $path) {
             $loader->addPath($path);
         }
