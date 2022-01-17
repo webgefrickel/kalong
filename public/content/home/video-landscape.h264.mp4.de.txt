@@ -1,0 +1,17 @@
+Poster:
+
+- home/video-landscape.jpg
+
+----
+
+Av1:
+
+- home/video-landscape.av1.webm
+
+----
+
+Attributes: muted, loop, autoplay, playsinline
+
+----
+
+Template: video

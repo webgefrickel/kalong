@@ -1,10 +1,12 @@
 <figure class="image{% if modifiers %}  {{ modifiers }}{% endif %}">
   <picture class="image__picture">
-    <source class="image__picture-source"
-      data-lazyload
-      data-srcset="{{ srcset }}"
-      {% if sizes %} sizes="{{ sizes }}"{% endif %}
-    />
+    {% for source in sources %}
+      <source class="image__picture-source"
+        data-srcset="{{ source.srcset }}"
+        type="{{ source.type }}"
+        {% if sizes %} sizes="{{ sizes }}"{% endif %}
+      />
+    {% endfor %}
     <img src="{{ src }}" alt="{{ alt }}" class="image__src"{% if title %} title="{{ title }}"{% endif %} />
   </picture>
 

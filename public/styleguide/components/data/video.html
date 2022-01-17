@@ -2,7 +2,7 @@ config:
   kalong:
     title: Your Project
     version: 0.1.0
-    proxy: yourproject.dev.localhost
+    proxy: dev.dev.localhost
     https: true
     port: 3000
     main: main
@@ -52,7 +52,7 @@ config:
     tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1640268685945
+  hash: 1642438318064
 language:
   code: en
   locale: en_US
@@ -65,7 +65,11 @@ pageTitle: Your Project—Styleguide
 pageDescription: A pattern library for Your Project
 pageModifiers: ''
 modifiers: ''
-attributes: muted loop playsinline
-poster: //localhost/__mock/video-landscape.jpg
-source: //localhost/__mock/video-landscape.mp4
+attributes: muted loop playsinline autoplay
+poster: //__mock.dev.localhost/video-landscape.jpg
+sources:
+  - src: //__mock.dev.localhost/video-landscape.av1.mp4
+    type: video/webm; codecs=av01.0.05M.08,opus
+  - src: //__mock.dev.localhost/video-landscape.h264.mp4
+    type: video/mp4
 

@@ -1,11 +1,12 @@
 label: Bildergalerie
-help: (Das erste Element wird als Projekt-Cover für die Startseite verwendet)
 type: files
+help: (Das erste Element wird als Projekt-Cover für die Startseite verwendet)
 uploads: false
 min: 1
 multiple: true
 required: true
 size: tiny
 layout: cards
-empty: Bitte zuerst im rechten Bereich BIlder hochladen, dann hier auswählen/hinzufügen
+empty: Bitte zuerst Medien hochladen, dann hier auswählen/hinzufügen
 info: '{{ file.alt }}'
+query: page.files.filterBy('template', 'in', ['image', 'video'])

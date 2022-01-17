@@ -1,7 +1,7 @@
 title: Bild
 
 accept:
-  mime: image/*
+  mime: image/jpeg, image/png
 
 columns:
   - width: 1/2

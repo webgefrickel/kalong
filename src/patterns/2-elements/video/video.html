@@ -4,11 +4,12 @@
 
 <div class="video{% if modifiers %}  {{ modifiers }}{% endif %}">
   <video
-    data-lazyload
     class="video__element"
+    {% if poster %} data-poster="{{ poster }}"{% endif %}
     {{ attributes | raw }}
-    {% if poster %} poster="{{ poster }}"{% endif %}
   >
-    <source data-src="{{ source }}" type="video/mp4" />
+    {% for source in sources %}
+      <source data-src="{{ source.src }}" type="{{ source.type }}" />
+    {% endfor %}
   </video>
 </div>

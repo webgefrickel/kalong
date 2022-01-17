@@ -2,7 +2,7 @@ config:
   kalong:
     title: Your Project
     version: 0.1.0
-    proxy: yourproject.dev.localhost
+    proxy: dev.dev.localhost
     https: true
     port: 3000
     main: main
@@ -52,7 +52,7 @@ config:
     tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1640268685945
+  hash: 1642438318064
 language:
   code: en
   locale: en_US
@@ -70,7 +70,7 @@ imageTest:
     kalong:
       title: Your Project
       version: 0.1.0
-      proxy: yourproject.dev.localhost
+      proxy: dev.dev.localhost
       https: true
       port: 3000
       main: main
@@ -120,7 +120,7 @@ imageTest:
       tile: '#f00'
     debug: true
     styleguide: true
-    hash: 1640268685945
+    hash: 1642438318064
   language:
     code: en
     locale: en_US
@@ -133,24 +133,34 @@ imageTest:
   pageDescription: A pattern library for Your Project
   pageModifiers: ''
   modifiers: image--landscape
-  src: //localhost/__mock/landscape-640.jpg
+  src: //__mock.dev.localhost/landscape-640.jpg
   alt: Alternativtext für das Bild
   title: Titel des Bildes / Copyrightinfos
   caption: null
   sizes: 100vw
-  srcset: >-
-    //localhost/__mock/landscape-640.jpg 640w,
-    //localhost/__mock/landscape-960.jpg 960w,
-    //localhost/__mock/landscape-1200.jpg 1200w,
-    //localhost/__mock/landscape-1440.jpg 1440w,
-    //localhost/__mock/landscape-1600.jpg 1600w,
-    //localhost/__mock/landscape-1920.jpg 1920w
+  sources:
+    - srcset: >-
+        //__mock.dev.localhost/landscape-640.webp 640w,
+        //__mock.dev.localhost/landscape-960.webp 960w,
+        //__mock.dev.localhost/landscape-1200.webp 1200w,
+        //__mock.dev.localhost/landscape-1440.webp 1440w,
+        //__mock.dev.localhost/landscape-1600.webp 1600w,
+        //__mock.dev.localhost/landscape-1920.webp 1920w
+      type: image/webp
+    - srcset: >-
+        //__mock.dev.localhost/landscape-640.jpg 640w,
+        //__mock.dev.localhost/landscape-960.jpg 960w,
+        //__mock.dev.localhost/landscape-1200.jpg 1200w,
+        //__mock.dev.localhost/landscape-1440.jpg 1440w,
+        //__mock.dev.localhost/landscape-1600.jpg 1600w,
+        //__mock.dev.localhost/landscape-1920.jpg 1920w
+      type: image/jpeg
 videoTest:
   config:
     kalong:
       title: Your Project
       version: 0.1.0
-      proxy: yourproject.dev.localhost
+      proxy: dev.dev.localhost
       https: true
       port: 3000
       main: main
@@ -200,7 +210,7 @@ videoTest:
       tile: '#f00'
     debug: true
     styleguide: true
-    hash: 1640268685945
+    hash: 1642438318064
   language:
     code: en
     locale: en_US
@@ -213,7 +223,11 @@ videoTest:
   pageDescription: A pattern library for Your Project
   pageModifiers: ''
   modifiers: ''
-  attributes: muted loop playsinline
-  poster: //localhost/__mock/video-landscape.jpg
-  source: //localhost/__mock/video-landscape.mp4
+  attributes: muted loop playsinline autoplay
+  poster: //__mock.dev.localhost/video-landscape.jpg
+  sources:
+    - src: //__mock.dev.localhost/video-landscape.av1.mp4
+      type: video/webm; codecs=av01.0.05M.08,opus
+    - src: //__mock.dev.localhost/video-landscape.h264.mp4
+      type: video/mp4
 

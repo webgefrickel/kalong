@@ -2,17 +2,29 @@ status: done
 
 context:
   modifiers: 'image--landscape'
-  src: //localhost/__mock/landscape-640.jpg
+  src: '//__mock.dev.localhost/landscape-640.jpg'
   alt: Alternativtext für das Bild
   title: Titel des Bildes / Copyrightinfos
   caption: null
   sizes: 100vw
-  srcset: '//localhost/__mock/landscape-640.jpg 640w, //localhost/__mock/landscape-960.jpg 960w, //localhost/__mock/landscape-1200.jpg 1200w, //localhost/__mock/landscape-1440.jpg 1440w, //localhost/__mock/landscape-1600.jpg 1600w, //localhost/__mock/landscape-1920.jpg 1920w'
+  sources:
+    -
+      srcset: '//__mock.dev.localhost/landscape-640.webp 640w, //__mock.dev.localhost/landscape-960.webp 960w, //__mock.dev.localhost/landscape-1200.webp 1200w, //__mock.dev.localhost/landscape-1440.webp 1440w, //__mock.dev.localhost/landscape-1600.webp 1600w, //__mock.dev.localhost/landscape-1920.webp 1920w'
+      type: 'image/webp'
+    -
+      srcset: '//__mock.dev.localhost/landscape-640.jpg 640w, //__mock.dev.localhost/landscape-960.jpg 960w, //__mock.dev.localhost/landscape-1200.jpg 1200w, //__mock.dev.localhost/landscape-1440.jpg 1440w, //__mock.dev.localhost/landscape-1600.jpg 1600w, //__mock.dev.localhost/landscape-1920.jpg 1920w'
+      type: 'image/jpeg'
 
 variants:
   - name: portrait
     context:
       modifiers: 'image--portrait'
-      src: //localhost/__mock/portrait-640.jpg
+      src: //__mock.dev.localhost/portrait-640.jpg
       sizes: 100vw
-      srcset: '//localhost/__mock/portrait-640.jpg 640w, //localhost/__mock/portrait-960.jpg 960w, //localhost/__mock/portrait-1200.jpg 1200w, //localhost/__mock/portrait-1440.jpg 1440w, //localhost/__mock/portrait-1600.jpg 1600w, //localhost/__mock/portrait-1920.jpg 1920w'
+      sources:
+        -
+          srcset: '//__mock.dev.localhost/portrait-640.webp 640w, //__mock.dev.localhost/portrait-960.webp 960w, //__mock.dev.localhost/portrait-1200.webp 1200w, //__mock.dev.localhost/portrait-1440.webp 1440w, //__mock.dev.localhost/portrait-1600.webp 1600w, //__mock.dev.localhost/portrait-1920.webp 1920w'
+          type: 'image/webp'
+        -
+          srcset: '//__mock.dev.localhost/portrait-640.jpg 640w, //__mock.dev.localhost/portrait-960.jpg 960w, //__mock.dev.localhost/portrait-1200.jpg 1200w, //__mock.dev.localhost/portrait-1440.jpg 1440w, //__mock.dev.localhost/portrait-1600.jpg 1600w, //__mock.dev.localhost/portrait-1920.jpg 1920w'
+          type: 'image/jpeg'

@@ -1,0 +1,10 @@
+title: Datei
+
+columns:
+  - sections:
+      content:
+        type: info
+        headline: Hinweis
+        text: Diese Datei wird als Alternative/Fallback für eine andere Datei verwendet und hat keine weiteren eigenen Felder.
+
+

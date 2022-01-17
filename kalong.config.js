@@ -8,7 +8,7 @@ module.exports = {
 
   // Configure your localhost environment here, the host/proxy
   // should point to the root-folder configured below (default: ./public/)
-  proxy: 'yourproject.dev.localhost',
+  proxy: 'dev.dev.localhost',
   https: true,
   port: 3000,
 

@@ -175,7 +175,7 @@
 <div class="Browser-panel Browser-code is-active" data-role="tab-panel" id="browser-9b934c90c426d3f46b0f9492fcfc65ab-panel-html">
     <code class="Code Code--lang-html hljs">
         
-        <pre><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../scripts/main.js?v=1640268685945&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+        <pre><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;../../scripts/main.js?v=1642438318064&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
       <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 
       <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></pre>
@@ -189,24 +189,14 @@
         <pre>{% if config.debug %}
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/scripts/main.js&#x27; | path }}?v={{ config.hash }}&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
   {% else %}
-    <span class="hljs-comment">&lt;!-- load legacy js code for browsers that do not support es2017+ --&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;{{ &#x27;/scripts/main.min.js&#x27; | path }}?v={{ config.hash }}&quot;</span> <span class="hljs-attr">defer</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    {# if you want to use the serviceworker, uncomment this
     <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="handlebars"><span class="xml">
-      var modern = function() { var mq = document.getElementById(&#x27;modern-browsers&#x27;); return window.matchMedia &amp;&amp; window.matchMedia(mq.media).matches; };
-      var loadJs = function(src) { var ref = document.getElementsByTagName(&#x27;script&#x27;)[0]; var script = document.createElement(&#x27;script&#x27;); script.src = src; script.async = true; ref.parentNode.insertBefore(script, ref); };
-      var loadCss = function (src) { var ref = document.getElementsByTagName(&#x27;head&#x27;)[0]; var style = document.createElement(&#x27;link&#x27;); style.href = src; style.rel = &#x27;stylesheet&#x27;; head.append(style); };
-
-      if (modern()) {
-        loadJs(&quot;</span><span class="hljs-template-variable">{{ <span class="hljs-name">&#x27;/scripts/main.min.js&#x27;</span> | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ <span class="hljs-name">config.hash</span> }}</span><span class="xml">&quot;);
-        {# if you want to use the serviceworker, uncomment this
-        if (&#x27;serviceWorker&#x27; in navigator) {
-          navigator.serviceWorker.register(&#x27;/serviceworker.js?v=</span><span class="hljs-template-variable">{{ <span class="hljs-name">config.hash</span> }}</span><span class="xml">&#x27;);
-        }
-        #}
-      } else {
-        loadCSS(&quot;</span><span class="hljs-template-variable">{{ <span class="hljs-name">&#x27;/styles/main.legacy.css&#x27;</span> | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ <span class="hljs-name">config.hash</span> }}</span><span class="xml">&quot;);
-        loadJs(&quot;</span><span class="hljs-template-variable">{{ <span class="hljs-name">&#x27;/scripts/main.legacy.min.js&#x27;</span> | path }}</span><span class="xml">?v=</span><span class="hljs-template-variable">{{ <span class="hljs-name">config.hash</span> }}</span><span class="xml">&quot;);
+      if (&#x27;serviceWorker&#x27; in navigator) {
+        navigator.serviceWorker.register(&#x27;/serviceworker.js?v=</span><span class="hljs-template-variable">{{ <span class="hljs-name">config.hash</span> }}</span><span class="xml">&#x27;);
       }
     </span></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+    #}
   {% endif %}
   <span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></pre>
@@ -228,7 +218,7 @@
   <span class="hljs-attr">kalong:</span>
     <span class="hljs-attr">title:</span> <span class="hljs-string">Your</span> <span class="hljs-string">Project</span>
     <span class="hljs-attr">version:</span> <span class="hljs-number">0.1</span><span class="hljs-number">.0</span>
-    <span class="hljs-attr">proxy:</span> <span class="hljs-string">yourproject.dev.localhost</span>
+    <span class="hljs-attr">proxy:</span> <span class="hljs-string">dev.dev.localhost</span>
     <span class="hljs-attr">https:</span> <span class="hljs-literal">true</span>
     <span class="hljs-attr">port:</span> <span class="hljs-number">3000</span>
     <span class="hljs-attr">main:</span> <span class="hljs-string">main</span>
@@ -278,7 +268,7 @@
     <span class="hljs-attr">tile:</span> <span class="hljs-string">&#x27;#f00&#x27;</span>
   <span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
   <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-  <span class="hljs-attr">hash:</span> <span class="hljs-number">1640268685945</span>
+  <span class="hljs-attr">hash:</span> <span class="hljs-number">1642438318064</span>
 <span class="hljs-attr">language:</span>
   <span class="hljs-attr">code:</span> <span class="hljs-string">en</span>
   <span class="hljs-attr">locale:</span> <span class="hljs-string">en_US</span>
@@ -874,7 +864,7 @@
 <div class="Status-dots">
 
 
-<span class="Status-dot" style="border-color: #ed8015;" title="Work in Progress"></span>
+<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
 
 
 </div>
@@ -1192,8 +1182,8 @@
                     <dt class="Tree-asideTerm">Last build:</dt>
                     <dd class="Tree-asideDescription">
                         
-                            <time datetime="2021-12-23T14:11:23.572Z">
-                                23.12.2021
+                            <time datetime="2022-01-17T16:51:55.975Z">
+                                17.1.2022
                             </time>
                         
                     </dd>

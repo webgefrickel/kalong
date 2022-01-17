@@ -6,9 +6,15 @@ Text: Es funktioniert! Juhu!
 
 ----
 
-Gallery:
+Homeimages:
 
 - 01.jpg
+
+----
+
+Homevideos:
+
+- video-landscape.h264.mp4
 
 ----
 

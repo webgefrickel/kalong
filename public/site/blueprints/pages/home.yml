@@ -20,7 +20,12 @@ columns:
         type: fields
         fields:
           text: fields/text
-          gallery: fields/gallery
+          homeimages:
+            extends: fields/gallery
+            label: Bilder
+          homevideos:
+            extends: fields/gallery
+            label: Videos
   right:
     width: 1/4
     sections:

@@ -46,15 +46,20 @@ Kirby::plugin('kalong/image', [
       $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
       $src = $image->kalongBlurryInlinePlaceholder($ratio);
       $srcset = $image->srcset();
+      $srcsetWebp = $image->srcset('webp');
 
       // if a ratio is set, we have to built the focusCrop srcset
       if ($ratio !== false) {
         $focusSrcsetConfig = [];
+        $focusSrcsetConfigWebp = [];
         foreach ($widths as $width) {
           $height = intval($width / $ratio);
+          $format = 'webp';
           $focusSrcsetConfig[$width . 'w'] = compact('width', 'height');
+          $focusSrcsetConfigWebp[$width . 'w'] = compact('width', 'height', 'format');
         }
         $srcset = $image->focusSrcset($focusSrcsetConfig);
+        $srcsetWebp = $image->focusSrcset($focusSrcsetConfigWebp);
       }
 
       $finalCaption = ($caption !== false) ? '<span class="image__description">' . $caption  . '</span>': '';
@@ -67,21 +72,45 @@ Kirby::plugin('kalong/image', [
         'title' => $title,
         'caption' => ($hideCaption === true) ? false : $finalCaption,
         'sizes' => $sizes,
-        'srcset' => $srcset,
+        'sources' => [
+          [
+            'srcset' => $srcsetWebp,
+            'type' => 'image/webp',
+          ],
+          [
+            'srcset' => $srcset,
+            'type' => 'image/jpeg',
+          ],
+        ],
       ];
     },
 
     'kalongVideo' => function($modifiers) {
       $video = $this;
+      $sources = [];
+
       $poster = ($video->poster()->isNotEmpty())
-        ? $video->poster()->toFile()->resize(1920) : null;
+        ? $video->poster()->toFile()->resize(1920)->url() : null;
+      $av1Video = ($video->av1()->isNotEmpty())
+        ? $video->av1()->toFile()->url() : null;
       $attributes = ($video->attributes()->isNotEmpty())
         ? implode(' ', $video->attributes()->split()) : null;
 
+      if ($av1Video) {
+        $sources[] = [
+          'src' => $av1Video,
+          'type' => 'video/webm; codecs=av01.0.05M.08,opus',
+        ];
+      }
+      $sources[] = [
+        'src' => $video->url(),
+        'type' => 'video/mp4',
+      ];
+
       return [
         'modifiers' => $modifiers,
-        'src' => $video->url(),
-        'poster' => $poster->url(),
+        'sources' => $sources,
+        'poster' => $poster,
         'attributes' => $attributes,
       ];
     },
