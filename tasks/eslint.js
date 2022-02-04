@@ -2,7 +2,6 @@ import { join } from 'path';
 import { ESLint } from 'eslint';
 import config from '../kalong.config';
 
-// export default async () =>
 export default async () => {
   const eslint = new ESLint({ useEslintrc: true });
   const srcPathJs = join(config.src, config.scripts, '**/*.js');
