@@ -52,7 +52,7 @@ config:
     tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1643990582560
+  hash: 1647358342692
 language:
   code: en
   locale: en_US

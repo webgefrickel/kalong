@@ -2,7 +2,7 @@
   @include padding(a 1/2);
   @include color(default);
   @include background-color(background);
-  border: 1px solid currentColor;
+  border: 1px solid currentcolor;
 
   @include attention {
     @include color(main);
