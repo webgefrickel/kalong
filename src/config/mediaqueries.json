@@ -1,14 +1,13 @@
 {
   "mediaqueries": {
-    "xs": 375,
-    "s": 480,
-    "m": 720,
-    "l": 960,
-    "xl": 1100,
-    "xxl": 1280,
+    "s": 640,
+    "m": 760,
+    "l": 980,
+    "xl": 1240,
+    "xxl": 1520,
     "portrait": "(orientation: portrait)",
     "landscape": "(orientation: landscape)",
     "print": "print",
-    "custom": "(max-width: 30rem)"
+    "customexample": "(max-width: 30rem)"
   }
 }

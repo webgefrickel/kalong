@@ -12,13 +12,16 @@ columns:
           alt:
             label: Alternativ-Text
             type: text
-          photographer:
+            help: Relevant für Barrierefreiheit und Suchmaschinen
+          title:
             label: Fotografin / Credits
             type: text
+            help: Wird bei Mouseover angezeigt
           caption:
             label: Kurzbeschreibung
             type: textarea
             size: small
+            help: Erscheint als Beschreibungstext unter dem Bild
             buttons: false
   - width: 1/2
     sections:
@@ -28,4 +31,4 @@ columns:
           focus:
             label: Fokuspunkt
             type: focus
-            help: (Wird verwendet, wenn das Bild beschnitten wird)
+            help: Wird nur verwendet wenn das Bild beschnitten ausgegeben wird

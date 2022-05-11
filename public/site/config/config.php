@@ -14,16 +14,15 @@ return [
 
   // thumbnail configuration
   'thumbs' => [
-    'quality' => 80,
+    'quality' => 70,
     'driver' => 'gd',
     'srcsets' => [
-      'default' => [640, 750, 1280, 1920, 2560],
-      'webp' => [
-        '640w' => ['width' => 640, 'format' => 'webp', 'quality' => 60],
-        '750w' => ['width' => 750, 'format' => 'webp', 'quality' => 60],
-        '1280w' => ['width' => 1280, 'format' => 'webp', 'quality' => 60],
-        '1920w' => ['width' => 1920, 'format' => 'webp', 'quality' => 60],
-        '2560w' => ['width' => 2560, 'format' => 'webp', 'quality' => 60],
+      'default' => [
+        '750w' => ['width' => 750, 'format' => 'webp', 'quality' => 70],
+        '750w' => ['width' => 1200, 'format' => 'webp', 'quality' => 70],
+        '1280w' => ['width' => 1600, 'format' => 'webp', 'quality' => 70],
+        '1920w' => ['width' => 1920, 'format' => 'webp', 'quality' => 70],
+        '2560w' => ['width' => 2560, 'format' => 'webp', 'quality' => 70],
       ],
     ]
   ],

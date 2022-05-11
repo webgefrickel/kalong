@@ -1,13 +1,11 @@
 <figure class="image{% if modifiers %}  {{ modifiers }}{% endif %}">
   <picture class="image__picture">
-    {% for source in sources %}
-      <source class="image__picture-source"
-        data-srcset="{{ source.srcset }}"
-        type="{{ source.type }}"
-        {% if sizes %} sizes="{{ sizes }}"{% endif %}
-      />
-    {% endfor %}
-    <img src="{{ src }}" alt="{{ alt }}" class="image__src"{% if title %} title="{{ title }}"{% endif %} />
+    <source class="image__source"
+      data-srcset="{{ source.srcset }}"
+      type="{{ source.type }}"
+      {% if sizes %} sizes="{{ sizes }}"{% endif %}
+    />
+    <img src="{{ src }}" alt="{{ alt }}" class="image__fallback"{% if title %} title="{{ title }}"{% endif %} />
   </picture>
 
   {% if caption %}

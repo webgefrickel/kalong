@@ -37,50 +37,37 @@ Kirby::plugin('kalong/image', [
       return 'data:image/svg+xml;charset=utf-8,' . $data;
     },
 
-    'kalongImage' => function($modifiers = '', $ratio = false, $sizes = '100vw', $media = '', $hideCaption = false) {
+    'kalongImage' => function($modifiers = '', $ratio = false, $sizes = '100vw') {
       $image = $this;
       $widths = option('thumbs.srcsets.default');
       $modifiers .= ($image->isLandscape()) ? ' image--landscape ' : ' image--portrait ';
       $alt = ($image->alt()->isEmpty()) ? $image->filename() : $image->alt();
-      $title = ($image->photographer()->isEmpty()) ? false : $image->photographer();
+      $title = ($image->title()->isEmpty()) ? false : $image->title();
       $caption = ($image->caption()->isEmpty()) ? false : $image->caption()->nl2br();
       $src = $image->kalongBlurryInlinePlaceholder($ratio);
       $srcset = $image->srcset();
-      $srcsetWebp = $image->srcset('webp');
 
       // if a ratio is set, we have to built the focusCrop srcset
       if ($ratio !== false) {
         $focusSrcsetConfig = [];
-        $focusSrcsetConfigWebp = [];
         foreach ($widths as $width) {
           $height = intval($width / $ratio);
           $format = 'webp';
-          $focusSrcsetConfig[$width . 'w'] = compact('width', 'height');
-          $focusSrcsetConfigWebp[$width . 'w'] = compact('width', 'height', 'format');
+          $focusSrcsetConfig[$width . 'w'] = compact('width', 'height', 'format');
         }
         $srcset = $image->focusSrcset($focusSrcsetConfig);
-        $srcsetWebp = $image->focusSrcset($focusSrcsetConfigWebp);
       }
-
-      $finalCaption = ($caption !== false) ? '<span class="image__description">' . $caption  . '</span>': '';
-      $finalCaption .= ($title !== false) ? '<span class="image__credits">' . $title . '</span>' : '';
 
       return [
         'modifiers' => $modifiers,
         'src' => $src,
         'alt' => $alt,
         'title' => $title,
-        'caption' => ($hideCaption === true) ? false : $finalCaption,
+        'caption' => $caption,
         'sizes' => $sizes,
-        'sources' => [
-          [
-            'srcset' => $srcsetWebp,
-            'type' => 'image/webp',
-          ],
-          [
-            'srcset' => $srcset,
-            'type' => 'image/jpeg',
-          ],
+        'source' => [
+          'srcset' => $srcset,
+          'type' => 'image/webp',
         ],
       ];
     },
