@@ -10,10 +10,10 @@ export default () => {
       e: -2,
       f: -2,
       c: -2,
-      o: -1,
-      s: -1,
-      ios: -1,
-      samsung: -1,
+      o: -2,
+      s: -2,
+      ios: -2,
+      samsung: -2,
     },
     onshow: () => {
       document.documentElement.classList.add('is-outdated-browser');
