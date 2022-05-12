@@ -21,3 +21,4 @@ rules:
   arrow-parens:
     - error
     - as-needed
+  no-console: 1

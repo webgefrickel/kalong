@@ -15,6 +15,7 @@
   &::before,
   &::after {
     box-sizing: inherit;
+    background-repeat: no-repeat;
   }
 }
 
@@ -23,6 +24,17 @@ body {
   @include font(default);
   @include font-size(default);
   @include background-color(background);
+
+  &::after {
+    @include hidden;
+    content: var(--current-media-query);
+  }
+
+  @each $key, $query in $breakpoints {
+    @include mediaquery($key) {
+      --current-media-query: '#{$key}';
+    }
+  }
 
   // remove this if you want custom print-styles
   @include mediaquery(print) {

@@ -2,4 +2,7 @@
 // touch or modify, throw them in here (or a separate file in here), and
 // they will be included (and not linted)
 
-@import 'normalize.css/normalize.css';
+// TODO fix this after moving away from Sass
+@import-normalize;
+// well, maybe not
+@import-sanitize;

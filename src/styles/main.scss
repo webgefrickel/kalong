@@ -1,13 +1,12 @@
 /* stylelint-disable */
-// first we include global variable-maps from the config
-@import '../config/mediaqueries.json';
 
-// and then all mixins and config variables and global settings
+// all mixins and config variables and global settings
 @import '1-config/**/*.scss';
 @import '2-tools/**/*.scss';
 
 // throw in all other 3rdparty styles here this way we can override
 // vendor-styles in our components/layouts, if we really need to later on
+// TODO using css here to overcome sass touching this and using postcss-normalize
 @import '3-vendor/**/*.scss';
 
 // base styles - for raw html-elements, no classes

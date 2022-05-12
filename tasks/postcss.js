@@ -3,14 +3,14 @@ import { readFile, writeFile } from 'fs/promises';
 import postcss from 'postcss';
 import autoprefixer from 'autoprefixer';
 import cssnano from 'cssnano';
-import cssImport from 'postcss-import';
+import normalize from 'postcss-normalize';
 import config from '../kalong.config';
 
 export default async (opts = {}) => {
   const options = {
     input: opts.input || join(config.dest, config.styles, `${config.main}.css`),
     sourceMap: opts.sourceMap === undefined,
-    plugins: [cssImport(), autoprefixer()],
+    plugins: [normalize(), autoprefixer()],
   };
 
   // Add cssnano if the sourceMap option is set to false
