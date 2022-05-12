@@ -27,7 +27,7 @@ config:
     tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1652378714728
+  hash: 1652379626001
 language:
   code: en
   locale: en_US
@@ -70,7 +70,7 @@ imageTest:
       tile: '#f00'
     debug: true
     styleguide: true
-    hash: 1652378714728
+    hash: 1652379626001
   language:
     code: en
     locale: en_US
@@ -127,7 +127,7 @@ videoTest:
       tile: '#f00'
     debug: true
     styleguide: true
-    hash: 1652378714728
+    hash: 1652379626001
   language:
     code: en
     locale: en_US

@@ -1,7 +1,7 @@
 <?php
 
 return [
-  'debug' => true,
+  'debug' => false,
 
   // default homepage
   'home' => 'home',
