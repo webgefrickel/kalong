@@ -20,13 +20,6 @@
       <link rel="stylesheet" href="{{ '/styles/main.css' | path }}?v={{ config.hash }}" />
     {%- else %}
       <link rel="stylesheet" href="{{ '/styles/main.min.css' | path }}?v={{ config.hash }}" />
-
-      {%- for font, fontConfig in config.fonts %}
-        {%- if fontConfig.fontface %}
-          {%- set fontFile = ['/fonts/', fontConfig.file, '.woff2'] %}
-          <link rel="preload" href="{{ fontFile | join | path }}" as="font" type="font/woff2" crossorigin />
-        {%- endif %}
-      {%- endfor %}
     {%- endif %}
   </head>
   <body>

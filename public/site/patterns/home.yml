@@ -21,20 +21,6 @@ config:
     templates: templates/
     scripts: scripts/
     styles: styles/
-  fonts:
-    default:
-      family: Roboto
-      fallback: sans-serif
-      weight: 400
-      style: normal
-      fontface: true
-      file: roboto-regular
-    mono:
-      family: Hack
-      fallback: monospace
-      weight: 700
-      style: normal
-      fontface: false
   mediaqueries:
     s: 640
     m: 760
@@ -51,7 +37,7 @@ config:
     tile: '#f00'
   debug: true
   styleguide: true
-  hash: 1652300071763
+  hash: 1652369120102
 language:
   code: en
   locale: en_US
@@ -88,20 +74,6 @@ imageTest:
       templates: templates/
       scripts: scripts/
       styles: styles/
-    fonts:
-      default:
-        family: Roboto
-        fallback: sans-serif
-        weight: 400
-        style: normal
-        fontface: true
-        file: roboto-regular
-      mono:
-        family: Hack
-        fallback: monospace
-        weight: 700
-        style: normal
-        fontface: false
     mediaqueries:
       s: 640
       m: 760
@@ -118,7 +90,7 @@ imageTest:
       tile: '#f00'
     debug: true
     styleguide: true
-    hash: 1652300071763
+    hash: 1652369120102
   language:
     code: en
     locale: en_US
@@ -169,20 +141,6 @@ videoTest:
       templates: templates/
       scripts: scripts/
       styles: styles/
-    fonts:
-      default:
-        family: Roboto
-        fallback: sans-serif
-        weight: 400
-        style: normal
-        fontface: true
-        file: roboto-regular
-      mono:
-        family: Hack
-        fallback: monospace
-        weight: 700
-        style: normal
-        fontface: false
     mediaqueries:
       s: 640
       m: 760
@@ -199,7 +157,7 @@ videoTest:
       tile: '#f00'
     debug: true
     styleguide: true
-    hash: 1652300071763
+    hash: 1652369120102
   language:
     code: en
     locale: en_US

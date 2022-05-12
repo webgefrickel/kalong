@@ -62,7 +62,6 @@
   },
   "dependencies": {
     "browser-update": "3.3.38",
-    "fontfaceobserver": "2.1.0",
     "lozad": "1.16.0",
     "normalize.css": "8.0.1"
   }

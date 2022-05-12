@@ -1,0 +1,17 @@
+$fonts: (
+  default: (
+    family: 'Roboto',
+    fallback: sans-serif,
+    weight: 400,
+    style: normal,
+    fontface: true,
+    file: 'roboto-regular'
+  ),
+  mono: (
+    family: 'Hack',
+    fallback: 'monospace',
+    weight: 700,
+    style: normal,
+    fontface: false
+  )
+);

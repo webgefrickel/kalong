@@ -193,7 +193,7 @@
     <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;theme-color&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;#f00&quot;</span> /&gt;</span>
 
     <span class="hljs-comment">&lt;!-- add any og/twitter-card stuff here --&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../../styles/main.css?v=1652300071763&quot;</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;../../styles/main.css?v=1652369120102&quot;</span> /&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 
 <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre>
@@ -226,13 +226,6 @@
       <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ &#x27;/styles/main.css&#x27; | path }}?v={{ config.hash }}&quot;</span> /&gt;</span>
     {%- else %}
       <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;stylesheet&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ &#x27;/styles/main.min.css&#x27; | path }}?v={{ config.hash }}&quot;</span> /&gt;</span>
-
-      {%- for font, fontConfig in config.fonts %}
-        {%- if fontConfig.fontface %}
-          {%- set fontFile = [&#x27;/fonts/&#x27;, fontConfig.file, &#x27;.woff2&#x27;] %}
-          <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">&quot;preload&quot;</span> <span class="hljs-attr">href</span>=<span class="hljs-string">&quot;{{ fontFile | join | path }}&quot;</span> <span class="hljs-attr">as</span>=<span class="hljs-string">&quot;font&quot;</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;font/woff2&quot;</span> <span class="hljs-attr">crossorigin</span> /&gt;</span>
-        {%- endif %}
-      {%- endfor %}
     {%- endif %}
   <span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span></pre>
@@ -273,20 +266,6 @@
     <span class="hljs-attr">templates:</span> <span class="hljs-string">templates/</span>
     <span class="hljs-attr">scripts:</span> <span class="hljs-string">scripts/</span>
     <span class="hljs-attr">styles:</span> <span class="hljs-string">styles/</span>
-  <span class="hljs-attr">fonts:</span>
-    <span class="hljs-attr">default:</span>
-      <span class="hljs-attr">family:</span> <span class="hljs-string">Roboto</span>
-      <span class="hljs-attr">fallback:</span> <span class="hljs-string">sans-serif</span>
-      <span class="hljs-attr">weight:</span> <span class="hljs-number">400</span>
-      <span class="hljs-attr">style:</span> <span class="hljs-string">normal</span>
-      <span class="hljs-attr">fontface:</span> <span class="hljs-literal">true</span>
-      <span class="hljs-attr">file:</span> <span class="hljs-string">roboto-regular</span>
-    <span class="hljs-attr">mono:</span>
-      <span class="hljs-attr">family:</span> <span class="hljs-string">Hack</span>
-      <span class="hljs-attr">fallback:</span> <span class="hljs-string">monospace</span>
-      <span class="hljs-attr">weight:</span> <span class="hljs-number">700</span>
-      <span class="hljs-attr">style:</span> <span class="hljs-string">normal</span>
-      <span class="hljs-attr">fontface:</span> <span class="hljs-literal">false</span>
   <span class="hljs-attr">mediaqueries:</span>
     <span class="hljs-attr">s:</span> <span class="hljs-number">640</span>
     <span class="hljs-attr">m:</span> <span class="hljs-number">760</span>
@@ -303,7 +282,7 @@
     <span class="hljs-attr">tile:</span> <span class="hljs-string">&#x27;#f00&#x27;</span>
   <span class="hljs-attr">debug:</span> <span class="hljs-literal">true</span>
   <span class="hljs-attr">styleguide:</span> <span class="hljs-literal">true</span>
-  <span class="hljs-attr">hash:</span> <span class="hljs-number">1652300071763</span>
+  <span class="hljs-attr">hash:</span> <span class="hljs-number">1652369120102</span>
 <span class="hljs-attr">language:</span>
   <span class="hljs-attr">code:</span> <span class="hljs-string">en</span>
   <span class="hljs-attr">locale:</span> <span class="hljs-string">en_US</span>
@@ -786,40 +765,6 @@
                 
                 
                 
-    
-        
-        
-        
-        
-        <li class="Tree-item Tree-entity" data-role="item">
-            <a
-                class="Tree-entityLink"
-                href="./font.html"
-                data-role="tree-link"
-                
-                data-pjax
-                data-test="font"
-                data-handle="font"
-            >
-                <span>Fonts & Typefaces</span>
-                
-
-<div class="Status Status--unlabelled">
-
-<div class="Status-dots">
-
-
-<span class="Status-dot" style="border-color: #2b9e0f;" title="Done"></span>
-
-
-</div>
-
-</div>
-
-
-            </a>
-        </li>
-        
     
         
         
@@ -1523,8 +1468,8 @@
                     <dt class="Tree-asideTerm">Last build:</dt>
                     <dd class="Tree-asideDescription">
                         
-                            <time datetime="2022-05-11T20:14:29.445Z">
-                                11.5.2022
+                            <time datetime="2022-05-12T15:25:17.585Z">
+                                12.5.2022
                             </time>
                         
                     </dd>
