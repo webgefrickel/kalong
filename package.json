@@ -58,7 +58,7 @@
     "stylelint": "^14.5.3",
     "stylelint-config-sass-guidelines": "9.0.1",
     "stylelint-config-standard-scss": "3.0.0",
-    "svg-sprite": "1.5.4"
+    "svg-sprite": "2.0.0"
   },
   "dependencies": {
     "browser-update": "^3.3.38",
