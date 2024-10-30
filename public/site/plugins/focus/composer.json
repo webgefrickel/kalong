@@ -1,0 +1,17 @@
+{
+    "name": "flokosiol/focus",
+    "description": "Better image cropping for Kirby CMS",
+    "version": "3.1.0",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Flo Kosiol",
+            "email": "git@flokosiol.de"
+        }
+    ],
+    "require": {
+        "getkirby/cms": "^3.6",
+        "getkirby/composer-installer": "^1.1"
+    }
+}

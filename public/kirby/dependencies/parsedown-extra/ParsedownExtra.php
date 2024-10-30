@@ -17,7 +17,7 @@ class ParsedownExtra extends Parsedown
 {
     # ~
 
-    const version = '0.8.0-beta-1';
+    public const version = '0.8.0-beta-1';
 
     # ~
 
@@ -465,7 +465,7 @@ class ParsedownExtra extends Parsedown
             ),
         );
 
-        uasort($this->DefinitionData['Footnote'], 'self::sortFootnotes');
+        uasort($this->DefinitionData['Footnote'], [$this,'sortFootnotes']);
 
         foreach ($this->DefinitionData['Footnote'] as $definitionId => $DefinitionData) {
             if (! isset($DefinitionData['number'])) {
@@ -568,11 +568,12 @@ class ParsedownExtra extends Parsedown
         # http://stackoverflow.com/q/1148928/200145
         libxml_use_internal_errors(true);
 
-        $DOMDocument = new DOMDocument;
+        $DOMDocument = new DOMDocument();
 
         # http://stackoverflow.com/q/11309194/200145
-        $elementMarkup = mb_convert_encoding($elementMarkup, 'HTML-ENTITIES', 'UTF-8');
-        
+        $elementMarkup = htmlentities($elementMarkup);
+		$elementMarkup = htmlspecialchars_decode($elementMarkup);
+
         # Ensure that saveHTML() is not remove new line characters. New lines will be split by this character.
         $DOMDocument->formatOutput = true;
 

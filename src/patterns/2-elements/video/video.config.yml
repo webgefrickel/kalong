@@ -6,8 +6,8 @@ context:
   poster: '//__mock.dev.localhost/video-landscape.jpg'
   sources:
     -
-      src: '//__mock.dev.localhost/video-landscape.av1.mp4'
-      type: 'video/webm; codecs=av01.0.05M.08,opus'
+      src: '//__mock.dev.localhost/video-landscape.av1.webm'
+      type: 'video/webm; codecs=av01.0.08M.08.0.110.01.01.01.0'
     -
       src: '//__mock.dev.localhost/video-landscape.h264.mp4'
       type: 'video/mp4'
