@@ -1,9 +1,0 @@
-label: Video
-type: files
-layout: list
-multiple: false
-max: 1
-uploads:
-  template: video
-  accept:
-    mime: video/mp4, video/webm

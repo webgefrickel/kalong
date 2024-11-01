@@ -1,0 +1,15 @@
+.stack {
+  @apply flex flex-col justify-between;
+}
+
+.stack > * + * {
+  margin-block-start: var(--stack);
+}
+
+.stack--xl > * + * {
+  margin-block-start: var(--size-xl);
+}
+
+.stack__item--md {
+  margin-block-start: var(--size-md);
+}

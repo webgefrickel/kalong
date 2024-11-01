@@ -1,0 +1,5 @@
+.cluster {
+  @apply flex flex-wrap items-center justify-between;
+
+  gap: var(--stack);
+}

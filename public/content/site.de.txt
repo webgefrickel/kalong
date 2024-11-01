@@ -1,9 +1,0 @@
-Title: Webseitentitel, yay!
-
-----
-
-Seotitle: Seitentitel, global
-
-----
-
-Seodescription: Kurzbeschreibung der Seite, global

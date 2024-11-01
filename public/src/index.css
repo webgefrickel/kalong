@@ -1,0 +1,10 @@
+/* stylelint-disable at-rule-empty-line-before */
+@import 'tailwindcss/base';
+@import 'styles/reset';
+
+@import 'tailwindcss/components';
+@import 'compositions';
+@import 'blocks';
+
+@import 'tailwindcss/utilities';
+@import 'utilities';

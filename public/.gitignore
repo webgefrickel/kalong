@@ -1,0 +1,17 @@
+# no dev log / cache stuff
+/node_modules
+.npmrc
+.sass-cache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# do not add dist-output
+/dist
+
+# auto-generate favicons
+/public/android-chrome-*
+/public/apple-touch-icon-*
+/public/favicon.ico
+/public/*.webmanifest
+

@@ -1,5 +1,0 @@
-type: files
-sortable: false
-headline: Hochgeladene Bilder
-template: image
-info: "{{ file.alt }}"
