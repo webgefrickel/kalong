@@ -5,7 +5,6 @@ export default {
     description: '...',
     favicon: './public/favicon.svg',
     port: 4000,
-    proxy: 'dev.dev.localhost',
     content: [
       './index.html',
       './src/blocks/**/*.js',
