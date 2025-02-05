@@ -1,13 +1,19 @@
-import './index.css';
+import.meta.glob('./index.css', { eager: true });
+import.meta.glob('./compositions/**/*.css', { eager: true });
+import.meta.glob('./blocks/**/*.css', { eager: true });
 
-import blocks from './blocks';
-import compositions from './compositions';
-import utilities from './utilities';
+const modules = import.meta.glob([
+  './blocks/**/*.js',
+  './compositions/**/*.js'
+]);
 
-// Js has loaded—remove the no-js class
+// JS has loaded—remove the no-js class
 document.documentElement.classList.remove('no-js');
 
-// compositions, utilities and blocks
-compositions();
-utilities();
-blocks();
+for (const path in modules) {
+  if (Object.hasOwn(modules, path)) {
+    modules[path]().then((mod) => {
+      if (mod.default) mod.default();
+    });
+  }
+}

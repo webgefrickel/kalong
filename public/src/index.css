@@ -1,10 +1,119 @@
-/* stylelint-disable at-rule-empty-line-before */
-@import 'tailwindcss/base';
-@import 'styles/reset';
+@import 'tailwindcss';
 
-@import 'tailwindcss/components';
-@import 'compositions';
-@import 'blocks';
+/* additional reset-styles  */
+@layer base {
+  * {
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizelegibility;
+    }
+  }
 
-@import 'tailwindcss/utilities';
-@import 'utilities';
+  :root {
+    scrollbar-width: none;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  label[for] {
+    cursor: pointer;
+  }
+
+  [unselectable] {
+    user-select: none;
+  }
+
+  [disabled] {
+    cursor: not-allowed;
+  }
+}
+
+/* custom fonts */
+@font-face {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/roboto.woff2') format('woff2');
+}
+
+/* basic, core theme variables and css properties,
+   see: https://tailwindcss.com/docs/theme#theme-variable-namespaces */
+@layer theme {
+  :root {
+    --content-max: 72ch;
+    --line-height: 1.4;
+    --stack: 1em;
+    --viewport-max: 90rem;
+    --viewport-min: 22.5rem;
+
+    /* Fluid spacing units, see: https://chrisburnell.com/clamp-calculator */
+    --spacing: clamp(0.25rem, 0.208rem + 0.185vi, 0.375rem);
+
+    /* Every Layout compositions variables */
+    --box-background: var(--color-custom);
+    --box-border: 1px;
+    --box-padding: var(--stack);
+    --center-max: var(--content-max);
+    --cluster-gap: var(--stack);
+    --cover-padding: var(--stack);
+    --grid-min: calc(var(--viewport-max) / 5);
+    --icon-gap: calc(var(--stack) / 3);
+    --icon-size: 1;
+    --imposter-padding: var(--stack);
+    --reel-background: var(--color-black);
+    --reel-foreground: var(--color-custom);
+    --reel-gap: var(--stack);
+    --reel-height: auto;
+    --reel-item-width: calc(var(--content-max) / 3);
+    --sidebar-gap: var(--stack);
+    --sidebar-threshold: 50%;
+    --sidebar-width: calc(var(--content-max) * 1/3);
+    --switcher-gap: var(--stack);
+    --switcher-threshold: calc(var(--viewport-max) / 2);
+  }
+}
+
+/* tailwind theme customizations */
+@theme {
+  --color-foreground: var(--color-black);
+  --color-background: var(--color-white);
+  --color-custom: #c00;
+
+  /* Custom breakpoints */
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 90rem; /* viewport-max */
+
+  /* Custom fonts, see above for @font-face-declarations) */
+  --font-sans: 'Roboto', sans-serif;
+
+  /* Fluid text, see: https://chrisburnell.com/clamp-calculator */
+  --text-*: initial;
+  --text-base: clamp(1.125rem, 1rem + 0.556vi, 1.5rem);
+  --text-base--line-height: var(--line-height);
+  --text-md: clamp(1.5rem, 1.25rem + 1.111vi, 2.25rem);
+  --text-md--line-height: var(--line-height);
+  --text-lg: clamp(2rem, 1.667rem + 1.481vi, 3rem);
+  --text-lg--line-height: 1.2;
+}
+
+@layer utilities {
+  /* Add extra utilities here, if needed */
+}
+
+/*
+See index.js for additional glob CSS imports, usually
+you should be able to just throw css files in subfolders
+in blocks or compositions and call it a day.
+
+If tailwind does not find CSS-classes you added:
+@source '../site/snippets/snippet.php';
+*/

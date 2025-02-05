@@ -1,0 +1,12 @@
+.-grid {
+  display: grid;
+  align-content: start;
+  grid-template-columns: 100%;
+  grid-gap: var(--stack);
+}
+
+@supports (width: min(var(--grid-min), 100%)) {
+  .-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-min), 100%), 1fr));
+  }
+}

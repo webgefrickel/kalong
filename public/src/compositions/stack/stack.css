@@ -1,15 +1,19 @@
-.stack {
-  @apply flex flex-col justify-between;
+.-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.stack > * + * {
+.-stack:only-child {
+  block-size: 100%;
+}
+
+.-stack--recursive *,
+.-stack > * {
+  margin-block: 0;
+}
+
+.-stack--recursive * + *,
+.-stack > * + * {
   margin-block-start: var(--stack);
-}
-
-.stack--xl > * + * {
-  margin-block-start: var(--size-xl);
-}
-
-.stack__item--md {
-  margin-block-start: var(--size-md);
 }

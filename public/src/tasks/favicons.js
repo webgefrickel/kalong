@@ -1,5 +1,6 @@
 /* eslint camelcase: 'off' */
-// simple favicons using only a few icons:
+
+// Simple favicons using only a few icons:
 // https://evilmartians.com/chronicles/how-to-favicon-in-2021-six-files-that-fit-most-needs
 
 import { favicons } from 'favicons';
@@ -7,8 +8,14 @@ import fs from 'fs/promises';
 import kalong from '../../kalong.config.js';
 import path from 'path';
 
-const { name, shortName, description, favicon } = kalong.config;
-const { background, theme } = kalong.colors;
+const {
+  name,
+  shortName,
+  description,
+  favicon,
+  background,
+  theme
+} = kalong;
 const dest = './public';
 
 const response = await favicons(favicon, {

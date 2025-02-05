@@ -1,0 +1,16 @@
+.-switcher {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--switcher-gap);
+}
+
+.-switcher > * {
+  flex-basis: calc((var(--switcher-threshold) - 100%) * 999);
+  flex-grow: 1;
+}
+
+/* maximum of 5 (n+1) items in horizontal config */
+.-switcher > :nth-last-child(n+6),
+.-switcher > :nth-last-child(n+6) ~ * {
+  flex-basis: 100%;
+}

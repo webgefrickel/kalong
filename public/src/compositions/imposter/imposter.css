@@ -1,0 +1,16 @@
+.-imposter {
+  position: absolute;
+  inset-block-start: 50%;
+  inset-inline-start: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.-imposter--contain {
+  max-inline-size: calc(100% - var(--imposter-padding) * 2);
+  max-block-size: calc(100% - var(--imposter-padding) * 2);
+  overflow: auto;
+}
+
+.-imposter--fixed {
+  position: fixed;
+}

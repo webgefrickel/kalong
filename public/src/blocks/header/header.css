@@ -1,3 +1,5 @@
-.header {
-  background: #f00;
+/* Block items and compositions class-names start with -, to differ from tailwind
+   Use those classes, only if tailwind gets way to complicated. js-hook sits on data-attr */
+.-header {
+  padding: 5vw;
 }

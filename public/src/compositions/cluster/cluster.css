@@ -1,5 +1,7 @@
-.cluster {
-  @apply flex flex-wrap items-center justify-between;
-
-  gap: var(--stack);
+.-cluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--cluster-gap);
 }

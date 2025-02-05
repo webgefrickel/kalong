@@ -1,0 +1,19 @@
+.-icon {
+  width: calc(var(--icon-size) * 0.75em);
+  width: calc(var(--icon-size) * 1cap);
+  height: calc(var(--icon-size) * 0.75em);
+  height: calc(var(--icon-size) * 1cap);
+}
+
+.-with-icon {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.-with-icon .-icon {
+  margin-inline-end: var(--icon-gap);
+}
+
+.-with-icon--right .-icon {
+  margin-inline: var(--icon-gap) 0;
+}

@@ -1,0 +1,12 @@
+.-container {
+  display: block;
+  container-type: inline-size;
+  container-name: defaultcontainer;
+}
+
+/* add your container-query based changes here */
+@container defaultcontainer (width < 720px) {
+  .-box {
+    background: var(--color-custom);
+  }
+}

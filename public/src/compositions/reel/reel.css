@@ -1,0 +1,52 @@
+.-reel {
+  display: flex;
+  block-size: auto;
+  overflow: auto hidden;
+  scrollbar-color: var(--reel-foreground) var(--reel-background);
+  height: var(--reel-height); /* can be set manually */
+}
+
+.-reel::-webkit-scrollbar {
+  block-size: 1rem;
+}
+
+.-reel::-webkit-scrollbar-track {
+  background-color: var(--reel-background);
+}
+
+.-reel::-webkit-scrollbar-thumb {
+  background-color: var(--reel-background);
+  background-image: linear-gradient(
+    var(--reel-background) 0,
+    var(--reel-background) 0.25rem,
+    var(--reel-foreground) 0.25rem,
+    var(--reel-foreground) 0.75rem,
+    var(--reel-background) 0.75rem
+  );
+}
+
+.-reel > * {
+  flex: 0 0 var(--reel-item-width);
+}
+
+.-reel > img {
+  block-size: 100%;
+  flex-basis: auto;
+  inline-size: auto;
+}
+
+.-reel > * + * {
+  margin-inline-start: var(--reel-gap);
+}
+
+.-reel--overflow {
+  padding-block-end: var(--reel-gap);
+}
+
+.-reel--no-scrollbar {
+  scrollbar-width: none;
+}
+
+.-reel--no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

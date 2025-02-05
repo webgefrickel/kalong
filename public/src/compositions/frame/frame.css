@@ -1,0 +1,23 @@
+.-frame {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.-frame > img,
+.-frame > video {
+  inline-size: 100%;
+  block-size: 100%;
+  object-fit: cover;
+}
+
+
+.-frame--portrait {
+  aspect-ratio: 9 / 16;
+}
+
+.-frame--square {
+  aspect-ratio: 1 / 1;
+}

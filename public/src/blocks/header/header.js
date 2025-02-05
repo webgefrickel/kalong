@@ -1,3 +1,7 @@
 export default () => {
-  console.log('Header Block loaded');
+  const header = document.querySelector('[data-header]');
+
+  if (header) {
+    console.log('Header Block JavaScript initialized.', header);
+  }
 };
